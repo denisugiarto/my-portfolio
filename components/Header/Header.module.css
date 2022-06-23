@@ -1,0 +1,26 @@
+.container {
+  padding: 10px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.item {
+  margin: 0 16px;
+  font-size: 1rem;
+}
+
+.item:hover {
+  color: #ffcb05;
+  text-decoration: underline;
+}

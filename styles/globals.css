@@ -1,16 +1,26 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Suez+One&display=swap");
+
+section {
+  @apply flex snap-mt-10 font-body py-16;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.title-section {
+  @apply text-3xl capitalize font-bold antialiased text-left mb-8 text-gray-600;
 }
 
-* {
-  box-sizing: border-box;
+.container {
+  @apply max-w-7xl mx-auto px-2 pt-8 sm:px-6 lg:px-10;
 }
+
+.card {
+  @apply overflow-hidden shadow-lg rounded-xl bg-white h-full;
+}
+
+.tag {
+  @apply inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2;
+}
+/* ./styles/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

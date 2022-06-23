@@ -1,6 +1,10 @@
 {
   "name": "my-portfolio",
-  "private": true,
+  "version": "1.0.0",
+  "description": "Deni's Website",
+  "keywords": [],
+  "author": "Deni Sugiarto",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -8,12 +12,22 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^1.4.2",
+    "@heroicons/react": "^1.0.5",
+    "framer-motion": "^5.3.1",
     "next": "12.0.4",
+    "prettier": "^2.4.1",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-cool-inview": "^2.0.8",
+    "react-dom": "17.0.2",
+    "react-scrollspy": "^3.4.3",
+    "tailwindcss-scroll-snap": "^1.1.0"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.0",
     "eslint": "7.32.0",
-    "eslint-config-next": "12.0.4"
+    "eslint-config-next": "12.0.4",
+    "postcss": "^8.3.11",
+    "tailwindcss": "^2.2.19"
   }
 }
