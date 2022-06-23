@@ -1,1 +1,3 @@
-export default function Skills() {}
+export default function Skills() {
+  return <section id='skills'></section>;
+}

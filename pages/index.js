@@ -15,17 +15,19 @@ export default function Index() {
     <Layout pageTitle='Home'>
       <div ref={observe}>
         {inView && <Hero />}
-        {inView && (
-          <div className='flex flex-col md:flex-row justify-between container '>
-            <div className='flex-grow mr-4'>
-              <About />
-            </div>
-            <div className='flex-none '>
-              <Contact />
-            </div>
-          </div>
-        )}
         {inView && <Projects />}
+        {inView && (
+          <section id='aboutAndContactMe' className=' bg-blue-100'>
+            <div className='flex flex-col md:flex-row justify-between container animate-fade-in-down'>
+              <div className='flex-grow mr-4'>
+                <About />
+              </div>
+              <div className='flex-none '>
+                <Contact />
+              </div>
+            </div>
+          </section>
+        )}
       </div>
     </Layout>
   );

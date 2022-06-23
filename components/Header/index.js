@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { PhoneIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 import Image from "next/image";
+import Link from "next/link";
 
 const navigation = [
   { name: "Home", href: "#home", current: true },
@@ -46,7 +47,7 @@ export default function Header() {
                         href={item.href}
                         className={classNames(
                           item.current
-                            ? "bg-primary text-white"
+                            ? "bg-primary text-white shadow-2xl"
                             : "text-gray-300 hover:bg-primary hover:text-white",
                           "px-3 py-2 rounded-xl text-sm font-medium"
                         )}
@@ -58,11 +59,11 @@ export default function Header() {
                 </div>
               </div>
               <div className='hidden sm:block sm:ml-1'>
-                <div className='absolute inset-y-0 right-0 flex items-center justify-center sm:static px-4 py-2 rounded-xl text-primary font-bold font-serif border-2 border-primary capitalize'>
-                  <a href='https://api.whatsapp.com/send/?phone=6281217986332&text&app_absent=0'>
-                    let&apos;s chat
-                  </a>
-                </div>
+                <a
+                  href='https://api.whatsapp.com/send/?phone=6281217986332&text&app_absent=0'
+                  className='absolute inset-y-0 right-0 flex items-center justify-center sm:static px-4 py-2 rounded-xl text-primary font-bold font-serif border-2 border-primary capitalize hover:bg-primary hover:text-white duration-300 transform hover:scale-110'>
+                  let&apos;s chat
+                </a>
               </div>
             </div>
           </div>
