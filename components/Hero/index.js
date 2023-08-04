@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
-import profile from "/public/img/profile.webp";
 
 export default function Hero() {
   return (
@@ -29,7 +28,7 @@ export default function Hero() {
           </div>
           <div className='img-wrapper mx-auto sm:mx-0 hidden md:block'>
             <div className='w-72 h-72 rounded-full shadow-xl overflow-hidden'>
-              <Image src={profile} width={400} height={400} alt='profile-picture' priority='true' />
+              <Image src='/img/profile.webp' width={400} height={400} alt='profile-picture' priority='true' />
             </div>
           </div>
         </div>

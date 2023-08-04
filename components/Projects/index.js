@@ -1,10 +1,6 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-import projects1 from "/public/img/projects1.webp";
-import projects2 from "/public/img/projects2.webp";
-import projects3 from "/public/img/projects3.webp";
-
 export default function Projects() {
   return (
     <motion.section id='projects' className='bg-white'>
@@ -19,7 +15,7 @@ export default function Projects() {
         <div className='flex flex-wrap justify-between'>
           <div className='flex-0 md:w-1/2 lg:w-1/3 mb-4 md:mb-0'>
             <div className='card md:mr-4'>
-              <Image src={projects1} alt='Music Instruments webstore' priority layout='responsive' objectFit='cover' />
+              <Image src="/public/img/projects1.webp" alt='Music Instruments webstore' priority layout='responsive' objectFit='cover' />
               <div className='px-6 py-4'>
                 <div className='font-bold text-xl mb-2'>Top Music Shop</div>
                 <p className='text-gray-700 text-base'>
@@ -36,7 +32,7 @@ export default function Projects() {
           </div>
           <div className='flex-0 md:w-1/2 lg:w-1/3 mb-4 md:mb-0 '>
             <div className='card md:mr-4'>
-              <Image src={projects2} alt='Music Instruments webstore' priority layout='responsive' objectFit='cover' />
+              <Image src="/public/img/projects2.webp" alt='Music Instruments webstore' priority layout='responsive' objectFit='cover' />
               <div className='px-6 py-4'>
                 <div className='font-bold text-xl mb-2'>Smart POS</div>
                 <p className='text-gray-700 text-base'>
@@ -53,7 +49,7 @@ export default function Projects() {
           </div>
           <div className='flex-0 md:mt-4 lg:mt-0 md:w-1/2 lg:w-1/3'>
             <div className='card md:mr-4 lg:mr-0'>
-              <Image src={projects3} alt='Music Instruments webstore' priority layout='responsive' objectFit='cover' />
+              <Image src="/public/img/projects3.webp" alt='Music Instruments webstore' priority layout='responsive' objectFit='cover' />
               <div className='px-6 py-4'>
                 <div className='font-bold text-xl mb-2'>Restaurant Menu Order</div>
                 <p className='text-gray-700 text-base'>
