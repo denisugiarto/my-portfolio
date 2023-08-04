@@ -5,10 +5,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 const navigation = [
-  { name: "Home", href: "#home", current: true },
-  { name: "About Me", href: "#aboutme", current: false },
-  { name: "Projects", href: "#projects", current: false },
-  { name: "Contact Me", href: "#contactme", current: false },
+  { name: "Home", href: "#home", active: true },
+  { name: "About Me", href: "#aboutme", active: false },
+  { name: "Projects", href: "#projects", active: false },
+  { name: "Contact Me", href: "#contactme", active: false },
 ];
 
 function classNames(...classes) {
@@ -46,12 +46,12 @@ export default function Header() {
                         key={item.name}
                         href={item.href}
                         className={classNames(
-                          item.current
+                          item.active
                             ? "bg-primary text-white shadow-2xl"
                             : "text-gray-300 hover:bg-primary hover:text-white",
                           "px-3 py-2 rounded-xl text-sm font-medium"
                         )}
-                        aria-current={item.current ? "page" : undefined}>
+                        aria-current={item.active ? "page" : undefined}>
                         {item.name}
                       </a>
                     ))}
@@ -76,12 +76,12 @@ export default function Header() {
                   as='a'
                   href={item.href}
                   className={classNames(
-                    item.current
+                    item.active
                       ? "bg-gray-900 text-white"
                       : "text-gray-300 hover:bg-gray-700 hover:text-white",
                     "block px-3 py-2 rounded-xl text-base font-medium"
                   )}
-                  aria-current={item.current ? "page" : undefined}>
+                  aria-current={item.active ? "page" : undefined}>
                   {item.name}
                 </Disclosure.Button>
               ))}

@@ -11,8 +11,9 @@ export default function Index() {
   const { observe, inView } = useInView({
     onEnter: ({ unobserve }) => unobserve(), // only run once
   });
+  console.log("inView: ", inView);
   return (
-    <Layout pageTitle='Home'>
+    <Layout pageTitle='Home'> 
       <div ref={observe}>
         {inView && <Hero />}
         {inView && <Projects />}
