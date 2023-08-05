@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { PhoneIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
-import data from '../../constant/data.json'
+import data from '../../constant/data.json';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -11,7 +11,7 @@ function classNames(...classes) {
 
 export default function Header() {
 	return (
-		<Disclosure as="nav" className="bg-secondary border-b border-secondary sticky top-0 z-10 ">
+		<Disclosure as="nav" className="bg-secondary border-b border-secondary sticky top-0 z-10 shadow-xl">
 			{({ open }) => (
 				<>
 					<div className="container py-2">
@@ -30,7 +30,12 @@ export default function Header() {
 							<div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
 								<div className="flex-shrink-0 flex items-center">
 									<Link href="/">
-										<a className="font-title text-4xl rounded p-1 border border-transparent  hover:border-black hover:bg-gray-100 transition duration-300" title={data.profile.name}>DS</a>
+										<a
+											className="font-title text-4xl rounded p-1 border border-transparent  hover:border-black hover:bg-gray-100 transition duration-300"
+											title={data.profile.name}
+										>
+											DS
+										</a>
 									</Link>
 								</div>
 								<div className="hidden sm:block sm:ml-6 my-auto font-body">
@@ -53,7 +58,11 @@ export default function Header() {
 							</div>
 							<div className="hidden sm:block sm:ml-1">
 								<a
-									href="https://api.whatsapp.com/send/?phone=6281217986332&text&app_absent=0"
+									href={
+										data.contact.filter((item) => {
+											return item.type === 'whatsapp';
+										})[0].link
+									}
 									className="absolute inset-y-0 right-0 flex items-center justify-center sm:static px-4 py-2 rounded-xl text-primary font-bold font-serif border-2 border-primary capitalize hover:bg-primary hover:text-white duration-300 transform hover:scale-110"
 								>
 									let&apos;s chat
@@ -80,7 +89,15 @@ export default function Header() {
 							))}
 							<div className="flex">
 								<PhoneIcon className="h-6 w-6 mr-2" aria-hidden="true" />
-								<a href="https://api.whatsapp.com/send/?phone=6281217986332&text&app_absent=0">+6281217986332</a>
+								<a
+									href={
+										data.contact.filter((item) => {
+											return item.type === 'whatsapp';
+										})[0].link
+									}
+								>
+									+6281217986332
+								</a>
 							</div>
 						</div>
 					</Disclosure.Panel>

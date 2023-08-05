@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import data from '../../constant/data.json'
+import data from '../../constant/data.json';
 
-export default function Hero() {
+export default function Hero({ sectionBgColor, sectionColor }) {
 	return (
-		<section id="home" className="bg-blue-100">
+		<section id="home" className={`bg-${sectionBgColor} text-${sectionColor} min-h-fit`}>
 			<motion.div
-				className="container"
+				className="container my-auto"
 				initial={{ opacity: 0, y: -20 }}
 				animate={{ opacity: 1, y: 0 }}
 				exit={{ opacity: 0, y: -20 }}
@@ -14,25 +14,28 @@ export default function Hero() {
 			>
 				<div className=" flex flex-row justify-between ">
 					<div className="py-10 my-auto">
-						<h1 className="leading-10">
+						<h1 className="leading-10 ">
 							Hello, I&apos;m
-							<span className="text-4xl text-primary"> Deni Sugiarto.</span>
+							<span className="text-4xl "> Deni Sugiarto.</span>
 							<br />
 						</h1>
 						{data.aboutMe.map((item, index) => (
 							<p key={index} className="leading-loose">
 								{item}
 							</p>
-            ))}
-            <div className='flex mt-10'>
-						<a
-							href="https://api.whatsapp.com/send/?phone=6281217986332&text&app_absent=0"
-							className="px-20 py-3 rounded-xl font-bold font-serif border-2 border-primary capitalize bg-primary text-white duration-300 transition easy-in-out transform hover:scale-110"
-						>
-							Hire me
-						</a>
-
-            </div>
+						))}
+						<div className="flex mt-10">
+							<a
+								href={
+									data.contact.filter((item) => {
+										return item.type === 'whatsapp';
+									})[0].link
+								}
+								className={`px-20 py-3 rounded-xl font-bold font-serif border-2 capitalize  hover:shadow-card duration-300 transition easy-in-out transform hover:scale-110 bg-${sectionBgColor} text-${sectionColor} hover:bg-${sectionColor}`}
+							>
+								Hire me
+							</a>
+						</div>
 					</div>
 					<div className="img-wrapper mx-auto sm:mx-0 hidden md:block">
 						<div className="w-72 h-72 rounded-full shadow-xl overflow-hidden">

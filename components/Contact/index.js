@@ -4,9 +4,9 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 export default function Contact() {
 	return (
-		<section id="contactMe" className=" bg-blue-100">
+		<section id="contactMe" className=" bg-primary">
 			<div className="container ">
-				<h3 className="title-section !text-center">Contact Me</h3>
+				<h3 className="title-section !text-center text-white">Contact Me</h3>
 				<div className="content grid grid-cols-1 gap-3 max-w-sm mx-auto">
 					{data.contact.map((item, index) => (
 						<motion.div
@@ -17,7 +17,7 @@ export default function Contact() {
 							viewport={{ once: true }}
 							className="cursor-pointer"
 						>
-							<a href={item.link} target="_blank" rel="noreferrer" className="flex gap-2 p-2 hover:bg-gray-50 rounded-lg bg-white">
+							<a href={item.link} target="_blank" rel="noreferrer" className="flex gap-2 p-2 hover:bg-gray-50 rounded-lg bg-white hover:-translate-y-1 hover:scale-105 duration-300 transition shadow-lg">
 								<div className="w-8 flex justify-center items-center">
 									{item.type === 'email' && <AtSymbolIcon className="h-5 w-5 text-primary" />}
 									{item.type === 'whatsapp' && <PhoneIcon className="h-5 w-5 text-primary" />}
