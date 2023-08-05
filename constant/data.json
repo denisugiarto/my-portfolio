@@ -1,0 +1,61 @@
+{
+	"aboutMe": [
+		"I'm a Front-End Web Developer Based in Tulungagung, Indonesia.",
+		"I am passionate about Ui effects, animation, and creating intuitive, dynamic user experiences."
+	],
+	"profile": {
+		"name": "Deni Sugiarto",
+		"role": "Front-end Web Developer"
+	},
+	"navigation": [
+		{ "name": "Home", "href": "#home", "active": true },
+		{ "name": "About Me", "href": "#aboutMe", "active": false },
+		{ "name": "Projects", "href": "#projects", "active": false },
+		{ "name": "Contact Me", "href": "#contactMe", "active": false }
+	],
+	"contact": [
+		{
+			"type": "email",
+			"link": "mailto:sugiarto.deni@gmail.com",
+			"value": "sugiarto.deni@gmail.com"
+		},
+		{
+			"type": "whatsapp",
+			"link": "https://api.whatsapp.com/send/?phone=6281217986332&text=Hi+Deni%0D%0AI%27m+interested+to+hire+you!+&app_absent=0",
+			"value": "6281217986332"
+		},
+		{
+			"type": "linkedin",
+			"link": "https://linkedin.com/in/sugiarto-deni",
+			"value": "linkedin.com/in/sugiarto-deni"
+		},
+		{
+			"type": "github",
+			"link": "https://github.com/denisugiarto",
+			"value": "github.com/denisugiarto"
+		}
+	],
+	"projects": [
+		{
+			"id": 1,
+			"title": "Top Music Shop",
+			"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.",
+			"tech": ["ReactJs", "Firebase", "e-commerce"],
+			"picture": "/img/projects1.webp"
+		},
+		{
+			"id": 2,
+			"title": "Smart POS",
+			"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.",
+			"tech": ["ReactJs", "Firebase", "e-commerce"],
+			"picture": "/img/projects2.webp"
+		},
+		{
+			"id": 3,
+			"title": "Restaurant Menu Order",
+			"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.",
+			"tech": ["ReactJs", "Firebase", "e-commerce"],
+			"picture": "/img/projects3.webp"
+		}
+	]
+}
