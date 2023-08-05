@@ -1,7 +1,7 @@
 {
 	"aboutMe": [
-		"I'm a Front-End Web Developer Based in Tulungagung, Indonesia.",
-		"I am passionate about Ui effects, animation, and creating intuitive, dynamic user experiences."
+		"Front-End Web Developer Based in Tulungagung, Indonesia. Experience developing web apps using Nextjs, Reactjs, and mobile apps using React Native with SCRUM agile development.",
+		"Detail-oriented collaboration with the team to define project expectations and demand. Hands-on testing and debugging to address inconsistencies and maintain performance."
 	],
 	"profile": {
 		"name": "Deni Sugiarto",
@@ -39,7 +39,7 @@
 			"value": "github.com/denisugiarto"
 		}
 	],
-	"skills": ["ReactJs", "TypeScript", "TailwindCSS", "ReactNative", "AstroJs", "Bootstrap", "SCSS"],
+	"skills": ["TypeScript", "ReactJs", "NextJs", "ReactNative", "AstroJs", "TailwindCSS", "Rest API", "Axios", "Bootstrap", "SCSS", "Git", "HTML5", "Redux Toolkit", "RealmDB", "LeafletJs", "React Hook Form", "Framer Motion", "Animate On Scroll(AOS)"],
 	"projects": [
 		{
 			"id": 1,

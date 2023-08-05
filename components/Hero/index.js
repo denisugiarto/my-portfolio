@@ -13,14 +13,14 @@ export default function Hero({ sectionBgColor, sectionColor }) {
 				transition={{ duration: 1 }}
 			>
 				<div className=" flex flex-row justify-between ">
-					<div className="py-10 my-auto">
+					<div className="py-10 my-auto lg:max-w-xl">
 						<h1 className="leading-10 ">
 							Hello, I&apos;m
 							<span className="text-4xl "> Deni Sugiarto.</span>
 							<br />
 						</h1>
 						{data.aboutMe.map((item, index) => (
-							<p key={index} className="leading-loose">
+							<p key={index} className="leading-loose mt-4">
 								{item}
 							</p>
 						))}
