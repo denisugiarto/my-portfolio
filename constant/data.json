@@ -39,7 +39,7 @@
 			"value": "github.com/denisugiarto"
 		}
 	],
-	"skills": ["ReactJs", "TailwindCSS", "ReactNative", "AstroJs", "Bootstrap", "SCSS"],
+	"skills": ["ReactJs", "TypeScript", "TailwindCSS", "ReactNative", "AstroJs", "Bootstrap", "SCSS"],
 	"projects": [
 		{
 			"id": 1,
