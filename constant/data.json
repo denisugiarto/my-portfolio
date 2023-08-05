@@ -9,7 +9,6 @@
 	},
 	"navigation": [
 		{ "name": "Home", "href": "#home", "active": true },
-		{ "name": "About Me", "href": "#aboutMe", "active": false },
 		{ "name": "Projects", "href": "#projects", "active": false },
 		{ "name": "Contact Me", "href": "#contactMe", "active": false }
 	],
@@ -33,6 +32,11 @@
 			"type": "github",
 			"link": "https://github.com/denisugiarto",
 			"value": "github.com/denisugiarto"
+		},
+		{
+			"type": "upwork",
+			"link": "https://www.upwork.com/freelancers/denisugiarto",
+			"value": "denisugiarto"
 		}
 	],
 	"projects": [
