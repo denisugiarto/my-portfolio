@@ -14,7 +14,7 @@ section {
 }
 
 .card {
-  @apply overflow-hidden shadow-lg rounded-xl bg-white h-full;
+  @apply overflow-hidden shadow-card rounded-xl bg-white h-full;
 }
 
 .tag {
