@@ -1,13 +1,14 @@
 import Layout from '../components/Layout';
 import dynamic from 'next/dynamic';
 import useInView from 'react-cool-inview';
-import Skills from '../components/Skills';
+
 import { InView } from 'react-cool-inview';
 
 const Hero = dynamic(() => import('../components/Hero'));
 const Projects = dynamic(() => import('../components/Projects'));
 const About = dynamic(() => import('../components/About'));
 const Contact = dynamic(() => import('../components/Contact'));
+const Skills = dynamic(() => import('../components/Skills'));
 
 export default function Index() {
 	const { observe, inView } = useInView({
