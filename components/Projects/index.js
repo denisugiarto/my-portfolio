@@ -12,7 +12,7 @@ export default function Projects() {
 				exit={{ opacity: 0, y: -20 }}
 				transition={{ duration: 1 }}
 			>
-				<h3 className="title-section font-serif">projects</h3>
+				<h2 className="title-section font-serif">projects</h2>
 				<div className="grid md:grid-cols-2 xl:grid-cols-3 justify-between gap-8">
 					{data.projects.map((project, index) => {
 						return (
@@ -24,7 +24,7 @@ export default function Projects() {
 								transition={{ duration: 1, delay: index * 0.5 }}
 								viewport={{ once: true }}
 							>
-								<Image placeholder={`blur-${project.picture}`} blurDataURL='' src={project.picture} width={432} height={324} alt={project.title} priority layout="responsive" objectFit="cover" />
+								<Image placeholder={`blur-${project.picture}`} blurDataURL='' src={project.picture} width={432} height={324} alt={`${project.title} project`} priority layout="responsive" objectFit="cover" />
 								<div className="px-6 py-4">
 									<div className="font-bold text-xl mb-2">{project.title}</div>
 									<p className="text-gray-700 text-base">{project.description}</p>

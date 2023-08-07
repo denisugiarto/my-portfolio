@@ -6,7 +6,7 @@ export default function Contact() {
 	return (
 		<section id="contactMe" className=" bg-primary">
 			<div className="container ">
-				<h3 className="title-section !text-center text-white">Contact Me</h3>
+				<h2 className="title-section !text-center text-white">Contact Me</h2>
 				<div className="content grid grid-cols-1 gap-3 max-w-sm mx-auto">
 					{data.contact.map((item, index) => (
 						<motion.div

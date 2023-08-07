@@ -12,7 +12,7 @@ export default function Hero({ sectionBgColor, sectionColor }) {
 				exit={{ opacity: 0, y: -20 }}
 				transition={{ duration: 1 }}
 			>
-				<div className=" flex flex-row justify-between ">
+				<div className=" flex justify-between items-center">
 					<div className="py-10 my-auto lg:max-w-xl">
 						<h1 className="leading-10 ">
 							Hello, I&apos;m

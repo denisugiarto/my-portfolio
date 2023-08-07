@@ -8,19 +8,19 @@ function MyApp({ Component, pageProps }) {
 		<>
 			<Head>
 				{/* <!-- Primary Meta Tags --> */}
-				<meta name="title" content="Deni Sugiarto | Frontend Web Developer | Mobile App Developer" />
+				<meta name="title" content="Deni Sugiarto | Frontend Web Developer" />
 				<meta
 					name="description"
-					content="I'm a Front-End Web Developer Based in Tulungagung, Indonesia. I am passionate about Ui effects, animation, and creating intuitive, dynamic user experiences."
+					content="Front-End Web Developer. Experience developing web apps using Nextjs, ReactJs, and mobile apps using React Native with SCRUM agile development."
 				/>
 
 				{/* <!-- Open Graph / Facebook --> */}
 				<meta property="og:type" content="website" />
 				<meta property="og:url" content="https://www.denisugiarto.my.id/" />
-				<meta property="og:title" content="Deni Sugiarto | Frontend Web Developer | Mobile App Developer" />
+				<meta property="og:title" content="Deni Sugiarto | Frontend Web Developer" />
 				<meta
 					property="og:description"
-					content="I'm a Front-End Web Developer Based in Tulungagung, Indonesia. I am passionate about Ui effects, animation, and creating intuitive, dynamic user experiences."
+					content="Front-End Web Developer. Experience developing web apps using Nextjs, ReactJs, and mobile apps using React Native with SCRUM agile development."
 				/>
 				<meta property="og:image" content="https://www.denisugiarto.my.id/android-chrome-512x512.png" />
 
@@ -30,7 +30,7 @@ function MyApp({ Component, pageProps }) {
 				<meta property="twitter:title" content="Deni Sugiarto | Frontend Web Developer | Mobile App Developer" />
 				<meta
 					property="twitter:description"
-					content="I'm a Front-End Web Developer Based in Tulungagung, Indonesia. I am passionate about Ui effects, animation, and creating intuitive, dynamic user experiences."
+					content="Front-End Web Developer. Experience developing web apps using Nextjs, ReactJs, and mobile apps using React Native with SCRUM agile development."
 				/>
 				<meta property="twitter:image" content="https://www.denisugiarto.my.id/android-chrome-512x512.png" />
 
@@ -40,8 +40,8 @@ function MyApp({ Component, pageProps }) {
 				<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 				<link rel="manifest" href="/site.webmanifest" />
 				<meta name="google-site-verification" content="wA-PDzFO_KCQRoPFGDEpvObLUt5ZLtNjTsD-nUANyJo" />
-				<GoogleAnalytics gaMeasurementId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
 			</Head>
+			<GoogleAnalytics gaMeasurementId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
 			<Component {...pageProps} />
 		</>
 	);

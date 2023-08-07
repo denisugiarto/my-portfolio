@@ -7,7 +7,7 @@ export default function Layout({ children, pageTitle }) {
 		<>
 			<div>
 				<Head>
-					<title>{pageTitle} | Deni Sugiarto | Frontend Web Developer | Mobile App Developer</title>
+					<title>{pageTitle} | Deni Sugiarto | Frontend Web Developer</title>
 				</Head>
 				<Header />
 				<main>{children}</main>
