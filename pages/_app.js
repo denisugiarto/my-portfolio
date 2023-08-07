@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }) {
 	return (
 		<>
 			<Head>
-				{/* <!-- Primary Meta Tags --> */}				
+				{/* <!-- Primary Meta Tags --> */}
 				<meta name="title" content="Deni Sugiarto | Frontend Web Developer | Mobile App Developer" />
 				<meta
 					name="description"
@@ -40,8 +40,8 @@ function MyApp({ Component, pageProps }) {
 				<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 				<link rel="manifest" href="/site.webmanifest" />
 				<meta name="google-site-verification" content="wA-PDzFO_KCQRoPFGDEpvObLUt5ZLtNjTsD-nUANyJo" />
+				<GoogleAnalytics gaMeasurementId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
 			</Head>
-			<GoogleAnalytics gaMeasurementId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />			
 			<Component {...pageProps} />
 		</>
 	);
