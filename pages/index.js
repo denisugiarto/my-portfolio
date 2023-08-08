@@ -29,18 +29,23 @@ export default function Index() {
 	return (
 		<>
 			<NextSeo
+				title="Deni Sugiarto | Frontend Web Developer"
+				description="Frontend Web Developer. Experience developing web apps using Nextjs, ReactJs, and mobile apps using React Native with SCRUM agile development."
 				openGraph={{
 					url: 'https://www.denisugiarto.my.id',
 					title: 'Deni Sugiarto | Frontend Web Developer',
-					description:'Frontend Web Developer. Experience developing web apps using Nextjs, ReactJs, and mobile apps using React Native with SCRUM agile development.',
+					description:
+						'Frontend Web Developer. Experience developing web apps using Nextjs, ReactJs, and mobile apps using React Native with SCRUM agile development.',
 					type: 'website',
-					images: [{
-						url: "https://www.denisugiarto.my.id/android-chrome-512x512.png",
-						width: 512,
-            height: 512,
-            alt: 'logo image',
-            type: 'image/png',
-					}]
+					images: [
+						{
+							url: 'https://www.denisugiarto.my.id/android-chrome-512x512.png',
+							width: 512,
+							height: 512,
+							alt: 'logo image',
+							type: 'image/png',
+						},
+					],
 				}}
 				twitter={{
 					handle: '@handle',
@@ -48,14 +53,14 @@ export default function Index() {
 					cardType: 'summary_large_image',
 				}}
 			/>
-		<Layout>
-			<div ref={observe}>
-				{inView && <Hero sectionColor={sectionColor[0].text} sectionBgColor={sectionColor[0].background} />}
-				{inView && <Projects />}
-				{inView && <Contact />}
-				{inView && <Skills />}
-			</div>
-		</Layout>
+			<Layout>
+				<div ref={observe}>
+					{inView && <Hero sectionColor={sectionColor[0].text} sectionBgColor={sectionColor[0].background} />}
+					{inView && <Projects />}
+					{inView && <Contact />}
+					{inView && <Skills />}
+				</div>
+			</Layout>
 		</>
 	);
 }
