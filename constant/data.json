@@ -1,10 +1,10 @@
 {
 	"aboutMe": [
-		"Front-End Web Developer Based in Tulungagung, Indonesia. Experience developing web apps using Nextjs, ReactJs, and mobile apps using React Native with SCRUM agile development."
+		"Frontend Web Developer Based in Tulungagung, Indonesia. Experience developing web apps using Nextjs, ReactJs, and mobile apps using React Native with SCRUM agile development."
 	],
 	"profile": {
 		"name": "Deni Sugiarto",
-		"role": "Front-end Web Developer"
+		"role": "Frontend Web Developer"
 	},
 	"navigation": [
 		{ "name": "Home", "href": "#home", "active": true },
