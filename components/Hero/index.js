@@ -16,7 +16,7 @@ export default function Hero({ sectionBgColor, sectionColor }) {
 					<div className="py-10 my-auto lg:max-w-xl">
 						<h1 className="leading-10 ">
 							Hello, I&apos;m
-							<span className="text-4xl "> Deni Sugiarto.</span>
+							<span className="text-4xl "> Frontend Web Developer.</span>
 							<br />
 						</h1>
 						{data.aboutMe.map((item, index) => (
