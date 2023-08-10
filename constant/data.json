@@ -1,15 +1,15 @@
 {
 	"aboutMe": [
-		"Based in Tulungagung, Indonesia, experience developing web apps using Nextjs, ReactJs, and mobile apps using React Native with SCRUM agile development."
+		"Based in Indonesia, experience developing web apps using Nextjs, ReactJs, and mobile apps using React Native with SCRUM agile development."
 	],
 	"profile": {
 		"name": "Deni Sugiarto",
 		"role": "Frontend Web Developer"
 	},
 	"navigation": [
-		{ "name": "Home", "href": "#home", "active": true },
-		{ "name": "Projects", "href": "#projects", "active": false },
-		{ "name": "Contact Me", "href": "#contactMe", "active": false }
+		{ "name": "Home", "href": "#home" },
+		{ "name": "Projects", "href": "#projects" },
+		{ "name": "Contact Me", "href": "#contactMe" }
 	],
 	"contact": [
 		{
@@ -38,12 +38,31 @@
 			"value": "github.com/denisugiarto"
 		}
 	],
-	"skills": ["TypeScript", "ReactJs", "NextJs", "ReactNative", "AstroJs", "TailwindCSS", "Rest API", "Axios", "Bootstrap", "SCSS", "Git", "HTML5", "Redux Toolkit", "RealmDB", "LeafletJs", "React Hook Form", "Framer Motion", "Animate On Scroll(AOS)"],
+	"skills": [
+		"TypeScript",
+		"ReactJs",
+		"NextJs",
+		"ReactNative",
+		"AstroJs",
+		"TailwindCSS",
+		"Rest API",
+		"Axios",
+		"Bootstrap",
+		"SCSS",
+		"Git",
+		"HTML5",
+		"Redux Toolkit",
+		"RealmDB",
+		"LeafletJs",
+		"React Hook Form",
+		"Framer Motion",
+		"Animate On Scroll(AOS)"
+	],
 	"projects": [
 		{
 			"id": 1,
-			"title": "Top Music Shop",
-			"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.",
+			"title": "Food Order App",
+			"description": "Food Order App build with ReactJs, Context, and firebase",
 			"tech": ["ReactJs", "Firebase", "e-commerce"],
 			"picture": "/img/projects1.webp"
 		},

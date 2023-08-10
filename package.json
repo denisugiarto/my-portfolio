@@ -21,7 +21,6 @@
     "nextjs-google-analytics": "^2.3.3",
     "prettier": "^2.4.1",
     "react": "^18.2.0",
-    "react-cool-inview": "^2.0.8",
     "react-dom": "^18.2.0",
     "react-intersection-observer": "^9.5.2"
   },

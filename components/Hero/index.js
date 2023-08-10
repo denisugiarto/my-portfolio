@@ -1,10 +1,12 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import data from '../../constant/data.json';
+import React from 'react';
 
-export default function Hero({ sectionBgColor, sectionColor }) {
+// eslint-disable-next-line react/display-name
+const Hero = React.forwardRef(({sectionBgColor, sectionColor}, ref) => {
 	return (
-		<section id="home" className={`bg-${sectionBgColor} text-${sectionColor} min-h-fit`}>
+		<section id="home" className={`bg-${sectionBgColor} text-${sectionColor} min-h-screen`}>
 			<motion.div
 				className="container my-auto"
 				initial={{ opacity: 0, y: -20 }}
@@ -14,11 +16,8 @@ export default function Hero({ sectionBgColor, sectionColor }) {
 			>
 				<div className=" flex justify-between items-center">
 					<div className="py-10 my-auto lg:max-w-xl">
-						<h1 className="leading-10 ">
-							Hello, I&apos;m
-							<span className="text-4xl "> Frontend Web Developer.</span>
-							<br />
-						</h1>
+						<p className="leading-10 ">Hello, I&apos;m</p>
+						<h1 className="text-4xl "> Frontend Web Developer.</h1>
 						{data.aboutMe.map((item, index) => (
 							<p key={index} className="leading-loose mt-4">
 								{item}
@@ -46,4 +45,6 @@ export default function Hero({ sectionBgColor, sectionColor }) {
 			</motion.div>
 		</section>
 	);
-}
+});
+
+export default Hero;

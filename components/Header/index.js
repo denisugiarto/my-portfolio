@@ -9,7 +9,7 @@ function classNames(...classes) {
 	return classes.filter(Boolean).join(' ');
 }
 
-export default function Header() {
+export default function Header({activeNavbar}) {
 	return (
 		<Disclosure as="nav" className="bg-secondary border-b border-secondary sticky top-0 z-10 shadow-xl">
 			{({ open }) => (
@@ -45,8 +45,8 @@ export default function Header() {
 												key={item.name}
 												href={item.href}
 												className={classNames(
-													item.active ? 'bg-primary text-white shadow-2xl' : 'text-gray-300 hover:bg-primary hover:text-white',
-													'px-3 py-2 rounded-xl text-sm font-medium'
+													activeNavbar === item.href ? 'bg-primary text-white shadow-2xl' : 'text-gray-900 hover:bg-primary hover:text-white',
+													'px-3 py-2 rounded-xl font-extrabold'
 												)}
 												aria-current={item.active ? 'page' : undefined}
 											>

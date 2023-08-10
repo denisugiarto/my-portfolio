@@ -1,12 +1,14 @@
 import Head from 'next/head';
-import Footer from '../Footer';
 import Header from '../Header';
+import dynamic from 'next/dynamic';
 
-export default function Layout({ children }) {
+const Footer = dynamic(() => import('../Footer'));
+
+export default function Layout({ children, activeNavbar }) {
 	return (
 		<>
 			<div>
-				<Header />
+				<Header activeNavbar={activeNavbar} />
 				<main>{children}</main>
 				<Footer />
 			</div>

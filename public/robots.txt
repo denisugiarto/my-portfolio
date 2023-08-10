@@ -5,3 +5,6 @@ Disallow: /accounts
 # Allow all crawlers
 User-agent: *
 Allow: /
+
+
+Sitemap: https://denisugiarto.my.id/sitemap.xml
