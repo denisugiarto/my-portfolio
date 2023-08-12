@@ -7,4 +7,4 @@ User-agent: *
 Allow: /
 
 
-Sitemap: https://denisugiarto.my.id/sitemap.xml
+Sitemap: https://denisugiarto.my.id/mysite.xml
