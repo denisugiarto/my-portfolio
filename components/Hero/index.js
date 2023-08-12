@@ -6,7 +6,7 @@ import React from 'react';
 // eslint-disable-next-line react/display-name
 const Hero = React.forwardRef(({sectionBgColor, sectionColor}, ref) => {
 	return (
-		<section id="home" className={`bg-${sectionBgColor} text-${sectionColor} min-h-screen`}>
+		<section id="home" className={`bg-${sectionBgColor} text-${sectionColor} xl:min-h-screen`}>
 			<motion.div
 				className="container my-auto"
 				initial={{ opacity: 0, y: -20 }}

@@ -26,12 +26,13 @@ export default function Projects() {
 							>
 								<Image
 									placeholder={`blur-${project.picture}`}
-									blurDataURL=""
+									blurDataURL={`blur-${project.picture}`}
 									src={project.picture}
 									width={432}
 									height={324}
 									alt={`${project.title} project`}
 									priority
+									fill
 									layout="responsive"
 									objectFit="cover"
 								/>
