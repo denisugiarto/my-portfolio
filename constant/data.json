@@ -1,31 +1,30 @@
 {
 	"aboutMe": [
-		"Based in Indonesia, experience developing web apps using Nextjs, ReactJs, and mobile apps using React Native with SCRUM agile development."
+		"Experience developing web apps using Nextjs, ReactJs, and mobile apps using React Native with SCRUM agile development. Detail-oriented collaboration with the team to define project expectations and demand. Hands-on testing and debugging to address inconsistencies and maintain performance."
 	],
 	"profile": {
 		"name": "Deni Sugiarto",
 		"role": "Frontend Web Developer"
 	},
 	"navigation": [
-		{ "name": "Home", "href": "#home" },
-		{ "name": "Projects", "href": "#projects" },
-		{ "name": "Contact Me", "href": "#contactMe" }
+		{
+			"name": "Home",
+			"href": "#home"
+		},
+		{
+			"name": "Projects",
+			"href": "#projects"
+		},
+		{
+			"name": "Contact Me",
+			"href": "#contactMe"
+		}
 	],
 	"contact": [
 		{
 			"type": "upwork",
 			"link": "https://www.upwork.com/freelancers/denisugiarto",
 			"value": "denisugiarto"
-		},
-		{
-			"type": "email",
-			"link": "mailto:sugiarto.deni@gmail.com",
-			"value": "sugiarto.deni@gmail.com"
-		},
-		{
-			"type": "whatsapp",
-			"link": "https://api.whatsapp.com/send/?phone=6281217986332&text=Hi+Deni%0D%0AI%27m+interested+to+hire+you!+&app_absent=0",
-			"value": "6281217986332"
 		},
 		{
 			"type": "linkedin",
@@ -36,6 +35,16 @@
 			"type": "github",
 			"link": "https://github.com/denisugiarto",
 			"value": "github.com/denisugiarto"
+		},
+		{
+			"type": "email",
+			"link": "mailto:sugiarto.deni@gmail.com",
+			"value": "sugiarto.deni@gmail.com"
+		},
+		{
+			"type": "whatsapp",
+			"link": "https://api.whatsapp.com/send/?phone=6281217986332&text=Hi+Deni%0D%0AI%27m+interested+to+hire+you!+&app_absent=0",
+			"value": "6281217986332"
 		}
 	],
 	"skills": [
@@ -61,24 +70,151 @@
 	"projects": [
 		{
 			"id": 1,
-			"title": "Food Order App",
-			"description": "Food Order App build with ReactJs, Context, and firebase",
-			"tech": ["ReactJs", "Firebase", "e-commerce"],
-			"picture": "/img/projects1.webp"
+			"title": "nft preview card",
+			"description": "Nft preview card created using reactJs and Styled Components",
+			"tech": [
+				"ReactJs",
+				"Styled Components",
+				"NFT"
+			],
+			"picture": "/img/nft-card-preview.jpg",
+			"link": "https://nft-preview-card-rosy.vercel.app/"
 		},
 		{
 			"id": 2,
-			"title": "Smart POS",
-			"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.",
-			"tech": ["ReactJs", "Firebase", "e-commerce"],
-			"picture": "/img/projects2.webp"
+			"title": "Tatou Tatou",
+			"description": "Crowdfunding App for New Zealand to help community during natural disaster",
+			"tech": [
+				"AstroJs",
+				"TailwindCSS",
+				"DaisyUI"
+			],
+			"picture": "/img/tatou.jpg",
+			"link": "https://tatou-project.netlify.app/homepage/"
 		},
 		{
 			"id": 3,
-			"title": "Restaurant Menu Order",
-			"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.",
-			"tech": ["ReactJs", "Firebase", "e-commerce"],
-			"picture": "/img/projects3.webp"
+			"title": "QR Code Generator",
+			"description": "QR Code Generator to convert link to QR Code and with download feature to get the QR Code Image",
+			"tech": [
+				"HTML",
+				"CSS",
+				"Javascript"
+			],
+			"picture": "/img/qr_code_generator.jpg",
+			"link": "https://free-qrcodegenerator.netlify.app/"
+		},
+		{
+			"id": 4,
+			"title": "India Restaurant",
+			"description": "Landing Page for India Restaurant",
+			"tech": [
+				"AstroJs",
+				"TailwindCSS"
+			],
+			"picture": "/img/india_restaurant.jpg",
+			"link": "https://india-restaurant.netlify.app/"
+		},
+		{
+			"id": 5,
+			"title": "Conference React",
+			"description": "Landing Page for Conference build with ReactJs, React-Bootstrap, and SCSS for custom theme in Bootstrap",
+			"tech": [
+				"ReactJs",
+				"React-Bootstrap",
+				"React-Icons",
+				"SCSS"
+			],
+			"picture": "/img/conference_react.jpg",
+			"link": "https://conference-react.netlify.app/"
+		},
+		{
+			"id": 6,
+			"title": "Conference React",
+			"description": "Landing Page for Conference build with ReactJs, React-Bootstrap, and SCSS for custom theme in Bootstrap",
+			"tech": [
+				"NextJs",
+				"Typescript",
+				"TailwindCSS",
+				"Headless UI",
+				"React Spring"
+			],
+			"picture": "/img/azai_ai.jpg",
+			"link": "https://azai.solutions/"
+		}
+		
+	],
+	"experience": [
+		{
+			"location": "Singapore",
+			"title": "Frontend Web Developer",
+			"employmentType": "Full-time",
+			"companyName": "Innovez One",
+			"companyImgUrl": "/img/innovez_one_logo.jpg",
+			"locationType": "Remote",
+			"startDate": "08/28/2023",
+			"endDate": "Present",
+			"description": "",
+			"skills": [
+				"MUI",
+				"ReactJs",
+				"React Hook Form",
+				"Axios",
+				"Micro Frontend",
+				"Gitlab",
+				"CSS"
+			]
+		},
+		{
+			"location": "Batam, Riau Islands, Indonesia",
+			"title": "Frontend Web Developer",
+			"employmentType": "Freelance",
+			"companyName": "PT. Sinergi Mitra Groserindo",
+			"companyImgUrl": "/img/pt_sinergi_mitra_groserindo_logo.jpg",
+			"locationType": "Remote",
+			"startDate": "1/1/2023",
+			"endDate": "8/30/2023",
+			"description": "",
+			"skills": [
+				"Gulp",
+				"Bootstrap",
+				"React Native",
+				"Mobile Applications",
+				"JSON Web Token (JWT)",
+				"React Native Paper",
+				"Realm Database",
+				"Redux.js",
+				"React Hook Form",
+				"Axios",
+				"Gitlab",
+				"CSS"
+			]
+		},
+		{
+			"location": "New Zealand",
+			"title": "Frontend Web Developer",
+			"employmentType": "Full-time",
+			"companyName": "Whare Hauora",
+			"companyImgUrl": "/img/whare_hauora_logo.jpg",
+			"locationType": "Remote",
+			"startDate": "4/1/2022",
+			"endDate": "7/31/2023",
+			"description": "",
+			"skills": [
+				"Tailwind CSS",
+				"GitHub",
+				"Responsive Web Design",
+				"Next.js",
+				"Strapi.js",
+				"JavaScript",
+				"Gulp.js",
+				"jQuery",
+				"SASS",
+				"HTML5",
+				"Cascading Style Sheets (CSS)",
+				"Bootstrap",
+				"React.js"
+			]
 		}
 	]
 }

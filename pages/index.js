@@ -6,6 +6,7 @@ import { useInView } from 'react-intersection-observer';
 import Hero from '../components/Hero';
 import Projects from '../components/Projects';
 import Skills from '../components/Skills';
+import WorkExperience from '../components/WorkExperience';
 
 export default function Index() {
 	const { ref: HomeRef, inView: isHomeVisible } = useInView();
@@ -51,7 +52,8 @@ export default function Index() {
 				<Hero ref={HomeRef} sectionColor={sectionColor[0].text} sectionBgColor={sectionColor[0].background} />
 				<Projects />
 				<Contact />
-				<Skills />
+				<WorkExperience />
+				{/* <Skills /> */}
 			</Layout>
 		</>
 	);

@@ -19,17 +19,17 @@ module.exports = {
 		scrollBehavior: 'smooth',
 		backgroundColor: (theme) => ({
 			...theme('colors'),
-			primary: '#4762E5',
+			primary: '#1e3b8a',
 			secondary: '#F2F4FF',
 			ternary: '#4BD6F2',
 		}),
 		textColor: (theme) => ({
 			...theme('colors'),
-			primary: '#4762E5',
+			primary: '#1e3b8a',
 		}),
 		borderColor: (theme) => ({
 			...theme('colors'),
-			primary: '#4762E5',
+			primary: '#1e3b8a',
 			secondary: '#F2F4FF',
 		}),
 		screens: {
