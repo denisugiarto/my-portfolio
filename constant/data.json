@@ -42,7 +42,7 @@
 		{
 			"type": "whatsapp",
 			"link": "https://api.whatsapp.com/send/?phone=6281217986332&text=Hi+Deni%0D%0AI%27m+interested+to+hire+you!+&app_absent=0",
-			"value": "6281217986332"
+			"value": "+6281217986332"
 		}
 	],
 	"skills": [
@@ -114,7 +114,7 @@
 			],
 			"picture": "/img/india_restaurant.jpg",
 			"link": "https://india-restaurant.netlify.app/",
-			"github": ""
+			"github": "https://github.com/denisugiarto/restaurant-app"
 		},
 		{
 			"id": 5,
@@ -124,7 +124,8 @@
 				"ReactJs",
 				"React-Bootstrap",
 				"React-Icons",
-				"SCSS"
+				"SCSS",
+				"dayjs"
 			],
 			"picture": "/img/conference_react.jpg",
 			"link": "https://conference-react.netlify.app/",
@@ -139,7 +140,7 @@
 				"Typescript",
 				"TailwindCSS",
 				"Headless UI",
-				"React Spring"
+				"ReactSpring"
 			],
 			"picture": "/img/azai_ai.jpg",
 			"link": "https://azai.solutions/",

@@ -3,7 +3,7 @@ import Image from 'next/image';
 import data from '../../constant/data.json';
 import { useMemo, useState } from 'react';
 import { ImGithub } from 'react-icons/im';
-import { FaArrowDown, FaGlobeAsia } from 'react-icons/fa';
+import { FaArrowDown, FaExternalLinkAlt } from 'react-icons/fa';
 
 export default function Projects() {
 	const [totalShow, setTotalShow] = useState(3);
@@ -45,13 +45,25 @@ export default function Projects() {
 									<p className="text-gray-700 text-base">{project.description}</p>
 									<div className="flex gap-4 mt-4">
 										{project?.link && (
-											<a href={project?.link} target="_blank" rel="noreferrer" title="website link">
-												<FaGlobeAsia />
+											<a
+												href={project?.link}
+												target="_blank"
+												rel="noreferrer"
+												title="website link"
+												className="flex items-center gap-2 border rounded-lg shadow-md px-3 py-2 leading-none bg-primary text-white hover:scale-110 transition-all ease-in-out"
+											>
+												<FaExternalLinkAlt /> Web
 											</a>
 										)}
 										{project?.github && (
-											<a href={project?.github} target="_blank" rel="noreferrer" title="github repo">
-												<ImGithub />
+											<a
+												href={project?.github}
+												target="_blank"
+												rel="noreferrer"
+												title="github repo"
+												className="flex items-center gap-2 border rounded-lg shadow-md px-3 py-2 leading-none bg-primary text-white hover:scale-110 transition-all ease-in-out"
+											>
+												<ImGithub /> Repository
 											</a>
 										)}
 									</div>
