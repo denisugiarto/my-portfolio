@@ -1,7 +1,5 @@
 {
-	"aboutMe": [
-		"Experience developing web apps using Nextjs, ReactJs, and mobile apps using React Native with SCRUM agile development. Detail-oriented collaboration with the team to define project expectations and demand. Hands-on testing and debugging to address inconsistencies and maintain performance."
-	],
+	"aboutMe": "Experience developing web apps using Nextjs, ReactJs, and mobile apps using React Native with SCRUM agile development. Detail-oriented collaboration with the team to define project expectations and demand. Hands-on testing and debugging to address inconsistencies and maintain performance.",
 	"profile": {
 		"name": "Deni Sugiarto",
 		"role": "Frontend Web Developer"
@@ -78,7 +76,8 @@
 				"NFT"
 			],
 			"picture": "/img/nft-card-preview.jpg",
-			"link": "https://nft-preview-card-rosy.vercel.app/"
+			"link": "https://nft-preview-card-rosy.vercel.app/",
+			"github": "https://github.com/denisugiarto/nft-preview-card"
 		},
 		{
 			"id": 2,
@@ -102,7 +101,8 @@
 				"Javascript"
 			],
 			"picture": "/img/qr_code_generator.jpg",
-			"link": "https://free-qrcodegenerator.netlify.app/"
+			"link": "https://free-qrcodegenerator.netlify.app/",
+			"github": "https://github.com/denisugiarto/qrcode-generator"
 		},
 		{
 			"id": 4,
@@ -113,7 +113,8 @@
 				"TailwindCSS"
 			],
 			"picture": "/img/india_restaurant.jpg",
-			"link": "https://india-restaurant.netlify.app/"
+			"link": "https://india-restaurant.netlify.app/",
+			"github": ""
 		},
 		{
 			"id": 5,
@@ -126,12 +127,13 @@
 				"SCSS"
 			],
 			"picture": "/img/conference_react.jpg",
-			"link": "https://conference-react.netlify.app/"
+			"link": "https://conference-react.netlify.app/",
+			"github": "https://github.com/denisugiarto/conference-react"
 		},
 		{
 			"id": 6,
-			"title": "Conference React",
-			"description": "Landing Page for Conference build with ReactJs, React-Bootstrap, and SCSS for custom theme in Bootstrap",
+			"title": "Azai Solutions",
+			"description": "Azai Solutions a company provide Security services using AI.",
 			"tech": [
 				"NextJs",
 				"Typescript",
@@ -140,9 +142,9 @@
 				"React Spring"
 			],
 			"picture": "/img/azai_ai.jpg",
-			"link": "https://azai.solutions/"
+			"link": "https://azai.solutions/",
+			"github": ""
 		}
-		
 	],
 	"experience": [
 		{

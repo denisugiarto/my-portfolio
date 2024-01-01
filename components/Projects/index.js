@@ -1,29 +1,32 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import data from '../../constant/data.json';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
+import { ImGithub } from 'react-icons/im';
+import { FaArrowDown, FaGlobeAsia } from 'react-icons/fa';
 
 export default function Projects() {
 	const [totalShow, setTotalShow] = useState(3);
+	const listProject = useMemo(() => JSON.parse(JSON.stringify(data.projects.reverse())), []);
 	return (
 		<section id="projects" className="bg-white">
 			<motion.div
 				className="container"
 				initial={{ opacity: 0, y: -20 }}
-				transition={{ duration: 0.5 }}
+				transition={{ duration: 0.5, delay: 0.5 }}
 				whileInView={{ opacity: 1, y: 0 }}
 				viewport={{ once: true }}
 			>
-				<h2 className="title-section font-serif">projects</h2>
+				<h2 className="title-section font-title text-primary">projects</h2>
 				<div className="grid md:grid-cols-2 xl:grid-cols-3 justify-between gap-8">
-					{data.projects.reverse().map((project, index) => {
+					{listProject.map((project, index) => {
 						return (
 							<motion.div
-								className={`${index < totalShow ? 'hidden' : ''} card md:mr-4`}
+								className={`${index > totalShow - 1 ? 'hidden' : ''} card md:mr-4`}
 								key={project.id}
 								initial={{ opacity: 0, y: -20 }}
 								whileInView={{ opacity: 1, y: 0 }}
-								transition={{ duration: 1, delay: index * 0.5 }}
+								transition={{ duration: 0.5 }}
 								viewport={{ once: true }}
 							>
 								<Image
@@ -40,6 +43,18 @@ export default function Projects() {
 								<div className="px-6 py-4">
 									<h3 className="font-bold text-xl mb-2 capitalize">{project.title}</h3>
 									<p className="text-gray-700 text-base">{project.description}</p>
+									<div className="flex gap-4 mt-4">
+										{project?.link && (
+											<a href={project?.link} target="_blank" rel="noreferrer" title="website link">
+												<FaGlobeAsia />
+											</a>
+										)}
+										{project?.github && (
+											<a href={project?.github} target="_blank" rel="noreferrer" title="github repo">
+												<ImGithub />
+											</a>
+										)}
+									</div>
 								</div>
 								<div className="px-6 pt-4 pb-2">
 									{project.tech.map((item, index) => {
@@ -55,9 +70,13 @@ export default function Projects() {
 					})}
 				</div>
 				{data.projects.length > totalShow && (
-					<div className="mt-4 text-center">
-						<button className="bg-primary px-4 py-2 rounded-lg text-white" onClick={(prev) => setTotalShow(prev + 3)}>
-							Show More
+					<div className="mt-14">
+						<button
+							className="bg-primary mx-auto flex items-center gap-2 hover:scale-110 transition-all duration-700 ease-in-out px-6 py-3 rounded-lg text-white animate-bounce hover:animate-none"
+							onClick={(prev) => setTotalShow(prev + 3)}
+						>
+							Load More
+							<FaArrowDown />
 						</button>
 					</div>
 				)}

@@ -60,9 +60,18 @@ module.exports = {
 						transform: 'translateY(0)',
 					},
 				},
+				'spin': {
+					'0%': {
+						transform: 'rotate(0deg)',
+					},
+					'100%': {
+						transform: 'rotate(360deg)',
+					},
+				},
 			},
 			animation: {
 				'fade-in-down': 'fade-in-down 0.7s ease-out',
+				'spin-slow': 'spin 5s linear infinite',
 			},
 			boxShadow: {
 				card: '5px 5px 14px #8f8f8f, -5px -5px 14px #fff',

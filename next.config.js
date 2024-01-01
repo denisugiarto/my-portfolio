@@ -1,6 +1,6 @@
 module.exports = {
   images: {
-    domains: ["avatars.githubusercontent.com"],
+    domains: [],
   },
   i18n: {
     locales: ["en"],

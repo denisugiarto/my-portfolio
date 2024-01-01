@@ -2,11 +2,15 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import data from '../../constant/data.json';
 import React from 'react';
+import { SiReact } from 'react-icons/si';
 
 // eslint-disable-next-line react/display-name
 const Hero = React.forwardRef(({ sectionBgColor, sectionColor }, ref) => {
+	const linkHireMe = data.contact.find((item) => {
+		return item.type === 'whatsapp';
+	}).link;
 	return (
-		<section id="home" className={`bg-hero text-${sectionColor} xl:min-h-screen`}>
+		<section id="home" className={`bg-hero text-${sectionColor}`}>
 			<motion.div
 				className="container my-auto"
 				initial={{ opacity: 0, y: -20 }}
@@ -14,28 +18,33 @@ const Hero = React.forwardRef(({ sectionBgColor, sectionColor }, ref) => {
 				exit={{ opacity: 0, y: -20 }}
 				transition={{ duration: 1 }}
 			>
-				<div className=" flex flex-col-reverse md:flex-row justify-between items-center xl:gap-40">
-					<div className="py-10 my-auto">
-						<p className="leading-10 ">Hello, I&apos;m</p>
-						<h1 className="text-4xl "> Frontend Web Developer.</h1>
-						{data.aboutMe.map((item, index) => (
-							<p key={index} className="leading-loose mt-4">
-								{item}
-							</p>
-						))}
-						<div className="flex mt-10">
-							<motion.div className="box" whileHover={{ scale: 1.1 }} transition={{ type: 'spring', stiffness: 400, damping: 10 }}>
-								<a
-									href={
-										data.contact.filter((item) => {
-											return item.type === 'whatsapp';
-										})[0].link
-									}
-									className={`px-20 py-3 rounded-xl font-bold font-serif border-2 capitalize  hover:shadow-card duration-300 transition easy-in-out transform bg-${sectionBgColor} text-${sectionColor} hover:bg-${sectionColor}`}
-								>
-									Hire me
-								</a>
-							</motion.div>
+				<div className="flex flex-col-reverse md:flex-row justify-between items-center xl:gap-40">
+					<div className="relative py-10 my-auto">
+						<h1 className="leading-10 relative">
+							Hi{' '}
+							<motion.span
+								initial={{ rotate: 45 }}
+								animate={{ rotate: 0 }}
+								transition={{ repeat: Infinity, duration: .5, repeatType: 'reverse' }}
+								className="absolute -top-1 left-6"
+							>
+								👋
+							</motion.span>
+							,
+							<br /> <span className="text-4xl font-title"> I&apos;m Deni Sugiarto</span>
+						</h1>
+						<p className="text-2xl text-green-500 font-bold">Frontend Web Developer</p>
+						<p className="mt-6">{data.aboutMe}</p>
+						<div className="mt-12">
+							<a
+								href={linkHireMe}
+								className={`px-20 py-3 rounded-xl font-bold font-serif border-2 capitalize  hover:shadow-card duration-300 transition easy-in-out transform bg-${sectionBgColor} text-${sectionColor}`}
+							>
+								Hire me
+							</a>
+						</div>
+						<div className="absolute right-10 top-0">
+							<SiReact className="animate-spin-slow w-10 h-10" />
 						</div>
 					</div>
 					<div className="img-wrapper mx-auto sm:mx-0 flex-grow-0">
