@@ -5,11 +5,11 @@ import { useMemo, useState } from 'react';
 import { ImGithub } from 'react-icons/im';
 import { FaArrowDown, FaExternalLinkAlt } from 'react-icons/fa';
 
+const listProject = data.projects.reverse();
 export default function Projects() {
 	const [totalShow, setTotalShow] = useState(3);
-	const listProject = useMemo(() => JSON.parse(JSON.stringify(data.projects.reverse())), []);
 	return (
-		<section id="projects" className="bg-white">
+		<section id="projects" className="bg-white scroll-mt-20">
 			<motion.div
 				className="container"
 				initial={{ opacity: 0, y: -20 }}
@@ -33,7 +33,7 @@ export default function Projects() {
 									placeholder={`blur-${project.picture}`}
 									blurDataURL={`blur-${project.picture}`}
 									src={project.picture}
-									width={500}
+									width={420}
 									height={300}
 									alt={`${project.title} project`}
 									priority

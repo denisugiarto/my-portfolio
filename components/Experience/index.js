@@ -4,9 +4,9 @@ import Image from 'next/image';
 import dayjs from 'dayjs';
 import { motion } from 'framer-motion';
 
-const WorkExperience = () => {
+const Experience = () => {
 	return (
-		<section id="WorkExperience" className="overflow-hidden max-w-screen">
+		<section id="experience" className="max-w-screen scroll-mt-20">
 			<div className="container">
 				<h2 className="title-section text-center">Work Experience</h2>
 				<div className="flex flex-col gap-4 lg:max-w-lg mx-auto">
@@ -51,4 +51,4 @@ const WorkExperience = () => {
 	);
 };
 
-export default WorkExperience;
+export default Experience;

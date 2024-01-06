@@ -1,16 +1,28 @@
 import { NextSeo } from 'next-seo';
 import Layout from '../components/Layout';
 
-import Contact from '../components/Contact';
+import { ArrowCircleUpIcon, ChevronUpIcon } from '@heroicons/react/outline';
+import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
 import { useInView } from 'react-intersection-observer';
 import Hero from '../components/Hero';
-import Projects from '../components/Projects';
-import Skills from '../components/Skills';
-import WorkExperience from '../components/WorkExperience';
+import { SiUps } from 'react-icons/si';
+import Link from 'next/link';
+const Contact = dynamic(() => import('../components/Contact'), {
+	loading: () => <p>Loading...</p>,
+});
+const Experience = dynamic(() => import('../components/Experience'), {
+	loading: () => <p>Loading...</p>,
+});
+const Projects = dynamic(() => import('../components/Projects'), {
+	loading: () => <p>Loading...</p>,
+});
 
 export default function Index() {
-	const { ref: HomeRef, inView: isHomeVisible } = useInView();
-	console.log(isHomeVisible);
+	const { ref: HomeRef, inView: isHomeVisible } = useInView({ threshold: 0.2 });
+	const { ref: ProjectRef, inView: isProjectVisible } = useInView({ threshold: 0.15 });
+	const { ref: ContactRef, inView: isContactVisible } = useInView({ threshold: 0.15 });
+	const { ref: WorkRef, inView: isWorkVisible } = useInView();
 	const sectionColor = [
 		{
 			background: 'primary',
@@ -48,12 +60,27 @@ export default function Index() {
 					cardType: 'summary_large_image',
 				}}
 			/>
-			<Layout activeNavbar={isHomeVisible ? '#home' : '#projects'}>
-				<Hero ref={HomeRef} sectionColor={sectionColor[0].text} sectionBgColor={sectionColor[0].background} />
-				<Projects />
-				<Contact />
-				<WorkExperience />
+			<Layout activeNavbar={isHomeVisible ? '#home' : isProjectVisible ? '#projects' : isContactVisible ? '#contactMe' : '#experience'}>
+				<div ref={HomeRef}>
+					<Hero sectionColor={sectionColor[0].text} sectionBgColor={sectionColor[0].background} />
+				</div>
+				<div ref={ProjectRef}>
+					<Projects />
+				</div>
+				<div ref={ContactRef}>
+					<Contact />
+				</div>
+				<div ref={WorkRef}>
+					<Experience />
+				</div>
 				{/* <Skills /> */}
+				<a
+					href="#"
+					className="group fixed block right-8 bottom-8 rounded-xl w-10 h-10 bg-red-700 text-white border border-white shadow-red-600"
+					aria-label="Back to Top"
+				>
+					<ChevronUpIcon className="translate-y-0 group-hover:-translate-y-1 ease-in-out duration-300" />
+				</a>
 			</Layout>
 		</>
 	);

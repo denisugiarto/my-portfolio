@@ -10,7 +10,7 @@ const Hero = React.forwardRef(({ sectionBgColor, sectionColor }, ref) => {
 		return item.type === 'whatsapp';
 	}).link;
 	return (
-		<section id="home" className={`bg-hero text-${sectionColor}`}>
+		<section id="home" className={`bg-hero text-${sectionColor} min-h-[80dvh] scroll-mt-24`}>
 			<motion.div
 				className="container my-auto"
 				initial={{ opacity: 0, y: -20 }}
@@ -25,7 +25,7 @@ const Hero = React.forwardRef(({ sectionBgColor, sectionColor }, ref) => {
 							<motion.span
 								initial={{ rotate: 45 }}
 								animate={{ rotate: 0 }}
-								transition={{ repeat: Infinity, duration: .5, repeatType: 'reverse' }}
+								transition={{ repeat: Infinity, duration: 0.5, repeatType: 'reverse' }}
 								className="absolute -top-1 left-6"
 							>
 								👋
@@ -49,7 +49,7 @@ const Hero = React.forwardRef(({ sectionBgColor, sectionColor }, ref) => {
 					</div>
 					<div className="img-wrapper mx-auto sm:mx-0 flex-grow-0">
 						<div className="w-80 h-80">
-							<Image src="/img/profile.webp" width={400} height={400} alt="profile-picture" />
+							<img src="/img/profile.webp" width={320} height={320} alt="profile-picture" />
 						</div>
 					</div>
 				</div>
