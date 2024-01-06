@@ -61,16 +61,16 @@ export default function Index() {
 				}}
 			/>
 			<Layout activeNavbar={isHomeVisible ? '#home' : isProjectVisible ? '#projects' : isContactVisible ? '#contactMe' : '#experience'}>
-				<div ref={HomeRef}>
+				<div id="home" className="scroll-mt-24" ref={HomeRef}>
 					<Hero sectionColor={sectionColor[0].text} sectionBgColor={sectionColor[0].background} />
 				</div>
-				<div ref={ProjectRef}>
+				<div id="projects" className="scroll-mt-20" ref={ProjectRef}>
 					<Projects />
 				</div>
-				<div ref={ContactRef}>
+				<div id="contactMe" className="scroll-mt-20" ref={ContactRef}>
 					<Contact />
 				</div>
-				<div ref={WorkRef}>
+				<div id="experience" className="scroll-mt-20" ref={WorkRef}>
 					<Experience />
 				</div>
 				{/* <Skills /> */}

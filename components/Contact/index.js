@@ -15,7 +15,7 @@ const iconContactList = {
 
 export default function Contact() {
 	return (
-		<section id="contactMe" className=" bg-primary max-w-screen min-h-[80dvh] scroll-mt-20">
+		<section className="overflow-hidden bg-primary max-w-screen min-h-[80dvh]">
 			<div className="container">
 				<h2 className="title-section text-center text-white">Contact Me</h2>
 					<div className="content grid grid-cols-1 gap-y-10 max-w-sm mx-auto mt-16">

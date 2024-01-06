@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 const Experience = () => {
 	return (
-		<section id="experience" className="max-w-screen scroll-mt-20">
+		<section className="overflow-hidden max-w-screen">
 			<div className="container">
 				<h2 className="title-section text-center">Work Experience</h2>
 				<div className="flex flex-col gap-4 lg:max-w-lg mx-auto">

@@ -9,7 +9,7 @@ const listProject = data.projects.reverse();
 export default function Projects() {
 	const [totalShow, setTotalShow] = useState(3);
 	return (
-		<section id="projects" className="bg-white scroll-mt-20">
+		<section  className="bg-white">
 			<motion.div
 				className="container"
 				initial={{ opacity: 0, y: -20 }}
@@ -36,7 +36,6 @@ export default function Projects() {
 									width={420}
 									height={300}
 									alt={`${project.title} project`}
-									priority
 									objectFit="cover"
 									objectPosition="top"
 								/>

@@ -7,8 +7,7 @@ export default function Footer() {
 			<div className="container pt-0">
 				<div className="text-base text-center text-white">
 					<a href={contactGithub.link} target="_blank" rel="noopener noreferrer">
-						Copyright &copy; {new Date().getFullYear()} <br />
-						Made by Deni Sugiarto
+						Copyright &copy; {new Date().getFullYear()} Made by Deni Sugiarto
 					</a>
 				</div>
 			</div>
