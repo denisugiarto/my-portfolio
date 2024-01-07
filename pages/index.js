@@ -10,12 +10,15 @@ import { SiUps } from 'react-icons/si';
 import Link from 'next/link';
 const Contact = dynamic(() => import('../components/Contact'), {
 	loading: () => <p>Loading...</p>,
+	ssr: false,
 });
 const Experience = dynamic(() => import('../components/Experience'), {
 	loading: () => <p>Loading...</p>,
+	ssr: false,
 });
 const Projects = dynamic(() => import('../components/Projects'), {
 	loading: () => <p>Loading...</p>,
+	ssr: false,
 });
 
 export default function Index() {
