@@ -11,4 +11,7 @@ module.exports = withBundleAnalyzer({
     locales: ["en"],
     defaultLocale: "en",
   },
+  experimental: {
+    nextScriptWorkers: true,
+  },
 });

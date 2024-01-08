@@ -1,7 +1,8 @@
+import { Partytown } from "@builder.io/partytown/react";
+import { Inter, Suez_One } from "next/font/google";
 import Head from "next/head";
 import Script from "next/script";
 import "../styles/globals.css";
-import { Inter, Suez_One } from "next/font/google";
 
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS;
 const inter = Inter({
@@ -12,7 +13,7 @@ const inter = Inter({
 const suezOne = Suez_One({
   // weight: ["300", "400", "500", "600", "700", "800"],
   weight: ["400"],
-  style: ['normal'],
+  style: ["normal"],
   subsets: ["latin"],
   variable: "--font-suez-one",
 });
@@ -46,7 +47,7 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-        strategy="afterInteractive"
+        strategy="worker"
       />
       <Script id="google-analytics" strategy="afterInteractive">
         {`
