@@ -1,28 +1,22 @@
-import { motion } from "framer-motion";
+import { LazyMotion, domAnimation, m } from "framer-motion";
 import Image from "next/image";
-import data from "../../constant/data.json";
 import React from "react";
 import { SiReact } from "react-icons/si";
+import data from "../../../constant/data.json";
 
 // eslint-disable-next-line react/display-name
-const Hero = React.forwardRef(({ sectionBgColor, sectionColor }, ref) => {
-  const linkHireMe = data.contact.find((item) => {
-    return item.type === "whatsapp";
-  }).link;
+const Hero = ({ sectionBgColor, sectionColor }) => {
+  const linkHireMe = data.contact?.find(
+    (contact) => contact.type === "whatsapp",
+  )?.link;
   return (
-    <section className={`bg-hero text-${sectionColor} min-h-[80dvh]`}>
-      <motion.div
-        className="container my-auto"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -20 }}
-        transition={{ duration: 1 }}
-      >
+    <LazyMotion features={domAnimation}>
+      <div className={`text-${sectionColor} container lg:py-32`}>
         <div className="flex flex-col-reverse items-center justify-between md:flex-row xl:gap-40">
           <div className="relative my-auto py-10">
             <h1 className="relative leading-10">
               Hi{" "}
-              <motion.span
+              <m.span
                 initial={{ rotate: 45 }}
                 animate={{ rotate: 0 }}
                 transition={{
@@ -33,7 +27,7 @@ const Hero = React.forwardRef(({ sectionBgColor, sectionColor }, ref) => {
                 className="absolute -top-1 left-6"
               >
                 👋
-              </motion.span>
+              </m.span>
               ,
               <br />{" "}
               <span className="font-title text-4xl">
@@ -44,7 +38,7 @@ const Hero = React.forwardRef(({ sectionBgColor, sectionColor }, ref) => {
             <p className="text-2xl font-bold text-green-500">
               Frontend Web Developer
             </p>
-            <p className="mt-6">{data.aboutMe}</p>
+            <p className="mt-6 leading-loose">{data.aboutMe}</p>
             <div className="mt-12">
               <a
                 href={linkHireMe}
@@ -71,9 +65,9 @@ const Hero = React.forwardRef(({ sectionBgColor, sectionColor }, ref) => {
             </div>
           </div>
         </div>
-      </motion.div>
-    </section>
+      </div>
+    </LazyMotion>
   );
-});
+};
 
 export default Hero;

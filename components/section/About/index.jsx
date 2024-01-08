@@ -1,4 +1,4 @@
-import data from "../../constant/data.json";
+import data from "../../../constant/data.json";
 
 export default function About() {
   return (

@@ -1,28 +1,22 @@
 import { NextSeo } from "next-seo";
 import Layout from "../components/Layout";
 
-import { ArrowCircleUpIcon, ChevronUpIcon } from "@heroicons/react/outline";
-// import dynamic from 'next/dynamic';
-import { Suspense } from "react";
+import { ChevronUpIcon } from "@heroicons/react/outline";
+import dynamic from "next/dynamic";
 import { useInView } from "react-intersection-observer";
-import Hero from "../components/Hero";
-import { SiUps } from "react-icons/si";
-import Link from "next/link";
-import Projects from "../components/Projects";
-import Contact from "../components/Contact";
-import Experience from "../components/Experience";
-// const Contact = dynamic(() => import('../components/Contact'), {
-// 	loading: () => <p>Loading...</p>,
-// 	ssr: false,
-// });
-// const Experience = dynamic(() => import('../components/Experience'), {
-// 	loading: () => <p>Loading...</p>,
-// 	ssr: false,
-// });
-// const Projects = dynamic(() => import('../components/Projects'), {
-// 	loading: () => <p>Loading...</p>,
-// 	ssr: false,
-// });
+import Hero from "../components/section/Hero";
+const Contact = dynamic(() => import("../components/section/Contact"), {
+  loading: () => <p>Loading...</p>,
+  ssr: false,
+});
+const Experience = dynamic(() => import("../components/section/Experience"), {
+  loading: () => <p>Loading...</p>,
+  ssr: false,
+});
+const Projects = dynamic(() => import("../components/section/Projects"), {
+  loading: () => <p>Loading...</p>,
+  ssr: false,
+});
 
 export default function Index() {
   const { ref: HomeRef, inView: isHomeVisible } = useInView({ threshold: 0.2 });
@@ -81,29 +75,39 @@ export default function Index() {
                 : "#experience"
         }
       >
-        <div id="home" className="scroll-mt-24" ref={HomeRef}>
+        <section id="home" className="bg-hero scroll-mt-24 " ref={HomeRef}>
           <Hero
             sectionColor={sectionColor[0].text}
             sectionBgColor={sectionColor[0].background}
           />
-        </div>
-        <div id="projects" className="scroll-mt-20" ref={ProjectRef}>
+        </section>
+        <section id="projects" className="scroll-mt-20" ref={ProjectRef}>
           <Projects />
-        </div>
-        <div id="contactMe" className="scroll-mt-20" ref={ContactRef}>
-          <Contact />
-        </div>
-        <div id="experience" className="scroll-mt-20" ref={WorkRef}>
-          <Experience />
-        </div>
-        {/* <Skills /> */}
-        <a
-          href="#"
-          className="group fixed bottom-8 right-8 block h-10 w-10 rounded-xl border border-white bg-red-600 text-white shadow-red-600 transition-all ease-in-out hover:bg-red-700"
-          aria-label="Back to Top"
+        </section>
+        <section
+          id="contactMe"
+          className="max-w-screen  scroll-mt-20 overflow-hidden bg-primary"
+          ref={ContactRef}
         >
-          <ChevronUpIcon className="translate-y-0 duration-300 ease-in-out md:group-hover:-translate-y-1" />
-        </a>
+          <Contact />
+        </section>
+        <section
+          id="experience"
+          className="max-w-screen scroll-mt-20 overflow-hidden"
+          ref={WorkRef}
+        >
+          <Experience />
+        </section>
+        {/* <Skills /> */}
+        {!isHomeVisible && (
+          <a
+            href="#"
+            className="group fixed bottom-8 right-8 block h-10 w-10 rounded-xl border border-white bg-red-600 text-white shadow-red-600 transition-all ease-in-out hover:bg-red-700"
+            aria-label="Back to Top"
+          >
+            <ChevronUpIcon className="translate-y-0 duration-300 ease-in-out md:group-hover:-translate-y-1" />
+          </a>
+        )}
       </Layout>
     </>
   );

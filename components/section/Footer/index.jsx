@@ -1,5 +1,4 @@
-import Image from "next/image";
-import data from "../../constant/data.json";
+import data from "../../../constant/data.json";
 export default function Footer() {
   const contactGithub = data.contact.find(
     (contact) => contact.type === "github",

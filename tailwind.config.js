@@ -12,8 +12,8 @@ module.exports = {
 			},
 		},
 		fontFamily: {
-			body: ['Raleway', 'sans-serif'],
-			title: ['Suez One', 'sans-serif'],
+			body: ['var(--font-inter)', 'sans-serif'],
+			title: ['var(--font-suez-one)', 'sans-serif'],
 			sans: ['sans-serif', 'system-ui', '-apple-system'],
 		},
 		scrollBehavior: 'smooth',

@@ -1,8 +1,21 @@
 import Head from "next/head";
 import Script from "next/script";
 import "../styles/globals.css";
-import { GoogleAnalytics } from "nextjs-google-analytics";
+import { Inter, Suez_One } from "next/font/google";
+
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS;
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+
+const suezOne = Suez_One({
+  // weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["400"],
+  style: ['normal'],
+  subsets: ["latin"],
+  variable: "--font-suez-one",
+});
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -43,7 +56,9 @@ function MyApp({ Component, pageProps }) {
 				gtag('config', '${GA_MEASUREMENT_ID}');
 				`}
       </Script>
-      <Component {...pageProps} />
+      <main className={`${inter.variable} ${suezOne.variable} font-sans`}>
+        <Component {...pageProps} />
+      </main>
     </>
   );
 }
