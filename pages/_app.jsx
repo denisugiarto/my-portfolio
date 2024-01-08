@@ -18,6 +18,10 @@ const suezOne = Suez_One({
   variable: "--font-suez-one",
 });
 
+export const metadata = {
+  manifest: "/manifest.json", // we are accessing our manifest file here
+};
+
 function MyApp({ Component, pageProps }) {
   return (
     <>
@@ -45,11 +49,23 @@ function MyApp({ Component, pageProps }) {
           content="wA-PDzFO_KCQRoPFGDEpvObLUt5ZLtNjTsD-nUANyJo"
         />
       </Head>
+      {/* <Partytown debug={false} forward={["dataLayer.push"]} /> */}
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-        strategy="worker"
+        strategy="lazyOnload"
       />
-      <Script id="google-analytics" strategy="afterInteractive">
+      {/* <script
+        type="text/partytown"
+        dangerouslySetInnerHTML={{
+          __html: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${GA_MEASUREMENT_ID}');
+        `,
+        }}
+      /> */}
+      <Script id="google-analytics" strategy="lazyOnload">
         {`
 				window.dataLayer = window.dataLayer || [];
 				function gtag(){window.dataLayer.push(arguments);}
