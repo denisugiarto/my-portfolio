@@ -21,7 +21,7 @@ const iconContactList = {
 export default function Contact() {
   return (
     <LazyMotion features={domAnimation}>
-        <div className="container ">
+        <div className="container overflow-hidden">
           <h2 className="title-section text-center text-white">Contact Me</h2>
           <div className="content mx-auto mt-16 grid max-w-sm grid-cols-1 gap-y-10">
             {data.contact.map((item, index) => (

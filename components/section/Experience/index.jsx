@@ -7,7 +7,7 @@ import { LazyMotion, domAnimation, m } from "framer-motion";
 const Experience = () => {
   return (
     <LazyMotion features={domAnimation}>
-        <div className="container">
+        <div className="container overflow-hidden">
           <h2 className="title-section text-center">Experience</h2>
           <div className="mx-auto flex flex-col gap-4 lg:max-w-lg">
             {data.experience.map((item, index) => (

@@ -86,14 +86,14 @@ export default function Index() {
         </section>
         <section
           id="contactMe"
-          className="max-w-screen  scroll-mt-20 overflow-hidden bg-primary"
+          className="max-w-screen scroll-mt-20 bg-primary"
           ref={ContactRef}
         >
           <Contact />
         </section>
         <section
           id="experience"
-          className="max-w-screen scroll-mt-20 overflow-hidden"
+          className="max-w-screen scroll-mt-20"
           ref={WorkRef}
         >
           <Experience />
