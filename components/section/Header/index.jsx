@@ -11,10 +11,9 @@ function classNames(...classes) {
 
 export default function Header({ activeNavbar }) {
   return (
-    <header>
+    <header className="sticky top-0 z-10 border-b border-secondary bg-secondary shadow-xl">
       <Disclosure
-        as="nav"
-        className="sticky top-0 z-10 border-b border-secondary bg-secondary shadow-xl"
+        as="nav"        
       >
         {({ open }) => (
           <Disclosure>
