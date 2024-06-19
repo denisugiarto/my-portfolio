@@ -17,14 +17,14 @@ const Hero = ({ sectionBgColor, sectionColor }) => {
             <h1 className="relative leading-10">
               Hi{" "}
               <m.span
-                initial={{ rotate: 45 }}
+                initial={{ rotate: 25 }}
                 animate={{ rotate: 0 }}
                 transition={{
                   repeat: Infinity,
-                  duration: 0.5,
+                  duration: 0.3,
                   repeatType: "reverse",
                 }}
-                className="absolute -top-1 left-6"
+                className="absolute left-6 top-0 origin-[70%_70%]"
               >
                 👋
               </m.span>
