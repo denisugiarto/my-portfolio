@@ -13,29 +13,33 @@
     "partytown": "partytown copylib public/~partytown"
   },
   "dependencies": {
-    "@builder.io/partytown": "^0.8.1",
-    "@headlessui/react": "^1.4.2",
-    "@heroicons/react": "^1.0.5",
-    "@next/bundle-analyzer": "^14.0.4",
-    "@react-three/fiber": "^8.13.6",
-    "dayjs": "^1.11.10",
-    "framer-motion": "^5.3.1",
-    "next": "^14.0.4",
-    "next-seo": "^6.1.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-icons": "^4.12.0",
-    "react-intersection-observer": "^9.5.2",
-    "sharp": "^0.33.1"
+    "@builder.io/partytown": "0.8.1",
+    "@headlessui/react": "1.4.2",
+    "@heroicons/react": "1.0.5",
+    "@next/bundle-analyzer": "14.0.4",
+    "@react-three/fiber": "8.13.6",
+    "@tanstack/react-query": "^5.48.0",
+    "@tanstack/react-query-devtools": "^5.48.0",
+    "axios": "^1.7.2",
+    "dayjs": "1.11.10",
+    "framer-motion": "5.3.1",
+    "next": "14.0.4",
+    "next-seo": "6.1.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-icons": "4.12.0",
+    "react-intersection-observer": "9.5.2",
+    "react-markdown": "9.0.1",
+    "sharp": "0.33.1"
   },
   "devDependencies": {
     "@types/node": "20.10.7",
-    "autoprefixer": "^10.4.14",
+    "autoprefixer": "10.4.14",
     "eslint": "7.32.0",
-    "eslint-config-next": "^14.0.4",
-    "postcss": "^8.4.27",
-    "prettier": "^3.1.1",
-    "prettier-plugin-tailwindcss": "^0.5.11",
-    "tailwindcss": "^3.3.3"
+    "eslint-config-next": "14.0.4",
+    "postcss": "8.4.27",
+    "prettier": "3.1.1",
+    "prettier-plugin-tailwindcss": "0.5.11",
+    "tailwindcss": "3.3.3"
   }
 }

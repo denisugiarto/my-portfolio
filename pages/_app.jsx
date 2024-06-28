@@ -1,16 +1,17 @@
-import { Partytown } from "@builder.io/partytown/react";
-import { Inter, Suez_One } from "next/font/google";
+import { Montserrat, Montserrat_Alternates } from "next/font/google";
 import Head from "next/head";
 import Script from "next/script";
 import "../styles/globals.css";
+import TanstackProvider from "../components/providers/TanstackProvider";
 
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS;
-const inter = Inter({
+const inter = Montserrat({
+  weight: ["300", "400", "500", "600", "700", "800"],
   subsets: ["latin"],
   variable: "--font-inter",
 });
 
-const suezOne = Suez_One({
+const suezOne = Montserrat_Alternates({
   // weight: ["300", "400", "500", "600", "700", "800"],
   weight: ["400"],
   style: ["normal"],
@@ -73,9 +74,12 @@ function MyApp({ Component, pageProps }) {
 				gtag('config', '${GA_MEASUREMENT_ID}');
 				`}
       </Script>
-      <main className={`${inter.variable} ${suezOne.variable} font-sans`}>
-        <Component {...pageProps} />
-      </main>
+
+      <TanstackProvider>
+        <div className={`${inter.variable} ${suezOne.variable}`}>
+          <Component {...pageProps} />
+        </div>
+      </TanstackProvider>
     </>
   );
 }

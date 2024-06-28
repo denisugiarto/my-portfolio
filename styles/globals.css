@@ -1,28 +1,28 @@
 html {
-	scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 section {
-	@apply flex font-body pb-16 lg:pt-8;
+  @apply flex flex-col pb-16 font-body lg:pt-8;
 }
 
 .title-section {
-	@apply text-3xl capitalize font-title antialiased mb-8 text-primary;
+  @apply mb-8 font-title text-3xl font-bold capitalize text-primary antialiased;
 }
 
 .container {
-	@apply max-w-7xl mx-auto px-2 pt-8 sm:px-6 lg:px-10;
+  @apply mx-auto max-w-7xl px-2 pt-8 sm:px-6 lg:px-10;
 }
 
 .card {
-	@apply overflow-hidden shadow-card rounded-xl bg-white h-full;
+  @apply h-full overflow-hidden rounded-xl bg-white shadow-card;
 }
 
 .tag {
-	@apply inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2;
+  @apply mb-2 mr-2 inline-block rounded-full bg-gray-200 px-3 py-1 text-sm font-semibold text-gray-700;
 }
 .bg-hero {
-	background-image: linear-gradient(to left bottom, #00a4be, #1e3b8a, #1e3b8a);
+  background-image: linear-gradient(to left bottom, #00a4be, #1e3b8a, #1e3b8a);
 }
 /* ./styles/globals.css */
 @tailwind base;

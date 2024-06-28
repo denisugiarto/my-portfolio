@@ -1,227 +1,210 @@
 {
-	"aboutMe": "My approach centers on creating seamless experiences for users. With Next.js, React.js, and React Native, I build web and mobile apps that prioritize user needs. By working closely with the team, I ensure our projects align with customer expectations and demands.",
-	"profile": {
-		"name": "Deni Sugiarto",
-		"role": "Frontend Web Developer"
-	},
-	"navigation": [
-		{
-			"name": "Home",
-			"href": "#home"
-		},
-		{
-			"name": "Projects",
-			"href": "#projects"
-		},
-		{
-			"name": "Contact Me",
-			"href": "#contactMe"
-		},
-		{
-			"name": "Experience",
-			"href": "#experience"
-		}
-	],
-	"contact": [
-		{
-			"type": "upwork",
-			"link": "https://www.upwork.com/freelancers/denisugiarto",
-			"value": "denisugiarto"
-		},
-		{
-			"type": "linkedin",
-			"link": "https://linkedin.com/in/sugiarto-deni",
-			"value": "linkedin.com/in/sugiarto-deni"
-		},
-		{
-			"type": "github",
-			"link": "https://github.com/denisugiarto",
-			"value": "github.com/denisugiarto"
-		},
-		{
-			"type": "email",
-			"link": "mailto:sugiarto.deni@gmail.com",
-			"value": "sugiarto.deni@gmail.com"
-		},
-		{
-			"type": "whatsapp",
-			"link": "https://api.whatsapp.com/send/?phone=6281217986332&text=Hi+Deni%0D%0AI%27m+interested+to+hire+you!+&app_absent=0",
-			"value": "+6281217986332"
-		}
-	],
-	"skills": [
-		"TypeScript",
-		"ReactJs",
-		"NextJs",
-		"ReactNative",
-		"AstroJs",
-		"TailwindCSS",
-		"Rest API",
-		"Axios",
-		"Bootstrap",
-		"SCSS",
-		"Git",
-		"HTML5",
-		"Redux Toolkit",
-		"RealmDB",
-		"LeafletJs",
-		"React Hook Form",
-		"Framer Motion",
-		"Animate On Scroll(AOS)"
-	],
-	"projects": [
-		{
-			"id": 1,
-			"title": "nft preview card",
-			"description": "Nft preview card created using reactJs and Styled Components",
-			"tech": [
-				"ReactJs",
-				"Styled Components",
-				"NFT"
-			],
-			"picture": "/img/nft-card-preview.webp",
-			"link": "https://nft-preview-card-rosy.vercel.app/",
-			"github": "https://github.com/denisugiarto/nft-preview-card"
-		},
-		{
-			"id": 2,
-			"title": "Tatou Tatou",
-			"description": "Crowdfunding App for New Zealand to help community during natural disaster",
-			"tech": [
-				"AstroJs",
-				"TailwindCSS",
-				"DaisyUI"
-			],
-			"picture": "/img/tatou.webp",
-			"link": "https://tatou-project.netlify.app/homepage/"
-		},
-		{
-			"id": 3,
-			"title": "QR Code Generator",
-			"description": "QR Code Generator to convert link to QR Code and with download feature to get the QR Code Image",
-			"tech": [
-				"HTML",
-				"CSS",
-				"Javascript"
-			],
-			"picture": "/img/qr_code_generator.webp",
-			"link": "https://free-qrcodegenerator.netlify.app/",
-			"github": "https://github.com/denisugiarto/qrcode-generator"
-		},
-		{
-			"id": 4,
-			"title": "India Restaurant",
-			"description": "Landing Page for India Restaurant",
-			"tech": [
-				"AstroJs",
-				"TailwindCSS"
-			],
-			"picture": "/img/india_restaurant.webp",
-			"link": "https://india-restaurant.netlify.app/",
-			"github": "https://github.com/denisugiarto/restaurant-app"
-		},
-		{
-			"id": 5,
-			"title": "Conference React",
-			"description": "Landing Page for Conference build with ReactJs, React-Bootstrap, and SCSS for custom theme in Bootstrap",
-			"tech": [
-				"ReactJs",
-				"React-Bootstrap",
-				"React-Icons",
-				"SCSS",
-				"dayjs"
-			],
-			"picture": "/img/conference_react.webp",
-			"link": "https://conference-react.netlify.app/",
-			"github": "https://github.com/denisugiarto/conference-react"
-		},
-		{
-			"id": 6,
-			"title": "Azai Solutions",
-			"description": "Azai Solutions a company provide Security services using AI.",
-			"tech": [
-				"NextJs",
-				"Typescript",
-				"TailwindCSS",
-				"Headless UI",
-				"ReactSpring"
-			],
-			"picture": "/img/azai_ai.webp",
-			"link": "https://azai.solutions/",
-			"github": ""
-		}
-	],
-	"experience": [
-		{
-			"location": "Singapore",
-			"title": "Frontend Web Developer",
-			"employmentType": "Full-time",
-			"companyName": "Innovez One",
-			"companyImgUrl": "/img/innovez_one_logo.webp",
-			"locationType": "Remote",
-			"startDate": "08/28/2023",
-			"endDate": "Present",
-			"description": "",
-			"skills": [
-				"MUI",
-				"ReactJs",
-				"React Hook Form",
-				"Axios",
-				"Micro Frontend",
-				"Gitlab",
-				"CSS"
-			]
-		},
-		{
-			"location": "Batam, Riau Islands, Indonesia",
-			"title": "Frontend Web Developer",
-			"employmentType": "Freelance",
-			"companyName": "PT. Sinergi Mitra Groserindo",
-			"companyImgUrl": "/img/pt_sinergi_mitra_groserindo_logo.webp",
-			"locationType": "Remote",
-			"startDate": "1/1/2023",
-			"endDate": "8/30/2023",
-			"description": "",
-			"skills": [
-				"Gulp",
-				"Bootstrap",
-				"React Native",
-				"Mobile Applications",
-				"JSON Web Token (JWT)",
-				"React Native Paper",
-				"Realm Database",
-				"Redux.js",
-				"React Hook Form",
-				"Axios",
-				"Gitlab",
-				"CSS"
-			]
-		},
-		{
-			"location": "New Zealand",
-			"title": "Frontend Web Developer",
-			"employmentType": "Full-time",
-			"companyName": "Whare Hauora",
-			"companyImgUrl": "/img/whare_hauora_logo.webp",
-			"locationType": "Remote",
-			"startDate": "4/1/2022",
-			"endDate": "7/31/2023",
-			"description": "",
-			"skills": [
-				"Tailwind CSS",
-				"GitHub",
-				"Responsive Web Design",
-				"Next.js",
-				"Strapi.js",
-				"JavaScript",
-				"Gulp.js",
-				"jQuery",
-				"SASS",
-				"HTML5",
-				"Cascading Style Sheets (CSS)",
-				"Bootstrap",
-				"React.js"
-			]
-		}
-	]
+  "aboutMe": "My approach centers on creating seamless experiences for users. With Next.js, React.js, and React Native, I build web and mobile apps that prioritize user needs. By working closely with the team, I ensure our projects align with customer expectations and demands.",
+  "profile": {
+    "name": "Deni Sugiarto",
+    "role": "Frontend Web Developer"
+  },
+  "navigation": [
+    {
+      "name": "Home",
+      "href": "/#home"
+    },
+    {
+      "name": "Projects",
+      "href": "/#projects"
+    },
+    {
+      "name": "Contact Me",
+      "href": "/#contactMe"
+    },
+    {
+      "name": "Experience",
+      "href": "/#experience"
+    },
+    {
+      "name": "Blog",
+      "href": "/blog"
+    }
+  ],
+  "contact": [
+    {
+      "type": "upwork",
+      "link": "https://www.upwork.com/freelancers/denisugiarto",
+      "value": "denisugiarto"
+    },
+    {
+      "type": "linkedin",
+      "link": "https://linkedin.com/in/sugiarto-deni",
+      "value": "linkedin.com/in/sugiarto-deni"
+    },
+    {
+      "type": "github",
+      "link": "https://github.com/denisugiarto",
+      "value": "github.com/denisugiarto"
+    },
+    {
+      "type": "email",
+      "link": "mailto:sugiarto.deni@gmail.com",
+      "value": "sugiarto.deni@gmail.com"
+    },
+    {
+      "type": "whatsapp",
+      "link": "https://api.whatsapp.com/send/?phone=6281217986332&text=Hi+Deni%0D%0AI%27m+interested+to+hire+you!+&app_absent=0",
+      "value": "+6281217986332"
+    }
+  ],
+  "skills": [
+    "TypeScript",
+    "ReactJs",
+    "NextJs",
+    "ReactNative",
+    "AstroJs",
+    "TailwindCSS",
+    "Rest API",
+    "Axios",
+    "Bootstrap",
+    "SCSS",
+    "Git",
+    "HTML5",
+    "Redux Toolkit",
+    "RealmDB",
+    "LeafletJs",
+    "React Hook Form",
+    "Framer Motion",
+    "Animate On Scroll(AOS)"
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "title": "nft preview card",
+      "description": "Nft preview card created using reactJs and Styled Components",
+      "tech": ["ReactJs", "Styled Components", "NFT"],
+      "picture": "/img/nft-card-preview.webp",
+      "link": "https://nft-preview-card-rosy.vercel.app/",
+      "github": "https://github.com/denisugiarto/nft-preview-card"
+    },
+    {
+      "id": 2,
+      "title": "Tatou Tatou",
+      "description": "Crowdfunding App for New Zealand to help community during natural disaster",
+      "tech": ["AstroJs", "TailwindCSS", "DaisyUI"],
+      "picture": "/img/tatou.webp",
+      "link": "https://tatou-project.netlify.app/homepage/"
+    },
+    {
+      "id": 3,
+      "title": "QR Code Generator",
+      "description": "QR Code Generator to convert link to QR Code and with download feature to get the QR Code Image",
+      "tech": ["HTML", "CSS", "Javascript"],
+      "picture": "/img/qr_code_generator.webp",
+      "link": "https://free-qrcodegenerator.netlify.app/",
+      "github": "https://github.com/denisugiarto/qrcode-generator"
+    },
+    {
+      "id": 4,
+      "title": "India Restaurant",
+      "description": "Landing Page for India Restaurant",
+      "tech": ["AstroJs", "TailwindCSS"],
+      "picture": "/img/india_restaurant.webp",
+      "link": "https://india-restaurant.netlify.app/",
+      "github": "https://github.com/denisugiarto/restaurant-app"
+    },
+    {
+      "id": 5,
+      "title": "Conference React",
+      "description": "Landing Page for Conference build with ReactJs, React-Bootstrap, and SCSS for custom theme in Bootstrap",
+      "tech": ["ReactJs", "React-Bootstrap", "React-Icons", "SCSS", "dayjs"],
+      "picture": "/img/conference_react.webp",
+      "link": "https://conference-react.netlify.app/",
+      "github": "https://github.com/denisugiarto/conference-react"
+    },
+    {
+      "id": 6,
+      "title": "Azai Solutions",
+      "description": "Azai Solutions a company provide Security services using AI.",
+      "tech": [
+        "NextJs",
+        "Typescript",
+        "TailwindCSS",
+        "Headless UI",
+        "ReactSpring"
+      ],
+      "picture": "/img/azai_ai.webp",
+      "link": "https://azai.solutions/",
+      "github": ""
+    }
+  ],
+  "experience": [
+    {
+      "location": "Singapore",
+      "title": "Frontend Web Developer",
+      "employmentType": "Full-time",
+      "companyName": "Innovez One",
+      "companyImgUrl": "/img/innovez_one_logo.webp",
+      "locationType": "Remote",
+      "startDate": "08/28/2023",
+      "endDate": "Present",
+      "description": "",
+      "skills": [
+        "MUI",
+        "ReactJs",
+        "React Hook Form",
+        "Axios",
+        "Micro Frontend",
+        "Gitlab",
+        "CSS"
+      ]
+    },
+    {
+      "location": "Batam, Riau Islands, Indonesia",
+      "title": "Frontend Web Developer",
+      "employmentType": "Freelance",
+      "companyName": "PT. Sinergi Mitra Groserindo",
+      "companyImgUrl": "/img/pt_sinergi_mitra_groserindo_logo.webp",
+      "locationType": "Remote",
+      "startDate": "1/1/2023",
+      "endDate": "8/30/2023",
+      "description": "",
+      "skills": [
+        "Gulp",
+        "Bootstrap",
+        "React Native",
+        "Mobile Applications",
+        "JSON Web Token (JWT)",
+        "React Native Paper",
+        "Realm Database",
+        "Redux.js",
+        "React Hook Form",
+        "Axios",
+        "Gitlab",
+        "CSS"
+      ]
+    },
+    {
+      "location": "New Zealand",
+      "title": "Frontend Web Developer",
+      "employmentType": "Full-time",
+      "companyName": "Whare Hauora",
+      "companyImgUrl": "/img/whare_hauora_logo.webp",
+      "locationType": "Remote",
+      "startDate": "4/1/2022",
+      "endDate": "7/31/2023",
+      "description": "",
+      "skills": [
+        "Tailwind CSS",
+        "GitHub",
+        "Responsive Web Design",
+        "Next.js",
+        "Strapi.js",
+        "JavaScript",
+        "Gulp.js",
+        "jQuery",
+        "SASS",
+        "HTML5",
+        "Cascading Style Sheets (CSS)",
+        "Bootstrap",
+        "React.js"
+      ]
+    }
+  ]
 }

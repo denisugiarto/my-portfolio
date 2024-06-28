@@ -1,10 +1,10 @@
-import data from "../../../constant/data.json";
+import data from "../../constant/data.json";
 export default function Footer() {
   const contactGithub = data.contact.find(
     (contact) => contact.type === "github",
   );
   return (
-    <footer className="bg-primary py-8">
+    <footer className="bg-primary py-4">
       <div className="container pt-0">
         <div className="text-center text-base text-white">
           <a

@@ -1,10 +1,11 @@
 import { NextSeo } from "next-seo";
-import Layout from "../components/Layout";
+import { Layout } from "../components/Layout/Layout";
 
 import { ChevronUpIcon } from "@heroicons/react/outline";
 import dynamic from "next/dynamic";
 import { useInView } from "react-intersection-observer";
 import Hero from "../components/section/Hero";
+
 const Contact = dynamic(() => import("../components/section/Contact"), {
   loading: () => <p>Loading...</p>,
   ssr: false,
@@ -37,6 +38,19 @@ export default function Index() {
       text: "primary",
     },
   ];
+
+  function determineActiveNavbarItem() {
+    if (isHomeVisible) {
+      return "home";
+    } else if (isProjectVisible) {
+      return "projects";
+    } else if (isContactVisible) {
+      return "contact me";
+    } else {
+      return "experience";
+    }
+  }
+
   return (
     <>
       <NextSeo
@@ -64,18 +78,8 @@ export default function Index() {
           cardType: "summary_large_image",
         }}
       />
-      <Layout
-        activeNavbar={
-          isHomeVisible
-            ? "#home"
-            : isProjectVisible
-              ? "#projects"
-              : isContactVisible
-                ? "#contactMe"
-                : "#experience"
-        }
-      >
-        <section id="home" className="bg-hero scroll-mt-24 " ref={HomeRef}>
+      <Layout activeNavbar={determineActiveNavbarItem()}>
+        <section id="home" className="bg-hero scroll-mt-24 pt-20" ref={HomeRef}>
           <Hero
             sectionColor={sectionColor[0].text}
             sectionBgColor={sectionColor[0].background}

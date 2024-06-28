@@ -28,14 +28,9 @@ const Hero = ({ sectionBgColor, sectionColor }) => {
               >
                 👋
               </m.span>
-              ,
-              <br />{" "}
-              <span className="font-title text-4xl">
-                {" "}
-                I&apos;m Deni Sugiarto
-              </span>
+              ,<span className="ml-6 text-2xl"> I&apos;m Deni Sugiarto</span>
             </h1>
-            <p className="text-2xl font-bold text-green-500">
+            <p className="text-4xl font-bold text-green-500">
               Frontend Web Developer
             </p>
             <p className="mt-6 leading-loose">{data.aboutMe}</p>
@@ -44,7 +39,7 @@ const Hero = ({ sectionBgColor, sectionColor }) => {
                 href={linkHireMe}
                 className={`font-serif easy-in-out block transform rounded-xl border-2 px-20 py-3 text-center font-bold  capitalize transition duration-300 hover:shadow-card md:inline bg-${sectionBgColor} text-${sectionColor}`}
               >
-                Let&apos;s Connect
+                Hire me!
               </a>
             </div>
             <div className="absolute right-10 top-0">
