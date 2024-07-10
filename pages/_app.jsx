@@ -3,6 +3,9 @@ import Head from "next/head";
 import Script from "next/script";
 import "../styles/globals.css";
 import TanstackProvider from "../components/providers/TanstackProvider";
+import { ThemeProvider } from "next-themes";
+import TimeAgo from "javascript-time-ago";
+import en from "javascript-time-ago/locale/en";
 
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS;
 const inter = Montserrat({
@@ -22,6 +25,8 @@ const suezOne = Montserrat_Alternates({
 export const metadata = {
   manifest: "/manifest.json", // we are accessing our manifest file here
 };
+
+TimeAgo.addDefaultLocale(en);
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -74,12 +79,19 @@ function MyApp({ Component, pageProps }) {
 				gtag('config', '${GA_MEASUREMENT_ID}');
 				`}
       </Script>
-
-      <TanstackProvider>
-        <div className={`${inter.variable} ${suezOne.variable}`}>
-          <Component {...pageProps} />
-        </div>
-      </TanstackProvider>
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        storageKey="theme"
+        disableTransitionOnChange
+      >
+        <TanstackProvider>
+          <div className={`${inter.variable} ${suezOne.variable}`}>
+            <Component {...pageProps} />
+          </div>
+        </TanstackProvider>
+      </ThemeProvider>
     </>
   );
 }
