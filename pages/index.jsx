@@ -1,10 +1,11 @@
 import { NextSeo } from "next-seo";
 import { Layout } from "../components/Layout/Layout";
 
-import { ChevronUpIcon } from "@heroicons/react/outline";
 import dynamic from "next/dynamic";
+import WhatsappIcon from "../public/WhatsApp-icon.svg";
 import { useInView } from "react-intersection-observer";
-import Hero from "../components/section/Hero";
+import Hero, { linkHireMe } from "../components/section/Hero";
+import { cn } from "../lib/utils";
 
 const Contact = dynamic(() => import("../components/section/Contact"), {
   loading: () => <p>Loading...</p>,
@@ -79,7 +80,11 @@ export default function Index() {
         }}
       />
       <Layout activeNavbar={determineActiveNavbarItem()}>
-        <section id="home" className="bg-hero scroll-mt-24 pt-20" ref={HomeRef}>
+        <section
+          id="home"
+          className="scroll-mt-24 bg-gradient-to-r from-blue-600 to-violet-600 pt-20 dark:from-slate-900"
+          ref={HomeRef}
+        >
           <Hero
             sectionColor={sectionColor[0].text}
             sectionBgColor={sectionColor[0].background}
@@ -103,15 +108,17 @@ export default function Index() {
           <Experience />
         </section>
         {/* <Skills /> */}
-        {!isHomeVisible && (
-          <a
-            href="#"
-            className="group fixed bottom-8 right-8 block h-10 w-10 rounded-xl border border-white bg-red-600 text-white shadow-red-600 transition-all ease-in-out hover:bg-red-700"
-            aria-label="Back to Top"
-          >
-            <ChevronUpIcon className="translate-y-0 duration-300 ease-in-out md:group-hover:-translate-y-1" />
-          </a>
-        )}
+
+        <a
+          href={linkHireMe}
+          className={cn(
+            !isHomeVisible ? "opacity-100" : "opacity-0",
+            "fixed bottom-8 right-8 block h-10 w-10 rounded-full bg-green-500 transition-opacity",
+          )}
+          aria-label="Back to Top"
+        >
+          <WhatsappIcon className="h-full w-full" />
+        </a>
       </Layout>
     </>
   );

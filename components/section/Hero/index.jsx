@@ -1,14 +1,14 @@
+import { SiReact } from "@icons-pack/react-simple-icons";
 import { LazyMotion, domAnimation, m } from "framer-motion";
 import Image from "next/image";
 import React from "react";
-import { SiReact } from "react-icons/si";
 import data from "../../../constant/data.json";
 
 // eslint-disable-next-line react/display-name
+export const linkHireMe = data.contact?.find(
+  (contact) => contact.type === "whatsapp",
+)?.link;
 const Hero = ({ sectionBgColor, sectionColor }) => {
-  const linkHireMe = data.contact?.find(
-    (contact) => contact.type === "whatsapp",
-  )?.link;
   return (
     <LazyMotion features={domAnimation}>
       <div className={`text-${sectionColor} container lg:py-32`}>
@@ -37,7 +37,7 @@ const Hero = ({ sectionBgColor, sectionColor }) => {
             <div className="mt-12">
               <a
                 href={linkHireMe}
-                className={`font-serif easy-in-out block transform rounded-xl border-2 px-20 py-3 text-center font-bold  capitalize transition duration-300 hover:shadow-card md:inline bg-${sectionBgColor} text-${sectionColor}`}
+                className={`easy-in-out block transform rounded-xl border-2 px-20 py-3 text-center font-serif font-bold  capitalize transition duration-300 hover:shadow-card md:inline bg-${sectionBgColor} text-${sectionColor}`}
               >
                 Hire me!
               </a>
