@@ -1,5 +1,5 @@
-import axios, { AxiosError } from "axios";
-import { Article } from "../@types/blog.js";
+import { Article } from "@/types/blog";
+import axios from "axios";
 
 export const fetchArticles = async (): Promise<Article[]> => {
   try {

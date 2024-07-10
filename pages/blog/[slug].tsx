@@ -1,10 +1,8 @@
 import { useRouter } from "next/router";
-import React from "react";
 import Markdown from "react-markdown";
 const BlogPage = () => {
   const router = useRouter();
-  const slug = router.query.slug;
-  console.log("🚀 ~ BlogPage ~ slug:", slug);
+  // const slug = router.query.slug;
   const markdownContent = `
     # This is a heading
     
