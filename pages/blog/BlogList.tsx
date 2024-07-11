@@ -8,6 +8,7 @@ import {
   LoaderPinwheelIcon,
   MessageCircle,
   SmileIcon,
+  ThumbsUpIcon,
 } from "lucide-react";
 import ReactTimeAgo from "react-time-ago";
 import Skeleton from "./skeleton";
@@ -62,10 +63,10 @@ const BlogList = () => {
                     {blog.reading_time_minutes} min read
                   </p>
                 </div>
-                <div className="flex items-center gap-2 text-xs text-slate-500">
-                  <SmileIcon size={16} />
+                <div className="flex items-center gap-2 text-xs text-slate-900 dark:text-slate-100">
+                  <ThumbsUpIcon size={16} />
                   <span className="mr-2">
-                    {blog.positive_reactions_count} reactions
+                    {blog.public_reactions_count} reactions
                   </span>
                   <MessageCircle size={16} />
                   {blog.comments_count} comments
