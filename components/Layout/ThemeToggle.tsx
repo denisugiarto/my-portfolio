@@ -40,6 +40,7 @@ const ThemeToggle = () => {
             : "bg-primary text-slate-100",
           "rounded-md p-1",
         )}
+        aria-label="Toggle Theme"
       >
         {resolvedTheme === "dark" ? <Sun /> : <MoonIcon />}
       </PopoverTrigger>
