@@ -1,34 +1,33 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# ** My Portfolio Website**
 
-## Getting Started
+This is a personal portfolio website built using modern web technologies to showcase my skills and experience.
 
-First, run the development server:
+## Built with:
+- Next.js: For a performant and SEO-friendly React framework.
+- TypeScript: For enhanced type safety and code maintainability.
+- Tailwind CSS: For rapid and responsive UI development.
+- Shadcn UI: For pre-styled components to streamline development.
+- Framer Motion: To add smooth and delightful animations to the website.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Data Fetching:
+- Tanstack React Query: For efficient and automatic data fetching with caching.
+axios: For making HTTP requests to external APIs.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Time Management:
+- dayjs: For lightweight date and time manipulation.
+- react-time-ago: To display relative time for blog posts.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Icons:
+- lucide-react: For a rich set of customizable icons.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## Features:
+- Google Analytics: Tracks website traffic for insights and improvements.
+- Dark Mode: Provides a user-friendly alternative color theme.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Pages:
+- Landing Page:
+  1. Home: Introduces yourself and your work.
+  2. Projects: Showcases your past projects with descriptions and links.
+  3. Contact Me: Provides ways to get in touch (email form, social links, etc.).
+  4. Experience: Highlights your professional background and skills.
+- Blog: Features insightful articles showcasing your expertise and passion (links to Dev.to profile).
