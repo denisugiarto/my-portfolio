@@ -15,7 +15,7 @@ const nextConfig = withBundleAnalyzerConfig(
           protocol: "https",
           hostname: "media.dev.to",
           port: "",
-          pathname: "/cdn-cgi/**",
+          pathname: "/dynamic/**",
         },
       ],
     },
