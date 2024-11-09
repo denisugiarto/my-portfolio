@@ -17,6 +17,12 @@ const nextConfig = withBundleAnalyzerConfig(
           port: "",
           pathname: "/dynamic/**",
         },
+        {
+          protocol: "https",
+          hostname: "media2.dev.to",
+          port: "",
+          pathname: "/dynamic/**",
+        },
       ],
     },
     i18n: {
