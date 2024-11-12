@@ -95,10 +95,10 @@ export default function Header({ activeNavbar }: Props) {
               target="_blank"
               rel="noreferrer"
               title="source code"
-              className="group flex items-center overflow-hidden rounded-xl border border-transparent bg-slate-100 p-1 px-1.5 font-title text-sm font-medium text-gray-400 transition duration-300 hover:bg-primary hover:text-primary-foreground dark:bg-slate-900 dark:text-gray-200 dark:hover:bg-primary dark:hover:text-primary-foreground"
+              className="group flex items-center overflow-hidden rounded-xl border border-transparent p-1 px-1.5 font-title text-sm font-medium bg-slate-50 text-gray-400 transition duration-300 hover:text-primary-foreground dark:bg-slate-900 dark:text-gray-200 dark:hover:bg-primary dark:hover:text-primary-foreground"
             >
-              <SiGithub />
-              <span className="w-0 opacity-0 transition-all delay-300 duration-1000 ease-in-out group-hover:delay-75 group-hover:duration-500 group-hover:ml-2 group-hover:w-24 group-hover:opacity-100 overflow-hidden whitespace-nowrap">
+              <SiGithub className="text-black dark:text-slate-50" />
+              <span className="w-0 opacity-0 transition-all delay-300 duration-1000 ease-in-out group-hover:delay-75 group-hover:duration-500 group-hover:ml-2 group-hover:w-24 group-hover:opacity-100 overflow-hidden whitespace-nowrap text-black dark:text-white">
                 Source Code
               </span>
             </a>
