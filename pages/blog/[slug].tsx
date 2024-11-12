@@ -115,7 +115,7 @@ export default function Page({
           <MessageCircle size={16} />
           {article.comments_count} comments
         </div>
-        <Markdown className="bg-slate-900 p-4">{article.body_markdown}</Markdown>
+        <Markdown className="bg-slate-100 dark:bg-slate-900 p-4">{article.body_markdown}</Markdown>
       </section>
     </Layout>
   );
