@@ -1,7 +1,6 @@
 import { NextSeo } from "next-seo";
 import Image from "next/image";
 import { Layout } from "../../components/Layout/Layout";
-import { BlockList } from "net";
 import BlogList from "./BlogList";
 const BlogPages = () => {
   return (
@@ -36,7 +35,7 @@ const BlogPages = () => {
         alt="blog"
         width={800}
         height={400}
-        className="fixed top-0 -z-10 min-h-screen w-full object-cover brightness-50"
+        className="fixed top-0 -z-10 min-h-screen w-full object-cover brightness-50 dark:brightness-50"
       />
       <BlogList />
     </Layout>

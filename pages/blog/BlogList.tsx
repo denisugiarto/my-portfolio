@@ -1,16 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import dayjs from "dayjs";
+import { ArrowRightIcon, MessageCircle, ThumbsUpIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { fetchArticles } from "../../services/blog";
-import {
-  ArrowRightIcon,
-  LoaderPinwheelIcon,
-  MessageCircle,
-  SmileIcon,
-  ThumbsUpIcon,
-} from "lucide-react";
 import ReactTimeAgo from "react-time-ago";
+import { fetchArticles } from "../../services/blog";
 import Skeleton from "./skeleton";
 const BlogList = () => {
   const {
@@ -24,7 +17,7 @@ const BlogList = () => {
   });
   return (
     <section className="container pt-40">
-      <h1 className="mb-4 text-3xl font-bold dark:text-slate-100">Blog</h1>
+      <h1 className="mb-4 text-3xl font-bold text-slate-100">Blog</h1>
       {isLoading ? (
         <Skeleton />
       ) : (
@@ -86,7 +79,7 @@ const BlogList = () => {
                 </div>
                 <div className="mt-2 text-right">
                   <Link
-                    href={blog.url}
+                    href={`/blog/${blog.slug}`}
                     title={blog.url}
                     className="inline-flex items-center justify-end gap-2 rounded-full px-2 py-1 font-bold text-primary transition-all duration-500 hover:bg-slate-200 dark:text-slate-200"
                   >

@@ -22,7 +22,7 @@ export type Article = {
   last_comment_at: string;
   reading_time_minutes: number;
   tag_list: string[];
-  tags: string;
+  tags: string[];
   user: {
     name: string;
     username?: string;
@@ -33,4 +33,6 @@ export type Article = {
     profile_image: string;
     profile_image_90: string;
   };
+  body_html?: string;
+  body_markdown?: string;
 };
