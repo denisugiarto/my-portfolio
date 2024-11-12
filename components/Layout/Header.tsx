@@ -43,7 +43,7 @@ export default function Header({ activeNavbar }: Props) {
     >
       <div className="container py-2">
         <div className="relative flex h-16 items-center justify-between">
-          <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
+          <div className="flex items-center sm:hidden">
             {/* Mobile menu button*/}
             <Button
               variant="ghost"
