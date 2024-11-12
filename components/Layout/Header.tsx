@@ -1,11 +1,13 @@
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { NavigationItem } from "@/types";
 import { MenuIcon, XIcon } from "lucide-react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import data from "../../constant/data.json";
-import { cn } from "../../lib/utils";
-import ThemeToggle from "./ThemeToggle";
+import { SiGithub } from "@icons-pack/react-simple-icons";
+const ThemeToggle = dynamic(() => import("./ThemeToggle"), { ssr: false });
 
 type Props = {
   activeNavbar: string;
@@ -87,7 +89,21 @@ export default function Header({ activeNavbar }: Props) {
               </div>
             </div>
           </div>
-          <ThemeToggle />
+          <div className="flex items-center gap-4">
+            <a
+              href="https://github.com/denisugiarto/my-portfolio"
+              target="_blank"
+              rel="noreferrer"
+              title="source code"
+              className="group flex items-center overflow-hidden rounded-xl border border-transparent bg-slate-100 p-1 px-1.5 font-title text-sm font-medium text-gray-400 transition duration-300 hover:bg-primary hover:text-primary-foreground dark:bg-slate-900 dark:text-gray-200 dark:hover:bg-primary dark:hover:text-primary-foreground"
+            >
+              <SiGithub />
+              <span className="w-0 opacity-0 transition-all delay-300 duration-1000 ease-in-out group-hover:delay-75 group-hover:duration-500 group-hover:ml-2 group-hover:w-24 group-hover:opacity-100 overflow-hidden whitespace-nowrap">
+                Source Code
+              </span>
+            </a>
+            <ThemeToggle />
+          </div>
         </div>
       </div>
 
