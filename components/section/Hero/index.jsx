@@ -39,7 +39,7 @@ const Hero = ({ sectionBgColor, sectionColor }) => {
                 href={linkHireMe}
                 className={`easy-in-out block transform rounded-xl border-2 px-20 py-3 text-center font-serif font-bold  capitalize transition duration-300 hover:shadow-card md:inline bg-${sectionBgColor} text-${sectionColor}`}
               >
-                Hire me!
+                Let&apos;s Talk!
               </a>
             </div>
             <div className="absolute right-10 top-0">
