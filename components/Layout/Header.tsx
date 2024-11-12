@@ -75,10 +75,10 @@ export default function Header({ activeNavbar }: Props) {
                     key={item.name}
                     href={item.href}
                     className={cn(
+                      isScrollLimit ? "text-gray-900 dark:text-gray-300" : "text-gray-200",
                       activeNavbar.toLowerCase() === item.name.toLowerCase()
-                        ? "bg-primary font-semibold text-primary-foreground shadow-2xl"
+                        ? "bg-primary font-semibold !text-primary-foreground shadow-2xl"
                         : " hover:bg-primary hover:text-primary-foreground",
-                      isScrollLimit ? "text-gray-200" : "text-gray-200",
                       "rounded-xl px-3 py-2 text-sm font-medium",
                     )}
                     aria-current={item.name ? "page" : undefined}
