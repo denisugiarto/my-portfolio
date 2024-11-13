@@ -23,7 +23,11 @@ const BlogList = () => {
       ) : (
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
           {blogsList?.map((blog) => (
-            <div key={blog.id} className="rounded-md bg-background">
+            <Link
+              href={`/blog/${blog.slug}`}
+              key={blog.id}
+              className="rounded-md bg-background"
+            >
               <Image
                 src={blog?.social_image ?? "/no-image.png"}
                 alt={blog?.title}
@@ -32,13 +36,14 @@ const BlogList = () => {
                 className="h-auto w-full rounded-t-md object-scale-down dark:bg-black"
               />
               <div className="p-4">
-                <Link
+                {/* <Link
                   href={blog.url}
                   title={blog.url}
-                  className="text-lg font-semibold text-foreground hover:text-primary"
-                >
-                  <h2>{blog.title}</h2>
-                </Link>
+                  > */}
+                <h2 className="text-lg font-semibold text-foreground hover:text-primary">
+                  {blog.title}
+                </h2>
+                {/* </Link> */}
                 <div className="mb-2 mt-2 flex gap-x-2 text-sm">
                   <ReactTimeAgo
                     date={new Date(blog.published_at)}
@@ -81,14 +86,14 @@ const BlogList = () => {
                   <Link
                     href={`/blog/${blog.slug}`}
                     title={blog.url}
-                    className="inline-flex items-center justify-end gap-2 rounded-full px-2 py-1 font-bold text-primary transition-all duration-500 hover:bg-slate-200 dark:text-slate-200"
+                    className="inline-flex items-center justify-end gap-2 rounded-full px-2 py-1 font-bold text-primary transition-all duration-500 hover:bg-slate-200 dark:text-slate-200 dark:hover:bg-primary"
                   >
                     Read More
                     <ArrowRightIcon height={16} width={16} />
                   </Link>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       )}

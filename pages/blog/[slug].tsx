@@ -2,14 +2,15 @@ import { Layout } from "@/components/Layout/Layout";
 import { fetchArticleBySlug, fetchArticles } from "@/services/blog";
 import { Article } from "@/types/blog";
 import { ChevronLeft, MessageCircle, ThumbsUpIcon } from "lucide-react";
-import {
-  GetStaticPaths,
-  GetStaticProps,
-  InferGetStaticPropsType
-} from "next";
+import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import { NextSeo } from "next-seo";
 import Link from "next/link";
+import type { Components } from "react-markdown";
 import Markdown from "react-markdown";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { a11yDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
+// import { a11yDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import remarkGfm from "remark-gfm";
 
 interface ArticlePageProps {
   article: Article;
@@ -64,11 +65,34 @@ export const getStaticProps: GetStaticProps<ArticlePageProps> = async ({
   }
 };
 
+const CustomComponents: Components = {
+  p: ({ children }) => <p className="mb-2 break-normal">{children}</p>,
+  li: ({ children }) => <li className="md-post-li">{children}</li>,
+  h4: ({ children }) => <h4 className="text-2xl">{children}</h4>,
+  strong: ({ children }) => (
+    <strong className="mt-4 block text-2xl">{children}</strong>
+  ),
+  hr: () => <hr className="md-post-hr" />,
+  code: ({ node, className, children, style, ...props }) => {
+    const match = /language-(\w+)/.exec(className || "");
+    return (
+      <SyntaxHighlighter
+        language={match?.[1]}
+        style={a11yDark}
+        PreTag="div"
+        className="mb-3 mt-3 rounded-md bg-red-400"
+      >
+        {String(children).replace(/\n$/, "")}
+      </SyntaxHighlighter>
+    );
+  },
+};
+
 export default function Page({
   article,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <Layout activeNavbar="blog">
+    <Layout activeNavbar="Blog">
       <NextSeo
         title={article.title}
         description={article.description}
@@ -97,25 +121,41 @@ export default function Page({
         }}
       />
       <section className="container pt-20">
-        <Link href="/blog" className="mb-4 flex gap-2 hover:bg-slate-500 w-max rounded-md pr-2 py-1" title="back to blog page">
+        <Link
+          href="/blog"
+          className="mb-4 flex w-max gap-2 rounded-md py-1 pr-2 hover:bg-slate-500"
+          title="back to blog page"
+        >
           <ChevronLeft />
           Back
         </Link>
-        <h1 className="mb-2 text-3xl font-bold">{article.title}</h1>
-        <div className="flex gap-4 mb-2">
-          {article.tags.map((tag) => (
-            <div key={tag} className="text-sm font-light italic">
-              #{tag}
-            </div>
-          ))}
-        </div>
-        <div className="flex items-center gap-2 text-xs text-slate-900 dark:text-slate-100 mb-8">
-          <ThumbsUpIcon size={16} />
-          <span className="mr-2">{article.public_reactions_count} reactions</span>
-          <MessageCircle size={16} />
-          {article.comments_count} comments
-        </div>
-        <Markdown className="bg-slate-100 dark:bg-slate-900 p-4">{article.body_markdown}</Markdown>
+        <Link href={article.url}>
+          <h1 className="mb-2 text-xl font-bold sm:text-3xl">
+            {article.title}
+          </h1>
+          <div className="mb-2 flex gap-4">
+            {article.tags.map((tag) => (
+              <div key={tag} className="text-sm font-light italic">
+                #{tag}
+              </div>
+            ))}
+          </div>
+          <div className="mb-8 flex items-center gap-2 text-xs text-slate-900 dark:text-slate-100">
+            <ThumbsUpIcon size={16} />
+            <span className="mr-2">
+              {article.public_reactions_count} reactions
+            </span>
+            <MessageCircle size={16} />
+            {article.comments_count} comments
+          </div>
+        </Link>
+        <Markdown
+          remarkPlugins={[remarkGfm]} // Allows us to have embedded HTML tags in our markdown
+          components={CustomComponents}
+          className="w-[100vw-4rem] break-all bg-slate-100 p-4 dark:bg-slate-900"
+        >
+          {article.body_markdown}
+        </Markdown>
       </section>
     </Layout>
   );
