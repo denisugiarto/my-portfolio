@@ -101,7 +101,7 @@ export default function Header({ activeNavbar }: HeaderProps) {
                     className={cn(
                       isScrollLimit
                         ? "text-gray-900 dark:text-gray-300"
-                        : "text-gray-200",
+                        : "text-gray-600 dark:text-gray-200",
                       activeNavbar?.toLowerCase() === item.name.toLowerCase()
                         ? "bg-primary font-semibold !text-primary-foreground shadow-2xl"
                         : " hover:bg-primary hover:text-primary-foreground",
