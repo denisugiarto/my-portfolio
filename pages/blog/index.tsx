@@ -4,7 +4,7 @@ import { Layout } from "../../components/Layout/Layout";
 import BlogList from "./BlogList";
 const BlogPages = () => {
   return (
-    <Layout activeNavbar="blog">
+    <Layout activeNavbar="Blog">
       <NextSeo
         title="Blog | Deni Sugiarto | Frontend Web Developer"
         description="Blog about software engineering. Frontend Web Developer."
