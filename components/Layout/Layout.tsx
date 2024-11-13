@@ -1,9 +1,14 @@
 import dynamic from "next/dynamic";
-import Header from "./Header";
+import Header, { ActiveNavbarType } from "./Header";
 
 const Footer = dynamic(() => import("./Footer"));
 
-export const Layout = ({ children, activeNavbar }) => {
+type LayoutProps = {
+  children: React.ReactNode;
+  activeNavbar?: ActiveNavbarType;
+};
+
+export const Layout = ({ children, activeNavbar }: LayoutProps) => {
   return (
     <>
       <Header activeNavbar={activeNavbar} />

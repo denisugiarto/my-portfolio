@@ -9,10 +9,34 @@ import data from "../../constant/data.json";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 const ThemeToggle = dynamic(() => import("./ThemeToggle"), { ssr: false });
 
-type Props = {
-  activeNavbar: string;
-};
-export default function Header({ activeNavbar }: Props) {
+const navigation = [
+  {
+    name: "Home",
+    href: "/#home",
+  },
+  {
+    name: "Projects",
+    href: "/#projects",
+  },
+  {
+    name: "Contact Me",
+    href: "/#contactMe",
+  },
+  {
+    name: "Experience",
+    href: "/#experience",
+  },
+  {
+    name: "Blog",
+    href: "/blog",
+  },
+] as const;
+export type ActiveNavbarType = (typeof navigation)[number]["name"] | undefined;
+
+type HeaderProps = {
+  activeNavbar: ActiveNavbarType;
+}
+export default function Header({ activeNavbar }: HeaderProps) {
   const headerStyleOnScroll = "bg-white/20 backdrop-blur shadow-xl";
   const [scrollY, setScrollY] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
@@ -70,13 +94,15 @@ export default function Header({ activeNavbar }: Props) {
             </div>
             <div className="my-auto hidden font-body sm:ml-6 sm:block">
               <div className="flex space-x-4">
-                {data.navigation.map((item: NavigationItem) => (
+                {navigation.map((item: NavigationItem) => (
                   <Link
                     key={item.name}
                     href={item.href}
                     className={cn(
-                      isScrollLimit ? "text-gray-900 dark:text-gray-300" : "text-gray-200",
-                      activeNavbar.toLowerCase() === item.name.toLowerCase()
+                      isScrollLimit
+                        ? "text-gray-900 dark:text-gray-300"
+                        : "text-gray-200",
+                      activeNavbar?.toLowerCase() === item.name.toLowerCase()
                         ? "bg-primary font-semibold !text-primary-foreground shadow-2xl"
                         : " hover:bg-primary hover:text-primary-foreground",
                       "rounded-xl px-3 py-2 text-sm font-medium",
@@ -95,10 +121,10 @@ export default function Header({ activeNavbar }: Props) {
               target="_blank"
               rel="noreferrer"
               title="source code"
-              className="group flex items-center overflow-hidden rounded-xl border border-transparent p-1 px-1.5 font-title text-sm font-medium bg-slate-50 text-gray-400 transition duration-300 hover:text-primary-foreground dark:bg-slate-900 dark:text-gray-200 dark:hover:bg-primary dark:hover:text-primary-foreground"
+              className="group flex items-center overflow-hidden rounded-xl border border-transparent bg-slate-50 p-1 px-1.5 font-title text-sm font-medium text-gray-400 transition duration-300 hover:text-primary-foreground dark:bg-slate-900 dark:text-gray-200 dark:hover:bg-primary dark:hover:text-primary-foreground"
             >
               <SiGithub className="text-black dark:text-slate-50" />
-              <span className="w-0 opacity-0 transition-all delay-300 duration-1000 ease-in-out group-hover:delay-75 group-hover:duration-500 group-hover:ml-2 group-hover:w-24 group-hover:opacity-100 overflow-hidden whitespace-nowrap text-black dark:text-white">
+              <span className="w-0 overflow-hidden whitespace-nowrap text-black opacity-0 transition-all delay-300 duration-1000 ease-in-out group-hover:ml-2 group-hover:w-24 group-hover:opacity-100 group-hover:delay-75 group-hover:duration-500 dark:text-white">
                 Source Code
               </span>
             </a>
@@ -114,12 +140,12 @@ export default function Header({ activeNavbar }: Props) {
           "absolute left-0 h-screen space-y-1 bg-background px-2 pb-3 pt-2 transition-all duration-500 ease-in-out",
         )}
       >
-        {data.navigation.map((item: NavigationItem) => (
+        {navigation.map((item: NavigationItem) => (
           <Link
             key={item.name}
             href={item.href}
             className={cn(
-              activeNavbar.toLowerCase() === item.name.toLowerCase()
+              activeNavbar?.toLowerCase() === item.name.toLowerCase()
                 ? "bg-primary text-primary-foreground"
                 : "text-secondary hover:bg-gray-700 hover:text-primary-foreground",
               "block cursor-pointer rounded-xl px-3 py-2 text-center text-base font-medium",

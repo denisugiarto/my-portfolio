@@ -3,29 +3,7 @@
   "profile": {
     "name": "Deni Sugiarto",
     "role": "Frontend Web Developer"
-  },
-  "navigation": [
-    {
-      "name": "Home",
-      "href": "/#home"
-    },
-    {
-      "name": "Projects",
-      "href": "/#projects"
-    },
-    {
-      "name": "Contact Me",
-      "href": "/#contactMe"
-    },
-    {
-      "name": "Experience",
-      "href": "/#experience"
-    },
-    {
-      "name": "Blog",
-      "href": "/blog"
-    }
-  ],
+  },  
   "contact": [
     {
       "type": "upwork",
