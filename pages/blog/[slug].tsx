@@ -1,7 +1,8 @@
 import { Layout } from "@/components/Layout/Layout";
+import BlogHeader from "@/components/ui/blog/blog-header";
 import { fetchArticleBySlug, fetchArticles } from "@/services/blog";
-import { Article } from "@/types/blog";
-import { ChevronLeft, MessageCircle, ThumbsUpIcon } from "lucide-react";
+import { ArticleType } from "@/types/blog";
+import { ChevronLeft } from "lucide-react";
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import { NextSeo } from "next-seo";
 import Link from "next/link";
@@ -9,18 +10,17 @@ import type { Components } from "react-markdown";
 import Markdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { a11yDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
-// import { a11yDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import remarkGfm from "remark-gfm";
 
 interface ArticlePageProps {
-  article: Article;
+  article: ArticleType;
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
   try {
     const articles = await fetchArticles();
 
-    const paths = articles.map((article) => ({
+    const paths = articles?.map((article) => ({
       params: { slug: article.slug },
     }));
 
@@ -66,21 +66,21 @@ export const getStaticProps: GetStaticProps<ArticlePageProps> = async ({
 };
 
 const CustomComponents: Components = {
-  p: ({ children }) => <p className="mb-2 break-normal">{children}</p>,
-  li: ({ children }) => <li className="md-post-li">{children}</li>,
-  h4: ({ children }) => <h4 className="text-2xl">{children}</h4>,
-  strong: ({ children }) => (
-    <strong className="mt-4 block text-2xl">{children}</strong>
-  ),
+  p: ({ children }) => <p className="mb-4 break-words">{children}</p>,
+  li: ({ children }) => <li className="">{children}</li>,
+  ul: ({ children }) => <ul className="mb-4 list-disc pl-6">{children}</ul>,
+  h2: ({ children }) => <h2 className="my-2 text-2xl font-bold">{children}</h2>,
+  h4: ({ children }) => <h4 className="text-xl">{children}</h4>,
+  strong: ({ children }) => <strong className="text-lg">{children}</strong>,
   hr: () => <hr className="md-post-hr" />,
   code: ({ node, className, children, style, ...props }) => {
     const match = /language-(\w+)/.exec(className || "");
     return (
       <SyntaxHighlighter
+        className="!mb-4 !mt-0 rounded-md !p-6"
         language={match?.[1]}
         style={a11yDark}
         PreTag="div"
-        className="mb-3 mt-3 rounded-md bg-red-400"
       >
         {String(children).replace(/\n$/, "")}
       </SyntaxHighlighter>
@@ -88,9 +88,10 @@ const CustomComponents: Components = {
   },
 };
 
-export default function Page({
+export default function ArticlePage({
   article,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+
   return (
     <Layout activeNavbar="Blog">
       <NextSeo
@@ -123,36 +124,17 @@ export default function Page({
       <section className="container pt-20">
         <Link
           href="/blog"
-          className="mb-4 flex w-max gap-2 rounded-md py-1 pr-2 hover:bg-slate-500"
+          className="mb-4 flex w-max gap-2 rounded-md py-1 pr-2 hover:bg-slate-200 dark:hover:bg-slate-500"
           title="back to blog page"
         >
           <ChevronLeft />
           Back
         </Link>
-        <Link href={article.url}>
-          <h1 className="mb-2 text-xl font-bold sm:text-3xl">
-            {article.title}
-          </h1>
-          <div className="mb-2 flex gap-4">
-            {article.tags.map((tag) => (
-              <div key={tag} className="text-sm font-light italic">
-                #{tag}
-              </div>
-            ))}
-          </div>
-          <div className="mb-8 flex items-center gap-2 text-xs text-slate-900 dark:text-slate-100">
-            <ThumbsUpIcon size={16} />
-            <span className="mr-2">
-              {article.public_reactions_count} reactions
-            </span>
-            <MessageCircle size={16} />
-            {article.comments_count} comments
-          </div>
-        </Link>
+        <BlogHeader {...article} />
         <Markdown
           remarkPlugins={[remarkGfm]} // Allows us to have embedded HTML tags in our markdown
           components={CustomComponents}
-          className="w-[100vw-4rem] break-all bg-slate-100 p-4 dark:bg-slate-900"
+          className="mt-8 w-[100vw-4rem] break-all bg-slate-100 px-12 py-8 dark:bg-slate-900"
         >
           {article.body_markdown}
         </Markdown>
