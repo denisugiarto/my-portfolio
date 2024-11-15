@@ -34,7 +34,7 @@ const NotFoundPage = () => {
           loop={true}
           className="mx-auto max-h-[500px] w-full sm:w-10/12 lg:w-8/12"
         />
-        <Link href="/">
+        <Link href="/" className="relative z-30">
           <Button variant="default">Back Home</Button>
         </Link>
       </section>
