@@ -86,6 +86,7 @@ const BlogList = () => {
                   <Link
                     href={`/blog/${blog.slug}`}
                     title={blog.url}
+                    prefetch={true}
                     className="inline-flex items-center justify-end gap-2 rounded-full px-2 py-1 font-bold text-primary transition-all duration-500 hover:bg-slate-200 dark:text-slate-200 dark:hover:bg-primary"
                   >
                     Read More
