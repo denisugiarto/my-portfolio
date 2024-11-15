@@ -33,11 +33,16 @@ const navigation = [
 ] as const;
 export type ActiveNavbarType = (typeof navigation)[number]["name"] | undefined;
 
-type HeaderProps = {
-  activeNavbar: ActiveNavbarType;
-}
-export default function Header({ activeNavbar }: HeaderProps) {
-  const headerStyleOnScroll = "bg-white/20 backdrop-blur shadow-xl";
+export type HeaderProps = {
+  activeNavbar?: ActiveNavbarType;
+  isNavColorBlack?: boolean;
+};
+export default function Header({
+  activeNavbar,
+  isNavColorBlack = false,
+}: HeaderProps) {
+  const headerStyleOnScroll =
+    "bg-gray-900/40 backdrop-blur shadow-xl border-primary";
   const [scrollY, setScrollY] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -62,7 +67,7 @@ export default function Header({ activeNavbar }: HeaderProps) {
     <header
       className={cn(
         isScrollLimit ? headerStyleOnScroll : "",
-        "fixed top-0 z-10 w-full transition-all duration-300",
+        "fixed top-0 z-10 w-full rounded-b-lg border-b-2 border-transparent transition-all duration-300",
       )}
     >
       <div className="container py-2">
@@ -100,12 +105,14 @@ export default function Header({ activeNavbar }: HeaderProps) {
                     href={item.href}
                     className={cn(
                       isScrollLimit
-                        ? "text-gray-900 dark:text-gray-300"
-                        : "text-gray-600 dark:text-gray-200",
+                        ? "text-gray-200 dark:text-gray-300"
+                        : `${
+                            isNavColorBlack ? "text-gray-900" : "text-gray-200"
+                          } dark:text-gray-200`,
                       activeNavbar?.toLowerCase() === item.name.toLowerCase()
-                        ? "bg-primary font-semibold !text-primary-foreground shadow-2xl"
-                        : " hover:bg-primary hover:text-primary-foreground",
-                      "rounded-xl px-3 py-2 text-sm font-medium",
+                        ? "bg-primary font-bold !text-primary-foreground shadow-2xl"
+                        : "hover:bg-primary hover:text-primary-foreground",
+                      "rounded-xl px-3 py-2 text-sm font-semibold transition-all duration-500 ease-in-out",
                     )}
                     aria-current={item.name ? "page" : undefined}
                   >
