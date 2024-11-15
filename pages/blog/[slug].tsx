@@ -11,6 +11,7 @@ import Markdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { a11yDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import remarkGfm from "remark-gfm";
+import NotFoundPage from "../404";
 
 interface ArticlePageProps {
   article: ArticleType;
@@ -92,6 +93,9 @@ export default function ArticlePage({
   article,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
 
+  if(!article){
+    return <NotFoundPage />
+  }
   return (
     <Layout activeNavbar="Blog">
       <NextSeo
