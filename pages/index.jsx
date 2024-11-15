@@ -9,15 +9,15 @@ import { cn } from "../lib/utils";
 
 const Contact = dynamic(() => import("../components/section/Contact"), {
   loading: () => <p>Loading...</p>,
-  ssr: false,
+  ssr: true,
 });
 const Experience = dynamic(() => import("../components/section/Experience"), {
   loading: () => <p>Loading...</p>,
-  ssr: false,
+  ssr: true,
 });
 const Projects = dynamic(() => import("../components/section/Projects"), {
   loading: () => <p>Loading...</p>,
-  ssr: false,
+  ssr: true,
 });
 
 export default function Index() {
