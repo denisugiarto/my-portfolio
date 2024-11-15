@@ -1,10 +1,9 @@
-# Block all crawlers for /accounts
-User-agent: *
-Disallow: /accounts
-
-# Allow all crawlers
+# *
 User-agent: *
 Allow: /
 
+# Host
+Host: https://denisugiarto.my.id/
 
-Sitemap: https://denisugiarto.my.id/mysite.xml
+# Sitemaps
+Sitemap: https://denisugiarto.my.id/sitemap.xml
