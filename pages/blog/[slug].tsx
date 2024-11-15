@@ -97,7 +97,7 @@ export default function ArticlePage({
     return <NotFoundPage />
   }
   return (
-    <Layout activeNavbar="Blog">
+    <Layout activeNavbar="Blog" isNavColorBlack>
       <NextSeo
         title={article.title}
         description={article.description}
