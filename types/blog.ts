@@ -1,4 +1,14 @@
-export type Article = {
+export type AuthorType = {
+  name: string;
+  username?: string;
+  twitter_username?: string;
+  github_username?: string;
+  user_id: number;
+  website_url: string;
+  profile_image: string;
+  profile_image_90: string;
+};
+export type ArticleType = {
   type_of: string;
   id: number;
   title: string;
@@ -23,16 +33,7 @@ export type Article = {
   reading_time_minutes: number;
   tag_list: string[];
   tags: string[];
-  user: {
-    name: string;
-    username?: string;
-    twitter_username?: string;
-    github_username?: string;
-    user_id: number;
-    website_url: string;
-    profile_image: string;
-    profile_image_90: string;
-  };
+  user: AuthorType;
   body_html?: string;
   body_markdown?: string;
 };

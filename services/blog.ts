@@ -1,9 +1,9 @@
-import { Article } from "@/types/blog";
+import { ArticleType } from "@/types/blog";
 import axios from "axios";
 
-export const fetchArticles = async (): Promise<Article[]> => {
+export const fetchArticles = async (): Promise<ArticleType[]> => {
   try {
-    const { data } = await axios.get<Article[]>(
+    const { data } = await axios.get<ArticleType[]>(
       `https://dev.to/api/articles?username=${process.env.NEXT_PUBLIC_DEV_USERNAME}`,
     );
     return data;
@@ -13,9 +13,9 @@ export const fetchArticles = async (): Promise<Article[]> => {
   }
 };
 
-export const fetchArticleBySlug = async (slug: string): Promise<Article> => {
+export const fetchArticleBySlug = async (slug: string): Promise<ArticleType> => {
   try {
-    const { data } = await axios.get<Article>(
+    const { data } = await axios.get<ArticleType>(
       `https://dev.to/api/articles/${process.env.NEXT_PUBLIC_DEV_USERNAME}/${slug}`,
     );
     return data;
