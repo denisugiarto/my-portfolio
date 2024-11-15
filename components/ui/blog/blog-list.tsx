@@ -3,7 +3,7 @@ import { ArrowRightIcon, MessageCircle, ThumbsUpIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import ReactTimeAgo from "react-time-ago";
-import { fetchArticles } from "../../services/blog";
+import { fetchArticles } from "../../../services/blog";
 import Skeleton from "./skeleton";
 const BlogList = () => {
   const {
