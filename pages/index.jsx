@@ -58,8 +58,9 @@ export default function Index() {
         title="Deni Sugiarto | Frontend Web Developer"
         description="Frontend Web Developer. Experience developing web apps using Nextjs, ReactJs, and mobile apps using React Native with SCRUM agile development."
         openGraph={{
-          url: "https://www.denisugiarto.my.id",
-          title: "Deni Sugiarto | Frontend Web Developer",
+          url: process.env.NEXT_PUBLIC_SITE_URL,
+          siteName: "Deni Sugiarto",
+          title: "Deni Sugiarto | Frontend Web Developer | Portfolio",
           description:
             "Frontend Web Developer. Experience developing web apps using Nextjs, ReactJs, and mobile apps using React Native with SCRUM agile development.",
           type: "website",
@@ -74,8 +75,7 @@ export default function Index() {
           ],
         }}
         twitter={{
-          handle: "@handle",
-          site: "@site",
+          site: process.env.NEXT_PUBLIC_SITE_URL,
           cardType: "summary_large_image",
         }}
       />

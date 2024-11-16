@@ -44,6 +44,7 @@ export const getStaticProps: GetStaticProps<ArticlePageProps> = async ({
   try {
     const slug = params?.slug as string;
     const article = await fetchArticleBySlug(slug);
+    console.log("🚀 ~ article:", article);
 
     if (!article) {
       return {
@@ -92,37 +93,40 @@ const CustomComponents: Components = {
 export default function ArticlePage({
   article,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-
-  if(!article){
-    return <NotFoundPage />
+  if (!article) {
+    return <NotFoundPage />;
   }
   return (
     <Layout activeNavbar="Blog" isNavColorBlack>
       <NextSeo
-        title={article.title}
+        title={`${article.title} | Deni Sugiarto | Frontend Web Developer`}
         description={article.description}
         openGraph={{
-          url: "https://www.denisugiarto.my.id",
+          url: process.env.NEXT_PUBLIC_SITE_URL + "/blog/" + article.slug,
+          siteName: "Deni Sugiarto",
           title: article.title,
           description: article.description,
           type: "article",
           images: [
             {
-              url: "https://www.denisugiarto.my.id/android-chrome-512x512.png",
-              width: 512,
-              height: 512,
-              alt: "logo image",
+              url: article.social_image,
+              width: 500,
+              height: 1000,
+              alt: `images ${article.title}`,
               type: "image/png",
             },
           ],
           article: {
             publishedTime: article.created_at,
             modifiedTime: article.published_at,
-            authors: [
-              "https://www.denisugiarto.my.id/android-chrome-512x512.png",
-            ],
+            authors: ["deni sugiarto"],
+            section: "blog",
             tags: article.tags,
           },
+        }}
+        twitter={{
+          site: process.env.NEXT_PUBLIC_SITE_URL + "/blog/" + article.slug,
+          cardType: "summary_large_image",
         }}
       />
       <section className="container pt-20">

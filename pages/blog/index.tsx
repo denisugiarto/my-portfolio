@@ -7,9 +7,9 @@ const BlogPages = () => {
     <Layout activeNavbar="Blog">
       <NextSeo
         title="Blog | Deni Sugiarto | Frontend Web Developer"
-        description="Blog about software engineering. Frontend Web Developer."
+        description="Blog about software engineering. Frontend Web Developer."        
         openGraph={{
-          url: "https://www.denisugiarto.my.id",
+          url: process.env.NEXT_PUBLIC_SITE_URL + "/blog",
           title: "Blog | Deni Sugiarto | Frontend Web Developer",
           description:
             "Blog about software engineering. Frontend Web Developer.",
@@ -25,8 +25,7 @@ const BlogPages = () => {
           ],
         }}
         twitter={{
-          handle: "@handle",
-          site: "@site",
+          site: process.env.NEXT_PUBLIC_SITE_URL + "/blog",
           cardType: "summary_large_image",
         }}
       />
