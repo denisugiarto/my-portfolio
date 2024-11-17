@@ -4,3 +4,9 @@ export type NavigationItem = {
 };
 
 export type Navigation = NavigationItem[];
+
+export type ContactItem = {
+  type: string;
+  link: string;
+  value: string;
+};
