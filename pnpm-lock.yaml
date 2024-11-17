@@ -99,6 +99,9 @@ importers:
       '@tanstack/react-query-devtools':
         specifier: 5.48.0
         version: 5.48.0(@tanstack/react-query@5.48.0(react@18.2.0))(react@18.2.0)
+      '@types/javascript-time-ago':
+        specifier: ^2.0.8
+        version: 2.0.8
       '@types/node':
         specifier: 20.10.7
         version: 20.10.7
@@ -1414,6 +1417,9 @@ packages:
 
   '@types/hast@3.0.4':
     resolution: {integrity: sha512-WPs+bbQw5aCj+x6laNGWLH3wviHtoCv/P3+otBhbOhJgG8qtpdAMlTCxLtsTWA7LH1Oh/bFCHsBn0TPS5m30EQ==}
+
+  '@types/javascript-time-ago@2.0.8':
+    resolution: {integrity: sha512-X77q3xUzWVn0qohgurKE1G5NiXZjee8VbLqaukW/HXVkz7bdCFJgOPQ3JVB4IkrDhMS4CviFTmpZuNVg0i2QFA==}
 
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
@@ -5391,6 +5397,8 @@ snapshots:
   '@types/hast@3.0.4':
     dependencies:
       '@types/unist': 3.0.2
+
+  '@types/javascript-time-ago@2.0.8': {}
 
   '@types/json-schema@7.0.15': {}
 

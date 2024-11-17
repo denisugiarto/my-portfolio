@@ -8,7 +8,11 @@ import data from "../../../constant/data.json";
 export const linkHireMe = data.contact?.find(
   (contact) => contact.type === "whatsapp",
 )?.link;
-const Hero = ({ sectionBgColor, sectionColor }) => {
+type HeroProps = {
+  sectionBgColor: string;
+  sectionColor: string;
+};
+const Hero = ({ sectionBgColor, sectionColor }: HeroProps) => {
   return (
     <LazyMotion features={domAnimation}>
       <div className={`text-${sectionColor} container lg:py-32`}>
@@ -30,7 +34,7 @@ const Hero = ({ sectionBgColor, sectionColor }) => {
               </m.span>
               ,<span className="ml-6 text-2xl"> I&apos;m Deni Sugiarto</span>
             </h1>
-            <p className="text-4xl font-bold text-green-500">
+            <p className="text-4xl font-bold">
               Frontend Web Developer
             </p>
             <p className="mt-6 leading-loose">{data.aboutMe}</p>

@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="container pt-0">
         <div className="text-center text-base text-primary-foreground">
           <a
-            href={contactGithub.link}
+            href={contactGithub?.link ?? ""}
             target="_blank"
             rel="noopener noreferrer"
           >

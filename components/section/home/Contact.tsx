@@ -7,8 +7,12 @@ import {
   SiGithub,
   SiUpwork,
 } from "@icons-pack/react-simple-icons";
+import { ContactItem } from "@/types";
 
-const iconContactList = {
+type IconContactList = {
+  [key: string]: JSX.Element;
+}
+const iconContactList : IconContactList = {
   email: <MailIcon className="h-6 w-6" />,
   whatsapp: <SiWhatsapp className="h-6 w-6 text-green-600" />,
   linkedin: <SiLinkedin className="h-7 w-7 text-blue-700" />,
@@ -22,7 +26,7 @@ export default function Contact() {
       <div className="container overflow-hidden">
         <h2 className="title-section text-center text-white">Contact Me</h2>
         <div className="content mx-auto mt-16 grid max-w-sm grid-cols-1 gap-y-10">
-          {data.contact.map((item, index) => (
+          {data.contact.map((item: ContactItem, index) => (
             <m.div
               key={`contact-${index}`}
               initial={{ opacity: 0, x: index % 2 === 0 ? -120 : 120 }}
@@ -36,7 +40,7 @@ export default function Contact() {
                 href={item.link}
                 target="_blank"
                 rel="noreferrer"
-                className="flex gap-2 rounded-lg bg-background p-2 text-foreground shadow-lg transition duration-300 hover:-translate-y-1 hover:scale-105 hover:bg-gray-50"
+                className="flex gap-2 rounded-lg bg-background p-2 text-foreground shadow-lg transition duration-300 hover:-translate-y-1 hover:scale-105 hover:bg-gray-50 dark:hover:bg-gray-700"
               >
                 <div className="flex w-8 items-center justify-center">
                   {iconContactList[item.type]}

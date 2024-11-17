@@ -4,18 +4,18 @@ import { Layout } from "../components/Layout/Layout";
 import dynamic from "next/dynamic";
 import WhatsappIcon from "../public/WhatsApp-icon.svg";
 import { useInView } from "react-intersection-observer";
-import Hero, { linkHireMe } from "../components/section/Hero";
+import Hero, { linkHireMe } from "../components/section/home/Hero";
 import { cn } from "../lib/utils";
 
-const Contact = dynamic(() => import("../components/section/Contact"), {
+const Contact = dynamic(() => import("../components/section/home/Contact"), {
   loading: () => <p>Loading...</p>,
   ssr: true,
 });
-const Experience = dynamic(() => import("../components/section/Experience"), {
+const Experience = dynamic(() => import("../components/section/home/Experience"), {
   loading: () => <p>Loading...</p>,
   ssr: true,
 });
-const Projects = dynamic(() => import("../components/section/Projects"), {
+const Projects = dynamic(() => import("../components/section/home/Projects"), {
   loading: () => <p>Loading...</p>,
   ssr: true,
 });
@@ -42,27 +42,29 @@ export default function Index() {
 
   function determineActiveNavbarItem() {
     if (isHomeVisible) {
-      return "home";
+      return "Home";
     } else if (isProjectVisible) {
-      return "projects";
+      return "Projects";
     } else if (isContactVisible) {
-      return "contact me";
+      return "Contact Me";
     } else {
-      return "experience";
+      return "Experience";
     }
   }
 
   return (
     <>
       <NextSeo
-        title="Deni Sugiarto | Frontend Web Developer"
-        description="Frontend Web Developer. Experience developing web apps using Nextjs, ReactJs, and mobile apps using React Native with SCRUM agile development."
+        title="Web Developer - Web Portfolio - front end web dev - Deni Sugiarto"
+        description="Web Developer magician. Experience developing web apps using Nextjs, ReactJs, and mobile apps using React Native with SCRUM agile development."
+        canonical="https://denisugiarto.my.id/"
         openGraph={{
           url: process.env.NEXT_PUBLIC_SITE_URL,
           siteName: "Deni Sugiarto",
-          title: "Deni Sugiarto | Frontend Web Developer | Portfolio",
+          title:
+            "Web Developer - Web Portfolio - front end web dev - Deni Sugiarto",
           description:
-            "Frontend Web Developer. Experience developing web apps using Nextjs, ReactJs, and mobile apps using React Native with SCRUM agile development.",
+            "Web Developer magician. Experience developing web apps using Nextjs, ReactJs, and mobile apps using React Native with SCRUM agile development.",
           type: "website",
           images: [
             {
@@ -95,7 +97,7 @@ export default function Index() {
         </section>
         <section
           id="contactMe"
-          className="max-w-screen scroll-mt-20 bg-primary"
+          className="max-w-screen scroll-mt-20 bg-primary dark:bg-primary/10"
           ref={ContactRef}
         >
           <Contact />

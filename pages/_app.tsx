@@ -1,11 +1,12 @@
+import TimeAgo from "javascript-time-ago";
+import en from "javascript-time-ago/locale/en";
+import { ThemeProvider } from "next-themes";
+import { AppProps } from "next/app";
 import { Montserrat, Montserrat_Alternates } from "next/font/google";
 import Head from "next/head";
 import Script from "next/script";
-import "../styles/globals.css";
 import TanstackProvider from "../components/providers/TanstackProvider";
-import { ThemeProvider } from "next-themes";
-import TimeAgo from "javascript-time-ago";
-import en from "javascript-time-ago/locale/en";
+import "../styles/globals.css";
 
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS;
 const inter = Montserrat({
@@ -28,7 +29,7 @@ export const metadata = {
 
 TimeAgo.addDefaultLocale(en);
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
@@ -56,10 +57,6 @@ function MyApp({ Component, pageProps }) {
         />
       </Head>
       {/* <Partytown debug={false} forward={["dataLayer.push"]} /> */}
-      <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-        strategy="lazyOnload"
-      />
       {/* <script
         type="text/partytown"
         dangerouslySetInnerHTML={{

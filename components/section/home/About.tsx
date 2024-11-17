@@ -5,11 +5,7 @@ export default function About() {
     <section id="aboutMe" className="container">
       <div className="desc">
         <h2 className="title-section">About Me</h2>
-        {data.aboutMe.map((item, index) => (
-          <p key={index} className="leading-loose">
-            {item}
-          </p>
-        ))}
+        <p className="leading-loose">{data.aboutMe}</p>
         <a
           href="https://api.whatsapp.com/send/?phone=6281217986332&text&app_absent=0"
           target="_blank"

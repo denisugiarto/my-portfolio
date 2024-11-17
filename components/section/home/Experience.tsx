@@ -20,7 +20,7 @@ const Experience = () => {
             >
               <div
                 key={`${index}`}
-                className="flex gap-4 rounded-lg bg-primary p-4 font-semibold text-primary-foreground shadow-card"
+                className="flex gap-4 rounded-lg bg-primary p-4 font-semibold text-primary-foreground shadow-card dark:shadow-none dark:bg-primary/10"
               >
                 <div id="image" className="basis-12">
                   <Image
