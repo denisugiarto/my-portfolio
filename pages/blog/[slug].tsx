@@ -44,7 +44,6 @@ export const getStaticProps: GetStaticProps<ArticlePageProps> = async ({
   try {
     const slug = params?.slug as string;
     const article = await fetchArticleBySlug(slug);
-    console.log("🚀 ~ article:", article);
 
     if (!article) {
       return {
@@ -99,7 +98,7 @@ export default function ArticlePage({
   return (
     <Layout activeNavbar="Blog" isNavColorBlack>
       <NextSeo
-        title={`${article.title} | Deni Sugiarto | Frontend Web Developer`}
+        title={`${article.title} | Deni Sugiarto`}
         description={article.description}
         openGraph={{
           url: process.env.NEXT_PUBLIC_SITE_URL + "/blog/" + article.slug,
