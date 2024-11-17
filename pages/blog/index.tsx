@@ -6,13 +6,13 @@ const BlogPages = () => {
   return (
     <Layout activeNavbar="Blog">
       <NextSeo
-        title="Blog | Deni Sugiarto | Frontend Web Developer"
+        title="blog - Tech journey of a software engineer - Deni Sugiarto"
         description="Blog about software engineering. Frontend Web Developer."        
         openGraph={{
           url: process.env.NEXT_PUBLIC_SITE_URL + "/blog",
-          title: "Blog | Deni Sugiarto | Frontend Web Developer",
+          title: "blog - Tech journey of a software engineer - Deni Sugiarto",
           description:
-            "Blog about software engineering. Frontend Web Developer.",
+            "Blog about software engineering. journey as a web developer.",
           type: "website",
           images: [
             {

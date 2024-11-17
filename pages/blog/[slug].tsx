@@ -98,7 +98,7 @@ export default function ArticlePage({
   return (
     <Layout activeNavbar="Blog" isNavColorBlack>
       <NextSeo
-        title={`${article.title} | Deni Sugiarto`}
+        title={`${article.title} - Deni Sugiarto`}
         description={article.description}
         openGraph={{
           url: process.env.NEXT_PUBLIC_SITE_URL + "/blog/" + article.slug,
