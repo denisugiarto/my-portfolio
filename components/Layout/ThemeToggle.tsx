@@ -31,29 +31,27 @@ const ThemeToggle = () => {
   ];
 
   return (
-    <SimpleTooltip title="Toggle Theme">
-      <Popover open={isOpen}>
-        <PopoverTrigger
-          onClick={() => setIsOpen(!isOpen)}
-          className={"rounded-md bg-primary p-1 text-slate-50"}
-          aria-label="Toggle Theme"
-          title="Toggle Theme"
-        >
-          {resolvedTheme === "dark" ? <MoonIcon /> : <Sun />}
-        </PopoverTrigger>
-        <PopoverContent className="flex w-auto flex-col !p-0">
-          {themeVariant.map((item) => (
-            <Button
-              key={item.name}
-              variant={theme === item.name ? "default" : "ghost"}
-              onClick={() => setThemeMode(item.name)}
-            >
-              {item.caption}
-            </Button>
-          ))}
-        </PopoverContent>
-      </Popover>
-    </SimpleTooltip>
+    <Popover open={isOpen}>
+      <PopoverTrigger
+        onClick={() => setIsOpen(!isOpen)}
+        className={"rounded-md bg-primary p-1 text-slate-50"}
+        aria-label="Toggle Theme"
+        title="Toggle Theme"
+      >
+        {resolvedTheme === "dark" ? <MoonIcon /> : <Sun />}
+      </PopoverTrigger>
+      <PopoverContent className="flex w-auto flex-col !p-0">
+        {themeVariant.map((item) => (
+          <Button
+            key={item.name}
+            variant={theme === item.name ? "default" : "ghost"}
+            onClick={() => setThemeMode(item.name)}
+          >
+            {item.caption}
+          </Button>
+        ))}
+      </PopoverContent>
+    </Popover>
   );
 };
 
