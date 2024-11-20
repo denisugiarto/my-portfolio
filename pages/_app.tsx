@@ -55,17 +55,9 @@ function MyApp({ Component, pageProps }: AppProps) {
           content="wA-PDzFO_KCQRoPFGDEpvObLUt5ZLtNjTsD-nUANyJo"
         />
       </Head>
-      {/* <Partytown debug={false} forward={["dataLayer.push"]} /> */}
-      <script
-        type="text/partytown"
-        dangerouslySetInnerHTML={{
-          __html: `
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){window.dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', '${GA_MEASUREMENT_ID}');
-        `,
-        }}
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+        strategy="lazyOnload"
       />
       <Script id="google-analytics" strategy="lazyOnload">
         {`
