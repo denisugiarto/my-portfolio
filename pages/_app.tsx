@@ -1,3 +1,5 @@
+import TanstackProvider from "@/components/providers/TanstackProvider";
+import "@/styles/globals.css";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
 import { ThemeProvider } from "next-themes";
@@ -5,8 +7,6 @@ import { AppProps } from "next/app";
 import { Montserrat, Montserrat_Alternates } from "next/font/google";
 import Head from "next/head";
 import Script from "next/script";
-import TanstackProvider from "../components/providers/TanstackProvider";
-import "../styles/globals.css";
 
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS;
 const inter = Montserrat({
@@ -57,7 +57,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
       </Head>
       {/* <Partytown debug={false} forward={["dataLayer.push"]} /> */}
-      {/* <script
+      <script
         type="text/partytown"
         dangerouslySetInnerHTML={{
           __html: `
@@ -67,7 +67,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           gtag('config', '${GA_MEASUREMENT_ID}');
         `,
         }}
-      /> */}
+      />
       <Script id="google-analytics" strategy="lazyOnload">
         {`
 				window.dataLayer = window.dataLayer || [];
