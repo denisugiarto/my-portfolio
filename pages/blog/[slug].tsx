@@ -101,7 +101,7 @@ export default function ArticlePage({
           cardType: "summary_large_image",
         }}
       />
-      <section className="container pt-20">
+      <section className="container p-4 pt-20">
         <Link
           href="/blog"
           className="mb-4 flex w-max gap-2 rounded-md py-1 pr-2 hover:bg-slate-200 dark:hover:bg-slate-500"
