@@ -37,7 +37,7 @@ export default function Markdown({
     <MarkdownComponent
       remarkPlugins={[remarkGfm]} // Allows us to have embedded HTML tags in our markdown
       components={CustomComponents}
-      className="mt-8 w-[100vw-4rem] break-all bg-slate-100 px-12 py-8 dark:bg-slate-900"
+      className="mt-8 w-[100vw-4rem] break-all rounded bg-slate-100 p-3 dark:bg-slate-900 md:px-12 md:py-8"
     >
       {children}
     </MarkdownComponent>
