@@ -86,10 +86,7 @@ const HomePage = () => {
           className="scroll-mt-24 bg-gradient-to-r from-blue-600 to-violet-600 pt-20 dark:from-slate-900"
           ref={HomeRef}
         >
-          <Hero
-            sectionColor={sectionColor[0].text}
-            sectionBgColor={sectionColor[0].background}
-          />
+          <Hero sectionColor={sectionColor[0].text} />
         </section>
         <section id="projects" className="scroll-mt-20" ref={ProjectRef}>
           <Projects />
