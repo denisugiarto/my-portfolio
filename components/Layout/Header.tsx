@@ -1,12 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { getRepoStars } from "@/services/home";
 import { NavigationItem } from "@/types";
-import { MenuIcon, XIcon } from "lucide-react";
+import { SiGithub } from "@icons-pack/react-simple-icons";
+import { useQuery } from "@tanstack/react-query";
+import { MenuIcon, StarIcon, XIcon } from "lucide-react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import data from "../../constant/data.json";
-import { SiGithub } from "@icons-pack/react-simple-icons";
+import SimpleTooltip from "../ui/simple-tooltip";
 const ThemeToggle = dynamic(() => import("./ThemeToggle"), { ssr: false });
 
 const navigation = [
@@ -41,10 +44,14 @@ export default function Header({
   activeNavbar,
   isNavColorBlack = false,
 }: HeaderProps) {
-  const headerStyleOnScroll =
-    "bg-gray-900/40 backdrop-blur shadow-xl border-primary";
+  const headerStyleOnScroll = "bg-gray-700/80 shadow-xl border-primary";
   const [scrollY, setScrollY] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
+  const { data: repoStars } = useQuery({
+    queryKey: ["header"],
+    queryFn: getRepoStars,
+    refetchOnWindowFocus: false,
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -100,41 +107,52 @@ export default function Header({
             <div className="my-auto hidden font-body sm:ml-6 sm:block">
               <div className="flex space-x-4">
                 {navigation.map((item: NavigationItem) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className={cn(
-                      isScrollLimit
-                        ? "text-gray-200 dark:text-gray-300"
-                        : `${
-                            isNavColorBlack ? "text-gray-900" : "text-gray-200"
-                          } dark:text-gray-200`,
-                      activeNavbar?.toLowerCase() === item.name.toLowerCase()
-                        ? "bg-primary font-bold !text-primary-foreground shadow-2xl"
-                        : "hover:bg-primary hover:text-primary-foreground",
-                      "rounded-xl px-3 py-2 text-sm font-semibold transition-all duration-500 ease-in-out",
-                    )}
-                    aria-current={item.name ? "page" : undefined}
-                  >
-                    {item.name}
-                  </Link>
+                  <SimpleTooltip key={item.name} title={item.name}>
+                    <Link
+                      href={item.href}
+                      className={cn(
+                        isScrollLimit
+                          ? "text-gray-200 dark:text-gray-300"
+                          : `${
+                              isNavColorBlack
+                                ? "text-gray-900"
+                                : "text-gray-200"
+                            } dark:text-gray-200`,
+                        activeNavbar?.toLowerCase() === item.name.toLowerCase()
+                          ? "bg-primary font-bold !text-primary-foreground shadow-2xl"
+                          : "hover:bg-primary hover:text-primary-foreground",
+                        "rounded-xl px-3 py-2 text-sm font-semibold transition-all duration-500 ease-in-out",
+                      )}
+                      aria-current={item.name ? "page" : undefined}
+                    >
+                      {item.name}
+                    </Link>
+                  </SimpleTooltip>
                 ))}
               </div>
             </div>
           </div>
           <div className="flex items-center gap-4">
-            <a
-              href="https://github.com/denisugiarto/my-portfolio"
-              target="_blank"
-              rel="noreferrer"
-              title="source code"
-              className="group flex items-center overflow-hidden rounded-xl border border-transparent bg-slate-50 p-1 px-1.5 font-title text-sm font-medium text-gray-400 transition duration-300 hover:text-primary-foreground dark:bg-slate-900 dark:text-gray-200 dark:hover:bg-primary dark:hover:text-primary-foreground"
-            >
-              <SiGithub className="text-black dark:text-slate-50" />
-              <span className="w-0 overflow-hidden whitespace-nowrap text-black opacity-0 transition-all delay-300 duration-1000 ease-in-out group-hover:ml-2 group-hover:w-24 group-hover:opacity-100 group-hover:delay-75 group-hover:duration-500 dark:text-white">
-                Source Code
-              </span>
-            </a>
+            <SimpleTooltip title="Star on Github">
+              <a
+                href="https://github.com/denisugiarto/my-portfolio"
+                target="_blank"
+                rel="noreferrer"
+                title="Star on Github"
+                className="group flex items-center rounded-xl border border-transparent bg-slate-50 p-1 px-1 font-title text-sm font-bold text-gray-900 transition duration-300 hover:text-yellow-500 dark:border-slate-700 dark:bg-slate-900 dark:text-gray-200 dark:hover:bg-primary dark:hover:text-primary-foreground"
+              >
+                <SiGithub
+                  title="Star on Github"
+                  className="h-5 text-black dark:text-slate-50 "
+                />
+                <span>
+                  <StarIcon fill="currentColor" className="h-4 text-inherit" />
+                </span>
+                <span className="hidden font-bold lg:inline">
+                  {repoStars ?? 1000}
+                </span>
+              </a>
+            </SimpleTooltip>
             <ThemeToggle />
           </div>
         </div>
@@ -154,8 +172,8 @@ export default function Header({
             className={cn(
               activeNavbar?.toLowerCase() === item.name.toLowerCase()
                 ? "bg-primary text-primary-foreground"
-                : "text-secondary hover:bg-gray-700 hover:text-primary-foreground",
-              "block cursor-pointer rounded-xl px-3 py-2 text-center text-base font-medium",
+                : "text-slate-900 hover:bg-gray-700 hover:text-primary-foreground dark:text-slate-200",
+              "block cursor-pointer rounded-xl px-3 py-2 text-center text-base font-medium focus:bg-primary",
             )}
             aria-current={item.name ? "page" : undefined}
           >

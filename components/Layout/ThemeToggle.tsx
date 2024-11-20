@@ -1,10 +1,10 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 import { MoonIcon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useState } from "react";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+import SimpleTooltip from "../ui/simple-tooltip";
 
 const ThemeToggle = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,31 +31,29 @@ const ThemeToggle = () => {
   ];
 
   return (
-    <Popover open={isOpen}>
-      <PopoverTrigger
-        onClick={() => setIsOpen(!isOpen)}
-        className={cn(
-          resolvedTheme === "dark"
-            ? "bg-primary text-yellow-400"
-            : "bg-primary text-slate-100",
-          "rounded-md p-1",
-        )}
-        aria-label="Toggle Theme"
-      >
-        {resolvedTheme === "dark" ? <Sun /> : <MoonIcon />}
-      </PopoverTrigger>
-      <PopoverContent className="flex w-auto flex-col !p-0">
-        {themeVariant.map((item) => (
-          <Button
-            key={item.name}
-            variant={theme === item.name ? "default" : "ghost"}
-            onClick={() => setThemeMode(item.name)}
-          >
-            {item.caption}
-          </Button>
-        ))}
-      </PopoverContent>
-    </Popover>
+    <SimpleTooltip title="Toggle Theme">
+      <Popover open={isOpen}>
+        <PopoverTrigger
+          onClick={() => setIsOpen(!isOpen)}
+          className={"rounded-md bg-primary p-1 text-slate-50"}
+          aria-label="Toggle Theme"
+          title="Toggle Theme"
+        >
+          {resolvedTheme === "dark" ? <MoonIcon /> : <Sun />}
+        </PopoverTrigger>
+        <PopoverContent className="flex w-auto flex-col !p-0">
+          {themeVariant.map((item) => (
+            <Button
+              key={item.name}
+              variant={theme === item.name ? "default" : "ghost"}
+              onClick={() => setThemeMode(item.name)}
+            >
+              {item.caption}
+            </Button>
+          ))}
+        </PopoverContent>
+      </Popover>
+    </SimpleTooltip>
   );
 };
 
