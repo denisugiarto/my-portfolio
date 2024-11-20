@@ -2,7 +2,19 @@
   "name": "my-portfolio",
   "version": "1.0.0",
   "description": "Deni's Website",
-  "keywords": [],
+  "keywords": [
+    "NextJs",
+    "personal portfolio",
+    "ReactJs",
+    "TailwindCss",
+    "ShadcnUI",
+    "FramerMotion",
+    "TanstackReactQuery",
+    "dayjs",
+    "react-time-ago",
+    "react-syntax-highlighter",
+    "markdown"
+  ],
   "author": "Deni Sugiarto",
   "license": "MIT",
   "scripts": {
