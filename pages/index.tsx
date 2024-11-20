@@ -1,26 +1,25 @@
+import { Layout } from "@/components/Layout/Layout";
+import Hero, { linkHireMe } from "@/features/home/hero";
 import { NextSeo } from "next-seo";
-import { Layout } from "../components/Layout/Layout";
-
 import dynamic from "next/dynamic";
-import WhatsappIcon from "../public/WhatsApp-icon.svg";
 import { useInView } from "react-intersection-observer";
-import Hero, { linkHireMe } from "../components/section/home/Hero";
 import { cn } from "../lib/utils";
+import WhatsappIcon from "../public/WhatsApp-icon.svg";
 
-const Contact = dynamic(() => import("../components/section/home/Contact"), {
+const Contact = dynamic(() => import("@/features/home/contact"), {
   loading: () => <p>Loading...</p>,
   ssr: true,
 });
-const Experience = dynamic(() => import("../components/section/home/Experience"), {
+const Experience = dynamic(() => import("@/features/home/experience"), {
   loading: () => <p>Loading...</p>,
   ssr: true,
 });
-const Projects = dynamic(() => import("../components/section/home/Projects"), {
+const Projects = dynamic(() => import("@/features/home/projects"), {
   loading: () => <p>Loading...</p>,
   ssr: true,
 });
 
-export default function Index() {
+const HomePage = () => {
   const { ref: HomeRef, inView: isHomeVisible } = useInView({ threshold: 0.2 });
   const { ref: ProjectRef, inView: isProjectVisible } = useInView({
     threshold: 0.15,
@@ -124,4 +123,6 @@ export default function Index() {
       </Layout>
     </>
   );
-}
+};
+
+export default HomePage;

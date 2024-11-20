@@ -1,11 +1,12 @@
+import { fetchArticles } from "@/services/blog";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowRightIcon, MessageCircle, ThumbsUpIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import ReactTimeAgo from "react-time-ago";
-import { fetchArticles } from "../../../services/blog";
 import Skeleton from "./skeleton";
-const BlogList = () => {
+
+export default function BlogList() {
   const {
     data: blogsList,
     error,
@@ -101,6 +102,4 @@ const BlogList = () => {
       {error && <p>{error.message ?? "the blog list can't load"}</p>}
     </section>
   );
-};
-
-export default BlogList;
+}

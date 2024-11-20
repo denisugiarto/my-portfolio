@@ -1,10 +1,9 @@
+import data from "@/constant/data.json";
+import { SiGithub } from "@icons-pack/react-simple-icons";
 import { LazyMotion, domAnimation, m } from "framer-motion";
+import { ArrowDown, ExternalLink } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
-import data from "../../../constant/data.json";
-import { ExternalLink } from "lucide-react";
-import { SiGithub } from "@icons-pack/react-simple-icons";
-import { ArrowDown } from "lucide-react";
 const listProject = data.projects.reverse();
 export default function Projects() {
   const [totalShow, setTotalShow] = useState(3);

@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import data from "../../../constant/data.json";
+import data from "@/constant/data.json";
 import Image from "next/image";
 import dayjs from "dayjs";
 import { LazyMotion, domAnimation, m } from "framer-motion";

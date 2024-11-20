@@ -1,5 +1,6 @@
 import { Layout } from "@/components/Layout/Layout";
-import BlogHeader from "@/components/ui/blog/blog-header";
+import Markdown from "@/components/ui/markdown";
+import BlogHeader from "@/features/blog/blog-header";
 import { fetchArticleBySlug, fetchArticles } from "@/services/blog";
 import { ArticleType } from "@/types/blog";
 import { ChevronLeft } from "lucide-react";
@@ -7,7 +8,6 @@ import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import { NextSeo } from "next-seo";
 import Link from "next/link";
 import NotFoundPage from "../404";
-import Markdown from "@/components/ui/markdown";
 
 interface ArticlePageProps {
   article: ArticleType;

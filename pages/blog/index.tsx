@@ -1,7 +1,8 @@
+import { Layout } from "@/components/Layout/Layout";
+import BlogList from "@/features/blog/blog-list";
 import { NextSeo } from "next-seo";
 import Image from "next/image";
-import { Layout } from "@/components/Layout/Layout";
-import BlogList from "@/components/ui/blog/blog-list";
+
 const BlogPages = () => {
   return (
     <Layout activeNavbar="Blog">

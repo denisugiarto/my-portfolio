@@ -1,8 +1,7 @@
+import data from "@/constant/data.json";
 import { SiReact } from "@icons-pack/react-simple-icons";
 import { LazyMotion, domAnimation, m } from "framer-motion";
 import Image from "next/image";
-import React from "react";
-import data from "../../../constant/data.json";
 
 // eslint-disable-next-line react/display-name
 export const linkHireMe = data.contact?.find(

@@ -1,10 +1,9 @@
 import { ArticleType } from "@/types/blog";
 import { MessageCircle, ThumbsUpIcon } from "lucide-react";
 import Link from "next/link";
-import React from "react";
 import Author from "./author";
 
-function BlogHeader({
+export default function BlogHeader({
   title,
   tags,
   comments_count,
@@ -49,5 +48,3 @@ function BlogHeader({
     </>
   );
 }
-
-export default BlogHeader;

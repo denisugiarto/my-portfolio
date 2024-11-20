@@ -1,8 +1,7 @@
 import { AuthorType } from "@/types/blog";
 import Image from "next/image";
-import React from "react";
 
-function Author({
+export default function Author({
   name,
   profile_image,
 }: Pick<AuthorType, "name" | "profile_image">) {
@@ -19,5 +18,3 @@ function Author({
     </div>
   );
 }
-
-export default Author;

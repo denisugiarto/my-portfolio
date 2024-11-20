@@ -1,4 +1,4 @@
-import data from "../../../constant/data.json";
+import data from "@/constant/data.json";
 
 export default function About() {
   return (
@@ -7,7 +7,7 @@ export default function About() {
         <h2 className="title-section">About Me</h2>
         <p className="leading-loose">{data.aboutMe}</p>
         <a
-          href="https://api.whatsapp.com/send/?phone=6281217986332&text&app_absent=0"
+          href={data.contact.find((contact) => contact.type === "whatsapp")?.link}
           target="_blank"
           rel="noopener noreferrer"
           className="mt-8 block text-lg font-bold text-blue-400"

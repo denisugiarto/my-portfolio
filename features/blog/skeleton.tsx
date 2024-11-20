@@ -1,4 +1,4 @@
-const Skeleton = () => {
+export default function Skeleton() {
   return (
     <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
       {[...Array(3)].map((_, index) => (
@@ -37,6 +37,4 @@ const Skeleton = () => {
       ))}
     </div>
   );
-};
-
-export default Skeleton;
+}

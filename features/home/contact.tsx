@@ -1,13 +1,13 @@
+import data from "@/constant/data.json";
+import { ContactItem } from "@/types";
+import {
+  SiGithub,
+  SiLinkedin,
+  SiUpwork,
+  SiWhatsapp,
+} from "@icons-pack/react-simple-icons";
 import { LazyMotion, domAnimation, m } from "framer-motion";
 import { MailIcon } from "lucide-react";
-import data from "../../../constant/data.json";
-import {
-  SiWhatsapp,
-  SiLinkedin,
-  SiGithub,
-  SiUpwork,
-} from "@icons-pack/react-simple-icons";
-import { ContactItem } from "@/types";
 
 type IconContactList = {
   [key: string]: JSX.Element;
