@@ -16,8 +16,7 @@ const inter = Montserrat({
 });
 
 const suezOne = Montserrat_Alternates({
-  // weight: ["300", "400", "500", "600", "700", "800"],
-  weight: ["400"],
+  weight: ["300", "400", "500", "600", "700", "800","900"],
   style: ["normal"],
   subsets: ["latin"],
   variable: "--font-suez-one",
