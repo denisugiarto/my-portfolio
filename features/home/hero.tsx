@@ -39,11 +39,11 @@ const Hero = ({ sectionColor }: HeroProps) => {
                 href={linkHireMe}
                 className="group relative block w-fit cursor-pointer border-none bg-transparent p-0 font-body text-base font-medium uppercase outline-none"
               >
-                <span className="duration-[600ms] ease-[cubic-bezier(0.3,0.7,0.4,1)] group-hover:duration-[250ms] absolute left-0 top-0 h-full w-full translate-y-0.5 transform rounded-lg bg-black bg-opacity-25 transition group-hover:translate-y-1 group-active:translate-y-px"></span>
+                <span className="duration-700 ease-[cubic-bezier(0.3,0.7,0.4,1)] group-hover:duration-[250ms] absolute left-0 top-0 h-full w-full translate-y-0.5 transform rounded-lg bg-black bg-opacity-25 transition group-hover:translate-y-1 group-active:translate-y-px"></span>
 
                 <span className="absolute left-0 top-0 h-full w-full animate-pulse rounded-lg bg-gradient-to-l from-[hsl(217,33%,16%)] via-[hsl(217,33%,32%)]  to-[hsl(217,33%,16%)]"></span>
 
-                <div className="duration-[600ms] ease-[cubic-bezier(0.3,0.7,0.4,1)] group-hover:duration-[250ms] relative flex -translate-y-1 transform items-center justify-between gap-3 rounded-lg border border-gray-700 bg-gradient-to-r from-primary to-blue-800 px-6 py-3 text-lg text-white brightness-100 transition group-hover:-translate-y-1.5 group-hover:brightness-110 group-active:-translate-y-0.5">
+                <div className="duration-700 ease-[cubic-bezier(0.3,0.7,0.4,1)] group-hover:duration-[250ms] relative flex -translate-y-1 transform items-center justify-between gap-3 rounded-lg border border-gray-700 bg-gradient-to-r from-primary to-blue-800 px-6 py-3 text-lg text-white brightness-100 transition group-hover:-translate-y-1.5 group-hover:brightness-110 group-active:-translate-y-0.5">
                   <span className="select-none">Let&apos;s Talk!</span>
                   <svg
                     viewBox="0 0 20 20"
@@ -51,9 +51,9 @@ const Hero = ({ sectionColor }: HeroProps) => {
                     className="duration-250 -mr-1 ml-2 h-5 w-5 transition group-hover:translate-x-1"
                   >
                     <path
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                       d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                     ></path>
                   </svg>
                 </div>
