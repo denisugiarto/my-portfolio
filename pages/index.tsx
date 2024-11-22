@@ -19,6 +19,9 @@ const Projects = dynamic(() => import("@/features/home/projects"), {
   ssr: true,
 });
 
+const homePageTitle = "Web Developer: Frontend web developer - Deni Sugiarto";
+const homePageDescription =
+  "Web Developer magician. Experience developing web apps using Nextjs, ReactJs, and mobile apps using React Native with SCRUM agile development.";
 const HomePage = () => {
   const { ref: HomeRef, inView: isHomeVisible } = useInView({ threshold: 0.2 });
   const { ref: ProjectRef, inView: isProjectVisible } = useInView({
@@ -54,16 +57,26 @@ const HomePage = () => {
   return (
     <>
       <NextSeo
-        title="Web Developer - Web Portfolio - front end web dev - Deni Sugiarto"
-        description="Web Developer magician. Experience developing web apps using Nextjs, ReactJs, and mobile apps using React Native with SCRUM agile development."
+        title={homePageTitle}
+        description={homePageDescription}
         canonical="https://denisugiarto.my.id/"
+        additionalMetaTags={[
+          {
+            property: "keywords",
+            content:
+              "Web developer, Freelancer, javascript, typescript, Frontend web developer, Reactjs, Nextjs, React Native, Deni, Deni Sugiarto",
+          },
+          {
+            property: "x",
+            content:
+              "https://www.denisugiarto.my.id/android-chrome-512x512.png",
+          },
+        ]}
         openGraph={{
           url: process.env.NEXT_PUBLIC_SITE_URL,
           siteName: "Deni Sugiarto",
-          title:
-            "Web Developer - Web Portfolio - front end web dev - Deni Sugiarto",
-          description:
-            "Web Developer magician. Experience developing web apps using Nextjs, ReactJs, and mobile apps using React Native with SCRUM agile development.",
+          title: homePageTitle,
+          description: homePageDescription,
           type: "website",
           images: [
             {
