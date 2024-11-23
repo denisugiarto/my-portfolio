@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://denisugiarto.my.id/
+Host: https://denisugiarto.my.id
 
 # Sitemaps
 Sitemap: https://denisugiarto.my.id/sitemap.xml
