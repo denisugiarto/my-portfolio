@@ -1,12 +1,6 @@
-import { Input } from "@/components/ui/input";
-import { useDebounce } from "@/hooks/useDebounce";
-import { fetchArticles } from "@/services/blog";
 import { ArticleType } from "@/types/blog";
-import { useQuery } from "@tanstack/react-query";
-import { Loader2Icon } from "lucide-react";
-import { useEffect, useState } from "react";
-import Skeleton from "./skeleton";
 import BlogCardItem from "./blog-card-item";
+import Skeleton from "./skeleton";
 
 type BlogListProps = {
   blogs: ArticleType[];
@@ -17,8 +11,6 @@ export default function BlogList({ blogs, isLoading, error }: BlogListProps) {
   if (isLoading) return <Skeleton />;
 
   if (error) return <p>{error ?? "the blog list can't load"}</p>;
-
-  console.log("🚀 ~ BlogList ~ blogs:", blogs);
   if (blogs?.length === 0) {
     return (
       <p className="mx-auto w-auto rounded-md bg-slate-100 px-2 py-1 text-center text-sm font-semibold">
