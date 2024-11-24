@@ -44,15 +44,16 @@ export default function BlogContainer() {
 
   return (
     <section className="container pt-40">
-      <div className="mb-4 flex flex-col justify-between md:flex-row">
+      <div className="mb-4 flex flex-col justify-between sm:flex-row">
         <h1 className="mb-4 text-3xl font-bold text-slate-100">Blog</h1>
-        <SearchInput
-          className="w-64"
-          name="search"
-          placeholder="Search"
-          type="text"
-          onSearch={handleSearch}
-        />
+        <div className="sm:w-64">
+          <SearchInput
+            name="search"
+            placeholder="Search"
+            type="text"
+            onSearch={handleSearch}
+          />
+        </div>
       </div>
       <BlogList
         blogs={filteredBlogs}
