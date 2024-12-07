@@ -1,6 +1,8 @@
 # ** My Portfolio Website**
 
 This is a personal portfolio website built using modern web technologies to showcase my skills and experience.
+# Preview 
+![screencapture-denisugiarto-my-id-2024-12-07-20_11_41](https://github.com/user-attachments/assets/2789b29e-1c02-4d25-a7fb-bcd91d6629ff)
 
 ## Built with:
 - Next.js: For a performant and SEO-friendly React framework.
