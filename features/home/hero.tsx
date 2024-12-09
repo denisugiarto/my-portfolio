@@ -63,7 +63,7 @@ const Hero = ({ sectionColor }: HeroProps) => {
               <SiReact className="h-10 w-10 animate-spin-slow" />
             </div>
           </div>
-          <div className="img-wrapper mx-auto flex-grow-0 sm:mx-0">
+          <div className="hidden md:block mx-auto flex-grow-0 sm:mx-0">
             <div className="h-80 w-80">
               <Image
                 priority
