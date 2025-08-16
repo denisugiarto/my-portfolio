@@ -1,26 +1,20 @@
-import { ArticleType } from "@/types/blog";
-import axios from "axios";
+import { BlogPost } from "@/lib/sanity";
+import { getBlogPosts, getBlogPostBySlug } from "@/lib/sanity-queries";
 
-export const fetchArticles = async (): Promise<ArticleType[]> => {
+export const fetchArticles = async (): Promise<BlogPost[]> => {
   try {
-    const { data } = await axios.get<ArticleType[]>(
-      `https://dev.to/api/articles?username=${process.env.NEXT_PUBLIC_DEV_USERNAME}`,
-    );
-    return data;
+    return await getBlogPosts();
   } catch (error: any) {
     console.log(error);
-    throw new Error(error.response?.data?.message || "Error fetching article");
+    throw new Error(error.message || "Error fetching articles");
   }
 };
 
-export const fetchArticleBySlug = async (slug: string): Promise<ArticleType> => {
+export const fetchArticleBySlug = async (slug: string): Promise<BlogPost | null> => {
   try {
-    const { data } = await axios.get<ArticleType>(
-      `https://dev.to/api/articles/${process.env.NEXT_PUBLIC_DEV_USERNAME}/${slug}`,
-    );
-    return data;
+    return await getBlogPostBySlug(slug);
   } catch (error: any) {
     console.log(error);
-    throw new Error(error.response?.data?.message || "Error fetching article");
+    throw new Error(error.message || "Error fetching article");
   }
 };

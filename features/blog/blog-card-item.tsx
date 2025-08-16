@@ -1,63 +1,61 @@
-import { ArticleType } from "@/types/blog";
-import { ArrowRightIcon, MessageCircle, ThumbsUpIcon } from "lucide-react";
+import { BlogPost } from "@/lib/sanity";
+import { urlFor } from "@/lib/sanity";
+import { ArrowRightIcon, Calendar, Clock } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import ReactTimeAgo from "react-time-ago";
 
-export default function BlogCardItem({ blog }: { blog: ArticleType }) {
+export default function BlogCardItem({ blog }: { blog: BlogPost }) {
   return (
-    <div key={blog.id} className="rounded-md bg-background">
+    <div key={blog._id} className="rounded-md bg-background">
       <Image
-        src={blog?.social_image ?? "/no-image.png"}
+        src={blog?.coverImage ? urlFor(blog.coverImage).width(512).height(400).url() : "/no-image.png"}
         alt={blog?.title}
         width={256}
         height={200}
-        className="h-auto w-full rounded-t-md object-scale-down dark:bg-black"
+        className="h-auto w-full rounded-t-md object-cover dark:bg-black"
       />
       <div className="p-4">
         <h2 className="text-lg font-semibold text-foreground">
           {blog.title}
         </h2>
         <div className="mb-2 mt-2 flex gap-x-2 text-sm">
-          <ReactTimeAgo
-            date={new Date(blog.published_at)}
-            locale="en-US"
-            title={blog.published_at}
-            className="text-slate-500"
-          />
-          <p className="text-gray-700 dark:text-slate-300">
-            by
-            <span className="ml-1 font-semibold capitalize text-primary dark:text-slate-300">
-              {blog.user?.name}
+          <div className="flex items-center gap-1">
+            <Calendar size={14} />
+            <span className="text-slate-500">
+              {new Date(blog.publishedAt).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+              })}
             </span>
-          </p>
-          <p className="flex-auto flex-grow text-right text-slate-500">
-            {blog.reading_time_minutes} min read
-          </p>
-        </div>
-        <div className="flex items-center gap-2 text-xs text-slate-900 dark:text-slate-100">
-          <ThumbsUpIcon size={16} />
-          <span className="mr-2">{blog.public_reactions_count} reactions</span>
-          <MessageCircle size={16} />
-          {blog.comments_count} comments
-        </div>
-        <p className="mb-2 mt-2 text-sm text-gray-700 dark:text-slate-300">
-          {blog.description}
-        </p>
-        <div className="flex flex-wrap">
-          {blog.tag_list.map((tag: string) => (
-            <div
-              key={tag}
-              className="rounded-full p-1 text-xs font-medium text-gray-700 dark:text-slate-300"
-            >
-              #{tag}
+          </div>
+          {blog.readTime && (
+            <div className="flex items-center gap-1 text-slate-500">
+              <Clock size={14} />
+              <span>{blog.readTime} min read</span>
             </div>
-          ))}
+          )}
         </div>
-        <div className="mt-2 text-right">
+        {blog.excerpt && (
+          <p className="mb-2 mt-2 text-sm text-gray-700 dark:text-slate-300">
+            {blog.excerpt}
+          </p>
+        )}
+        {blog.tags && blog.tags.length > 0 && (
+          <div className="flex flex-wrap gap-1">
+            {blog.tags.map((tag: string) => (
+              <div
+                key={tag}
+                className="rounded-full bg-slate-100 px-2 py-1 text-xs font-medium text-gray-700 dark:bg-slate-800 dark:text-slate-300"
+              >
+                #{tag}
+              </div>
+            ))}
+          </div>
+        )}
+        <div className="mt-4 text-right">
           <Link
-            href={`/blog/${blog.slug}`}
-            title={blog.url}
+            href={`/blog/${blog.slug.current}`}
             className="inline-flex items-center justify-end gap-2 rounded-full px-2 py-1 font-bold text-primary transition-all duration-500 hover:bg-slate-200 dark:text-slate-200 dark:hover:bg-primary"
           >
             Read More

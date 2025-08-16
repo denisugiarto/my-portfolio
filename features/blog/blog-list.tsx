@@ -1,9 +1,9 @@
-import { ArticleType } from "@/types/blog";
+import { BlogPost } from "@/lib/sanity";
 import BlogCardItem from "./blog-card-item";
 import Skeleton from "./skeleton";
 
 type BlogListProps = {
-  blogs: ArticleType[];
+  blogs: BlogPost[];
   isLoading: boolean;
   error?: string;
 };
@@ -13,15 +13,25 @@ export default function BlogList({ blogs, isLoading, error }: BlogListProps) {
   if (error) return <p>{error ?? "the blog list can't load"}</p>;
   if (blogs?.length === 0) {
     return (
-      <p className="mx-auto w-auto rounded-md bg-slate-100 px-2 py-1 text-center text-sm font-semibold">
-        No articles found
-      </p>
+      <div className="text-center py-12">
+        <div className="mx-auto w-auto rounded-md bg-slate-100 dark:bg-slate-800 px-6 py-4 text-center">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+            No articles found
+          </h3>
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+            Blog posts will appear here once they're added to the CMS.
+          </p>
+          <p className="text-xs text-gray-500 dark:text-gray-500">
+            Visit Sanity Studio to add your first blog post.
+          </p>
+        </div>
+      </div>
     );
   }
 
   return (
     <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
-      {blogs?.map((blog) => <BlogCardItem key={blog.id} blog={blog} />)}
+      {blogs?.map((blog) => <BlogCardItem key={blog._id} blog={blog} />)}
     </div>
   );
 }

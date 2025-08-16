@@ -1,50 +1,52 @@
-import { ArticleType } from "@/types/blog";
-import { MessageCircle, ThumbsUpIcon } from "lucide-react";
-import Link from "next/link";
-import Author from "./author";
+import { BlogPost } from "@/lib/sanity";
+import { Calendar, Clock } from "lucide-react";
 
-export default function BlogHeader({
-  title,
-  tags,
-  comments_count,
-  public_reactions_count,
-  url,
-  readable_publish_date,
-  user,
-}: Pick<
-  ArticleType,
-  | "title"
-  | "tags"
-  | "url"
-  | "public_reactions_count"
-  | "comments_count"
-  | "readable_publish_date"
-  | "user"
->) {
+interface BlogHeaderProps {
+  article: BlogPost;
+}
+
+export default function BlogHeader({ article }: BlogHeaderProps) {
   return (
     <>
-      <h1 className="mb-2 text-xl font-bold sm:text-4xl">{title}</h1>
-      <div className="mb-2 flex gap-4">
-        {tags?.map((tag) => (
-          <div key={tag} className="text-sm font-light italic">
-            #{tag}
+      <h1 className="mb-4 text-3xl font-bold sm:text-5xl">{article.title}</h1>
+      
+      <div className="mb-4 flex items-center gap-4 text-sm text-neutral-500">
+        <div className="flex items-center gap-1">
+          <Calendar size={16} />
+          <span>
+            {new Date(article.publishedAt).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+            })}
+          </span>
+        </div>
+        {article.readTime && (
+          <div className="flex items-center gap-1">
+            <Clock size={16} />
+            <span>{article.readTime} min read</span>
           </div>
-        ))}
+        )}
       </div>
-      <Link
-        href={url}
-        target="_blank"
-        className="mb-2 flex items-center gap-2 text-xs text-slate-900 dark:text-slate-100"
-      >
-        <ThumbsUpIcon size={16} />
-        <span className="mr-2">{public_reactions_count} reactions</span>
-        <MessageCircle size={16} />
-        {comments_count} comments
-      </Link>
-      <div className="flex items-center gap-x-2 text-neutral-500 mt-2">
-        <Author name={user?.name} profile_image={user?.profile_image} />
-        <span className="text-sm ">Posted on {readable_publish_date}</span>
-      </div>
+
+      {article.tags && article.tags.length > 0 && (
+        <div className="mb-6 flex flex-wrap gap-2">
+          {article.tags.map((tag) => (
+            <div
+              key={tag}
+              className="rounded-full bg-slate-100 px-3 py-1 text-sm font-medium text-gray-700 dark:bg-slate-800 dark:text-slate-300"
+            >
+              #{tag}
+            </div>
+          ))}
+        </div>
+      )}
+
+      {article.excerpt && (
+        <p className="mb-6 text-lg text-gray-600 dark:text-gray-400">
+          {article.excerpt}
+        </p>
+      )}
     </>
   );
 }

@@ -1,31 +1,22 @@
 'use client'
 
 import React from "react";
-import { Input } from "@/components/ui/input";
-import { useDebounce } from "@/hooks/useDebounce";
-import { fetchArticles } from "@/services/blog";
 import { BlogPost } from "@/lib/sanity";
-import { useQuery } from "@tanstack/react-query";
-import { Loader2Icon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import Skeleton from "./skeleton";
-import BlogCardItem from "./blog-card-item";
 import BlogList from "./blog-list";
 import SearchInput from "@/components/ui/search-input";
 import BlogCategoryNav from "@/components/blog-category-nav";
 
-export default function BlogContainer() {
+interface BlogStaticContainerProps {
+  initialBlogs: BlogPost[]
+}
+
+export default function BlogStaticContainer({ initialBlogs }: BlogStaticContainerProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   
-  const { data, error, isLoading } = useQuery({
-    queryKey: ["blogs"],
-    queryFn: fetchArticles,
-    refetchOnWindowFocus: false,
-  });
-
-  const [filteredBlogs, setFilteredBlogs] = useState<BlogPost[]>([]);
+  const [filteredBlogs, setFilteredBlogs] = useState<BlogPost[]>(initialBlogs);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [availableCategories, setAvailableCategories] = useState<string[]>([]);
@@ -44,24 +35,24 @@ export default function BlogContainer() {
   }, [searchParams]);
 
   useEffect(() => {
-    if (data) {
-      setFilteredBlogs(data);
+    if (initialBlogs) {
+      setFilteredBlogs(initialBlogs);
       
       // Extract unique categories from all blog posts
       const categories = new Set<string>();
-      data.forEach(blog => {
+      initialBlogs.forEach(blog => {
         if (blog.tags) {
           blog.tags.forEach(tag => categories.add(tag));
         }
       });
       setAvailableCategories(Array.from(categories).sort());
     }
-  }, [data]);
+  }, [initialBlogs]);
 
   useEffect(() => {
-    if (!data) return;
+    if (!initialBlogs) return;
 
-    let filtered = data;
+    let filtered = initialBlogs;
 
     // Filter by search query
     if (searchQuery) {
@@ -79,7 +70,7 @@ export default function BlogContainer() {
     }
 
     setFilteredBlogs(filtered);
-  }, [data, searchQuery, selectedCategory]);
+  }, [initialBlogs, searchQuery, selectedCategory]);
 
   function handleSearch(query: string) {
     setSearchQuery(query);
@@ -132,8 +123,8 @@ export default function BlogContainer() {
       </div>
       <BlogList
         blogs={filteredBlogs}
-        isLoading={isLoading}
-        error={error?.message}
+        isLoading={false}
+        error={undefined}
       />
     </section>
   );
