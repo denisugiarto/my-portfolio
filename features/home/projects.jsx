@@ -6,14 +6,14 @@ import { ArrowRight, ExternalLink } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
-import { fetchProjects } from "@/services/projects";
+import { fetchFeaturedProjects } from "@/services/projects";
 import { urlFor } from "@/lib/sanity";
 
 export default function Projects() {
   
   const { data: projects, isLoading, error } = useQuery({
     queryKey: ["projects"],
-    queryFn: fetchProjects,
+    queryFn: fetchFeaturedProjects,
     refetchOnWindowFocus: false,
   });
 
@@ -60,7 +60,7 @@ export default function Projects() {
               No projects found
             </h3>
             <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-              Projects will appear here once they're added to the CMS.
+              Projects will appear here once they&apos;re added to the CMS.
             </p>
             <p className="text-xs text-gray-500 dark:text-gray-500">
               Visit Sanity Studio to add your projects.

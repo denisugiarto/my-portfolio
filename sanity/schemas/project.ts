@@ -107,6 +107,13 @@ export const project = defineType({
       type: 'url',
     }),
     defineField({
+      name: 'published',
+      title: 'Published',
+      type: 'boolean',
+      description: 'Whether this project should be visible on the portfolio',
+      initialValue: true,
+    }),
+    defineField({
       name: 'featured',
       title: 'Featured Project',
       type: 'boolean',

@@ -65,7 +65,7 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
 }
 
 export async function getProjects(limit?: number): Promise<Project[]> {
-  const query = `*[_type == "project"] | order(order asc, completedAt desc) ${limit ? `[0...${limit}]` : ''} {
+  const query = `*[_type == "project" && published == true] | order(order asc, completedAt desc) ${limit ? `[0...${limit}]` : ''} {
     _id,
     title,
     slug,
@@ -79,6 +79,7 @@ export async function getProjects(limit?: number): Promise<Project[]> {
     liveUrl,
     githubUrl,
     demoUrl,
+    published,
     featured,
     order,
     completedAt,
@@ -89,7 +90,7 @@ export async function getProjects(limit?: number): Promise<Project[]> {
 }
 
 export async function getFeaturedProjects(): Promise<Project[]> {
-  const query = `*[_type == "project" && featured == true] | order(order asc, completedAt desc) {
+  const query = `*[_type == "project" && featured == true && published == true] | order(order asc, completedAt desc) {
     _id,
     title,
     slug,
@@ -103,6 +104,7 @@ export async function getFeaturedProjects(): Promise<Project[]> {
     liveUrl,
     githubUrl,
     demoUrl,
+    published,
     featured,
     order,
     completedAt,
@@ -113,7 +115,7 @@ export async function getFeaturedProjects(): Promise<Project[]> {
 }
 
 export async function getProjectBySlug(slug: string): Promise<Project | null> {
-  const query = `*[_type == "project" && slug.current == $slug][0] {
+  const query = `*[_type == "project" && slug.current == $slug && published == true][0] {
     _id,
     title,
     slug,
@@ -127,6 +129,7 @@ export async function getProjectBySlug(slug: string): Promise<Project | null> {
     liveUrl,
     githubUrl,
     demoUrl,
+    published,
     featured,
     order,
     completedAt,

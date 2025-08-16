@@ -48,6 +48,7 @@ export interface Project {
   liveUrl?: string
   githubUrl?: string
   demoUrl?: string
+  published: boolean
   featured: boolean
   order?: number
   completedAt?: string
