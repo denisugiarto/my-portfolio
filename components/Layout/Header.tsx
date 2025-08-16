@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { getRepoStars } from "@/services/home";
@@ -10,7 +12,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import data from "../../constant/data.json";
 import SimpleTooltip from "../ui/simple-tooltip";
-const ThemeToggle = dynamic(() => import("./ThemeToggle"), { ssr: false });
+const ThemeToggle = dynamic(() => import("./ThemeToggle"), { ssr: true });
 
 const navigation = [
   {
@@ -19,19 +21,19 @@ const navigation = [
   },
   {
     name: "Projects",
-    href: "/#projects",
-  },
-  {
-    name: "Contact Me",
-    href: "/#contactMe",
+    href: "/projects",
   },
   {
     name: "Experience",
-    href: "/#experience",
+    href: "/experience",
   },
   {
     name: "Blog",
     href: "/blog",
+  },
+  {
+    name: "Contact",
+    href: "/contact",
   },
 ] as const;
 export type ActiveNavbarType = (typeof navigation)[number]["name"] | undefined;
@@ -40,11 +42,9 @@ export type HeaderProps = {
   activeNavbar?: ActiveNavbarType;
   isNavColorBlack?: boolean;
 };
-export default function Header({
-  activeNavbar,
-  isNavColorBlack = false,
-}: HeaderProps) {
-  const headerStyleOnScroll = "bg-gray-700/80 shadow-xl border-primary";
+export default function Header({ activeNavbar }: HeaderProps) {
+  const headerStyleOnScroll =
+    "bg-background/80 backdrop-blur-md shadow-lg border-b border-border/50";
   const [scrollY, setScrollY] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const { data: repoStars } = useQuery({
@@ -69,12 +69,30 @@ export default function Header({
     setIsOpen(!isOpen);
   };
 
-  const isScrollLimit = scrollY > 80;
+  const handleNavClick = (href: string) => {
+    setIsOpen(false);
+
+    // Handle smooth scrolling for hash links
+    if (href.startsWith("/#")) {
+      const targetId = href.substring(2);
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    }
+  };
+
+  const isScrollLimit = scrollY > 20;
   return (
     <header
       className={cn(
-        isScrollLimit ? headerStyleOnScroll : "",
-        "fixed top-0 z-10 w-full rounded-b-lg border-b-2 border-transparent transition-all duration-300",
+        isScrollLimit
+          ? headerStyleOnScroll
+          : "border-b border-transparent bg-transparent",
+        "fixed top-0 z-50 w-full transition-all duration-500 ease-out",
       )}
     >
       <div className="container py-2">
@@ -84,7 +102,7 @@ export default function Header({
             <Button
               variant="ghost"
               onClick={mobileMenuToggleHandler}
-              className="inline-flex items-center justify-center rounded-xl p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+              className="inline-flex items-center justify-center rounded-xl p-2 text-muted-foreground transition-all duration-200 hover:bg-primary/20 hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary/50"
             >
               <span className="sr-only">Open main menu</span>
               {isOpen ? (
@@ -98,36 +116,29 @@ export default function Header({
             <div className="flex flex-shrink-0 items-center">
               <Link
                 href="/"
-                className="rounded border border-transparent bg-slate-100 p-1 font-title text-4xl transition duration-300 dark:bg-slate-900"
+                className="rounded-xl border border-border/30 bg-card/80 p-2 px-3 font-title text-3xl font-bold text-foreground backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-primary hover:text-primary-foreground hover:shadow-lg"
                 title={data.profile.name}
               >
                 DS
               </Link>
             </div>
-            <div className="my-auto hidden font-body sm:ml-6 sm:block">
-              <div className="flex space-x-4">
+            <div className="my-auto hidden font-body sm:ml-8 sm:block">
+              <div className="flex space-x-2">
                 {navigation.map((item: NavigationItem) => (
-                  <SimpleTooltip key={item.name} title={item.name}>
-                    <Link
-                      href={item.href}
-                      className={cn(
-                        isScrollLimit
-                          ? "text-gray-200 dark:text-gray-300"
-                          : `${
-                              isNavColorBlack
-                                ? "text-gray-900"
-                                : "text-gray-200"
-                            } dark:text-gray-200`,
-                        activeNavbar?.toLowerCase() === item.name.toLowerCase()
-                          ? "bg-primary font-bold !text-primary-foreground shadow-2xl"
-                          : "hover:bg-primary hover:text-primary-foreground",
-                        "rounded-xl px-3 py-2 text-sm font-semibold transition-all duration-500 ease-in-out",
-                      )}
-                      aria-current={item.name ? "page" : undefined}
-                    >
-                      {item.name}
-                    </Link>
-                  </SimpleTooltip>
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    onClick={() => handleNavClick(item.href)}
+                    className={cn(
+                      activeNavbar?.toLowerCase() === item.name.toLowerCase()
+                        ? "border border-primary/20 bg-primary/90 text-primary-foreground shadow-lg backdrop-blur-sm"
+                        : "text-foreground/90 hover:border-border/30 hover:bg-card/60 hover:text-foreground hover:backdrop-blur-sm",
+                      "rounded-xl border border-transparent px-4 py-2.5 text-sm font-medium backdrop-blur-sm transition-all duration-300 ease-out hover:shadow-md",
+                    )}
+                    aria-current={item.name ? "page" : undefined}
+                  >
+                    {item.name}
+                  </Link>
                 ))}
               </div>
             </div>
@@ -139,16 +150,16 @@ export default function Header({
                 target="_blank"
                 rel="noreferrer"
                 title="Star on Github"
-                className="group flex items-center rounded-xl border border-transparent bg-slate-50 p-1 px-1 font-title text-sm font-bold text-gray-900 transition duration-300 hover:text-yellow-500 dark:border-slate-700 dark:bg-slate-900 dark:text-gray-200 dark:hover:bg-primary dark:hover:text-primary-foreground"
+                className="group flex items-center gap-1 rounded-xl border border-border/30 bg-card/80 p-2 px-3 font-title text-sm font-medium text-foreground backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-primary hover:text-primary-foreground hover:shadow-lg"
               >
-                <SiGithub
-                  title="Star on Github"
-                  className="h-5 text-black dark:text-slate-50 "
-                />
+                <SiGithub title="Star on Github" className="h-4 text-current" />
                 <span>
-                  <StarIcon fill="currentColor" className="h-4 text-inherit" />
+                  <StarIcon
+                    fill="currentColor"
+                    className="h-3.5 text-inherit"
+                  />
                 </span>
-                <span className="hidden font-bold lg:inline">
+                <span className="hidden font-medium lg:inline">
                   {repoStars ?? 1000}
                 </span>
               </a>
@@ -158,28 +169,39 @@ export default function Header({
         </div>
       </div>
 
-      {/* // Mobile menu, show/hide based on menu state. */}
+      {/* Mobile menu backdrop */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 z-30 bg-black/60 backdrop-blur-sm"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
+
+      {/* Mobile menu, show/hide based on menu state. */}
       <div
         className={cn(
-          isOpen ? "w-screen opacity-100" : "w-0 opacity-0",
-          "absolute left-0 h-screen space-y-1 bg-background px-2 pb-3 pt-2 transition-all duration-500 ease-in-out",
+          isOpen ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0",
+          "fixed left-0 top-0 z-40 h-screen w-80 border-r border-border/50 bg-background/90 shadow-2xl backdrop-blur-lg transition-all duration-300 ease-out",
         )}
       >
-        {navigation.map((item: NavigationItem) => (
-          <Link
-            key={item.name}
-            href={item.href}
-            className={cn(
-              activeNavbar?.toLowerCase() === item.name.toLowerCase()
-                ? "bg-primary text-primary-foreground"
-                : "text-slate-900 hover:bg-gray-700 hover:text-primary-foreground dark:text-slate-200",
-              "block cursor-pointer rounded-xl px-3 py-2 text-center text-base font-medium focus:bg-primary",
-            )}
-            aria-current={item.name ? "page" : undefined}
-          >
-            {item.name}
-          </Link>
-        ))}
+        <div className="flex h-full flex-col justify-center space-y-4 px-8">
+          {navigation.map((item: NavigationItem) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              onClick={() => handleNavClick(item.href)}
+              className={cn(
+                activeNavbar?.toLowerCase() === item.name.toLowerCase()
+                  ? "border border-primary/20 bg-primary/90 text-primary-foreground shadow-lg backdrop-blur-sm"
+                  : "border border-border/30 text-foreground backdrop-blur-sm hover:bg-card/60 hover:text-foreground",
+                "block transform cursor-pointer rounded-xl px-6 py-4 text-center text-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-md",
+              )}
+              aria-current={item.name ? "page" : undefined}
+            >
+              {item.name}
+            </Link>
+          ))}
+        </div>
       </div>
     </header>
   );
