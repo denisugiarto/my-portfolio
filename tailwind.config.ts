@@ -31,7 +31,7 @@ const config = {
       },
       backgroundImage: {
         "custom-gradient":
-          "linear-gradient(to left bottom, #00a4be, #1e3b8a, #1e3b8a)",
+          "linear-gradient(to left bottom, #a8d8ea, #d8b4fe, #fecaca)",
       },
       colors: {
         border: "hsl(var(--border))",
@@ -50,6 +50,14 @@ const config = {
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
+        },
+        success: {
+          DEFAULT: "hsl(var(--success))",
+          foreground: "hsl(var(--success-foreground))",
+        },
+        warning: {
+          DEFAULT: "hsl(var(--warning))",
+          foreground: "hsl(var(--warning-foreground))",
         },
         muted: {
           DEFAULT: "hsl(var(--muted))",
