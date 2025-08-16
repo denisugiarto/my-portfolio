@@ -23,14 +23,30 @@ const nextConfig = withBundleAnalyzerConfig(
           port: "",
           pathname: "/dynamic/**",
         },
+        {
+          protocol: "https",
+          hostname: "cdn.sanity.io",
+          port: "",
+          pathname: "/images/**",
+        },
       ],
-    },
-    i18n: {
-      locales: ["en"],
-      defaultLocale: "en",
     },
     experimental: {
       nextScriptWorkers: true,
+    },
+    // Partytown configuration
+    async headers() {
+      return [
+        {
+          source: '/~partytown/(.*)',
+          headers: [
+            {
+              key: 'Cache-Control',
+              value: 'public, max-age=31536000, immutable',
+            },
+          ],
+        },
+      ]
     },
   }),
 );
