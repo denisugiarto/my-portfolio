@@ -61,6 +61,13 @@ export const blogPost = defineType({
       type: 'number',
     }),
     defineField({
+      name: 'published',
+      title: 'Published',
+      type: 'boolean',
+      description: 'Whether this blog post should be visible on the website',
+      initialValue: true,
+    }),
+    defineField({
       name: 'featured',
       title: 'Featured Post',
       type: 'boolean',

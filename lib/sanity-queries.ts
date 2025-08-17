@@ -2,7 +2,7 @@ import {client, BlogPost, Project, SEOSettings, ContactMessage, Experience} from
 
 export async function getBlogPosts(limit?: number): Promise<BlogPost[]> {
   try {
-    const query = `*[_type == "blogPost"] | order(publishedAt desc) ${limit ? `[0...${limit}]` : ''} {
+    const query = `*[_type == "blogPost" && published == true] | order(publishedAt desc) ${limit ? `[0...${limit}]` : ''} {
       _id,
       title,
       slug,
@@ -11,6 +11,7 @@ export async function getBlogPosts(limit?: number): Promise<BlogPost[]> {
       tags,
       publishedAt,
       readTime,
+      published,
       featured,
       seo
     }`
@@ -24,7 +25,7 @@ export async function getBlogPosts(limit?: number): Promise<BlogPost[]> {
 }
 
 export async function getFeaturedBlogPosts(): Promise<BlogPost[]> {
-  const query = `*[_type == "blogPost" && featured == true] | order(publishedAt desc) {
+  const query = `*[_type == "blogPost" && featured == true && published == true] | order(publishedAt desc) [0...3] {
     _id,
     title,
     slug,
@@ -33,6 +34,7 @@ export async function getFeaturedBlogPosts(): Promise<BlogPost[]> {
     tags,
     publishedAt,
     readTime,
+    published,
     featured,
     seo
   }`
@@ -42,7 +44,7 @@ export async function getFeaturedBlogPosts(): Promise<BlogPost[]> {
 
 export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
   try {
-    const query = `*[_type == "blogPost" && slug.current == $slug][0] {
+    const query = `*[_type == "blogPost" && slug.current == $slug && published == true][0] {
       _id,
       title,
       slug,
@@ -52,6 +54,7 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
       tags,
       publishedAt,
       readTime,
+      published,
       featured,
       seo
     }`

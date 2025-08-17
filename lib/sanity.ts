@@ -26,6 +26,7 @@ export interface BlogPost {
   tags?: string[]
   publishedAt: string
   readTime?: number
+  published: boolean
   featured: boolean
   seo?: {
     metaTitle?: string

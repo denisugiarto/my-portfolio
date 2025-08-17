@@ -1,13 +1,13 @@
 'use client'
 
-import { SiGithub } from "@icons-pack/react-simple-icons";
 import { LazyMotion, domAnimation, m } from "framer-motion";
-import { ArrowRight, ExternalLink } from "lucide-react";
-import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import { fetchFeaturedProjects } from "@/services/projects";
-import { urlFor } from "@/lib/sanity";
+import ProjectCard from "@/components/ui/project-card";
+import LoadingState from "@/components/ui/loading-state";
+import EmptyState from "@/components/ui/empty-state";
 
 export default function Projects() {
   
@@ -18,34 +18,14 @@ export default function Projects() {
   });
 
   if (isLoading) {
-    return (
-      <div className="container">
-        <h2 className="title-section font-title">projects</h2>
-        <div className="grid justify-between gap-8 md:grid-cols-2 xl:grid-cols-3">
-          {[...Array(3)].map((_, index) => (
-            <div key={index} className="animate-pulse">
-              <div className="h-60 w-full rounded-lg bg-gray-300 dark:bg-gray-700"></div>
-              <div className="py-4 space-y-2">
-                <div className="h-6 bg-gray-300 dark:bg-gray-700 rounded w-3/4"></div>
-                <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-full"></div>
-                <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-2/3"></div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    );
+    return <LoadingState count={3} variant="container" />;
   }
 
   if (error) {
     return (
       <div className="container">
         <h2 className="title-section font-title">projects</h2>
-        <div className="text-center py-12">
-          <p className="text-red-600 dark:text-red-400">
-            Error loading projects. Please try again later.
-          </p>
-        </div>
+        <EmptyState variant="error" />
       </div>
     );
   }
@@ -54,25 +34,13 @@ export default function Projects() {
     return (
       <div className="container">
         <h2 className="title-section font-title">projects</h2>
-        <div className="text-center py-12">
-          <div className="mx-auto w-auto rounded-md bg-slate-100 dark:bg-slate-800 px-6 py-4 text-center">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-              No projects found
-            </h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-              Projects will appear here once they&apos;re added to the CMS.
-            </p>
-            <p className="text-xs text-gray-500 dark:text-gray-500">
-              Visit Sanity Studio to add your projects.
-            </p>
-          </div>
-        </div>
+        <EmptyState />
       </div>
     );
   }
   return (
     <LazyMotion features={domAnimation}>
-      <section className="relative py-20 lg:py-32 overflow-hidden">
+      <section id="projects" className="relative py-20 lg:py-32 overflow-hidden">
         {/* SVG Background for Projects */}
         <div className="absolute inset-0 pointer-events-none">
           <svg
@@ -226,82 +194,16 @@ export default function Projects() {
         >
         <h2 className="title-section font-title">projects</h2>
         <div className="grid justify-between gap-8 md:grid-cols-2 xl:grid-cols-3">
-          {projects.slice(0, 3).map((project, index) => {
-            return (
-              <m.div
-                className="transition-all ease-linear hover:scale-105 md:mr-4 md:hover:scale-110"
-                key={project._id}
-                initial={{ opacity: 0, y: -20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-              >
-                <Link href={`/projects/${project.slug.current}`}>
-                  <Image
-                    src={project.coverImage ? urlFor(project.coverImage).width(420).height(300).url() : "/no-image.png"}
-                    width={420}
-                    height={300}
-                    className="h-60 w-full rounded-lg object-cover shadow-lg transition-transform hover:scale-105"
-                    alt={`${project.title} project`}
-                  />
-                </Link>
-                <div className="py-4">
-                  <Link href={`/projects/${project.slug.current}`}>
-                    <h3 className="mb-2 text-xl font-bold capitalize text-slate-900 dark:text-slate-200 hover:text-primary transition-colors">
-                      {project.title}
-                    </h3>
-                  </Link>
-                  <p className="text-base text-slate-600 dark:text-slate-300">
-                    {project.shortDescription || project.description}
-                  </p>
-                  <div className="mt-4 flex gap-4">
-                    {project.liveUrl && (
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        title="website link"
-                        className="flex items-center gap-2 rounded-lg border bg-primary px-2 py-1 text-sm leading-none text-white shadow-md transition-all ease-in-out hover:scale-110"
-                      >
-                        <ExternalLink className="h-4 w-4" /> Web
-                      </a>
-                    )}
-                    {project.demoUrl && (
-                      <a
-                        href={project.demoUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        title="demo link"
-                        className="flex items-center gap-2 rounded-lg border bg-secondary px-2 py-1 text-sm leading-none text-white shadow-md transition-all ease-in-out hover:scale-110"
-                      >
-                        <ExternalLink className="h-4 w-4" /> Demo
-                      </a>
-                    )}
-                    {project.githubUrl && (
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        title="github repo"
-                        className="flex items-center gap-2 rounded-lg border bg-primary px-2 py-1 text-sm leading-none text-white shadow-md transition-all ease-in-out hover:scale-110"
-                      >
-                        <SiGithub className="h-4 w-4" /> Repository
-                      </a>
-                    )}
-                  </div>
-                </div>
-                <div className="pb-2 pt-0">
-                  {project.technologies?.map((tech, techIndex) => {
-                    return (
-                      <span key={techIndex} className="tag">
-                        #{tech}
-                      </span>
-                    );
-                  })}
-                </div>
-              </m.div>
-            );
-          })}
+          {projects.slice(0, 3).map((project, index) => (
+            <ProjectCard
+              key={project._id}
+              project={project}
+              index={index}
+              variant="home"
+              showStatus={false}
+              showCompletionDate={false}
+            />
+          ))}
         </div>
         <div className="mt-14 text-center">
           <Link
