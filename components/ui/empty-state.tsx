@@ -27,7 +27,7 @@ export default function EmptyState({
     return (
       <div className="text-center py-12">
         <p className="text-muted-foreground">
-          No projects found in the "{categoryName}" category.
+          No projects found in the &quot;{categoryName}&quot; category.
         </p>
       </div>
     );
