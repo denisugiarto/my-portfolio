@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import data from "@/constant/data.json";
 import {
   SiNextdotjs,
@@ -11,14 +12,14 @@ import Link from "next/link";
 
 // eslint-disable-next-line react/display-name
 export const linkHireMe = data.contact?.find(
-  (contact) => contact.type === "email",
+  (contact) => contact.type === "whatsapp",
 )?.link;
 const Hero = () => {
   return (
     <LazyMotion features={domAnimation}>
       <section className="relative mx-auto max-w-4xl pt-20 text-center">
         {/* Animated SVG Background */}
-        <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <svg
             className="absolute inset-0 h-full w-full"
             viewBox="0 0 1000 1000"
@@ -227,29 +228,31 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="mb-16 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
-          <Link
-            href="#projects"
-            className="group inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-4 font-semibold text-white transition-all duration-300 hover:scale-105 hover:from-blue-700 hover:to-purple-700 hover:shadow-lg hover:shadow-blue-500/25"
-          >
-            <span>See My Projects</span>
-            <svg
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              className="h-4 w-4 transition-transform group-hover:translate-x-1"
+          <Link href="#projects">
+            <Button
+              className="group inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-4 font-semibold text-white transition-all duration-300 hover:scale-105 hover:from-blue-700 hover:to-purple-700 hover:shadow-lg hover:shadow-blue-500/25"
+              variant="outline"
+              size="lg"
             >
-              <path
-                clipRule="evenodd"
-                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                fillRule="evenodd"
-              />
-            </svg>
+              <span>See My Projects</span>
+              <svg
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1"
+              >
+                <path
+                  clipRule="evenodd"
+                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                  fillRule="evenodd"
+                />
+              </svg>
+            </Button>
           </Link>
 
-          <a
-            href={linkHireMe}
-            className="group inline-flex items-center gap-2 rounded-lg border-2 border-gray-400 bg-transparent px-8 py-4 font-semibold text-gray-300 transition-all duration-300 hover:scale-105 hover:border-gray-300 hover:bg-gray-300 hover:text-gray-900"
-          >
-            <span>Let&apos;s Talk</span>
+          <a href={linkHireMe}>
+            <Button variant="outline" size="lg">
+              <span>Let&apos;s Talk</span>
+            </Button>
           </a>
         </m.div>
 
