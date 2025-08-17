@@ -56,8 +56,8 @@
       "id": 1,
       "title": "nft preview card",
       "description": "Nft preview card created using reactJs and Styled Components",
-      "tech": ["ReactJs", "Styled Components", "NFT"],
-      "picture": "/img/nft-card-preview.webp",
+      "technologies": ["ReactJs", "Styled Components", "NFT"],
+      "image": "/img/nft-card-preview.webp",
       "link": "https://nft-preview-card-rosy.vercel.app/",
       "github": "https://github.com/denisugiarto/nft-preview-card"
     },
@@ -65,16 +65,16 @@
       "id": 2,
       "title": "Tatou Tatou",
       "description": "Crowdfunding App for New Zealand to help community during natural disaster",
-      "tech": ["AstroJs", "TailwindCSS", "DaisyUI"],
-      "picture": "/img/tatou.webp",
+      "technologies": ["AstroJs", "TailwindCSS", "DaisyUI"],
+      "image": "/img/tatou.webp",
       "link": "https://tatou-project.netlify.app/homepage/"
     },
     {
       "id": 3,
       "title": "QR Code Generator",
       "description": "QR Code Generator to convert link to QR Code and with download feature to get the QR Code Image",
-      "tech": ["HTML", "CSS", "Javascript"],
-      "picture": "/img/qr_code_generator.webp",
+      "technologies": ["HTML", "CSS", "Javascript"],
+      "image": "/img/qr_code_generator.webp",
       "link": "https://free-qrcodegenerator.netlify.app/",
       "github": "https://github.com/denisugiarto/qrcode-generator"
     },
@@ -82,8 +82,8 @@
       "id": 4,
       "title": "India Restaurant",
       "description": "Landing Page for India Restaurant",
-      "tech": ["AstroJs", "TailwindCSS"],
-      "picture": "/img/india_restaurant.webp",
+      "technologies": ["AstroJs", "TailwindCSS"],
+      "image": "/img/india_restaurant.webp",
       "link": "https://india-restaurant.netlify.app/",
       "github": "https://github.com/denisugiarto/restaurant-app"
     },
@@ -91,8 +91,8 @@
       "id": 5,
       "title": "Conference React",
       "description": "Landing Page for Conference build with ReactJs, React-Bootstrap, and SCSS for custom theme in Bootstrap",
-      "tech": ["ReactJs", "React-Bootstrap", "React-Icons", "SCSS", "dayjs"],
-      "picture": "/img/conference_react.webp",
+      "technologies": ["ReactJs", "React-Bootstrap", "React-Icons", "SCSS", "dayjs"],
+      "image": "/img/conference_react.webp",
       "link": "https://conference-react.netlify.app/",
       "github": "https://github.com/denisugiarto/conference-react"
     },
@@ -100,14 +100,14 @@
       "id": 6,
       "title": "Azai Solutions",
       "description": "Azai Solutions a company provide Security services using AI.",
-      "tech": [
+      "technologies": [
         "NextJs",
         "Typescript",
         "TailwindCSS",
         "Headless UI",
         "ReactSpring"
       ],
-      "picture": "/img/azai_ai.webp",
+      "image": "/img/azai_ai.webp",
       "link": "https://azai.solutions/",
       "github": ""
     }
