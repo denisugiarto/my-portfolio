@@ -234,7 +234,7 @@ const ExperienceClient = () => {
                     >
                       {/* Card Header */}
                       <div className="p-8 pb-6">
-                        <div className="flex flex-col xl:flex-row xl:items-start xl:justify-between gap-4 mb-6">
+                        <div className="flex flex-col sm:flex-row xl:items-start xl:justify-between gap-4 mb-6">
                           <div className="flex-1 space-y-2">
                             <h3 className="text-2xl font-bold text-foreground leading-tight hover:text-primary transition-colors">
                               {experience.jobTitle}
@@ -267,7 +267,7 @@ const ExperienceClient = () => {
                             <p className="text-base font-semibold text-foreground">
                               {formatDateRange(experience.startDate, experience.endDate, experience.currentJob)}
                             </p>
-                            <p className="text-sm text-muted-foreground">
+                            <p className="hidden md:block text-sm text-muted-foreground">
                               {calculateDuration(experience.startDate, experience.endDate, experience.currentJob)}
                             </p>
                             {(experience.location || experience.workType) && (
@@ -279,6 +279,36 @@ const ExperienceClient = () => {
                             )}
                           </div>
                         </div>
+
+                        {/* Job Description */}
+                        {experience.description && (
+                          <div className="mb-8">
+                            <h4 className="text-lg font-semibold text-foreground mb-4">Role & Responsibilities</h4>
+                            <div className="text-muted-foreground">
+                              <ul className="space-y-2">
+                                {Array.isArray(experience.description) ? (
+                                  experience.description.map((block: any, idx: number) => {
+                                    if (block._type === 'block') {
+                                      const text = block.children?.map((child: any) => child.text).join('') || '';
+                                      return text ? (
+                                        <li key={idx} className="flex items-start gap-3 text-base leading-relaxed mb-2">
+                                          <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0 mt-2"></div>
+                                          <span>{text}</span>
+                                        </li>
+                                      ) : null;
+                                    }
+                                    return null;
+                                  })
+                                ) : (
+                                  <li className="flex items-start gap-3 text-base leading-relaxed">
+                                    <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0 mt-2"></div>
+                                    <span>{String(experience.description)}</span>
+                                  </li>
+                                )}
+                              </ul>
+                            </div>
+                          </div>
+                        )}
 
                         {/* Key Achievements */}
                         {experience.achievements && experience.achievements.length > 0 && (
