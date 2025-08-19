@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 }
 
 // Enable ISR with 60 second revalidation
-export const revalidate = 60
+export const revalidate = 3600
 
 export default async function BlogPage() {
   // Fetch blog posts at build time and revalidate every 60 seconds

@@ -47,7 +47,7 @@ export default function BlogStaticContainer({ initialBlogs }: BlogStaticContaine
       });
       setAvailableCategories(Array.from(categories).sort());
     }
-  }, [initialBlogs]);
+  }, []);
 
   useEffect(() => {
     if (!initialBlogs) return;
