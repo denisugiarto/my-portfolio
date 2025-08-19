@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://denisugiarto.my.id/contact</loc><lastmod>2025-08-15T23:47:37.981Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://denisugiarto.my.id</loc><lastmod>2025-08-15T23:47:37.981Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://denisugiarto.my.id/admin/experiences</loc><lastmod>2025-08-15T23:47:37.981Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://denisugiarto.my.id/experience</loc><lastmod>2025-08-15T23:47:37.981Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://denisugiarto.my.id/projects</loc><lastmod>2025-08-15T23:47:37.981Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://denisugiarto.my.id/blog</loc><lastmod>2025-08-15T23:47:37.981Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://denisugiarto.my.id/projects/azai-solutions-landing-page</loc><lastmod>2025-08-15T23:47:37.981Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://denisugiarto.my.id/projects/pumahara-lms-web-interface</loc><lastmod>2025-08-15T23:47:37.981Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://denisugiarto.my.id/projects/ship-ticket-app</loc><lastmod>2025-08-15T23:47:37.981Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://denisugiarto.my.id/projects/tatoutatou-crowdfunding-app</loc><lastmod>2025-08-15T23:47:37.981Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://denisugiarto.my.id/blog/fixing-connection-refused-error-between-pgadmin-and-postgres-in-docker</loc><lastmod>2025-08-15T23:47:37.981Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://denisugiarto.my.id/admin/experiences</loc><lastmod>2025-08-19T04:18:42.025Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://denisugiarto.my.id/contact</loc><lastmod>2025-08-19T04:18:42.025Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://denisugiarto.my.id/blog</loc><lastmod>2025-08-19T04:18:42.025Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://denisugiarto.my.id</loc><lastmod>2025-08-19T04:18:42.025Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://denisugiarto.my.id/projects</loc><lastmod>2025-08-19T04:18:42.025Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://denisugiarto.my.id/experience</loc><lastmod>2025-08-19T04:18:42.025Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://denisugiarto.my.id/projects/azai-solutions-landing-page</loc><lastmod>2025-08-19T04:18:42.025Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://denisugiarto.my.id/projects/ship-ticket-app</loc><lastmod>2025-08-19T04:18:42.025Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://denisugiarto.my.id/projects/tatoutatou-crowdfunding-app</loc><lastmod>2025-08-19T04:18:42.025Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 </urlset>
