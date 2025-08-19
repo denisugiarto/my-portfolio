@@ -1,240 +1,78 @@
 import { Button } from "@/components/ui/button";
-import data from "@/constant/data.json";
-import {
-  SiNextdotjs,
-  SiNodedotjs,
-  SiReact,
-  SiTypescript,
-  SiTailwindcss,
-} from "@icons-pack/react-simple-icons";
-import { LazyMotion, domAnimation, m } from "framer-motion";
 import Link from "next/link";
+import { HeroSection, Technology } from "@/lib/sanity";
+import { HeroAnimations, AnimatedText, AnimatedContent, AnimatedTechStack } from "./hero-animations";
+import { getIconComponent } from "@/lib/icon-mapping";
 
-// eslint-disable-next-line react/display-name
-export const linkHireMe = data.contact?.find(
-  (contact) => contact.type === "whatsapp",
-)?.link;
-const Hero = () => {
-  return (
-    <LazyMotion features={domAnimation}>
-      <section className="relative mx-auto max-w-4xl pt-20 text-center">
-        {/* Animated SVG Background */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <svg
-            className="absolute inset-0 h-full w-full"
-            viewBox="0 0 1000 1000"
-            preserveAspectRatio="xMidYMid slice"
-          >
-            <defs>
-              <linearGradient
-                id="gradient1"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="100%"
-              >
-                <stop offset="0%" stopColor="rgba(59, 130, 246, 0.1)" />
-                <stop offset="50%" stopColor="rgba(147, 51, 234, 0.1)" />
-                <stop offset="100%" stopColor="rgba(59, 130, 246, 0.1)" />
-              </linearGradient>
-              <linearGradient
-                id="gradient2"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="100%"
-              >
-                <stop offset="0%" stopColor="rgba(147, 51, 234, 0.05)" />
-                <stop offset="100%" stopColor="rgba(59, 130, 246, 0.05)" />
-              </linearGradient>
-            </defs>
+interface HeroProps {
+  heroData: HeroSection | null;
+}
 
-            {/* Floating geometric shapes */}
-            <m.circle
-              cx="200"
-              cy="200"
-              r="150"
-              fill="url(#gradient1)"
-              initial={{ scale: 0.8, opacity: 0.3 }}
-              animate={{
-                scale: [0.8, 1.2, 0.8],
-                opacity: [0.3, 0.6, 0.3],
-                x: [0, 50, 0],
-                y: [0, -30, 0],
-              }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-
-            <m.polygon
-              points="800,150 900,300 700,300"
-              fill="url(#gradient2)"
-              initial={{ rotate: 0, opacity: 0.2 }}
-              animate={{
-                rotate: [0, 180, 360],
-                opacity: [0.2, 0.4, 0.2],
-                x: [0, -20, 0],
-                y: [0, 40, 0],
-              }}
-              transition={{
-                duration: 12,
-                repeat: Infinity,
-                ease: "linear",
-              }}
-            />
-
-            <m.rect
-              x="100"
-              y="600"
-              width="200"
-              height="200"
-              rx="20"
-              fill="url(#gradient1)"
-              initial={{ rotate: 45, opacity: 0.2 }}
-              animate={{
-                rotate: [45, 225, 45],
-                opacity: [0.2, 0.5, 0.2],
-                x: [0, 30, 0],
-                y: [0, -50, 0],
-              }}
-              transition={{
-                duration: 10,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-
-            <m.circle
-              cx="750"
-              cy="700"
-              r="100"
-              fill="url(#gradient2)"
-              initial={{ scale: 1, opacity: 0.3 }}
-              animate={{
-                scale: [1, 1.5, 1],
-                opacity: [0.3, 0.6, 0.3],
-                x: [0, -40, 0],
-                y: [0, 20, 0],
-              }}
-              transition={{
-                duration: 6,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-
-            {/* Grid pattern */}
-            <defs>
-              <pattern
-                id="grid"
-                width="50"
-                height="50"
-                patternUnits="userSpaceOnUse"
-              >
-                <path
-                  d="M 50 0 L 0 0 0 50"
-                  fill="none"
-                  stroke="rgba(255,255,255,0.03)"
-                  strokeWidth="1"
-                />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#grid)" />
-
-            {/* Floating dots */}
-            {[...Array(20)].map((_, i) => (
-              <m.circle
-                key={i}
-                cx={100 + i * 45}
-                cy={50 + i * 30}
-                r="2"
-                fill="rgba(255,255,255,0.2)"
-                initial={{ opacity: 0 }}
-                animate={{
-                  opacity: [0, 1, 0],
-                  y: [0, -20, 0],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  delay: i * 0.2,
-                  ease: "easeInOut",
-                }}
-              />
-            ))}
-          </svg>
+const Hero = ({ heroData }: HeroProps) => {
+  // Show minimal loading skeleton if no data (shouldn't happen with SSR but good fallback)
+  if (!heroData) {
+    return (
+      <section className="relative mx-auto max-w-4xl pt-20 lg:pt-32 text-center px-4 min-h-screen flex flex-col justify-center">
+        <div className="animate-pulse">
+          <div className="mb-4 h-8 lg:h-12 rounded bg-gray-700 mx-auto w-3/4"></div>
+          <div className="mb-8 h-16 lg:h-20 rounded bg-gray-700 mx-auto"></div>
+          <div className="mb-10 h-6 rounded bg-gray-700 mx-auto w-2/3"></div>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="h-12 w-40 rounded bg-gray-700"></div>
+            <div className="h-12 w-32 rounded bg-gray-700"></div>
+          </div>
         </div>
-        {/* Main heading with animation */}
-        <m.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <h1 className="mb-6 text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
-            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-blue-500 bg-clip-text text-transparent drop-shadow-lg">
-              Full-Stack Developer
-            </span>
-            <br />
-            <span className="text-white drop-shadow-lg">
-              Building Modern Web Applications
-            </span>
-          </h1>
-        </m.div>
+      </section>
+    );
+  }
 
-        {/* Subtitle with animation */}
-        <m.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
-          <p className="mb-8 text-xl font-medium text-gray-300 md:text-2xl">
-            Hi{" "}
-            <m.span
-              initial={{ rotate: 25 }}
-              animate={{ rotate: 0 }}
-              transition={{
-                repeat: Infinity,
-                duration: 0.3,
-                repeatType: "reverse",
-              }}
-              className="inline-block origin-[70%_70%]"
-            >
-              👋
-            </m.span>{" "}
-            I&apos;m Deni Sugiarto
-          </p>
-        </m.div>
+  // Tech stack data from Sanity (with fallback)
+  const techStack = heroData.technologies?.length ? 
+    heroData.technologies.map((tech: Technology) => ({
+      icon: getIconComponent(tech.icon),
+      name: tech.name,
+      color: tech.color || "#9ca3af" // Default to gray-400 hex
+    })).filter(tech => tech.icon) : // Only include technologies with valid icons
+    [
+      // Fallback hardcoded tech stack
+      { icon: getIconComponent("SiReact"), name: "React", color: "#60a5fa" },
+      { icon: getIconComponent("SiNextdotjs"), name: "Next.js", color: "#ffffff" },
+      { icon: getIconComponent("SiNodedotjs"), name: "Node.js", color: "#34d399" },
+      { icon: getIconComponent("SiTypescript"), name: "TypeScript", color: "#60a5fa" },
+      { icon: getIconComponent("SiTailwindcss"), name: "TailwindCSS", color: "#22d3ee" },
+    ].filter(tech => tech.icon);
 
-        {/* About text with animation */}
-        <m.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
-          <p className="mx-auto mb-12 max-w-2xl text-lg leading-relaxed text-gray-300 md:text-xl">
-            I create fast, scalable, and user-friendly web applications using
-            modern technologies. Specializing in React, Next.js, and Node.js
-            with a focus on clean code and great user experiences.
-          </p>
-        </m.div>
+  return (
+    <HeroAnimations>
+      {/* Main heading with staggered animation */}
+      <AnimatedText>
+        <h1 className="mb-2 bg-gradient-to-r from-blue-400 via-purple-400 to-blue-500 bg-clip-text text-lg font-bold text-transparent lg:text-2xl">
+          {heroData.headline || "Full-Stack Developer"}
+        </h1>
+        <h2 className="block text-2xl font-semibold dark:text-white sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mx-auto max-w-4xl leading-tight">
+          {heroData.subheadline || "Building Modern Web Applications"}
+        </h2>
+      </AnimatedText>
 
-        {/* CTA Buttons with animation */}
-        <m.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="mb-16 flex flex-col items-center justify-center gap-4 sm:flex-row"
-        >
-          <Link href="#projects">
+      {/* About text with animation */}
+      <AnimatedContent delay={0.2}>
+        <p className="mx-auto mb-10 mt-6 max-w-2xl text-base leading-relaxed text-gray-400 md:text-lg">
+          {heroData.bio ||
+            "I create fast, scalable, and user-friendly web applications using modern technologies. Specializing in React, Next.js, and Node.js with a focus on clean code and great user experiences."}
+        </p>
+      </AnimatedContent>
+
+      {/* CTA Buttons with animation */}
+      <AnimatedContent delay={0.4}>
+        <div className="mb-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <Link href={heroData.primaryCTA?.link || "#projects"}>
             <Button
-              className="group inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-4 font-semibold text-white transition-all duration-300 hover:scale-105 hover:from-blue-700 hover:to-purple-700 hover:shadow-lg hover:shadow-blue-500/25"
-              variant="outline"
+              variant="gradient"
+              color="bluePurple"
               size="lg"
+              className="group gap-2 shadow-lg hover:shadow-xl transition-shadow"
             >
-              <span>See My Projects</span>
+              <span>{heroData.primaryCTA?.text || "See My Projects"}</span>
               <svg
                 viewBox="0 0 20 20"
                 fill="currentColor"
@@ -249,49 +87,29 @@ const Hero = () => {
             </Button>
           </Link>
 
-          <a href={linkHireMe}>
-            <Button variant="outline" size="lg">
-              <span>Let&apos;s Talk</span>
-            </Button>
-          </a>
-        </m.div>
+          {heroData.secondaryCTA?.link ? (
+            <a
+              href={heroData.secondaryCTA.link}
+              target={heroData.secondaryCTA.link.startsWith("http") ? "_blank" : "_self"}
+              rel={heroData.secondaryCTA.link.startsWith("http") ? "noopener noreferrer" : undefined}
+            >
+              <Button variant="outline" size="lg" className="hover:shadow-lg transition-shadow">
+                <span>{heroData.secondaryCTA.text}</span>
+              </Button>
+            </a>
+          ) : (
+            <a href="#contact">
+              <Button variant="outline" size="lg" className="hover:shadow-lg transition-shadow">
+                <span>Let&apos;s Talk</span>
+              </Button>
+            </a>
+          )}
+        </div>
+      </AnimatedContent>
 
-        {/* Tech stack indicator */}
-        <m.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.0 }}
-        >
-          <p className="mb-6 text-sm text-gray-400">Technologies I work with</p>
-          <div className="flex flex-wrap items-center justify-center gap-8">
-            <div className="flex items-center gap-2">
-              <SiReact className="h-6 w-6 text-blue-400" />
-              <span className="text-sm text-gray-300">React</span>
-            </div>
-            <span className="text-gray-500">•</span>
-            <div className="flex items-center gap-2">
-              <SiNextdotjs className="h-6 w-6 text-white" />
-              <span className="text-sm text-gray-300">Next.js</span>
-            </div>
-            <span className="text-gray-500">•</span>
-            <div className="flex items-center gap-2">
-              <SiNodedotjs className="h-6 w-6 text-green-400" />
-              <span className="text-sm text-gray-300">Node.js</span>
-            </div>
-            <span className="text-gray-500">•</span>
-            <div className="flex items-center gap-2">
-              <SiTypescript className="h-6 w-6 text-blue-400" />
-              <span className="text-sm text-gray-300">TypeScript</span>
-            </div>
-            <span className="text-gray-500">•</span>
-            <div className="flex items-center gap-2">
-              <SiTailwindcss className="h-6 w-6 text-cyan-400" />
-              <span className="text-sm text-gray-300">TailwindCSS</span>
-            </div>
-          </div>
-        </m.div>
-      </section>
-    </LazyMotion>
+      {/* Tech stack indicator */}
+      <AnimatedTechStack techs={techStack} />
+    </HeroAnimations>
   );
 };
 

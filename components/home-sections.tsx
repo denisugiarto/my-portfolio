@@ -1,12 +1,13 @@
 "use client";
 
 import { Layout } from "@/components/Layout/Layout";
-import Hero, { linkHireMe } from "@/features/home/hero";
-import dynamic from "next/dynamic";
-import { useState, useEffect } from "react";
+import Hero from "@/features/home/hero";
+import Projects from "@/features/home/projects";
 import { cn } from "@/lib/utils";
-import WhatsappIcon from "@/public/WhatsApp-icon.svg";
-import { ArrowBigUp, ArrowBigUpIcon, PhoneCallIcon } from "lucide-react";
+import { ArrowBigUpIcon } from "lucide-react";
+import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
+import { HeroSection, Project } from "@/lib/sanity";
 
 const Contact = dynamic(() => import("@/features/home/contact"), {
   loading: () => <p>Loading...</p>,
@@ -16,16 +17,17 @@ const Experience = dynamic(() => import("@/features/home/experience"), {
   loading: () => <p>Loading...</p>,
   ssr: true,
 });
-const Projects = dynamic(() => import("@/features/home/projects"), {
-  loading: () => <p>Loading...</p>,
-  ssr: true,
-});
 const Blog = dynamic(() => import("@/features/home/blog"), {
   loading: () => <p>Loading...</p>,
   ssr: true,
 });
 
-export default function HomeSections() {
+interface HomeSectionsProps {
+  heroData: HeroSection | null;
+  projectsData: Project[] | null;
+}
+
+export default function HomeSections({ heroData, projectsData }: HomeSectionsProps) {
   const [isHomeVisible, setIsHomeVisible] = useState(true);
 
   useEffect(() => {
@@ -49,19 +51,19 @@ export default function HomeSections() {
 
   return (
     <Layout activeNavbar="Home">
-      <Hero />
-      <Projects />
+      <Hero heroData={heroData} />
+      <Projects projects={projectsData} />
       <Blog />
       <Contact />
       <a
         href="#"
         className={cn(
           !isHomeVisible ? "opacity-100" : "opacity-0",
-          "fixed bottom-8 right-8 flex items-center justify-center h-10 w-10 rounded-full  transition-opacity",
+          "fixed bottom-8 right-8 flex h-10 w-10 items-center justify-center rounded-full  transition-opacity",
         )}
         aria-label="Back to Top"
       >
-        <ArrowBigUpIcon className="h-6 w-6 bg-re" />
+        <ArrowBigUpIcon className="bg-re h-6 w-6" />
       </a>
     </Layout>
   );
