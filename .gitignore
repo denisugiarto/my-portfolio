@@ -38,3 +38,9 @@ yarn-error.log*
 sw.*
 workbox-*
 swe-worker-*
+
+
+
+# build
+dist
+tsconfig.tsbuildinfo

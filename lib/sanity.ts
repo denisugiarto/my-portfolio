@@ -138,8 +138,8 @@ export interface Experience {
   currentJob: boolean
   description?: any[]
   achievements?: string[]
-  technologies?: string[]
-  skills?: string[]
+  technologies?: { name: string }[]
+  skills?: { name: string }[]
   companyLogo?: any
   featured: boolean
   order: number

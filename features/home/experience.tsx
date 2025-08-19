@@ -280,10 +280,10 @@ const Experience = () => {
                                 <div className="flex flex-wrap gap-2">
                                   {experience.technologies.map((tech) => (
                                     <span 
-                                      key={tech}
+                                      key={tech.name}
                                       className="inline-flex items-center bg-primary/10 text-primary px-3 py-1.5 rounded-full text-sm font-medium"
                                     >
-                                      {tech}
+                                      {tech.name}
                                     </span>
                                   ))}
                                 </div>
@@ -298,10 +298,10 @@ const Experience = () => {
                                 <div className="flex flex-wrap gap-2">
                                   {experience.skills.map((skill) => (
                                     <span 
-                                      key={skill}
+                                      key={skill.name}
                                       className="inline-flex items-center bg-secondary text-secondary-foreground px-3 py-1.5 rounded-full text-sm font-medium"
                                     >
-                                      {skill}
+                                      {skill.name}
                                     </span>
                                   ))}
                                 </div>

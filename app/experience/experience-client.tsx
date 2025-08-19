@@ -316,7 +316,7 @@ const ExperienceClient = () => {
                                 <div className="flex flex-wrap gap-2">
                                   {experience.technologies.map((tech, idx) => (
                                     <m.span 
-                                      key={tech}
+                                      key={tech.name}
                                       className="inline-flex items-center bg-primary/10 text-primary px-3 py-1.5 rounded-full text-sm font-medium hover:bg-primary/20 transition-colors cursor-default"
                                       initial={{ opacity: 0, scale: 0.8 }}
                                       whileInView={{ opacity: 1, scale: 1 }}
@@ -324,7 +324,7 @@ const ExperienceClient = () => {
                                       viewport={{ once: true }}
                                       whileHover={{ scale: 1.05 }}
                                     >
-                                      {tech}
+                                      {tech.name}
                                     </m.span>
                                   ))}
                                 </div>
@@ -339,7 +339,7 @@ const ExperienceClient = () => {
                                 <div className="flex flex-wrap gap-2">
                                   {experience.skills.map((skill, idx) => (
                                     <m.span 
-                                      key={skill}
+                                      key={skill.name}
                                       className="inline-flex items-center bg-secondary text-secondary-foreground px-3 py-1.5 rounded-full text-sm font-medium hover:bg-secondary/80 transition-colors cursor-default"
                                       initial={{ opacity: 0, scale: 0.8 }}
                                       whileInView={{ opacity: 1, scale: 1 }}
@@ -347,7 +347,7 @@ const ExperienceClient = () => {
                                       viewport={{ once: true }}
                                       whileHover={{ scale: 1.05 }}
                                     >
-                                      {skill}
+                                      {skill.name}
                                     </m.span>
                                   ))}
                                 </div>

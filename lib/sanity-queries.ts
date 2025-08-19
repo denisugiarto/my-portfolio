@@ -262,8 +262,12 @@ export async function getExperiences(): Promise<Experience[]> {
       currentJob,
       description,
       achievements,
-      technologies,
-      skills,
+      technologies[]->{
+        name
+      },
+      skills[]->{
+        name
+      },
       companyLogo,
       featured,
       order,
@@ -293,8 +297,12 @@ export async function getFeaturedExperiences(): Promise<Experience[]> {
       currentJob,
       description,
       achievements,
-      technologies,
-      skills,
+      technologies[]->{
+        name
+      },
+      skills[]->{
+        name
+      },
       companyLogo,
       featured,
       order,

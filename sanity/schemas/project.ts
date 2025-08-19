@@ -154,15 +154,7 @@ export const project = defineType({
           title: 'Meta Description',
           type: 'text',
           rows: 3,
-        }),
-        defineField({
-          name: 'ogImage',
-          title: 'Open Graph Image',
-          type: 'image',
-          options: {
-            hotspot: true,
-          },
-        }),
+        }),        
       ],
     }),
   ],
