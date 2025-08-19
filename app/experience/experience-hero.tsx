@@ -6,7 +6,7 @@ import { LazyMotion, domAnimation, m } from "framer-motion";
 const ExperienceHero = () => {
   return (
     <LazyMotion features={domAnimation}>
-      <section className="relative py-20 lg:py-32 overflow-hidden">
+      <section className="relative pt-20 lg:pt-12 overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0 pointer-events-none">
           <svg
@@ -74,7 +74,7 @@ const ExperienceHero = () => {
               transition={{ duration: 0.8 }}
             >
               Professional
-              <span className="block bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent text-4xl md:text-5xl">
                 Experience
               </span>
             </m.h1>

@@ -16,7 +16,7 @@ const ExperienceClient = () => {
 
   if (isLoading) {
     return (
-      <section className="relative py-20 lg:py-32">
+      <section className="relative">
         <div className="container">
           <div className="mx-auto max-w-5xl">
             <div className="space-y-16">
@@ -48,7 +48,7 @@ const ExperienceClient = () => {
 
   if (error) {
     return (
-      <section className="relative py-20 lg:py-32">
+      <section className="relative">
         <div className="container">
           <div className="mx-auto max-w-5xl">
             <div className="text-center py-12">
@@ -93,7 +93,7 @@ const ExperienceClient = () => {
 
   return (
     <LazyMotion features={domAnimation}>
-      <section className="relative py-20 lg:py-32 overflow-hidden">
+      <section className="relative">
         {/* Decorative Background */}
         <div className="absolute inset-0 pointer-events-none">
           <svg
