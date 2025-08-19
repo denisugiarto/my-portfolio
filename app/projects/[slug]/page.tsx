@@ -221,12 +221,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                         <div>
                           <h4 className="mb-2 text-sm font-semibold text-card-foreground">Technologies</h4>
                           <div className="flex flex-wrap gap-1">
-                            {project.technologies.map((tech) => (
+                            {project.technologies.map((tech, index) => (
                               <span
-                                key={tech}
+                                key={tech._id || index}
                                 className="bg-muted text-muted-foreground rounded px-2 py-1 text-xs"
                               >
-                                {tech}
+                                {tech.name}
                               </span>
                             ))}
                           </div>

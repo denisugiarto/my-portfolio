@@ -43,7 +43,7 @@ export default function ProjectCard({
             src={project.coverImage ? urlFor(project.coverImage).width(420).height(300).url() : "/no-image.png"}
             width={420}
             height={300}
-            className={`h-60 w-full object-cover transition-transform ${
+            className={`h-60 w-full object-cover object-center transition-transform ${
               isHomeVariant 
                 ? 'rounded-lg shadow-lg hover:scale-105'
                 : 'group-hover:scale-105'
@@ -90,7 +90,7 @@ export default function ProjectCard({
           <div className={`flex flex-wrap gap-1 ${isHomeVariant ? 'pb-2 pt-0' : 'mb-4'}`}>
             {project.technologies.slice(0, isHomeVariant ? undefined : 3).map((tech, techIndex) => (
               <span key={techIndex} className={`tag ${isHomeVariant ? '' : 'text-xs'}`}>
-                #{tech}
+                #{tech.name}
               </span>
             ))}
             {!isHomeVariant && project.technologies.length > 3 && (
