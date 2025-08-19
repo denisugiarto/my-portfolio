@@ -10,6 +10,7 @@ export const client = createClient({
   token: process.env.SANITY_API_TOKEN, // Optional: only if dataset is private
 })
 
+
 const builder = imageUrlBuilder(client)
 
 export function urlFor(source: any) {
@@ -35,6 +36,42 @@ export interface BlogPost {
   }
 }
 
+export interface Technology {
+  _id: string
+  name: string
+  slug: {current: string}
+  category: string
+  description?: string
+  icon?: string
+  color?: string
+  website?: string
+  proficiencyLevel?: string
+  yearsOfExperience?: number
+  featured: boolean
+  isActive: boolean
+  order?: number
+}
+
+export interface SocialLink {
+  _id: string
+  platform: string
+  customPlatformName?: string
+  url: string
+  username?: string
+  label?: string
+  icon?: string
+  color?: string
+  isPublic: boolean
+  isPrimary: boolean
+  openInNewTab: boolean
+  showInHeader: boolean
+  showInFooter: boolean
+  showInHero: boolean
+  showInContact: boolean
+  order?: number
+  description?: string
+}
+
 export interface Project {
   _id: string
   title: string
@@ -43,7 +80,7 @@ export interface Project {
   shortDescription?: string
   coverImage?: any
   gallery?: any[]
-  technologies?: string[]
+  technologies?: Technology[]
   category?: string
   status: string
   liveUrl?: string
@@ -65,19 +102,7 @@ export interface ContactMessage {
   _id?: string
   name: string
   email: string
-  subject?: string
   message: string
-  phone?: string
-  company?: string
-  projectType?: string
-  budget?: string
-  timeline?: string
-  status?: string
-  priority?: string
-  notes?: string
-  submittedAt: string
-  ipAddress?: string
-  userAgent?: string
 }
 
 export interface SEOSettings {
@@ -119,4 +144,26 @@ export interface Experience {
   featured: boolean
   order: number
   visible: boolean
+}
+
+export interface HeroSection {
+  _id: string
+  headline: string
+  subheadline: string
+  bio: string
+  primaryCTA: {
+    text: string
+    link?: string
+  }
+  secondaryCTA: {
+    text: string
+    link?: string
+  }
+  backgroundImage?: any
+  availabilityStatus: {
+    isAvailable: boolean
+    statusText: string
+  }
+  technologies?: Technology[]
+  socialLinks?: SocialLink[]
 }

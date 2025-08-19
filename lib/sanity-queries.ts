@@ -1,8 +1,20 @@
-import {client, BlogPost, Project, SEOSettings, ContactMessage, Experience} from './sanity'
+import {
+  client,
+  BlogPost,
+  Project,
+  SEOSettings,
+  ContactMessage,
+  Experience,
+  HeroSection,
+  Technology,
+  SocialLink,
+} from "./sanity";
 
 export async function getBlogPosts(limit?: number): Promise<BlogPost[]> {
   try {
-    const query = `*[_type == "blogPost" && published == true] | order(publishedAt desc) ${limit ? `[0...${limit}]` : ''} {
+    const query = `*[_type == "blogPost" && published == true] | order(publishedAt desc) ${
+      limit ? `[0...${limit}]` : ""
+    } {
       _id,
       title,
       slug,
@@ -14,13 +26,13 @@ export async function getBlogPosts(limit?: number): Promise<BlogPost[]> {
       published,
       featured,
       seo
-    }`
-    
-    const result = await client.fetch(query)
-    return result || []
+    }`;
+
+    const result = await client.fetch(query);
+    return result || [];
   } catch (error) {
-    console.error('Error fetching blog posts:', error)
-    return []
+    console.error("Error fetching blog posts:", error);
+    return [];
   }
 }
 
@@ -37,12 +49,14 @@ export async function getFeaturedBlogPosts(): Promise<BlogPost[]> {
     published,
     featured,
     seo
-  }`
-  
-  return await client.fetch(query)
+  }`;
+
+  return await client.fetch(query);
 }
 
-export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
+export async function getBlogPostBySlug(
+  slug: string,
+): Promise<BlogPost | null> {
   try {
     const query = `*[_type == "blogPost" && slug.current == $slug && published == true][0] {
       _id,
@@ -57,18 +71,20 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
       published,
       featured,
       seo
-    }`
-    
-    const result = await client.fetch(query, {slug})
-    return result || null
+    }`;
+
+    const result = await client.fetch(query, { slug });
+    return result || null;
   } catch (error) {
-    console.error('Error fetching blog post:', error)
-    return null
+    console.error("Error fetching blog post:", error);
+    return null;
   }
 }
 
 export async function getProjects(limit?: number): Promise<Project[]> {
-  const query = `*[_type == "project" && published == true] | order(order asc, completedAt desc) ${limit ? `[0...${limit}]` : ''} {
+  const query = `*[_type == "project" && published == true] | order(order asc, completedAt desc) ${
+    limit ? `[0...${limit}]` : ""
+  } {
     _id,
     title,
     slug,
@@ -76,7 +92,21 @@ export async function getProjects(limit?: number): Promise<Project[]> {
     shortDescription,
     coverImage,
     gallery,
-    technologies,
+    technologies[]->{
+      _id,
+      name,
+      slug,
+      category,
+      description,
+      icon,
+      color,
+      website,
+      proficiencyLevel,
+      yearsOfExperience,
+      featured,
+      isActive,
+      order
+    },
     category,
     status,
     liveUrl,
@@ -87,9 +117,9 @@ export async function getProjects(limit?: number): Promise<Project[]> {
     order,
     completedAt,
     seo
-  }`
-  
-  return await client.fetch(query)
+  }`;
+
+  return await client.fetch(query);
 }
 
 export async function getFeaturedProjects(): Promise<Project[]> {
@@ -101,7 +131,21 @@ export async function getFeaturedProjects(): Promise<Project[]> {
     shortDescription,
     coverImage,
     gallery,
-    technologies,
+    technologies[]->{
+      _id,
+      name,
+      slug,
+      category,
+      description,
+      icon,
+      color,
+      website,
+      proficiencyLevel,
+      yearsOfExperience,
+      featured,
+      isActive,
+      order
+    },
     category,
     status,
     liveUrl,
@@ -112,9 +156,9 @@ export async function getFeaturedProjects(): Promise<Project[]> {
     order,
     completedAt,
     seo
-  }`
-  
-  return await client.fetch(query)
+  }`;
+
+  return await client.fetch(query);
 }
 
 export async function getProjectBySlug(slug: string): Promise<Project | null> {
@@ -126,7 +170,21 @@ export async function getProjectBySlug(slug: string): Promise<Project | null> {
     shortDescription,
     coverImage,
     gallery,
-    technologies,
+    technologies[]->{
+      _id,
+      name,
+      slug,
+      category,
+      description,
+      icon,
+      color,
+      website,
+      proficiencyLevel,
+      yearsOfExperience,
+      featured,
+      isActive,
+      order
+    },
     category,
     status,
     liveUrl,
@@ -138,12 +196,14 @@ export async function getProjectBySlug(slug: string): Promise<Project | null> {
     completedAt,
     content,
     seo
-  }`
-  
-  return await client.fetch(query, {slug})
+  }`;
+
+  return await client.fetch(query, { slug });
 }
 
-export async function getSEOSettings(pageId: string): Promise<SEOSettings | null> {
+export async function getSEOSettings(
+  pageId: string,
+): Promise<SEOSettings | null> {
   const query = `*[_type == "seoSettings" && pageId == $pageId][0] {
     _id,
     pageId,
@@ -162,39 +222,29 @@ export async function getSEOSettings(pageId: string): Promise<SEOSettings | null
     noIndex,
     noFollow,
     structuredData
-  }`
-  
-  return await client.fetch(query, {pageId})
+  }`;
+
+  return await client.fetch(query, { pageId });
 }
 
-export async function submitContactMessage(message: Omit<ContactMessage, '_id'>): Promise<ContactMessage> {
+export async function submitContactMessage(
+  message: Omit<ContactMessage, "_id">,
+): Promise<ContactMessage> {
   return await client.create({
-    _type: 'contact',
+    _type: "contact",
     ...message,
-  })
+  });
 }
 
 export async function getContactMessages(): Promise<ContactMessage[]> {
-  const query = `*[_type == "contact"] | order(submittedAt desc) {
+  const query = `*[_type == "contact"] | order(_createdAt desc) {
     _id,
     name,
     email,
-    subject,
-    message,
-    phone,
-    company,
-    projectType,
-    budget,
-    timeline,
-    status,
-    priority,
-    notes,
-    submittedAt,
-    ipAddress,
-    userAgent
-  }`
-  
-  return await client.fetch(query)
+    message
+  }`;
+
+  return await client.fetch(query);
 }
 
 export async function getExperiences(): Promise<Experience[]> {
@@ -218,13 +268,13 @@ export async function getExperiences(): Promise<Experience[]> {
       featured,
       order,
       visible
-    }`
-    
-    const result = await client.fetch(query)
-    return result || []
+    }`;
+
+    const result = await client.fetch(query);
+    return result || [];
   } catch (error) {
-    console.error('Error fetching experiences:', error)
-    return []
+    console.error("Error fetching experiences:", error);
+    return [];
   }
 }
 
@@ -249,17 +299,19 @@ export async function getFeaturedExperiences(): Promise<Experience[]> {
       featured,
       order,
       visible
-    }`
-    
-    const result = await client.fetch(query)
-    return result || []
+    }`;
+
+    const result = await client.fetch(query);
+    return result || [];
   } catch (error) {
-    console.error('Error fetching featured experiences:', error)
-    return []
+    console.error("Error fetching featured experiences:", error);
+    return [];
   }
 }
 
-export async function getExperienceById(id: string): Promise<Experience | null> {
+export async function getExperienceById(
+  id: string,
+): Promise<Experience | null> {
   try {
     const query = `*[_type == "experience" && _id == $id][0] {
       _id,
@@ -280,12 +332,211 @@ export async function getExperienceById(id: string): Promise<Experience | null> 
       featured,
       order,
       visible
-    }`
-    
-    const result = await client.fetch(query, {id})
-    return result || null
+    }`;
+
+    const result = await client.fetch(query, { id });
+    return result || null;
   } catch (error) {
-    console.error('Error fetching experience:', error)
-    return null
+    console.error("Error fetching experience:", error);
+    return null;
+  }
+}
+
+export async function getHeroSection(): Promise<HeroSection | null> {
+  try {
+    const query = `*[_type == "heroSection"][0] {
+      _id,
+      headline,
+      subheadline,
+      bio,
+      primaryCTA,
+      secondaryCTA,
+      backgroundImage,
+      availabilityStatus,
+      technologies[]->{
+        _id,
+        name,
+        icon,
+        color
+      }
+    }`;
+
+    const result = await client.fetch(query);
+    return result || null;
+  } catch (error) {
+    console.error("Error fetching hero section:", error);
+    return null;
+  }
+}
+
+export async function getTechnologies(): Promise<Technology[]> {
+  try {
+    const query = `*[_type == "technology"] | order(order asc, name asc) {
+      _id,
+      name,
+      slug,
+      category,
+      description,
+      icon,
+      color,
+      website,
+      proficiencyLevel,
+      yearsOfExperience,
+      featured,
+      isActive,
+      order
+    }`;
+
+    const result = await client.fetch(query);
+    return result || [];
+  } catch (error) {
+    console.error("Error fetching technologies:", error);
+    return [];
+  }
+}
+
+export async function getFeaturedTechnologies(): Promise<Technology[]> {
+  try {
+    const query = `*[_type == "technology" && featured == true && isActive == true] | order(order asc, name asc) {
+      _id,
+      name,
+      slug,
+      category,
+      description,
+      icon,
+      color,
+      website,
+      proficiencyLevel,
+      yearsOfExperience,
+      featured,
+      isActive,
+      order
+    }`;
+
+    const result = await client.fetch(query);
+    return result || [];
+  } catch (error) {
+    console.error("Error fetching featured technologies:", error);
+    return [];
+  }
+}
+
+export async function getSocialLinks(): Promise<SocialLink[]> {
+  try {
+    const query = `*[_type == "socialLink" && isPublic == true] | order(order asc, platform asc) {
+      _id,
+      platform,
+      customPlatformName,
+      url,
+      username,
+      label,
+      icon,
+      color,
+      isPublic,
+      isPrimary,
+      openInNewTab,
+      showInHeader,
+      showInFooter,
+      showInHero,
+      showInContact,
+      order,
+      description
+    }`;
+
+    const result = await client.fetch(query);
+    return result || [];
+  } catch (error) {
+    console.error("Error fetching social links:", error);
+    return [];
+  }
+}
+
+export async function getHeaderSocialLinks(): Promise<SocialLink[]> {
+  try {
+    const query = `*[_type == "socialLink" && isPublic == true && showInHeader == true] | order(order asc, platform asc) {
+      _id,
+      platform,
+      customPlatformName,
+      url,
+      username,
+      label,
+      icon,
+      color,
+      isPublic,
+      isPrimary,
+      openInNewTab,
+      showInHeader,
+      showInFooter,
+      showInHero,
+      showInContact,
+      order,
+      description
+    }`;
+
+    const result = await client.fetch(query);
+    return result || [];
+  } catch (error) {
+    console.error("Error fetching header social links:", error);
+    return [];
+  }
+}
+
+export async function getFooterSocialLinks(): Promise<SocialLink[]> {
+  try {
+    const query = `*[_type == "socialLink" && isPublic == true && showInFooter == true] | order(order asc, platform asc) {
+      _id,
+      platform,
+      customPlatformName,
+      url,
+      username,
+      label,
+      icon,
+      color,
+      isPublic,
+      isPrimary,
+      openInNewTab,
+      showInHeader,
+      showInFooter,
+      showInHero,
+      showInContact,
+      order,
+      description
+    }`;
+
+    const result = await client.fetch(query);
+    return result || [];
+  } catch (error) {
+    console.error("Error fetching footer social links:", error);
+    return [];
+  }
+}
+
+export async function getPrimaryContactLinks(): Promise<SocialLink[]> {
+  try {
+    const query = `*[_type == "socialLink" && isPublic == true && isPrimary == true] | order(order asc, platform asc) {
+      _id,
+      platform,
+      customPlatformName,
+      url,
+      username,
+      label,
+      icon,
+      color,
+      isPublic,
+      isPrimary,
+      openInNewTab,
+      showInHeader,
+      showInFooter,
+      showInHero,
+      showInContact,
+      order,
+      description
+    }`;
+
+    const result = await client.fetch(query);
+    return result || [];
+  } catch (error) {
+    console.error("Error fetching primary contact links:", error);
+    return [];
   }
 }

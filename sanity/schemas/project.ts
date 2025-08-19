@@ -58,10 +58,13 @@ export const project = defineType({
       name: 'technologies',
       title: 'Technologies',
       type: 'array',
-      of: [{type: 'string'}],
-      options: {
-        layout: 'tags',
-      },
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: 'technology' }]
+        }
+      ],
+      description: 'Technologies used in this project'
     }),
     defineField({
       name: 'category',
