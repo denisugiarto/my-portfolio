@@ -6,7 +6,7 @@ import { LazyMotion, domAnimation, m } from "framer-motion";
 const ExperienceHero = () => {
   return (
     <LazyMotion features={domAnimation}>
-      <section className="relative pt-20 lg:pt-12 overflow-hidden">
+      <section className="relative pt-20 lg:pt-12 pb-4">
         {/* Background Elements */}
         <div className="absolute inset-0 pointer-events-none">
           <svg
@@ -80,34 +80,14 @@ const ExperienceHero = () => {
             </m.h1>
             
             <m.p 
-              className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed"
+              className="text-xl md:text-2xl text-muted-foreground leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               A journey through my career, showcasing the roles, achievements, and technologies 
               that have shaped my professional growth and expertise.
-            </m.p>
-
-            <m.div
-              className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              <span className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                Career Timeline
-              </span>
-              <span className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                Key Achievements
-              </span>
-              <span className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                Technologies & Skills
-              </span>
-            </m.div>
+            </m.p>            
           </div>
         </div>
       </section>
