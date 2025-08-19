@@ -9,7 +9,6 @@ import {blockContent} from './blockContent'
 import {heroSection} from './heroSection'
 import {aboutSection} from './aboutSection'
 import {skillsSection} from './skillsSection'
-import {resumeSection} from './resumeSection'
 import {siteSettings} from './siteSettings'
 
 export const schemaTypes = [
@@ -21,7 +20,6 @@ export const schemaTypes = [
   heroSection,
   aboutSection,
   skillsSection,
-  resumeSection,
   
   // Content Types
   blogPost,
