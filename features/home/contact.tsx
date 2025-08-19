@@ -1,7 +1,4 @@
 import ContactForm from "@/components/contact-form";
-import SimpleTooltip from "@/components/ui/simple-tooltip";
-import data from "@/constant/data.json";
-import { ContactItem } from "@/types";
 import {
   SiGithub,
   SiLinkedin,
@@ -25,7 +22,7 @@ const iconContactList: IconContactList = {
 export default function Contact() {
   return (
     <LazyMotion features={domAnimation}>
-      <section className="relative py-20 lg:py-32 overflow-hidden">
+      <section id="contact" className="relative overflow-hidden">
         {/* SVG Background for Contact */}
         <div className="absolute inset-0 pointer-events-none">
           <svg

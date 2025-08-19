@@ -18,12 +18,7 @@ export default function SimpleContactForm() {
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
-    message: '',
-    phone: '',
-    company: '',
-    projectType: '',
-    budget: '',
-    timeline: ''
+    message: ''
   });
   
   const [errors, setErrors] = useState<FormErrors>({});
@@ -90,12 +85,7 @@ export default function SimpleContactForm() {
       setFormData({
         name: '',
         email: '',
-        message: '',
-        phone: '',
-        company: '',
-        projectType: '',
-        budget: '',
-        timeline: ''
+        message: ''
       });
     } catch (error: any) {
       setStatus('error');

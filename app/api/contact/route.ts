@@ -69,30 +69,9 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    if (!contactData.projectType?.trim()) {
-      return NextResponse.json(
-        { message: 'Project type is required', error: 'VALIDATION_ERROR' },
-        { status: 400 }
-      )
-    }
-
-    if (!contactData.budget?.trim()) {
-      return NextResponse.json(
-        { message: 'Budget range is required', error: 'VALIDATION_ERROR' },
-        { status: 400 }
-      )
-    }
-
-    if (!contactData.timeline?.trim()) {
-      return NextResponse.json(
-        { message: 'Timeline is required', error: 'VALIDATION_ERROR' },
-        { status: 400 }
-      )
-    }
-
     if (!contactData.message?.trim()) {
       return NextResponse.json(
-        { message: 'Project description is required', error: 'VALIDATION_ERROR' },
+        { message: 'Message is required', error: 'VALIDATION_ERROR' },
         { status: 400 }
       )
     }
@@ -123,15 +102,10 @@ export async function POST(request: NextRequest) {
     const sanitizedData: ContactFormData = {
       name: contactData.name.trim().slice(0, 100),
       email: contactData.email.trim().toLowerCase(),
-      company: contactData.company?.trim().slice(0, 100),
-      phone: contactData.phone?.trim().slice(0, 20),
-      projectType: contactData.projectType.trim(),
-      budget: contactData.budget.trim(),
-      timeline: contactData.timeline.trim(),
       message: contactData.message.trim().slice(0, 2000)
     }
 
-    const result = await submitContact(sanitizedData, request)
+    const result = await submitContact(sanitizedData)
 
     return NextResponse.json({
       message: 'Thank you for your message! I\'ll get back to you within 24 hours.',
