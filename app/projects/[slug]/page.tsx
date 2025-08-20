@@ -87,7 +87,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       <Layout activeNavbar="Projects" isNavColorBlack>
         {/* Hero Section with Cover Image */}
         {project.coverImage && (
-          <div className="relative h-[40vh] min-h-[300px] w-full overflow-hidden">
+          <div className="relative h-[40vh] min-h-[300px] w-full">
             <Image
               src={urlFor(project.coverImage).width(1920).height(600).url()}
               alt={project.title}
@@ -132,12 +132,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               
               {/* Left Column - Main Info */}
-              <div className="lg:col-span-2">
+              <div className="lg:col-span-2 lg:col-start-1">
                 <ProjectHeader project={project} />
               </div>
 
               {/* Right Column - Project Meta & Actions */}
-              <div className="lg:col-span-1">
+              <div className="lg:col-span-1 lg:col-start-3 w-full">
                 <div className="sticky top-28">
                   {/* Project Quick Info Card */}
                   <div className="rounded-lg border border-border bg-card p-6 shadow-sm">
