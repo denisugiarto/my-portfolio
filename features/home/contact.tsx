@@ -22,7 +22,7 @@ const iconContactList: IconContactList = {
 export default function Contact() {
   return (
     <LazyMotion features={domAnimation}>
-      <section id="contact" className="relative overflow-hidden">
+      <section id="contact" className="relative">
         {/* SVG Background for Contact */}
         <div className="absolute inset-0 pointer-events-none">
           <svg
