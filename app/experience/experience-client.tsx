@@ -22,9 +22,9 @@ const ExperienceClient = () => {
             <div className="space-y-16">
               {[...Array(3)].map((_, index) => (
                 <div key={index} className="relative">
-                  <div className="flex items-start gap-8 md:gap-12">
-                    <div className="w-20 h-20 bg-gray-200 dark:bg-gray-800 rounded-full animate-pulse flex-shrink-0"></div>
-                    <div className="flex-1 bg-card border border-border rounded-xl p-8 animate-pulse">
+                  <div className="flex items-start gap-4 md:gap-8">
+                    <div className="w-16 h-16 bg-gray-200 dark:bg-gray-800 rounded-full animate-pulse flex-shrink-0 hidden md:block"></div>
+                    <div className="flex-1 bg-card border border-border rounded-xl p-6 md:p-8 animate-pulse">
                       <div className="space-y-4">
                         <div className="h-6 bg-gray-200 dark:bg-gray-800 rounded w-3/4"></div>
                         <div className="h-4 bg-gray-200 dark:bg-gray-800 rounded w-1/2"></div>
@@ -188,7 +188,7 @@ const ExperienceClient = () => {
           <div className="mx-auto max-w-5xl">
             <div className="relative">
               {/* Main Timeline Line */}
-              <div className="absolute left-10 top-6 bottom-6 w-px bg-gradient-to-b from-primary/50 via-primary/30 to-primary/50 hidden md:block"></div>
+              <div className="absolute left-8 top-6 bottom-6 w-px bg-gradient-to-b from-primary/50 via-primary/30 to-primary/50 hidden md:block"></div>
               
               {/* Experience Cards */}
               {experiences.map((experience, index) => (
@@ -200,25 +200,25 @@ const ExperienceClient = () => {
                   viewport={{ once: true, margin: "-100px" }}
                   className="relative mb-16 last:mb-0"
                 >
-                  <div className="flex items-start gap-8 md:gap-12">
-                    {/* Timeline Node */}
-                    <div className="relative z-10 flex-shrink-0">
+                  <div className="flex items-start gap-4 md:gap-8">
+                    {/* Timeline Node - Desktop only with logo */}
+                    <div className="relative z-10 flex-shrink-0 hidden md:block">
                       <m.div 
-                        className="w-20 h-20 bg-background border-4 border-primary rounded-full flex items-center justify-center shadow-xl"
+                        className="w-16 h-16 bg-background border-4 border-primary rounded-full flex items-center justify-center shadow-xl"
                         whileHover={{ scale: 1.1 }}
                         transition={{ type: "spring", stiffness: 300 }}
                       >
                         {experience.companyLogo ? (
                           <Image
-                            src={urlFor(experience.companyLogo).width(56).height(56).url()}
+                            src={urlFor(experience.companyLogo).width(40).height(40).url()}
                             className="rounded-full object-cover"
-                            width={56}
-                            height={56}
+                            width={40}
+                            height={40}
                             alt={`${experience.company} logo`}
                           />
                         ) : (
-                          <div className="w-14 h-14 bg-primary text-primary-foreground rounded-full flex items-center justify-center">
-                            <span className="text-xl font-bold">
+                          <div className="w-10 h-10 bg-primary text-primary-foreground rounded-full flex items-center justify-center">
+                            <span className="text-sm font-bold">
                               {experience.company.charAt(0)}
                             </span>
                           </div>
@@ -233,33 +233,54 @@ const ExperienceClient = () => {
                       transition={{ type: "spring", stiffness: 300 }}
                     >
                       {/* Card Header */}
-                      <div className="p-8 pb-6">
-                        <div className="flex flex-col sm:flex-row xl:items-start xl:justify-between gap-4 mb-6">
-                          <div className="flex-1 space-y-2">
-                            <h3 className="text-2xl font-bold text-foreground leading-tight hover:text-primary transition-colors">
-                              {experience.jobTitle}
-                            </h3>
-                            <div className="flex items-center gap-2 text-lg">
-                              {experience.companyUrl ? (
-                                <a 
-                                  href={experience.companyUrl} 
-                                  target="_blank" 
-                                  rel="noopener noreferrer"
-                                  className="text-primary hover:text-primary/80 transition-colors font-medium"
-                                >
-                                  {experience.company}
-                                </a>
+                      <div className="p-6 md:p-8 pb-6">
+                        <div className="flex flex-col xl:items-start xl:justify-between gap-4 mb-6">
+                          <div className="flex items-start gap-3 flex-1">
+                            {/* Company Logo - Mobile only */}
+                            <div className="flex-shrink-0 md:hidden">
+                              {experience.companyLogo ? (
+                                <Image
+                                  src={urlFor(experience.companyLogo).width(40).height(40).url()}
+                                  className="rounded-lg object-cover"
+                                  width={40}
+                                  height={40}
+                                  alt={`${experience.company} logo`}
+                                />
                               ) : (
-                                <span className="text-primary font-medium">{experience.company}</span>
-                              )}
-                              {experience.employmentType && (
-                                <>
-                                  <span className="text-muted-foreground">·</span>
-                                  <span className="text-muted-foreground text-base">
-                                    {experience.employmentType}
+                                <div className="w-10 h-10 bg-primary text-primary-foreground rounded-lg flex items-center justify-center">
+                                  <span className="text-sm font-bold">
+                                    {experience.company.charAt(0)}
                                   </span>
-                                </>
+                                </div>
                               )}
+                            </div>
+                            
+                            <div className="flex-1 space-y-2 min-w-0">
+                              <h3 className="text-xl md:text-2xl font-bold text-foreground leading-tight hover:text-primary transition-colors">
+                                {experience.jobTitle}
+                              </h3>
+                              <div className="flex items-center gap-2 text-base md:text-lg">
+                                {experience.companyUrl ? (
+                                  <a 
+                                    href={experience.companyUrl} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    className="text-primary hover:text-primary/80 transition-colors font-medium"
+                                  >
+                                    {experience.company}
+                                  </a>
+                                ) : (
+                                  <span className="text-primary font-medium">{experience.company}</span>
+                                )}
+                                {experience.employmentType && (
+                                  <>
+                                    <span className="text-muted-foreground">·</span>
+                                    <span className="text-muted-foreground text-sm md:text-base">
+                                      {experience.employmentType}
+                                    </span>
+                                  </>
+                                )}
+                              </div>
                             </div>
                           </div>
                           
@@ -267,7 +288,7 @@ const ExperienceClient = () => {
                             <p className="text-base font-semibold text-foreground">
                               {formatDateRange(experience.startDate, experience.endDate, experience.currentJob)}
                             </p>
-                            <p className="hidden md:block text-sm text-muted-foreground">
+                            <p className="text-sm text-muted-foreground">
                               {calculateDuration(experience.startDate, experience.endDate, experience.currentJob)}
                             </p>
                             {(experience.location || experience.workType) && (
@@ -282,8 +303,8 @@ const ExperienceClient = () => {
 
                         {/* Job Description */}
                         {experience.description && (
-                          <div className="mb-8">
-                            <h4 className="text-lg font-semibold text-foreground mb-4">Role & Responsibilities</h4>
+                          <div className="mb-6 md:mb-8">
+                            <h4 className="text-base md:text-lg font-semibold text-foreground mb-3 md:mb-4">Role & Responsibilities</h4>
                             <div className="text-muted-foreground">
                               <ul className="space-y-2">
                                 {Array.isArray(experience.description) ? (
@@ -312,8 +333,8 @@ const ExperienceClient = () => {
 
                         {/* Key Achievements */}
                         {experience.achievements && experience.achievements.length > 0 && (
-                          <div className="mb-8">
-                            <h4 className="text-lg font-semibold text-foreground mb-4">Key Achievements</h4>
+                          <div className="mb-6 md:mb-8">
+                            <h4 className="text-base md:text-lg font-semibold text-foreground mb-3 md:mb-4">Key Achievements</h4>
                             <ul className="space-y-3">
                               {experience.achievements.map((achievement, idx) => (
                                 <m.li 
@@ -336,7 +357,7 @@ const ExperienceClient = () => {
                       {/* Technologies & Skills Section */}
                       {((experience.technologies && experience.technologies.length > 0) || 
                         (experience.skills && experience.skills.length > 0)) && (
-                        <div className="px-8 pb-8 pt-0">
+                        <div className="px-6 md:px-8 pb-6 md:pb-8 pt-0">
                           <div className="border-t border-border pt-6 space-y-6">
                             {experience.technologies && experience.technologies.length > 0 && (
                               <div>
