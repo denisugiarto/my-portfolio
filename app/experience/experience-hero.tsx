@@ -68,7 +68,7 @@ const ExperienceHero = () => {
         <div className="container relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <m.h1 
-              className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6"
+              className="font-bold text-foreground mb-6"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
