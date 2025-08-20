@@ -1,12 +1,30 @@
+'use client';
+
 import { Mail, MapPin, MessageCircle } from "lucide-react";
 import { SiGithub, SiLinkedin, SiUpwork, SiWhatsapp } from "@icons-pack/react-simple-icons";
 import Link from "next/link";
+import { useQuery } from "@tanstack/react-query";
+import { getSiteSettings, getFooterSocialLinks } from "@/lib/sanity-queries";
 import data from "../../constant/data.json";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   
-  // Get contact links from data
+  // Fetch site settings from Sanity
+  const { data: siteSettings } = useQuery({
+    queryKey: ['siteSettings'],
+    queryFn: getSiteSettings,
+    refetchOnWindowFocus: false,
+  });
+
+  // Fetch footer social links from Sanity
+  const { data: footerSocialLinks } = useQuery({
+    queryKey: ['footerSocialLinks'],
+    queryFn: getFooterSocialLinks,
+    refetchOnWindowFocus: false,
+  });
+  
+  // Fallback to JSON data if Sanity data is not available
   const contacts = {
     github: data.contact.find((contact) => contact.type === "github"),
     linkedin: data.contact.find((contact) => contact.type === "linkedin"),
@@ -14,6 +32,14 @@ export default function Footer() {
     upwork: data.contact.find((contact) => contact.type === "upwork"),
     whatsapp: data.contact.find((contact) => contact.type === "whatsapp"),
   };
+
+  // Use Sanity data with fallbacks
+  const displayName = siteSettings?.personalInfo?.displayName || siteSettings?.personalInfo?.fullName || "Deni Sugiarto";
+  const jobTitle = siteSettings?.personalInfo?.jobTitle || "Frontend Web Developer";
+  const description = siteSettings?.siteInfo?.description || "Frontend Web Developer specializing in React.js, Next.js, and React Native. Creating seamless digital experiences with modern web technologies.";
+  const location = siteSettings?.personalInfo?.location || "Indonesia";
+  const timezone = siteSettings?.personalInfo?.timezone || "GMT+7";
+  const email = siteSettings?.personalInfo?.email;
 
   return (
     <footer className="bg-card border-t border-border">
@@ -24,53 +50,81 @@ export default function Footer() {
           {/* Brand & Description */}
           <div className="md:col-span-2">
             <h3 className="text-lg font-semibold text-card-foreground mb-3">
-              Deni Sugiarto
+              {displayName}
             </h3>
             <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-              Frontend Web Developer specializing in React.js, Next.js, and React Native. 
-              Creating seamless digital experiences with modern web technologies.
+              {description}
             </p>
             
             {/* Location */}
             <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
               <MapPin size={16} />
-              <span>Based in Indonesia (GMT+7)</span>
+              <span>Based in {location} ({timezone})</span>
             </div>
 
             {/* Social Links */}
             <div className="flex space-x-4">
-              {contacts.github && (
-                <a
-                  href={contacts.github.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                  aria-label="GitHub Profile"
-                >
-                  <SiGithub size={20} />
-                </a>
-              )}
-              {contacts.linkedin && (
-                <a
-                  href={contacts.linkedin.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                  aria-label="LinkedIn Profile"
-                >
-                  <SiLinkedin size={20} />
-                </a>
-              )}
-              {contacts.upwork && (
-                <a
-                  href={contacts.upwork.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                  aria-label="Upwork Profile"
-                >
-                  <SiUpwork size={20} />
-                </a>
+              {footerSocialLinks && footerSocialLinks.length > 0 ? (
+                footerSocialLinks.map((link) => {
+                  const IconComponent = {
+                    github: SiGithub,
+                    linkedin: SiLinkedin,
+                    upwork: SiUpwork,
+                    whatsapp: SiWhatsapp,
+                  }[link.platform] as any;
+
+                  if (!IconComponent) return null;
+
+                  return (
+                    <a
+                      key={link._id}
+                      href={link.url}
+                      target={link.openInNewTab ? "_blank" : "_self"}
+                      rel={link.openInNewTab ? "noopener noreferrer" : undefined}
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                      aria-label={link.label || `${link.platform} Profile`}
+                    >
+                      <IconComponent size={20} />
+                    </a>
+                  );
+                })
+              ) : (
+                // Fallback to JSON data
+                <>
+                  {contacts.github && (
+                    <a
+                      href={contacts.github.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                      aria-label="GitHub Profile"
+                    >
+                      <SiGithub size={20} />
+                    </a>
+                  )}
+                  {contacts.linkedin && (
+                    <a
+                      href={contacts.linkedin.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                      aria-label="LinkedIn Profile"
+                    >
+                      <SiLinkedin size={20} />
+                    </a>
+                  )}
+                  {contacts.upwork && (
+                    <a
+                      href={contacts.upwork.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                      aria-label="Upwork Profile"
+                    >
+                      <SiUpwork size={20} />
+                    </a>
+                  )}
+                </>
               )}
             </div>
           </div>
@@ -120,13 +174,13 @@ export default function Footer() {
               Get in Touch
             </h4>
             <div className="space-y-3">
-              {contacts.email && (
+              {(email || contacts.email) && (
                 <a
-                  href={contacts.email.link}
+                  href={email ? `mailto:${email}` : contacts.email?.link}
                   className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors group"
                 >
                   <Mail size={16} className="group-hover:text-primary" />
-                  <span>{contacts.email.value}</span>
+                  <span>{email || contacts.email?.value}</span>
                 </a>
               )}
               
@@ -164,7 +218,7 @@ export default function Footer() {
         <div className="pt-6 border-t border-border">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-sm text-muted-foreground">
-              <span>&copy; {currentYear} Deni Sugiarto. All rights reserved.</span>
+              <span>&copy; {currentYear} {displayName}. All rights reserved.</span>
             </div>
             
             <div className="flex items-center gap-1 text-sm text-muted-foreground">

@@ -167,3 +167,39 @@ export interface HeroSection {
   technologies?: Technology[]
   socialLinks?: SocialLink[]
 }
+
+export interface SiteSettings {
+  _id: string
+  siteInfo: {
+    siteName: string
+    tagline?: string
+    description?: string
+    siteUrl: string
+    author: string
+    favicon?: any
+  }
+  personalInfo: {
+    fullName: string
+    displayName?: string
+    jobTitle: string
+    email: string
+    phone?: string
+    location?: string
+    timezone?: string
+    profileImage?: any
+  }
+  socialLinks: {
+    platform: string
+    url: string
+    username?: string
+    isMainContact: boolean
+    showInNavigation: boolean
+    showInFooter: boolean
+  }[]
+  contactSettings: {
+    responseTime?: string
+    availabilityStatus?: string
+    calendlyUrl?: string
+    bookingCTA?: string
+  }
+}

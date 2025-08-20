@@ -8,6 +8,7 @@ import {
   HeroSection,
   Technology,
   SocialLink,
+  SiteSettings,
 } from "./sanity";
 
 export async function getBlogPosts(limit?: number): Promise<BlogPost[]> {
@@ -546,5 +547,23 @@ export async function getPrimaryContactLinks(): Promise<SocialLink[]> {
   } catch (error) {
     console.error("Error fetching primary contact links:", error);
     return [];
+  }
+}
+
+export async function getSiteSettings(): Promise<SiteSettings | null> {
+  try {
+    const query = `*[_type == "siteSettings"][0] {
+      _id,
+      siteInfo,
+      personalInfo,
+      socialLinks,
+      contactSettings
+    }`;
+
+    const result = await client.fetch(query);
+    return result || null;
+  } catch (error) {
+    console.error("Error fetching site settings:", error);
+    return null;
   }
 }
