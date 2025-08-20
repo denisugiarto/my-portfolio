@@ -15,7 +15,7 @@ export function HeroAnimations({ children }: HeroAnimationsProps) {
         className="relative mx-auto max-w-4xl pt-20 lg:pt-32 text-center px-4 min-h-screen flex flex-col justify-center"
       >
         {/* Optimized SVG Background */}
-        <div className="pointer-events-none absolute inset-0 overflow-hidden opacity-60">
+        <div className="pointer-events-none absolute inset-0">
           <svg
             className="absolute inset-0 h-full w-full"
             viewBox="0 0 1000 1000"

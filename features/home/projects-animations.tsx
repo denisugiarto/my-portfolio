@@ -10,7 +10,7 @@ interface ProjectsAnimationsProps {
 export function ProjectsAnimations({ children }: ProjectsAnimationsProps) {
   return (
     <LazyMotion features={domAnimation}>
-      <section id="projects" className="relative overflow-hidden">
+      <section id="projects" className="relative">
         {/* Optimized SVG Background for Projects */}
         <div className="absolute inset-0 pointer-events-none opacity-50">
           <svg
