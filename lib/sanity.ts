@@ -18,6 +18,11 @@ export function urlFor(source: SanityImageSource) {
   return builder.image(source);
 }
 
+export interface Tags {
+  _id: string;
+  name: string;
+}
+
 export interface BlogPost {
   _id: string;
   title: string;
@@ -25,7 +30,7 @@ export interface BlogPost {
   excerpt?: string;
   coverImage?: SanityImageSource;
   content: (PortableTextBlock | SanityImageSource)[];
-  tags?: string[];
+  tags?: Tags[];
   publishedAt: string;
   readTime?: number;
   published: boolean;

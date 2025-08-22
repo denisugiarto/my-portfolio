@@ -50,7 +50,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
         type: 'article',
         publishedTime: article.publishedAt,
         authors: ['Deni Sugiarto'],
-        tags: article.tags,
+        tags: article.tags?.map(tag => tag.name),
         images: article.coverImage ? [
           {
             url: article.coverImage.toString(),

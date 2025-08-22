@@ -1,8 +1,8 @@
+import { Layout } from "@/components/Layout/Layout"
+import BlogStaticContainer from "@/features/blog/static-container"
+import { fetchArticles } from '@/services/blog'
 import { Metadata } from 'next'
 import { Suspense } from 'react'
-import { Layout } from "@/components/Layout/Layout"
-import { getBlogPosts } from "@/lib/sanity-queries"
-import BlogStaticContainer from "@/features/blog/static-container"
 
 export const metadata: Metadata = {
   title: 'Blog',
@@ -14,7 +14,7 @@ export const revalidate = 3600
 
 export default async function BlogPage() {
   // Fetch blog posts at build time and revalidate every 60 seconds
-  const blogs = await getBlogPosts()
+  const blogs = await fetchArticles()
 
   return (
     <Layout activeNavbar="Blog" isNavColorBlack>

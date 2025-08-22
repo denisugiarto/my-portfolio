@@ -43,12 +43,12 @@ export default function BlogCardItem({ blog }: { blog: BlogPost }) {
         )}
         {blog.tags && blog.tags.length > 0 && (
           <div className="flex flex-wrap gap-1">
-            {blog.tags.map((tag: string) => (
+            {blog.tags.map((tag) => (
               <div
-                key={tag}
+                key={tag._id}
                 className="rounded-full bg-slate-100 px-2 py-1 text-xs font-medium text-gray-700 dark:bg-slate-800 dark:text-slate-300"
               >
-                #{tag}
+                #{tag.name}
               </div>
             ))}
           </div>

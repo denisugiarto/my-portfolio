@@ -2,15 +2,18 @@
 
 import React from "react";
 import { BlogPost } from "@/lib/sanity";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import BlogList from "./blog-list";
 import SearchInput from "@/components/ui/search-input";
 import BlogCategoryNav from "@/components/blog-category-nav";
+import { Pagination, PaginationInfo } from "@/components/ui/pagination";
 
 interface BlogStaticContainerProps {
   initialBlogs: BlogPost[]
 }
+
+const BLOGS_PER_PAGE = 6;
 
 export default function BlogStaticContainer({ initialBlogs }: BlogStaticContainerProps) {
   const router = useRouter();
@@ -20,17 +23,25 @@ export default function BlogStaticContainer({ initialBlogs }: BlogStaticContaine
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [availableCategories, setAvailableCategories] = useState<string[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
 
   // Initialize from URL params
   useEffect(() => {
     const categoryFromUrl = searchParams.get('category');
     const searchFromUrl = searchParams.get('search');
+    const pageFromUrl = searchParams.get('page');
     
     if (categoryFromUrl) {
       setSelectedCategory(categoryFromUrl);
     }
     if (searchFromUrl) {
       setSearchQuery(searchFromUrl);
+    }
+    if (pageFromUrl) {
+      const page = parseInt(pageFromUrl, 10);
+      if (page > 0) {
+        setCurrentPage(page);
+      }
     }
   }, [searchParams]);
 
@@ -42,7 +53,7 @@ export default function BlogStaticContainer({ initialBlogs }: BlogStaticContaine
       const categories = new Set<string>();
       initialBlogs.forEach(blog => {
         if (blog.tags) {
-          blog.tags.forEach(tag => categories.add(tag));
+          blog.tags.forEach(tag => categories.add(tag.name));
         }
       });
       setAvailableCategories(Array.from(categories).sort());
@@ -65,24 +76,34 @@ export default function BlogStaticContainer({ initialBlogs }: BlogStaticContaine
     // Filter by category
     if (selectedCategory) {
       filtered = filtered.filter((blog) =>
-        blog.tags?.includes(selectedCategory)
+        blog.tags?.some(tag => tag.name === selectedCategory)
       );
     }
 
     setFilteredBlogs(filtered);
+    
+    // Reset to page 1 when filters change
+    setCurrentPage(1);
   }, [initialBlogs, searchQuery, selectedCategory]);
 
   function handleSearch(query: string) {
     setSearchQuery(query);
-    updateUrl({ search: query, category: selectedCategory });
+    setCurrentPage(1);
+    updateUrl({ search: query, category: selectedCategory, page: 1 });
   }
 
   function handleCategoryChange(category: string | null) {
     setSelectedCategory(category);
-    updateUrl({ search: searchQuery, category });
+    setCurrentPage(1);
+    updateUrl({ search: searchQuery, category, page: 1 });
   }
 
-  function updateUrl({ search, category }: { search: string; category: string | null }) {
+  function handlePageChange(page: number) {
+    setCurrentPage(page);
+    updateUrl({ search: searchQuery, category: selectedCategory, page });
+  }
+
+  function updateUrl({ search, category, page }: { search: string; category: string | null; page: number }) {
     const params = new URLSearchParams();
     
     if (search) {
@@ -91,6 +112,9 @@ export default function BlogStaticContainer({ initialBlogs }: BlogStaticContaine
     if (category) {
       params.set('category', category);
     }
+    if (page > 1) {
+      params.set('page', page.toString());
+    }
     
     const queryString = params.toString();
     const newUrl = queryString ? `/blog?${queryString}` : '/blog';
@@ -98,17 +122,24 @@ export default function BlogStaticContainer({ initialBlogs }: BlogStaticContaine
     router.replace(newUrl, { scroll: false });
   }
 
+  // Calculate pagination values
+  const totalBlogs = filteredBlogs.length;
+  const totalPages = Math.ceil(totalBlogs / BLOGS_PER_PAGE);
+  const startIndex = (currentPage - 1) * BLOGS_PER_PAGE;
+  const endIndex = startIndex + BLOGS_PER_PAGE;
+  const paginatedBlogs = filteredBlogs.slice(startIndex, endIndex);
+
   return (
     <section className="container pt-40">
       <div className="mb-6">
         <div className="mb-4 flex flex-col justify-between sm:flex-row">
-          <h1 className="mb-4 text-3xl font-bold text-slate-100">Blog</h1>
+          <h1 className="mb-4 text-3xl font-bold dark:text-slate-100 ">Blog</h1>
           <div className="sm:w-64">
             <SearchInput
               name="search"
               placeholder="Search articles..."
               type="text"
-              onSearch={handleSearch}
+              onSearch={(query) => handleSearch(query)}
             />
           </div>
         </div>
@@ -120,12 +151,37 @@ export default function BlogStaticContainer({ initialBlogs }: BlogStaticContaine
             onCategoryChange={handleCategoryChange}
           />
         )}
+
+        {/* Show pagination info */}
+        {totalBlogs > 0 && (
+          <div className="flex items-center justify-between mt-4">
+            <PaginationInfo
+              currentPage={currentPage}
+              totalPages={totalPages}
+              totalItems={totalBlogs}
+              itemsPerPage={BLOGS_PER_PAGE}
+            />
+          </div>
+        )}
       </div>
+
       <BlogList
-        blogs={filteredBlogs}
+        blogs={paginatedBlogs}
         isLoading={false}
         error={undefined}
       />
+
+      {/* Pagination */}
+      {totalPages > 1 && (
+        <div className="mt-12">
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+            className="mb-8"
+          />
+        </div>
+      )}
     </section>
   );
 }

@@ -21,7 +21,10 @@ export async function getBlogPosts(limit?: number): Promise<BlogPost[]> {
       slug,
       excerpt,
       coverImage,
-      tags,
+      tags[]->{
+        _id,
+        name
+      },
       publishedAt,
       readTime,
       published,
@@ -44,7 +47,9 @@ export async function getFeaturedBlogPosts(): Promise<BlogPost[]> {
     slug,
     excerpt,
     coverImage,
-    tags,
+    tags[]->{
+    _id,
+    name},
     publishedAt,
     readTime,
     published,

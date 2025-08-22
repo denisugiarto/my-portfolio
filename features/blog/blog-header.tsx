@@ -33,10 +33,10 @@ export default function BlogHeader({ article }: BlogHeaderProps) {
         <div className="mb-6 flex flex-wrap gap-2">
           {article.tags.map((tag) => (
             <div
-              key={tag}
+              key={tag._id}
               className="rounded-full bg-slate-100 px-3 py-1 text-sm font-medium text-gray-700 dark:bg-slate-800 dark:text-slate-300"
             >
-              #{tag}
+              #{tag.name}
             </div>
           ))}
         </div>
