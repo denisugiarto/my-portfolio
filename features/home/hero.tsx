@@ -1,7 +1,12 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { HeroSection, Technology } from "@/lib/sanity";
-import { HeroAnimations, AnimatedText, AnimatedContent, AnimatedTechStack } from "./hero-animations";
+import {
+  HeroAnimations,
+  AnimatedText,
+  AnimatedContent,
+  AnimatedTechStack,
+} from "./hero-animations";
 import { getIconComponent } from "@/lib/icon-mapping";
 
 interface HeroProps {
@@ -12,14 +17,16 @@ const Hero = ({ heroData }: HeroProps) => {
   // Show minimal loading skeleton if no data (shouldn't happen with SSR but good fallback)
   if (!heroData) {
     return (
-      <section className="relative mx-auto max-w-4xl pt-20 lg:pt-32 text-center px-4 min-h-screen flex flex-col justify-center">
-        <div className="animate-pulse">
-          <div className="mb-4 h-8 lg:h-12 rounded bg-gray-700 mx-auto w-3/4"></div>
-          <div className="mb-8 h-16 lg:h-20 rounded bg-gray-700 mx-auto"></div>
-          <div className="mb-10 h-6 rounded bg-gray-700 mx-auto w-2/3"></div>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <div className="h-12 w-40 rounded bg-gray-700"></div>
-            <div className="h-12 w-32 rounded bg-gray-700"></div>
+      <section className="relative flex flex-col justify-center pt-20 text-center lg:pt-32">
+        <div className="container mx-auto">
+          <div className="animate-pulse">
+            <div className="mx-auto mb-4 h-8 w-3/4 rounded bg-gray-700 lg:h-12"></div>
+            <div className="mx-auto mb-8 h-16 rounded bg-gray-700 lg:h-20"></div>
+            <div className="mx-auto mb-10 h-6 w-2/3 rounded bg-gray-700"></div>
+            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <div className="h-12 w-40 rounded bg-gray-700"></div>
+              <div className="h-12 w-32 rounded bg-gray-700"></div>
+            </div>
           </div>
         </div>
       </section>
@@ -27,20 +34,38 @@ const Hero = ({ heroData }: HeroProps) => {
   }
 
   // Tech stack data from Sanity (with fallback)
-  const techStack = heroData.technologies?.length ? 
-    heroData.technologies.map((tech: Technology) => ({
-      icon: getIconComponent(tech.icon),
-      name: tech.name,
-      color: tech.color || "#9ca3af" // Default to gray-400 hex
-    })).filter(tech => tech.icon) : // Only include technologies with valid icons
-    [
-      // Fallback hardcoded tech stack
-      { icon: getIconComponent("SiReact"), name: "React", color: "#60a5fa" },
-      { icon: getIconComponent("SiNextdotjs"), name: "Next.js", color: "#ffffff" },
-      { icon: getIconComponent("SiNodedotjs"), name: "Node.js", color: "#34d399" },
-      { icon: getIconComponent("SiTypescript"), name: "TypeScript", color: "#60a5fa" },
-      { icon: getIconComponent("SiTailwindcss"), name: "TailwindCSS", color: "#22d3ee" },
-    ].filter(tech => tech.icon);
+  const techStack = heroData.technologies?.length
+    ? heroData.technologies
+        .map((tech: Technology) => ({
+          icon: getIconComponent(tech.icon),
+          name: tech.name,
+          color: tech.color || "#9ca3af", // Default to gray-400 hex
+        }))
+        .filter((tech) => tech.icon) // Only include technologies with valid icons
+    : [
+        // Fallback hardcoded tech stack
+        { icon: getIconComponent("SiReact"), name: "React", color: "#60a5fa" },
+        {
+          icon: getIconComponent("SiNextdotjs"),
+          name: "Next.js",
+          color: "#ffffff",
+        },
+        {
+          icon: getIconComponent("SiNodedotjs"),
+          name: "Node.js",
+          color: "#34d399",
+        },
+        {
+          icon: getIconComponent("SiTypescript"),
+          name: "TypeScript",
+          color: "#60a5fa",
+        },
+        {
+          icon: getIconComponent("SiTailwindcss"),
+          name: "TailwindCSS",
+          color: "#22d3ee",
+        },
+      ].filter((tech) => tech.icon);
 
   return (
     <HeroAnimations>
@@ -49,7 +74,7 @@ const Hero = ({ heroData }: HeroProps) => {
         <h1 className="mb-2 bg-gradient-to-r from-blue-400 via-purple-400 to-blue-500 bg-clip-text text-lg font-bold text-transparent lg:text-2xl">
           {heroData.headline || "Full-Stack Developer"}
         </h1>
-        <h2 className="block text-2xl font-semibold dark:text-white sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mx-auto max-w-4xl leading-tight">
+        <h2 className="mx-auto block max-w-4xl text-2xl font-semibold leading-tight dark:text-white sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
           {heroData.subheadline || "Building Modern Web Applications"}
         </h2>
       </AnimatedText>
@@ -70,7 +95,7 @@ const Hero = ({ heroData }: HeroProps) => {
               variant="gradient"
               color="bluePurple"
               size="lg"
-              className="group gap-2 shadow-lg hover:shadow-xl transition-shadow"
+              className="group gap-2 shadow-lg transition-shadow hover:shadow-xl"
             >
               <span>{heroData.primaryCTA?.text || "See My Projects"}</span>
               <svg
@@ -90,16 +115,32 @@ const Hero = ({ heroData }: HeroProps) => {
           {heroData.secondaryCTA?.link ? (
             <a
               href={heroData.secondaryCTA.link}
-              target={heroData.secondaryCTA.link.startsWith("http") ? "_blank" : "_self"}
-              rel={heroData.secondaryCTA.link.startsWith("http") ? "noopener noreferrer" : undefined}
+              target={
+                heroData.secondaryCTA.link.startsWith("http")
+                  ? "_blank"
+                  : "_self"
+              }
+              rel={
+                heroData.secondaryCTA.link.startsWith("http")
+                  ? "noopener noreferrer"
+                  : undefined
+              }
             >
-              <Button variant="outline" size="lg" className="hover:shadow-lg transition-shadow">
+              <Button
+                variant="outline"
+                size="lg"
+                className="transition-shadow hover:shadow-lg"
+              >
                 <span>{heroData.secondaryCTA.text}</span>
               </Button>
             </a>
           ) : (
             <a href="#contact">
-              <Button variant="outline" size="lg" className="hover:shadow-lg transition-shadow">
+              <Button
+                variant="outline"
+                size="lg"
+                className="transition-shadow hover:shadow-lg"
+              >
                 <span>Let&apos;s Talk</span>
               </Button>
             </a>

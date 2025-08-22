@@ -12,7 +12,7 @@ export function HeroAnimations({ children }: HeroAnimationsProps) {
     <LazyMotion features={domAnimation}>
       <section
         id="home"
-        className="relative mx-auto max-w-4xl pt-20 lg:pt-32 text-center px-4 min-h-screen flex flex-col justify-center"
+        className="relative pt-20 lg:pt-32 text-center flex flex-col justify-center"
       >
         {/* Optimized SVG Background */}
         <div className="pointer-events-none absolute inset-0">
@@ -67,7 +67,7 @@ export function HeroAnimations({ children }: HeroAnimationsProps) {
         </div>
         
         {/* Main content container */}
-        <div className="relative z-10">
+        <div className="container mx-auto relative z-10">
           {children}
         </div>
       </section>
@@ -121,7 +121,7 @@ export function AnimatedTechStack({ techs }: AnimatedTechStackProps) {
       className="mt-8"
     >
       <p className="mb-6 text-sm text-gray-400">Technologies I work with</p>
-      <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8 dark:bg-slate-600/10 bg-slate-700 backdrop-blur-md border border-black/20 dark:border-white/20 py-6 rounded-2xl">
+      <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8 dark:bg-slate-600/10 bg-slate-700 backdrop-blur-md border border-black/20 dark:border-white/20 py-6 rounded-2xl max-w-max mx-auto px-10">
         {techs.map((tech, index) => (
           <m.div
             key={tech.name}
