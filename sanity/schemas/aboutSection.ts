@@ -79,8 +79,8 @@ export const aboutSection = defineType({
                       name: 'proficiency',
                       title: 'Proficiency Level',
                       type: 'number',
-                      validation: Rule => Rule.required().min(1).max(100),
-                      description: 'Proficiency level from 1-100'
+                      validation: Rule => Rule.required().min(1).max(5),
+                      description: 'Proficiency level from 1-5 (1 = Beginner, 5 = Expert)'
                     }),
                     defineField({
                       name: 'icon',
