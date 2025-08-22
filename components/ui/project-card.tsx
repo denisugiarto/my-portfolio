@@ -19,8 +19,7 @@ export default function ProjectCard({
   project, 
   index = 0, 
   variant = 'list',
-  showStatus = true,
-  showCompletionDate = true 
+  showStatus = true
 }: ProjectCardProps) {
   const isHomeVariant = variant === 'home';
   
@@ -197,29 +196,6 @@ export default function ProjectCard({
                 Repository
               </a>
             )}
-          </div>
-        )}
-
-        {/* Footer Info */}
-        {!isHomeVariant && (
-          <div className="mt-auto pt-4 border-t border-border/50">
-            <div className="flex items-center justify-between text-xs text-muted-foreground">
-              {project.completedAt && showCompletionDate && (
-                <div className="flex items-center gap-1">
-                  <Calendar size={12} />
-                  <span>
-                    {new Date(project.completedAt).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'short'
-                    })}
-                  </span>
-                </div>
-              )}
-              
-              <div className="flex items-center gap-2 ml-auto">
-                <span className="text-muted-foreground">View Details →</span>
-              </div>
-            </div>
           </div>
         )}
       </div>
