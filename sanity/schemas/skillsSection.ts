@@ -47,13 +47,6 @@ export const skillsSection = defineType({
               description: "Icon name or emoji for this group",
             }),
             defineField({
-              name: "isCore",
-              title: "Core Skill Group",
-              type: "boolean",
-              initialValue: false,
-              description: "Mark as core/primary skill group for highlighting",
-            }),
-            defineField({
               name: "skills",
               title: "Skills",
               type: "array",
