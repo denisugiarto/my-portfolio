@@ -501,6 +501,12 @@ export async function getFooterSocialLinks(): Promise<SocialLink[]> {
       label,
       icon,
       color,
+      customIcon{
+        asset->{
+          _id,
+          url
+        }
+      },
       isPublic,
       isPrimary,
       openInNewTab,

@@ -117,11 +117,11 @@ export const socialLink = defineType({
     defineField({
       name: "customIcon",
       title: "Custom Icon",
-      type: "image",
-      description: 'Used when icon is set to "Other"',
+      type: "file",
       options: {
-        hotspot: true,
+        accept: ".svg", // Only allow SVGs
       },
+      description: 'Used when icon is set to "Other"',
       hidden: ({ document }) => document?.icon !== "other",
     }),
     defineField({
@@ -165,7 +165,7 @@ export const socialLink = defineType({
       type: "boolean",
       initialValue: true,
       description: "Display this link in the site footer?",
-    }),    
+    }),
     defineField({
       name: "showInContact",
       title: "Show in Contact Section",
