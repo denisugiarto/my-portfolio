@@ -10,6 +10,7 @@ import {heroSection} from './heroSection'
 import {aboutSection} from './aboutSection'
 import {skillsSection} from './skillsSection'
 import {siteSettings} from './siteSettings'
+import {tag} from './tag'
 
 export const schemaTypes = [
   // Site Configuration
@@ -28,6 +29,7 @@ export const schemaTypes = [
   technology,
   socialLink,
   contact,
+  tag,
   
   // Utility Types
   blockContent,
