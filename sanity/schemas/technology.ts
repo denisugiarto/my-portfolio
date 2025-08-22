@@ -177,13 +177,6 @@ export const technology = defineType({
       description: "Number of years working with this technology",
     }),
     defineField({
-      name: "isActive",
-      title: "Currently Using",
-      type: "boolean",
-      initialValue: true,
-      description: "Are you currently using this technology?",
-    }),
-    defineField({
       name: "order",
       title: "Display Order",
       type: "number",
