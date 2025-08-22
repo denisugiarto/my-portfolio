@@ -7,6 +7,7 @@ import { Project } from "@/lib/sanity";
 import ProjectCard from "@/components/ui/project-card";
 import EmptyState from "@/components/ui/empty-state";
 import { Select } from "@/components/ui/select";
+import SearchInput from "@/components/ui/search-input";
 
 interface ProjectsStaticListProps {
   initialProjects: Project[];
@@ -20,24 +21,6 @@ export default function ProjectsStaticList({
   const [sortBy, setSortBy] = useState<"newest" | "oldest" | "title">("newest");
   const [viewMode, setViewMode] = useState<"grid" | "compact">("grid");
   const [isLoading, setIsLoading] = useState(false);
-
-  if (!initialProjects || initialProjects.length === 0) {
-    return (
-      <div className="py-16 text-center">
-        <div className="mx-auto max-w-md">
-          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-muted">
-            <Grid3X3 className="h-8 w-8 text-muted-foreground" />
-          </div>
-          <h3 className="mb-2 text-lg font-semibold text-foreground">
-            No projects yet
-          </h3>
-          <p className="text-muted-foreground">
-            Projects will appear here once they're added to the portfolio.
-          </p>
-        </div>
-      </div>
-    );
-  }
 
   // Simulate loading when filters change
   const handleFilterChange = (callback: () => void) => {
@@ -109,16 +92,10 @@ export default function ProjectsStaticList({
         >
           <div className="flex flex-col-reverse md:flex-row-reverse items-center gap-4 justify-between">
             {/* Search Bar */}
-            <div className="relative flex-grow w-full md:max-w-sm">
-              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 transform text-muted-foreground" />
-              <input
-                type="text"
-                placeholder="Search projects..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full rounded-xl border border-border bg-card py-3 pl-10 pr-4 transition-all focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
-              />
-            </div>
+            <SearchInput
+              onSearch={setSearchQuery}
+              placeholder="Search projects..."
+            />
 
             {/* Filter Controls */}
             <div className="flex flex-col gap-2">
@@ -224,7 +201,7 @@ export default function ProjectsStaticList({
                   No projects found
                 </h3>
                 <p className="mb-4 text-muted-foreground">
-                  No projects match your search for "{searchQuery}". Try
+                  No projects match your search for &quot;{searchQuery}&quot;. Try
                   adjusting your search terms.
                 </p>
                 <button
