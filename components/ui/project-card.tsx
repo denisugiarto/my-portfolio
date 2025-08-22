@@ -40,17 +40,19 @@ export default function ProjectCard({
 
   return (
     <m.div
-      className={`group overflow-hidden rounded-xl transition-all duration-300 ${
+      className={`group overflow-hidden rounded-xl ${
         isHomeVariant 
-          ? 'transition-all ease-linear hover:scale-105 md:mr-4 md:hover:scale-110'
-          : 'bg-card border border-border hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1'
+          ? 'shadow-md'
+          : 'bg-card border border-border'
       }`}
-      initial={{ opacity: 0, y: isHomeVariant ? -20 : 20 }}
+      initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+      transition={{ 
+        duration: 0.6, 
+        delay: index * 0.1,
+        ease: [0.25, 0.1, 0.25, 1]
+      }}
       viewport={{ once: true }}
-      whileHover={{ scale: isHomeVariant ? 1.02 : 1.01 }}
     >
       <Link href={`/projects/${project.slug.current}`}>
         <div className="relative overflow-hidden">
@@ -58,10 +60,10 @@ export default function ProjectCard({
             src={project.coverImage ? urlFor(project.coverImage).width(420).height(300).url() : "/no-image.png"}
             width={420}
             height={300}
-            className={`w-full object-cover object-center transition-all duration-500 ${
+            className={`w-full object-cover object-center ${
               isHomeVariant 
-                ? 'h-48 rounded-lg shadow-lg group-hover:scale-105'
-                : 'h-52 group-hover:scale-110 group-hover:brightness-110'
+                ? 'h-48 rounded-lg shadow-lg'
+                : 'h-52'
             }`}
             alt={`${project.title} project`}
           />
@@ -75,51 +77,15 @@ export default function ProjectCard({
             </div>
           )}
           
-          {/* Hover Overlay */}
-          {!isHomeVariant && (
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          )}
-          
-          {/* Quick Action Buttons */}
-          {!isHomeVariant && (
-            <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-              <div className="flex gap-2">
-                {project.liveUrl && (
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex items-center gap-1 bg-white/90 text-gray-900 px-3 py-1.5 rounded-lg text-xs font-medium hover:bg-white transition-colors backdrop-blur-sm"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <ExternalLink className="w-3 h-3" />
-                    Live
-                  </a>
-                )}
-                {project.githubUrl && (
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex items-center gap-1 bg-gray-900/90 text-white px-3 py-1.5 rounded-lg text-xs font-medium hover:bg-gray-900 transition-colors backdrop-blur-sm"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <SiGithub className="w-3 h-3" />
-                    Code
-                  </a>
-                )}
-              </div>
-            </div>
-          )}
         </div>
       </Link>
 
       <div className={isHomeVariant ? 'py-4' : 'p-6 pt-5'}>
         <Link href={`/projects/${project.slug.current}`}>
-          <h3 className={`mb-2 text-xl font-bold transition-colors ${
+          <h3 className={`mb-2 text-xl font-bold ${
             isHomeVariant 
-              ? 'capitalize text-slate-900 dark:text-slate-200 hover:text-primary'
-              : 'text-card-foreground group-hover:text-primary'
+              ? 'capitalize text-slate-900 dark:text-slate-200'
+              : 'text-card-foreground'
           }`}>
             {project.title}
           </h3>
@@ -139,7 +105,7 @@ export default function ProjectCard({
             {project.technologies.slice(0, isHomeVariant ? undefined : 4).map((tech, techIndex) => (
               <span 
                 key={techIndex} 
-                className={`inline-flex items-center px-2.5 py-1 bg-primary/10 text-primary rounded-md font-medium transition-colors hover:bg-primary/20 ${
+                className={`inline-flex items-center px-2.5 py-1 bg-primary/10 text-primary rounded-md font-medium ${
                   isHomeVariant ? 'text-xs' : 'text-xs'
                 }`}
               >
@@ -163,7 +129,7 @@ export default function ProjectCard({
                 target="_blank"
                 rel="noreferrer"
                 title="website link"
-                className="flex items-center gap-2 rounded-lg border bg-primary px-2 py-1 text-sm leading-none text-white shadow-md transition-all hover:scale-110 ease-in-out"
+                className="flex items-center gap-2 rounded-lg border bg-primary px-2 py-1 text-sm leading-none text-white shadow-md"
                 onClick={(e) => e.stopPropagation()}
               >
                 <ExternalLink className="h-4 w-4" /> 
@@ -176,7 +142,7 @@ export default function ProjectCard({
                 target="_blank"
                 rel="noreferrer"
                 title="demo link"
-                className="flex items-center gap-2 rounded-lg border bg-secondary px-2 py-1 text-sm leading-none text-white shadow-md transition-all hover:scale-110 ease-in-out"
+                className="flex items-center gap-2 rounded-lg border bg-secondary px-2 py-1 text-sm leading-none text-white shadow-md"
                 onClick={(e) => e.stopPropagation()}
               >
                 <ExternalLink className="h-4 w-4" /> 
@@ -189,7 +155,7 @@ export default function ProjectCard({
                 target="_blank"
                 rel="noreferrer"
                 title="github repo"
-                className="flex items-center gap-2 rounded-lg border px-2 py-1 text-sm leading-none text-white shadow-md transition-all bg-primary hover:scale-110 ease-in-out"
+                className="flex items-center gap-2 rounded-lg border px-2 py-1 text-sm leading-none text-white shadow-md bg-primary"
                 onClick={(e) => e.stopPropagation()}
               >
                 <SiGithub className="h-4 w-4" /> 
