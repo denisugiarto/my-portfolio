@@ -5,16 +5,18 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../../lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-transparent",
   {
     variants: {
       variant: {
         default: "",
-        outline: "border-2 bg-transparent hover:scale-105",
+        outline: "bg-transparent hover:scale-105",
         ghost: "hover:scale-105",
         link: "underline-offset-4 hover:underline",
-        gradient: "font-semibold hover:scale-105 hover:shadow-lg transition-all duration-300",
-        gradientOutline: "border-2 bg-transparent hover:scale-105 transition-all duration-300",
+        gradient:
+          "font-semibold hover:scale-105 hover:shadow-lg transition-all duration-300",
+        gradientOutline:
+          "bg-transparent hover:scale-105 transition-all duration-300",
       },
       color: {
         primary: "",
@@ -30,7 +32,7 @@ const buttonVariants = cva(
       size: {
         default: "px-4 py-2",
         sm: "rounded-md px-3 py-2 text-xs",
-        lg: "rounded-md px-8 py-4 text-lg",
+        lg: "rounded-xl px-6 py-4",
         xl: "rounded-md px-10 py-4 text-xl",
         icon: "h-10 w-10",
       },
@@ -50,7 +52,8 @@ const buttonVariants = cva(
       {
         variant: "default",
         color: "destructive",
-        class: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+        class:
+          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
       },
       {
         variant: "default",
@@ -72,32 +75,38 @@ const buttonVariants = cva(
       {
         variant: "outline",
         color: "primary",
-        class: "border-primary text-primary hover:bg-primary hover:text-primary-foreground",
+        class:
+          "border-primary text-primary hover:bg-primary hover:text-primary-foreground",
       },
       {
         variant: "outline",
         color: "secondary",
-        class: "border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground",
+        class:
+          "border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground",
       },
       {
         variant: "outline",
         color: "destructive",
-        class: "border-destructive text-destructive hover:bg-destructive hover:text-destructive-foreground",
+        class:
+          "border-destructive text-destructive hover:bg-destructive hover:text-destructive-foreground",
       },
       {
         variant: "outline",
         color: "success",
-        class: "border-green-600 text-green-600 hover:bg-green-600 hover:text-white",
+        class:
+          "border-green-600 text-green-600 hover:bg-green-600 hover:text-white",
       },
       {
         variant: "outline",
         color: "warning",
-        class: "border-yellow-600 text-yellow-600 hover:bg-yellow-600 hover:text-white",
+        class:
+          "border-yellow-600 text-yellow-600 hover:bg-yellow-600 hover:text-white",
       },
       {
         variant: "outline",
         color: "info",
-        class: "border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white",
+        class:
+          "border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white",
       },
 
       // Ghost variant colors
@@ -153,39 +162,46 @@ const buttonVariants = cva(
       {
         variant: "gradient",
         color: "bluePurple",
-        class: "bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 hover:shadow-blue-500/25",
+        class:
+          "bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 hover:shadow-blue-500/25",
       },
       {
         variant: "gradient",
         color: "greenBlue",
-        class: "bg-gradient-to-r from-green-600 to-blue-600 text-white hover:from-green-700 hover:to-blue-700 hover:shadow-green-500/25",
+        class:
+          "bg-gradient-to-r from-green-600 to-blue-600 text-white hover:from-green-700 hover:to-blue-700 hover:shadow-green-500/25",
       },
       {
         variant: "gradient",
         color: "pinkOrange",
-        class: "bg-gradient-to-r from-pink-600 to-orange-600 text-white hover:from-pink-700 hover:to-orange-700 hover:shadow-pink-500/25",
+        class:
+          "bg-gradient-to-r from-pink-600 to-orange-600 text-white hover:from-pink-700 hover:to-orange-700 hover:shadow-pink-500/25",
       },
       {
         variant: "gradient",
         color: "primary",
-        class: "bg-gradient-to-r from-primary to-primary/80 text-primary-foreground hover:from-primary/90 hover:to-primary/70 hover:shadow-primary/25",
+        class:
+          "bg-gradient-to-r from-primary to-primary/80 text-primary-foreground hover:from-primary/90 hover:to-primary/70 hover:shadow-primary/25",
       },
 
       // Gradient outline variant colors
       {
         variant: "gradientOutline",
         color: "bluePurple",
-        class: "border-blue-500 text-blue-600 hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 hover:text-white hover:border-transparent",
+        class:
+          "border-blue-500 text-blue-600 hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 hover:text-white hover:border-transparent",
       },
       {
         variant: "gradientOutline",
         color: "greenBlue",
-        class: "border-green-500 text-green-600 hover:bg-gradient-to-r hover:from-green-600 hover:to-blue-600 hover:text-white hover:border-transparent",
+        class:
+          "border-green-500 text-green-600 hover:bg-gradient-to-r hover:from-green-600 hover:to-blue-600 hover:text-white hover:border-transparent",
       },
       {
         variant: "gradientOutline",
         color: "primary",
-        class: "border-primary text-primary hover:bg-primary hover:text-primary-foreground hover:border-primary",
+        class:
+          "border-primary text-primary hover:bg-primary hover:text-primary-foreground hover:border-primary",
       },
     ],
     defaultVariants: {
@@ -197,7 +213,7 @@ const buttonVariants = cva(
 );
 
 export interface ButtonProps
-  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'color'>,
+  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "color">,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
 }
@@ -207,7 +223,10 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const Comp = asChild ? Slot : "button";
     return (
       <Comp
-        className={cn(buttonVariants({ variant, size, color, className }))}
+        className={cn(
+          buttonVariants({ variant, size, color }),
+          className || "",
+        )}
         ref={ref}
         {...props}
       />
