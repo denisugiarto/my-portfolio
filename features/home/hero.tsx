@@ -9,6 +9,18 @@ import {
 } from "./hero-animations";
 import { getIconComponent } from "@/lib/icon-mapping";
 
+// Google Analytics tracking function
+const trackButtonClick = (buttonType: string, buttonText: string, destination: string) => {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', 'click', {
+      event_category: 'Hero CTA',
+      event_label: `${buttonType}: ${buttonText}`,
+      destination_url: destination,
+      value: buttonType === 'primary' ? 1 : 0.5
+    });
+  }
+};
+
 interface HeroProps {
   heroData: HeroSection | null;
 }
@@ -90,14 +102,21 @@ const Hero = ({ heroData }: HeroProps) => {
       {/* CTA Buttons with animation */}
       <AnimatedContent delay={0.4}>
         <div className="mb-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <Link href={heroData.primaryCTA?.link || "#projects"}>
+          <Link 
+            href={heroData.primaryCTA?.link || "#projects"}
+            onClick={() => trackButtonClick(
+              'primary',
+              heroData.primaryCTA?.text || "Hire me",
+              heroData.primaryCTA?.link || "#projects"
+            )}
+          >
             <Button
               variant="gradient"
               color="bluePurple"
               size="lg"
               className="group gap-2 shadow-lg transition-shadow hover:shadow-xl"
             >
-              <span>{heroData.primaryCTA?.text || "See My Projects"}</span>
+              <span>{heroData.primaryCTA?.text || "Hire me"}</span>
               <svg
                 viewBox="0 0 20 20"
                 fill="currentColor"
@@ -112,8 +131,8 @@ const Hero = ({ heroData }: HeroProps) => {
             </Button>
           </Link>
 
-          {heroData.secondaryCTA?.link ? (
-            <a
+          {heroData.secondaryCTA?.link && (
+            <Link
               href={heroData.secondaryCTA.link}
               target={
                 heroData.secondaryCTA.link.startsWith("http")
@@ -125,6 +144,11 @@ const Hero = ({ heroData }: HeroProps) => {
                   ? "noopener noreferrer"
                   : undefined
               }
+              onClick={() => trackButtonClick(
+                'secondary',
+                heroData.secondaryCTA.text || 'Secondary CTA',
+                heroData.secondaryCTA.link || ''
+              )}
             >
               <Button
                 variant="outline"
@@ -133,17 +157,7 @@ const Hero = ({ heroData }: HeroProps) => {
               >
                 <span>{heroData.secondaryCTA.text}</span>
               </Button>
-            </a>
-          ) : (
-            <a href="#contact">
-              <Button
-                variant="outline"
-                size="lg"
-                className="transition-shadow hover:shadow-lg"
-              >
-                <span>Let&apos;s Talk</span>
-              </Button>
-            </a>
+            </Link>
           )}
         </div>
       </AnimatedContent>
