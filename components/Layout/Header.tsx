@@ -4,14 +4,13 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { getRepoStars } from "@/services/home";
 import { NavigationItem } from "@/types";
-import { SiGithub } from "@icons-pack/react-simple-icons";
 import { useQuery } from "@tanstack/react-query";
-import { MenuIcon, StarIcon, XIcon } from "lucide-react";
+import { MenuIcon, XIcon } from "lucide-react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import data from "../../constant/data.json";
-import SimpleTooltip from "../ui/simple-tooltip";
+import GitHubStarsWrapper from "../GitHubStarsWrapper";
 const ThemeToggle = dynamic(() => import("./ThemeToggle"), { ssr: true });
 
 const navigation = [
@@ -47,10 +46,16 @@ export default function Header({ activeNavbar }: HeaderProps) {
     "bg-background/80 backdrop-blur-md shadow-lg border-b border-border/50";
   const [scrollY, setScrollY] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
-  const { data: repoStars } = useQuery({
-    queryKey: ["header"],
+  
+  const { data: repoStars, isLoading } = useQuery({
+    queryKey: ["github-stars"],
     queryFn: getRepoStars,
+    staleTime: 10 * 60 * 1000, // 10 minutes
+    gcTime: 30 * 60 * 1000, // 30 minutes
     refetchOnWindowFocus: false,
+    refetchOnMount: false,
+    refetchOnReconnect: false,
+    retry: 2,
   });
 
   useEffect(() => {
@@ -144,26 +149,7 @@ export default function Header({ activeNavbar }: HeaderProps) {
             </div>
           </div>
           <div className="flex items-center gap-4">
-            <SimpleTooltip title="Star on Github">
-              <a
-                href="https://github.com/denisugiarto/my-portfolio"
-                target="_blank"
-                rel="noreferrer"
-                title="Star on Github"
-                className="group flex items-center gap-1 rounded-xl border border-border/30 bg-card/80 p-2 px-3 font-title text-sm font-medium text-foreground backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-primary hover:text-primary-foreground hover:shadow-lg"
-              >
-                <SiGithub title="Star on Github" className="h-4 text-current" />
-                <span>
-                  <StarIcon
-                    fill="currentColor"
-                    className="h-3.5 text-inherit"
-                  />
-                </span>
-                <span className="hidden font-medium lg:inline">
-                  {repoStars ?? 1000}
-                </span>
-              </a>
-            </SimpleTooltip>
+            <GitHubStarsWrapper stars={repoStars || 0} loading={isLoading} />
             <ThemeToggle />
           </div>
         </div>
