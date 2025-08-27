@@ -68,7 +68,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className} ${montserrat.variable}`}>
-        {/* Google Analytics with Partytown */}
+        {/* Google Analytics with Web Worker */}
         <GoogleAnalytics
           measurementId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS || ""}
         />

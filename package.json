@@ -21,15 +21,13 @@
     "dev": "next dev",
     "start": "next start",
     "lint": "next lint",
-    "build": "pnpm run partytown && next build",
-    "partytown": "partytown copylib public/~partytown",
+    "build": "next build",
     "postbuild": "next-sitemap",
     "sanity": "sanity dev",
     "sanity:build": "sanity build",
     "sanity:deploy": "sanity deploy"
   },
   "dependencies": {
-    "@builder.io/partytown": "0.8.1",
     "@icons-pack/react-simple-icons": "9.6.0",
     "@portabletext/react": "^3.2.1",
     "@radix-ui/react-popover": "^1.1.1",
