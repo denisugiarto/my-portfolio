@@ -3,12 +3,13 @@ import Link from "next/link";
 import ProjectCard from "@/components/ui/project-card";
 import EmptyState from "@/components/ui/empty-state";
 import { Project } from "@/lib/sanity";
-import { 
-  ProjectsAnimations, 
-  AnimatedProjectSection, 
-  AnimatedProjectGrid, 
-  AnimatedViewAll 
+import {
+  ProjectsAnimations,
+  AnimatedProjectSection,
+  AnimatedProjectGrid,
+  AnimatedViewAll,
 } from "./projects-animations";
+import { Button } from "@/components/ui/button";
 
 interface ProjectsProps {
   projects: Project[] | null;
@@ -51,7 +52,7 @@ export default function Projects({ projects }: ProjectsProps) {
     <ProjectsAnimations>
       <AnimatedProjectSection>
         <h2 className="title-section font-title">projects</h2>
-        
+
         <AnimatedProjectGrid>
           {featuredProjects.map((project, index) => (
             <ProjectCard
@@ -64,14 +65,13 @@ export default function Projects({ projects }: ProjectsProps) {
             />
           ))}
         </AnimatedProjectGrid>
-        
+
         <AnimatedViewAll>
-          <Link
-            href="/projects"
-            className="group inline-flex items-center gap-2 rounded-lg border-2 border-primary/50 bg-transparent px-8 py-4 font-semibold text-primary transition-all duration-300 hover:scale-105 hover:border-primary hover:bg-primary hover:text-white"
-          >
-            View All Projects
-            <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
+          <Link href="/projects" className="group">
+            <Button variant="outline" className="gap-x-2">
+              View All Projects
+              <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+            </Button>
           </Link>
         </AnimatedViewAll>
       </AnimatedProjectSection>

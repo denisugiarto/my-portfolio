@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { ContactFormData } from '@/services/contact';
 import { cn } from '@/lib/utils';
 import { Loader2, Send, CheckCircle } from 'lucide-react';
+import { Button } from './ui/button';
 
 interface FormErrors {
   name?: string;
@@ -208,17 +209,10 @@ export default function ContactForm() {
         </div>
 
         <div className="flex justify-center md:justify-end">
-          <button
+          <Button
             type="submit"
             disabled={status === 'submitting'}
-            className={cn(
-              "w-full md:w-auto flex items-center justify-center gap-2 px-6 py-3",
-              "bg-primary text-primary-foreground rounded-lg font-semibold text-base",
-              "hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
-              "transform transition-all duration-200 hover:scale-[1.02]",
-              "disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none",
-              "md:min-w-[160px]"
-            )}
+            className='gap-2'
           >
             {status === 'submitting' ? (
               <>
@@ -231,7 +225,7 @@ export default function ContactForm() {
                 Send Message
               </>
             )}
-          </button>
+          </Button>
         </div>
 
         <p className="text-sm text-muted-foreground text-center">
