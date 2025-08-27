@@ -20,7 +20,6 @@ export default function BlogSection() {
     refetchOnWindowFocus: false,
     staleTime: 5 * 60 * 1000, // 5 minutes
   });
-    console.log("🚀 ~ BlogSection ~ featuredBlogs:", featuredBlogs)
 
   // Memoize skeleton array to prevent re-renders
   const skeletonItems = useMemo(() => [...Array(3)], []);

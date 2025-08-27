@@ -38,7 +38,6 @@ export default function CachedInlineSVG({
   const finalColor = enableContrastCheck && color && mounted ? accessibleColor : color;
 
   useEffect(() => {
-    console.log("🚀 ~ CachedInlineSVG ~ src:", src);
     if (!src) return;
 
     const loadSVG = async () => {
