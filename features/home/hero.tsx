@@ -8,17 +8,22 @@ import {
   AnimatedTechStack,
 } from "./hero-animations";
 import { getIconComponent } from "@/lib/icon-mapping";
+import { sendGAEvent } from "@next/third-parties/google";
 
-// Google Analytics tracking function
-const trackButtonClick = (buttonType: string, buttonText: string, destination: string) => {
-  if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('event', 'click', {
-      event_category: 'Hero CTA',
-      event_label: `${buttonType}: ${buttonText}`,
+// Google Analytics event tracking function
+const trackHeroButtonClick = (buttonText: string, destination: string) => {
+  console.log('Tracking hero button click:', { buttonText, destination }); // Debug log
+  
+  sendGAEvent({
+    event: 'click',
+    category: 'Hero CTA',
+    label: buttonText,
+    value: 1,
+    custom_parameters: {
       destination_url: destination,
-      value: buttonType === 'primary' ? 1 : 0.5
-    });
-  }
+      button_type: 'primary'
+    }
+  });
 };
 
 interface HeroProps {
@@ -104,10 +109,9 @@ const Hero = ({ heroData }: HeroProps) => {
         <div className="mb-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Link 
             href={heroData.primaryCTA?.link || "#projects"}
-            onClick={() => trackButtonClick(
-              'primary',
+            onClick={() => trackHeroButtonClick(
               heroData.primaryCTA?.text || "Hire me",
-              heroData.primaryCTA?.link || "#projects"
+              heroData.primaryCTA?.link || "#contact"
             )}
           >
             <Button
@@ -134,6 +138,10 @@ const Hero = ({ heroData }: HeroProps) => {
           {heroData.secondaryCTA?.link && (
             <Link
               href={heroData.secondaryCTA.link}
+              onClick={() => trackHeroButtonClick(
+                heroData.secondaryCTA.text,
+                heroData.secondaryCTA.link || "#projects"
+              )}
               target={
                 heroData.secondaryCTA.link.startsWith("http")
                   ? "_blank"
@@ -144,11 +152,6 @@ const Hero = ({ heroData }: HeroProps) => {
                   ? "noopener noreferrer"
                   : undefined
               }
-              onClick={() => trackButtonClick(
-                'secondary',
-                heroData.secondaryCTA.text || 'Secondary CTA',
-                heroData.secondaryCTA.link || ''
-              )}
             >
               <Button
                 variant="outline"
