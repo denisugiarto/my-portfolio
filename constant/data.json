@@ -3,7 +3,7 @@
   "profile": {
     "name": "Deni Sugiarto",
     "role": "Frontend Web Developer"
-  },  
+  },
   "contact": [
     {
       "type": "upwork",
@@ -91,7 +91,13 @@
       "id": 5,
       "title": "Conference React",
       "description": "Landing Page for Conference build with ReactJs, React-Bootstrap, and SCSS for custom theme in Bootstrap",
-      "technologies": ["ReactJs", "React-Bootstrap", "React-Icons", "SCSS", "dayjs"],
+      "technologies": [
+        "ReactJs",
+        "React-Bootstrap",
+        "React-Icons",
+        "SCSS",
+        "dayjs"
+      ],
       "image": "/img/conference_react.webp",
       "link": "https://conference-react.netlify.app/",
       "github": "https://github.com/denisugiarto/conference-react"

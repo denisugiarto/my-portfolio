@@ -46,7 +46,7 @@ export default function Header({ activeNavbar }: HeaderProps) {
     "bg-background/80 backdrop-blur-md shadow-lg border-b border-border/50";
   const [scrollY, setScrollY] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
-  
+
   const { data: repoStars, isLoading } = useQuery({
     queryKey: ["github-stars"],
     queryFn: getRepoStars,

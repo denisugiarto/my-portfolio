@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { urlFor } from "@/lib/sanity";
 import Image from "next/image";
@@ -34,9 +34,9 @@ export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Escape') closeModal();
-    if (e.key === 'ArrowRight') nextImage();
-    if (e.key === 'ArrowLeft') prevImage();
+    if (e.key === "Escape") closeModal();
+    if (e.key === "ArrowRight") nextImage();
+    if (e.key === "ArrowLeft") prevImage();
   };
 
   if (!images || images.length === 0) return null;
@@ -44,7 +44,7 @@ export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
   return (
     <div className="mb-8">
       <h3 className="mb-4 text-lg font-semibold">Project Gallery</h3>
-      
+
       {/* Gallery Grid */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {images.map((image, index) => (

@@ -8,26 +8,18 @@ import { ArrowBigUpIcon } from "lucide-react";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { HeroSection, Project } from "@/lib/sanity";
-
-const Contact = dynamic(() => import("@/features/home/contact"), {
-  loading: () => <p>Loading...</p>,
-  ssr: true,
-});
-const Experience = dynamic(() => import("@/features/home/experience"), {
-  loading: () => <p>Loading...</p>,
-  ssr: true,
-});
-const Blog = dynamic(() => import("@/features/home/blog"), {
-  loading: () => <p>Loading...</p>,
-  ssr: true,
-});
+import BlogSection from "@/features/home/blog";
+import Contact from "@/features/home/contact";
 
 interface HomeSectionsProps {
   heroData: HeroSection | null;
   projectsData: Project[] | null;
 }
 
-export default function HomeSections({ heroData, projectsData }: HomeSectionsProps) {
+export default function HomeSections({
+  heroData,
+  projectsData,
+}: HomeSectionsProps) {
   const [isHomeVisible, setIsHomeVisible] = useState(true);
 
   useEffect(() => {
@@ -53,13 +45,13 @@ export default function HomeSections({ heroData, projectsData }: HomeSectionsPro
     <Layout activeNavbar="Home">
       <Hero heroData={heroData} />
       <Projects projects={projectsData} />
-      <Blog />
+      <BlogSection />
       <Contact />
       <a
         href="#"
         className={cn(
           !isHomeVisible ? "opacity-100" : "opacity-0",
-          "fixed bottom-8 right-8 flex h-10 w-10 items-center justify-center rounded-full  transition-opacity",
+          "fixed bottom-8 right-8 flex h-10 w-10 items-center justify-center rounded-full  border bg-background transition-opacity",
         )}
         aria-label="Back to Top"
       >

@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { ContactFormData } from '@/services/contact';
-import { cn } from '@/lib/utils';
-import { Loader2, Send, CheckCircle } from 'lucide-react';
+import { useState } from "react";
+import { ContactFormData } from "@/services/contact";
+import { cn } from "@/lib/utils";
+import { Loader2, Send, CheckCircle } from "lucide-react";
 
 interface FormErrors {
   name?: string;
@@ -12,33 +12,33 @@ interface FormErrors {
   general?: string;
 }
 
-type FormStatus = 'idle' | 'submitting' | 'success' | 'error';
+type FormStatus = "idle" | "submitting" | "success" | "error";
 
 export default function SimpleContactForm() {
   const [formData, setFormData] = useState<ContactFormData>({
-    name: '',
-    email: '',
-    message: ''
+    name: "",
+    email: "",
+    message: "",
   });
-  
+
   const [errors, setErrors] = useState<FormErrors>({});
-  const [status, setStatus] = useState<FormStatus>('idle');
+  const [status, setStatus] = useState<FormStatus>("idle");
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
 
     if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
+      newErrors.name = "Name is required";
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
+      newErrors.email = "Email is required";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Invalid email address';
+      newErrors.email = "Invalid email address";
     }
 
     if (!formData.message.trim()) {
-      newErrors.message = 'Message is required';
+      newErrors.message = "Message is required";
     }
 
     setErrors(newErrors);
@@ -46,31 +46,31 @@ export default function SimpleContactForm() {
   };
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-    
+    setFormData((prev) => ({ ...prev, [name]: value }));
+
     if (errors[name as keyof FormErrors]) {
-      setErrors(prev => ({ ...prev, [name]: undefined }));
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       return;
     }
 
-    setStatus('submitting');
+    setStatus("submitting");
     setErrors({});
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
+      const response = await fetch("/api/contact", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
@@ -78,37 +78,41 @@ export default function SimpleContactForm() {
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result.message || 'Something went wrong');
+        throw new Error(result.message || "Something went wrong");
       }
 
-      setStatus('success');
+      setStatus("success");
       setFormData({
-        name: '',
-        email: '',
-        message: ''
+        name: "",
+        email: "",
+        message: "",
       });
     } catch (error: any) {
-      setStatus('error');
-      setErrors({ general: error.message || 'Failed to send message. Please try again.' });
+      setStatus("error");
+      setErrors({
+        general: error.message || "Failed to send message. Please try again.",
+      });
     }
   };
 
   const resetForm = () => {
-    setStatus('idle');
+    setStatus("idle");
     setErrors({});
   };
 
-  if (status === 'success') {
+  if (status === "success") {
     return (
-      <div className="text-center py-8">
-        <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-        <h3 className="text-xl font-semibold text-foreground mb-2">Message Sent!</h3>
-        <p className="text-muted-foreground mb-6">
+      <div className="py-8 text-center">
+        <CheckCircle className="mx-auto mb-4 h-16 w-16 text-green-500" />
+        <h3 className="mb-2 text-xl font-semibold text-foreground">
+          Message Sent!
+        </h3>
+        <p className="mb-6 text-muted-foreground">
           Thank you for reaching out. I&apos;ll get back to you soon.
         </p>
         <button
           onClick={resetForm}
-          className="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors"
+          className="rounded-md bg-primary px-4 py-2 text-primary-foreground transition-colors hover:bg-primary/90"
         >
           Send Another Message
         </button>
@@ -119,14 +123,17 @@ export default function SimpleContactForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       {errors.general && (
-        <div className="p-3 bg-destructive/10 border border-destructive/20 rounded-md">
+        <div className="rounded-md border border-destructive/20 bg-destructive/10 p-3">
           <p className="text-sm text-destructive">{errors.general}</p>
         </div>
       )}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+          <label
+            htmlFor="name"
+            className="mb-2 block text-sm font-medium text-foreground"
+          >
             Name *
           </label>
           <input
@@ -137,11 +144,11 @@ export default function SimpleContactForm() {
             onChange={handleInputChange}
             autoComplete="name"
             className={cn(
-              "w-full px-3 py-2 rounded-md border bg-background text-foreground",
+              "w-full rounded-md border bg-background px-3 py-2 text-foreground",
               "placeholder:text-muted-foreground",
-              "focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent",
+              "focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary",
               "transition-colors",
-              errors.name ? "border-destructive" : "border-border"
+              errors.name ? "border-destructive" : "border-border",
             )}
             placeholder="Your name"
           />
@@ -151,7 +158,10 @@ export default function SimpleContactForm() {
         </div>
 
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+          <label
+            htmlFor="email"
+            className="mb-2 block text-sm font-medium text-foreground"
+          >
             Email *
           </label>
           <input
@@ -163,11 +173,11 @@ export default function SimpleContactForm() {
             inputMode="email"
             autoComplete="email"
             className={cn(
-              "w-full px-3 py-2 rounded-md border bg-background text-foreground",
+              "w-full rounded-md border bg-background px-3 py-2 text-foreground",
               "placeholder:text-muted-foreground",
-              "focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent",
+              "focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary",
               "transition-colors",
-              errors.email ? "border-destructive" : "border-border"
+              errors.email ? "border-destructive" : "border-border",
             )}
             placeholder="your@email.com"
           />
@@ -177,9 +187,11 @@ export default function SimpleContactForm() {
         </div>
       </div>
 
-
       <div>
-        <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+        <label
+          htmlFor="message"
+          className="mb-2 block text-sm font-medium text-foreground"
+        >
           Message *
         </label>
         <textarea
@@ -189,11 +201,11 @@ export default function SimpleContactForm() {
           value={formData.message}
           onChange={handleInputChange}
           className={cn(
-            "w-full px-3 py-2 rounded-md border bg-background text-foreground",
-            "placeholder:text-muted-foreground resize-vertical",
-            "focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent",
+            "w-full rounded-md border bg-background px-3 py-2 text-foreground",
+            "resize-vertical placeholder:text-muted-foreground",
+            "focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary",
             "transition-colors",
-            errors.message ? "border-destructive" : "border-border"
+            errors.message ? "border-destructive" : "border-border",
           )}
           placeholder="Tell me about your project..."
         />
@@ -204,28 +216,28 @@ export default function SimpleContactForm() {
 
       <button
         type="submit"
-        disabled={status === 'submitting'}
+        disabled={status === "submitting"}
         className={cn(
-          "w-full flex items-center justify-center gap-2 px-4 py-3",
-          "bg-primary text-primary-foreground rounded-md font-medium",
+          "flex w-full items-center justify-center gap-2 px-4 py-3",
+          "rounded-md bg-primary font-medium text-primary-foreground",
           "hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
-          "transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          "transition-colors disabled:cursor-not-allowed disabled:opacity-50",
         )}
       >
-        {status === 'submitting' ? (
+        {status === "submitting" ? (
           <>
-            <Loader2 className="w-4 h-4 animate-spin" />
+            <Loader2 className="h-4 w-4 animate-spin" />
             Sending...
           </>
         ) : (
           <>
-            <Send className="w-4 h-4" />
+            <Send className="h-4 w-4" />
             Send Message
           </>
         )}
       </button>
 
-      <p className="text-sm text-muted-foreground text-center">
+      <p className="text-center text-sm text-muted-foreground">
         * Required fields
       </p>
     </form>

@@ -1,5 +1,9 @@
 import { Experience } from "@/lib/sanity";
-import { getExperiences, getFeaturedExperiences, getExperienceById } from "@/lib/sanity-queries";
+import {
+  getExperiences,
+  getFeaturedExperiences,
+  getExperienceById,
+} from "@/lib/sanity-queries";
 
 export const fetchExperiences = async (): Promise<Experience[]> => {
   try {
@@ -19,7 +23,9 @@ export const fetchFeaturedExperiences = async (): Promise<Experience[]> => {
   }
 };
 
-export const fetchExperienceById = async (id: string): Promise<Experience | null> => {
+export const fetchExperienceById = async (
+  id: string,
+): Promise<Experience | null> => {
   try {
     return await getExperienceById(id);
   } catch (error: any) {
@@ -29,11 +35,15 @@ export const fetchExperienceById = async (id: string): Promise<Experience | null
 };
 
 // Utility function to format date ranges
-export const formatDateRange = (startDate: string, endDate?: string, currentJob?: boolean): string => {
+export const formatDateRange = (
+  startDate: string,
+  endDate?: string,
+  currentJob?: boolean,
+): string => {
   const start = new Date(startDate);
-  const startFormatted = start.toLocaleDateString('en-US', { 
-    year: 'numeric', 
-    month: 'short' 
+  const startFormatted = start.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
   });
 
   if (currentJob) {
@@ -42,9 +52,9 @@ export const formatDateRange = (startDate: string, endDate?: string, currentJob?
 
   if (endDate) {
     const end = new Date(endDate);
-    const endFormatted = end.toLocaleDateString('en-US', { 
-      year: 'numeric', 
-      month: 'short' 
+    const endFormatted = end.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short",
     });
     return `${startFormatted} - ${endFormatted}`;
   }
@@ -53,23 +63,29 @@ export const formatDateRange = (startDate: string, endDate?: string, currentJob?
 };
 
 // Utility function to calculate duration
-export const calculateDuration = (startDate: string, endDate?: string, currentJob?: boolean): string => {
+export const calculateDuration = (
+  startDate: string,
+  endDate?: string,
+  currentJob?: boolean,
+): string => {
   const start = new Date(startDate);
   const end = currentJob || !endDate ? new Date() : new Date(endDate);
-  
+
   const diffTime = Math.abs(end.getTime() - start.getTime());
   const diffMonths = Math.ceil(diffTime / (1000 * 60 * 60 * 24 * 30.44)); // Average days per month
-  
+
   if (diffMonths < 12) {
-    return `${diffMonths} month${diffMonths !== 1 ? 's' : ''}`;
+    return `${diffMonths} month${diffMonths !== 1 ? "s" : ""}`;
   }
-  
+
   const years = Math.floor(diffMonths / 12);
   const months = diffMonths % 12;
-  
+
   if (months === 0) {
-    return `${years} year${years !== 1 ? 's' : ''}`;
+    return `${years} year${years !== 1 ? "s" : ""}`;
   }
-  
-  return `${years} year${years !== 1 ? 's' : ''} ${months} month${months !== 1 ? 's' : ''}`;
+
+  return `${years} year${years !== 1 ? "s" : ""} ${months} month${
+    months !== 1 ? "s" : ""
+  }`;
 };

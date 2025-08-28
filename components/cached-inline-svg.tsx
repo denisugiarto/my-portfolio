@@ -12,7 +12,7 @@ interface CachedInlineSVGProps {
   title?: string;
   style?: React.CSSProperties;
   enableContrastCheck?: boolean;
-  themeContext?: 'background' | 'card' | 'muted' | 'primary';
+  themeContext?: "background" | "card" | "muted" | "primary";
 }
 
 export default function CachedInlineSVG({
@@ -23,19 +23,23 @@ export default function CachedInlineSVG({
   title,
   style,
   enableContrastCheck = true,
-  themeContext = 'background',
+  themeContext = "background",
 }: CachedInlineSVGProps) {
   const [svgContent, setSvgContent] = useState<string>("");
   const [mounted, setMounted] = useState(false);
-  
+
   // Prevent hydration mismatch by waiting for mount
   useEffect(() => {
     setMounted(true);
   }, []);
-  
+
   // Use accessible color if contrast checking is enabled and component is mounted
-  const accessibleColor = useAccessibleColorForContext(color || 'currentColor', themeContext);
-  const finalColor = enableContrastCheck && color && mounted ? accessibleColor : color;
+  const accessibleColor = useAccessibleColorForContext(
+    color || "currentColor",
+    themeContext,
+  );
+  const finalColor =
+    enableContrastCheck && color && mounted ? accessibleColor : color;
 
   useEffect(() => {
     if (!src) return;

@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { LazyMotion, domAnimation } from "framer-motion";
 import { useState } from "react";
@@ -9,9 +9,13 @@ import LoadingState from "@/components/ui/loading-state";
 import EmptyState from "@/components/ui/empty-state";
 
 export default function ProjectsList() {
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  
-  const { data: projects, isLoading, error } = useQuery({
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
+
+  const {
+    data: projects,
+    isLoading,
+    error,
+  } = useQuery({
     queryKey: ["projects"],
     queryFn: fetchProjects,
     refetchOnWindowFocus: false,
@@ -30,12 +34,16 @@ export default function ProjectsList() {
   }
 
   // Get unique categories
-  const categories = ['all', ...new Set(projects.map(p => p.category).filter(Boolean))] as string[];
-  
+  const categories = [
+    "all",
+    ...new Set(projects.map((p) => p.category).filter(Boolean)),
+  ] as string[];
+
   // Filter projects by category
-  const filteredProjects = selectedCategory === 'all' 
-    ? projects 
-    : projects.filter(p => p.category === selectedCategory);
+  const filteredProjects =
+    selectedCategory === "all"
+      ? projects
+      : projects.filter((p) => p.category === selectedCategory);
 
   return (
     <LazyMotion features={domAnimation}>
@@ -49,11 +57,13 @@ export default function ProjectsList() {
                 onClick={() => setSelectedCategory(category)}
                 className={`rounded-full px-4 py-2 text-sm font-medium transition-all ${
                   selectedCategory === category
-                    ? 'bg-primary text-primary-foreground'
-                    : 'bg-muted text-muted-foreground hover:bg-accent hover:text-accent-foreground'
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-muted text-muted-foreground hover:bg-accent hover:text-accent-foreground"
                 }`}
               >
-                {category === 'all' ? 'All Projects' : category?.replace('-', ' ').toUpperCase()}
+                {category === "all"
+                  ? "All Projects"
+                  : category?.replace("-", " ").toUpperCase()}
               </button>
             ))}
           </div>
@@ -71,7 +81,7 @@ export default function ProjectsList() {
           ))}
         </div>
 
-        {filteredProjects.length === 0 && selectedCategory !== 'all' && (
+        {filteredProjects.length === 0 && selectedCategory !== "all" && (
           <EmptyState variant="category" categoryName={selectedCategory} />
         )}
       </div>

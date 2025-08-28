@@ -9,14 +9,14 @@ type SearchInputProps = {
   delay?: number;
   initialValue?: string;
   showClearButton?: boolean;
-} & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'value'>;
+} & Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange" | "value">;
 
-const SearchInput = ({ 
-  onSearch, 
-  delay = 300, 
+const SearchInput = ({
+  onSearch,
+  delay = 300,
   initialValue = "",
   showClearButton = true,
-  ...props 
+  ...props
 }: SearchInputProps) => {
   const [query, setQuery] = useState(initialValue);
   const debouncedQuery = useDebounce(query, delay);
@@ -28,7 +28,7 @@ const SearchInput = ({
     try {
       stableOnSearch(debouncedQuery);
     } catch (error) {
-      console.error('Search callback error:', error);
+      console.error("Search callback error:", error);
     }
   }, [debouncedQuery, stableOnSearch]);
 
@@ -47,8 +47,8 @@ const SearchInput = ({
 
   return (
     <div className="relative w-full flex-grow md:max-w-sm" role="search">
-      <Search 
-        className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 transform text-muted-foreground" 
+      <Search
+        className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 transform text-muted-foreground"
         aria-hidden="true"
       />
       <Input
@@ -65,7 +65,7 @@ const SearchInput = ({
         <button
           type="button"
           onClick={handleClear}
-          className="absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 transform text-muted-foreground hover:text-foreground transition-colors"
+          className="absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 transform text-muted-foreground transition-colors hover:text-foreground"
           aria-label="Clear search"
         >
           <X className="h-4 w-4" />

@@ -68,7 +68,7 @@ export default function Projects({ projects }: ProjectsProps) {
 
         <AnimatedViewAll>
           <Link href="/projects" className="group">
-            <Button variant="outline" className="gap-x-2">
+            <Button variant="outline" className="w-full gap-x-2 md:w-auto">
               View All Projects
               <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
             </Button>

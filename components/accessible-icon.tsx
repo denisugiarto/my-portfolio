@@ -1,4 +1,4 @@
-import { useAccessibleColor } from '@/lib/contrast-checker';
+import { useAccessibleColor } from "@/lib/contrast-checker";
 
 interface AccessibleIconProps {
   icon: React.ComponentType<{ size?: number; style?: React.CSSProperties }>;
@@ -13,7 +13,7 @@ interface AccessibleIconProps {
  */
 export default function AccessibleIcon({
   icon: Icon,
-  originalColor = 'currentColor',
+  originalColor = "currentColor",
   size = 20,
   className,
   style,

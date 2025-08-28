@@ -1,11 +1,12 @@
 "use client";
 
+import { Project, urlFor } from "@/lib/sanity";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import { m } from "framer-motion";
-import { ExternalLink, Monitor, Calendar, Globe2Icon, GlobeIcon } from "lucide-react";
+import { ExternalLink, GlobeIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { Project, urlFor } from "@/lib/sanity";
+import { Button } from "./button";
 
 interface ProjectCardProps {
   project: Project;
@@ -127,11 +128,16 @@ export default function ProjectCard({
               target="_blank"
               rel="noreferrer"
               title="website link"
-              className="flex items-center gap-2 rounded-lg border bg-primary px-2 py-1 text-sm leading-none text-white shadow-md"
               onClick={(e) => e.stopPropagation()}
             >
-              <GlobeIcon className="h-4 w-4" />
-              Web
+              <Button
+                size="xs"
+                variant="outline"
+                className="flex items-center gap-2"
+              >
+                <GlobeIcon className="h-4 w-4" />
+                Link
+              </Button>
             </a>
           )}
           {project.demoUrl && (

@@ -90,7 +90,7 @@ export default function ProjectsStaticList({
           animate={{ opacity: 1, y: 0 }}
           className="mb-12"
         >
-          <div className="flex flex-col-reverse md:flex-row-reverse items-center gap-4 justify-between">
+          <div className="flex flex-col-reverse items-center justify-between gap-4 md:flex-row-reverse">
             {/* Search Bar */}
             <SearchInput
               onSearch={setSearchQuery}
@@ -201,8 +201,8 @@ export default function ProjectsStaticList({
                   No projects found
                 </h3>
                 <p className="mb-4 text-muted-foreground">
-                  No projects match your search for &quot;{searchQuery}&quot;. Try
-                  adjusting your search terms.
+                  No projects match your search for &quot;{searchQuery}&quot;.
+                  Try adjusting your search terms.
                 </p>
                 <button
                   onClick={() => setSearchQuery("")}

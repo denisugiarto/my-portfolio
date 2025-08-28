@@ -2,20 +2,20 @@ interface EmptyStateProps {
   title?: string;
   description?: string;
   showStudioLink?: boolean;
-  variant?: 'error' | 'empty' | 'category';
+  variant?: "error" | "empty" | "category";
   categoryName?: string;
 }
 
-export default function EmptyState({ 
+export default function EmptyState({
   title = "No projects found",
   description = "Projects will appear here once they're added to the CMS.",
   showStudioLink = true,
-  variant = 'empty',
-  categoryName
+  variant = "empty",
+  categoryName,
 }: EmptyStateProps) {
-  if (variant === 'error') {
+  if (variant === "error") {
     return (
-      <div className="text-center py-12">
+      <div className="py-12 text-center">
         <p className="text-red-600 dark:text-red-400">
           Error loading projects. Please try again later.
         </p>
@@ -23,9 +23,9 @@ export default function EmptyState({
     );
   }
 
-  if (variant === 'category') {
+  if (variant === "category") {
     return (
-      <div className="text-center py-12">
+      <div className="py-12 text-center">
         <p className="text-muted-foreground">
           No projects found in the &quot;{categoryName}&quot; category.
         </p>
@@ -34,12 +34,12 @@ export default function EmptyState({
   }
 
   return (
-    <div className="text-center py-12">
-      <div className="mx-auto w-auto rounded-md bg-slate-100 dark:bg-slate-800 px-6 py-4 text-center">
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+    <div className="py-12 text-center">
+      <div className="mx-auto w-auto rounded-md bg-slate-100 px-6 py-4 text-center dark:bg-slate-800">
+        <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
           {title}
         </h3>
-        <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+        <p className="mb-4 text-sm text-gray-600 dark:text-gray-400">
           {description}
         </p>
         {showStudioLink && (

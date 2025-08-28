@@ -13,12 +13,12 @@ export default function BlogList({ blogs, isLoading, error }: BlogListProps) {
   if (error) return <p>{error ?? "the blog list can't load"}</p>;
   if (blogs?.length === 0) {
     return (
-      <div className="text-center py-12">
-        <div className="mx-auto w-auto rounded-md bg-slate-100 dark:bg-slate-800 px-6 py-4 text-center">
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+      <div className="py-12 text-center">
+        <div className="mx-auto w-auto rounded-md bg-slate-100 px-6 py-4 text-center dark:bg-slate-800">
+          <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
             No articles found
           </h3>
-          <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+          <p className="mb-4 text-sm text-gray-600 dark:text-gray-400">
             Blog posts will appear here once they&apos;re added to the CMS.
           </p>
           <p className="text-xs text-gray-500 dark:text-gray-500">

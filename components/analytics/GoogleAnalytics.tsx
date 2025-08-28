@@ -1,13 +1,15 @@
-import { GoogleAnalytics } from '@next/third-parties/google'
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 interface GoogleAnalyticsComponentProps {
-  measurementId: string
+  measurementId: string;
 }
 
-export default function GoogleAnalyticsComponent({ measurementId }: GoogleAnalyticsComponentProps) {
+export default function GoogleAnalyticsComponent({
+  measurementId,
+}: GoogleAnalyticsComponentProps) {
   if (!measurementId) {
-    return null
+    return null;
   }
 
-  return <GoogleAnalytics gaId={measurementId} />
+  return <GoogleAnalytics gaId={measurementId} />;
 }

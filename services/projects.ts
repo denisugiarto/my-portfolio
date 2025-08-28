@@ -1,11 +1,15 @@
 import { Project } from "@/lib/sanity";
-import { getProjects, getFeaturedProjects, getProjectBySlug } from "@/lib/sanity-queries";
+import {
+  getProjects,
+  getFeaturedProjects,
+  getProjectBySlug,
+} from "@/lib/sanity-queries";
 
 export const fetchProjects = async (): Promise<Project[]> => {
   try {
     return await getProjects();
   } catch (error: any) {
-    console.error('Error fetching projects:', error);
+    console.error("Error fetching projects:", error);
     throw new Error(error.message || "Error fetching projects");
   }
 };
@@ -19,7 +23,9 @@ export const fetchFeaturedProjects = async (): Promise<Project[]> => {
   }
 };
 
-export const fetchProjectBySlug = async (slug: string): Promise<Project | null> => {
+export const fetchProjectBySlug = async (
+  slug: string,
+): Promise<Project | null> => {
   try {
     return await getProjectBySlug(slug);
   } catch (error: any) {

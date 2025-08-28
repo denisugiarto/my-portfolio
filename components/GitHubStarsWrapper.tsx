@@ -1,13 +1,16 @@
-import { SiGithub } from '@icons-pack/react-simple-icons';
-import { StarIcon } from 'lucide-react';
-import SimpleTooltip from './ui/simple-tooltip';
+import { SiGithub } from "@icons-pack/react-simple-icons";
+import { StarIcon } from "lucide-react";
+import SimpleTooltip from "./ui/simple-tooltip";
 
 interface GitHubStarsWrapperProps {
   stars: number;
   loading?: boolean;
 }
 
-export default function GitHubStarsWrapper({ stars, loading = false }: GitHubStarsWrapperProps) {
+export default function GitHubStarsWrapper({
+  stars,
+  loading = false,
+}: GitHubStarsWrapperProps) {
   return (
     <SimpleTooltip title="Star on Github">
       <a
@@ -19,17 +22,10 @@ export default function GitHubStarsWrapper({ stars, loading = false }: GitHubSta
       >
         <SiGithub title="Star on Github" className="h-4 text-current" />
         <span>
-          <StarIcon
-            fill="currentColor"
-            className="h-3.5 text-inherit"
-          />
+          <StarIcon fill="currentColor" className="h-3.5 text-inherit" />
         </span>
         <span className="hidden font-medium lg:inline">
-          {loading ? (
-            <span className="animate-pulse">···</span>
-          ) : (
-            stars || 0
-          )}
+          {loading ? <span className="animate-pulse">···</span> : stars || 0}
         </span>
       </a>
     </SimpleTooltip>

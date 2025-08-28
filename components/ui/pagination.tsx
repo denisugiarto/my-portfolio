@@ -53,7 +53,10 @@ export function Pagination({
 
   return (
     <nav
-      className={cn("flex items-center justify-center space-x-2", className || "")}
+      className={cn(
+        "flex items-center justify-center space-x-2",
+        className || "",
+      )}
       aria-label="Pagination Navigation"
     >
       {/* Previous Button */}
@@ -61,16 +64,16 @@ export function Pagination({
         onClick={() => handlePageChange(currentPage - 1)}
         disabled={currentPage === 1}
         className={cn(
-          "flex items-center justify-center px-3 py-2 text-sm font-medium rounded-md transition-colors",
+          "flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium transition-colors",
           "border border-border hover:bg-muted",
-          "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent",
+          "disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-transparent",
           currentPage === 1
             ? "text-muted-foreground"
-            : "text-foreground hover:text-foreground"
+            : "text-foreground hover:text-foreground",
         )}
         aria-label="Go to previous page"
       >
-        <ChevronLeft className="w-4 h-4 mr-1" />
+        <ChevronLeft className="mr-1 h-4 w-4" />
         Previous
       </button>
 
@@ -80,18 +83,18 @@ export function Pagination({
           <button
             onClick={() => handlePageChange(1)}
             className={cn(
-              "flex items-center justify-center px-3 py-2 text-sm font-medium rounded-md transition-colors",
+              "flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium transition-colors",
               "border border-border hover:bg-muted hover:text-foreground",
               currentPage === 1
-                ? "bg-primary text-primary-foreground border-primary"
-                : "text-muted-foreground"
+                ? "border-primary bg-primary text-primary-foreground"
+                : "text-muted-foreground",
             )}
             aria-label="Go to page 1"
           >
             1
           </button>
           <span className="flex items-center justify-center px-2 py-2 text-muted-foreground">
-            <MoreHorizontal className="w-4 h-4" />
+            <MoreHorizontal className="h-4 w-4" />
           </span>
         </>
       )}
@@ -102,11 +105,11 @@ export function Pagination({
           key={page}
           onClick={() => handlePageChange(page)}
           className={cn(
-            "flex items-center justify-center px-3 py-2 text-sm font-medium rounded-md transition-colors",
+            "flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium transition-colors",
             "border border-border hover:bg-muted hover:text-foreground",
             currentPage === page
-              ? "bg-primary text-primary-foreground border-primary"
-              : "text-muted-foreground"
+              ? "border-primary bg-primary text-primary-foreground"
+              : "text-muted-foreground",
           )}
           aria-label={`Go to page ${page}`}
           aria-current={currentPage === page ? "page" : undefined}
@@ -119,16 +122,16 @@ export function Pagination({
       {showFirstLast && showEndEllipsis && (
         <>
           <span className="flex items-center justify-center px-2 py-2 text-muted-foreground">
-            <MoreHorizontal className="w-4 h-4" />
+            <MoreHorizontal className="h-4 w-4" />
           </span>
           <button
             onClick={() => handlePageChange(totalPages)}
             className={cn(
-              "flex items-center justify-center px-3 py-2 text-sm font-medium rounded-md transition-colors",
+              "flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium transition-colors",
               "border border-border hover:bg-muted hover:text-foreground",
               currentPage === totalPages
-                ? "bg-primary text-primary-foreground border-primary"
-                : "text-muted-foreground"
+                ? "border-primary bg-primary text-primary-foreground"
+                : "text-muted-foreground",
             )}
             aria-label={`Go to page ${totalPages}`}
           >
@@ -142,17 +145,17 @@ export function Pagination({
         onClick={() => handlePageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
         className={cn(
-          "flex items-center justify-center px-3 py-2 text-sm font-medium rounded-md transition-colors",
+          "flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium transition-colors",
           "border border-border hover:bg-muted",
-          "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent",
+          "disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-transparent",
           currentPage === totalPages
             ? "text-muted-foreground"
-            : "text-foreground hover:text-foreground"
+            : "text-foreground hover:text-foreground",
         )}
         aria-label="Go to next page"
       >
         Next
-        <ChevronRight className="w-4 h-4 ml-1" />
+        <ChevronRight className="ml-1 h-4 w-4" />
       </button>
     </nav>
   );

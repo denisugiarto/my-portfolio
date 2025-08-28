@@ -1,101 +1,103 @@
-import {defineField, defineType} from 'sanity'
+import { defineField, defineType } from "sanity";
 
 export const blogPost = defineType({
-  name: 'blogPost',
-  title: 'Blog Post',
-  type: 'document',
+  name: "blogPost",
+  title: "Blog Post",
+  type: "document",
   fields: [
     defineField({
-      name: 'title',
-      title: 'Title',
-      type: 'string',
-      validation: Rule => Rule.required()
+      name: "title",
+      title: "Title",
+      type: "string",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
+      name: "slug",
+      title: "Slug",
+      type: "slug",
       options: {
-        source: 'title',
+        source: "title",
         maxLength: 96,
       },
-      validation: Rule => Rule.required()
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'excerpt',
-      title: 'Excerpt',
-      type: 'text',
+      name: "excerpt",
+      title: "Excerpt",
+      type: "text",
       rows: 4,
     }),
     defineField({
-      name: 'coverImage',
-      title: 'Cover Image',
-      type: 'image',
+      name: "coverImage",
+      title: "Cover Image",
+      type: "image",
       options: {
         hotspot: true,
       },
     }),
     defineField({
-      name: 'content',
-      title: 'Content',
-      type: 'blockContent',
+      name: "content",
+      title: "Content",
+      type: "blockContent",
     }),
     defineField({
-      name: 'tags',
-      title: 'Tags',
-      type: 'array',
-      of: [{
-        type: 'reference',
-        to: [{type: 'tag'}]
-      }],
+      name: "tags",
+      title: "Tags",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: [{ type: "tag" }],
+        },
+      ],
       options: {
-        layout: 'tags',
+        layout: "tags",
       },
     }),
     defineField({
-      name: 'publishedAt',
-      title: 'Published at',
-      type: 'datetime',
-      validation: Rule => Rule.required()
+      name: "publishedAt",
+      title: "Published at",
+      type: "datetime",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'readTime',
-      title: 'Reading Time (minutes)',
-      type: 'number',
+      name: "readTime",
+      title: "Reading Time (minutes)",
+      type: "number",
     }),
     defineField({
-      name: 'published',
-      title: 'Published',
-      type: 'boolean',
-      description: 'Whether this blog post should be visible on the website',
+      name: "published",
+      title: "Published",
+      type: "boolean",
+      description: "Whether this blog post should be visible on the website",
       initialValue: true,
     }),
     defineField({
-      name: 'featured',
-      title: 'Featured Post',
-      type: 'boolean',
+      name: "featured",
+      title: "Featured Post",
+      type: "boolean",
       initialValue: false,
     }),
     defineField({
-      name: 'seo',
-      title: 'SEO',
-      type: 'object',
+      name: "seo",
+      title: "SEO",
+      type: "object",
       fields: [
         defineField({
-          name: 'metaTitle',
-          title: 'Meta Title',
-          type: 'string',
+          name: "metaTitle",
+          title: "Meta Title",
+          type: "string",
         }),
         defineField({
-          name: 'metaDescription',
-          title: 'Meta Description',
-          type: 'text',
+          name: "metaDescription",
+          title: "Meta Description",
+          type: "text",
           rows: 3,
         }),
         defineField({
-          name: 'ogImage',
-          title: 'Open Graph Image',
-          type: 'image',
+          name: "ogImage",
+          title: "Open Graph Image",
+          type: "image",
           options: {
             hotspot: true,
           },
@@ -105,16 +107,16 @@ export const blogPost = defineType({
   ],
   preview: {
     select: {
-      title: 'title',
-      media: 'coverImage',
-      subtitle: 'publishedAt',
+      title: "title",
+      media: "coverImage",
+      subtitle: "publishedAt",
     },
-    prepare({title, media, subtitle}) {
+    prepare({ title, media, subtitle }) {
       return {
         title,
         media,
         subtitle: new Date(subtitle).toLocaleDateString(),
-      }
+      };
     },
   },
-})
+});

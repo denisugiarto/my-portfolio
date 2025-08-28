@@ -1,28 +1,28 @@
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { getIconComponent } from "@/lib/icon-mapping";
 import { HeroSection, Technology } from "@/lib/sanity";
+import { sendGAEvent } from "@next/third-parties/google";
+import Link from "next/link";
 import {
-  HeroAnimations,
-  AnimatedText,
   AnimatedContent,
   AnimatedTechStack,
+  AnimatedText,
+  HeroAnimations,
 } from "./hero-animations";
-import { getIconComponent } from "@/lib/icon-mapping";
-import { sendGAEvent } from "@next/third-parties/google";
 
 // Google Analytics event tracking function
 const trackHeroButtonClick = (buttonText: string, destination: string) => {
-  console.log('Tracking hero button click:', { buttonText, destination }); // Debug log
-  
+  console.log("Tracking hero button click:", { buttonText, destination }); // Debug log
+
   sendGAEvent({
-    event: 'click',
-    category: 'Hero CTA',
+    event: "click",
+    category: "Hero CTA",
     label: buttonText,
     value: 1,
     custom_parameters: {
       destination_url: destination,
-      button_type: 'primary'
-    }
+      button_type: "primary",
+    },
   });
 };
 
@@ -107,18 +107,21 @@ const Hero = ({ heroData }: HeroProps) => {
       {/* CTA Buttons with animation */}
       <AnimatedContent delay={0.4}>
         <div className="mb-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <Link 
+          <Link
             href={heroData.primaryCTA?.link || "#projects"}
-            onClick={() => trackHeroButtonClick(
-              heroData.primaryCTA?.text || "Hire me",
-              heroData.primaryCTA?.link || "#contact"
-            )}
+            onClick={() =>
+              trackHeroButtonClick(
+                heroData.primaryCTA?.text || "Hire me",
+                heroData.primaryCTA?.link || "#contact",
+              )
+            }
+            className="w-3/4 md:w-auto"
           >
             <Button
               variant="gradient"
               color="bluePurple"
               size="lg"
-              className="group gap-2 shadow-lg transition-shadow hover:shadow-xl"
+              className="group w-full gap-2 shadow-lg transition-shadow hover:shadow-xl"
             >
               <span>{heroData.primaryCTA?.text || "Hire me"}</span>
               <svg
@@ -138,10 +141,12 @@ const Hero = ({ heroData }: HeroProps) => {
           {heroData.secondaryCTA?.link && (
             <Link
               href={heroData.secondaryCTA.link}
-              onClick={() => trackHeroButtonClick(
-                heroData.secondaryCTA.text,
-                heroData.secondaryCTA.link || "#projects"
-              )}
+              onClick={() =>
+                trackHeroButtonClick(
+                  heroData.secondaryCTA.text,
+                  heroData.secondaryCTA.link || "#projects",
+                )
+              }
               target={
                 heroData.secondaryCTA.link.startsWith("http")
                   ? "_blank"
@@ -152,11 +157,12 @@ const Hero = ({ heroData }: HeroProps) => {
                   ? "noopener noreferrer"
                   : undefined
               }
+              className="w-3/4 md:w-auto"
             >
               <Button
                 variant="outline"
                 size="lg"
-                className="transition-shadow hover:shadow-lg"
+                className="w-full transition-shadow hover:shadow-lg"
               >
                 <span>{heroData.secondaryCTA.text}</span>
               </Button>

@@ -5,7 +5,6 @@ const Footer = dynamic(() => import("./Footer"));
 
 type LayoutProps = {
   children: React.ReactNode;
-  
 } & HeaderProps;
 
 export const Layout = ({ children, ...headerProps }: LayoutProps) => {

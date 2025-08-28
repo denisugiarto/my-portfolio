@@ -1,18 +1,18 @@
 #!/usr/bin/env node
 
-const { execSync } = require('child_process');
-const fs = require('fs');
-const path = require('path');
+const { execSync } = require("child_process");
+const fs = require("fs");
+const path = require("path");
 
-console.log('🚀 Setting up Sanity CMS...\n');
+console.log("🚀 Setting up Sanity CMS...\n");
 
 // Check if Sanity CLI is installed
 try {
-  execSync('sanity --version', { stdio: 'pipe' });
-  console.log('✅ Sanity CLI is installed');
+  execSync("sanity --version", { stdio: "pipe" });
+  console.log("✅ Sanity CLI is installed");
 } catch (error) {
-  console.log('📦 Installing Sanity CLI...');
-  execSync('npm install -g sanity@latest', { stdio: 'inherit' });
+  console.log("📦 Installing Sanity CLI...");
+  execSync("npm install -g sanity@latest", { stdio: "inherit" });
 }
 
 // Create a simple studio setup script
@@ -70,12 +70,12 @@ Make sure these are set in your \`.env.local\`:
 - \`NEXT_PUBLIC_SANITY_DATASET=production\`
 `;
 
-fs.writeFileSync(path.join(process.cwd(), 'SANITY_SETUP.md'), studioSetup);
+fs.writeFileSync(path.join(process.cwd(), "SANITY_SETUP.md"), studioSetup);
 
-console.log('✅ Setup complete!');
-console.log('📄 Created SANITY_SETUP.md with instructions');
-console.log('\nNext steps:');
-console.log('1. Run: sanity login');
-console.log('2. Run: sanity dataset create production');
-console.log('3. Run: pnpm dev');
-console.log('4. Visit http://localhost:3000 to see your portfolio');
+console.log("✅ Setup complete!");
+console.log("📄 Created SANITY_SETUP.md with instructions");
+console.log("\nNext steps:");
+console.log("1. Run: sanity login");
+console.log("2. Run: sanity dataset create production");
+console.log("3. Run: pnpm dev");
+console.log("4. Visit http://localhost:3000 to see your portfolio");

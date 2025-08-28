@@ -9,15 +9,15 @@ export default function BlogHeader({ article }: BlogHeaderProps) {
   return (
     <>
       <h1 className="mb-4 text-3xl font-bold sm:text-5xl">{article.title}</h1>
-      
+
       <div className="mb-4 flex items-center gap-4 text-sm text-neutral-500">
         <div className="flex items-center gap-1">
           <Calendar size={16} />
           <span>
-            {new Date(article.publishedAt).toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric'
+            {new Date(article.publishedAt).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
             })}
           </span>
         </div>

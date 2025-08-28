@@ -12,7 +12,7 @@ export function HeroAnimations({ children }: HeroAnimationsProps) {
     <LazyMotion features={domAnimation}>
       <section
         id="home"
-        className="relative pt-20 lg:pt-32 text-center flex flex-col justify-center"
+        className="relative flex flex-col justify-center pt-20 text-center lg:pt-32"
       >
         {/* Optimized SVG Background */}
         <div className="pointer-events-none absolute inset-0">
@@ -20,26 +20,50 @@ export function HeroAnimations({ children }: HeroAnimationsProps) {
             className="absolute inset-0 h-full w-full"
             viewBox="0 0 1000 1000"
             preserveAspectRatio="xMidYMid slice"
-            style={{ willChange: 'transform' }}
+            style={{ willChange: "transform" }}
           >
             <defs>
-              <linearGradient id="hero-gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <linearGradient
+                id="hero-gradient1"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="100%"
+              >
                 <stop offset="0%" stopColor="rgba(59, 130, 246, 0.08)" />
                 <stop offset="50%" stopColor="rgba(147, 51, 234, 0.08)" />
                 <stop offset="100%" stopColor="rgba(59, 130, 246, 0.08)" />
               </linearGradient>
-              <linearGradient id="hero-gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+              <linearGradient
+                id="hero-gradient2"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="100%"
+              >
                 <stop offset="0%" stopColor="rgba(147, 51, 234, 0.04)" />
                 <stop offset="100%" stopColor="rgba(59, 130, 246, 0.04)" />
               </linearGradient>
-              <pattern id="hero-grid" width="50" height="50" patternUnits="userSpaceOnUse">
-                <path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255,255,255,0.02)" strokeWidth="1" />
+              <pattern
+                id="hero-grid"
+                width="50"
+                height="50"
+                patternUnits="userSpaceOnUse"
+              >
+                <path
+                  d="M 50 0 L 0 0 0 50"
+                  fill="none"
+                  stroke="rgba(255,255,255,0.02)"
+                  strokeWidth="1"
+                />
               </pattern>
             </defs>
 
             {/* Optimized floating shapes with reduced complexity */}
             <m.circle
-              cx="200" cy="200" r="120"
+              cx="200"
+              cy="200"
+              r="120"
               fill="url(#hero-gradient1)"
               initial={{ scale: 0.9, opacity: 0.4 }}
               animate={{ scale: [0.9, 1.1, 0.9], opacity: [0.4, 0.6, 0.4] }}
@@ -55,7 +79,11 @@ export function HeroAnimations({ children }: HeroAnimationsProps) {
             />
 
             <m.rect
-              x="150" y="600" width="120" height="120" rx="15"
+              x="150"
+              y="600"
+              width="120"
+              height="120"
+              rx="15"
               fill="url(#hero-gradient1)"
               initial={{ rotate: 45, opacity: 0.3 }}
               animate={{ rotate: [45, 225, 45], opacity: [0.3, 0.5, 0.3] }}
@@ -65,11 +93,9 @@ export function HeroAnimations({ children }: HeroAnimationsProps) {
             <rect width="100%" height="100%" fill="url(#hero-grid)" />
           </svg>
         </div>
-        
+
         {/* Main content container */}
-        <div className="container mx-auto relative z-10">
-          {children}
-        </div>
+        <div className="container relative z-10 mx-auto">{children}</div>
       </section>
     </LazyMotion>
   );
@@ -121,17 +147,22 @@ export function AnimatedTechStack({ techs }: AnimatedTechStackProps) {
       className="mt-8"
     >
       <p className="mb-6 text-sm text-gray-400">Technologies I work with</p>
-      <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8 dark:bg-slate-600/10 bg-slate-700 backdrop-blur-md border border-black/20 dark:border-white/20 py-6 rounded-2xl max-w-max mx-auto px-10">
+      <div className="mx-auto flex max-w-max flex-wrap items-center justify-center gap-6 rounded-2xl border border-black/20 bg-slate-700 px-10 py-6 backdrop-blur-md dark:border-white/20 dark:bg-slate-600/10 md:gap-8">
         {techs.map((tech, index) => (
           <m.div
             key={tech.name}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3, delay: 0.8 + index * 0.1 }}
-            className="flex items-center gap-2 hover:scale-110 transition-transform cursor-default"
+            className="flex cursor-default items-center gap-2 transition-transform hover:scale-110"
           >
-            <tech.icon className="h-5 w-5 md:h-6 md:w-6" style={{ color: tech.color }} />
-            <span className="text-xs md:text-sm text-gray-100 hidden sm:inline">{tech.name}</span>
+            <tech.icon
+              className="h-5 w-5 md:h-6 md:w-6"
+              style={{ color: tech.color }}
+            />
+            <span className="hidden text-xs text-gray-100 sm:inline md:text-sm">
+              {tech.name}
+            </span>
           </m.div>
         ))}
       </div>

@@ -8,10 +8,10 @@ export interface ContactFormData {
 }
 
 export const submitContact = async (
-  formData: ContactFormData
+  formData: ContactFormData,
 ): Promise<ContactMessage> => {
   try {
-    const contactMessage: Omit<ContactMessage, '_id'> = {
+    const contactMessage: Omit<ContactMessage, "_id"> = {
       name: formData.name,
       email: formData.email,
       message: formData.message,
@@ -19,7 +19,7 @@ export const submitContact = async (
 
     return await submitContactMessage(contactMessage);
   } catch (error: any) {
-    console.error('Error submitting contact form:', error);
+    console.error("Error submitting contact form:", error);
     throw new Error(error.message || "Error submitting contact form");
   }
 };

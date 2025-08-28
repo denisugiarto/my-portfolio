@@ -7,7 +7,9 @@ export default function About() {
         <h2 className="title-section">About Me</h2>
         <p className="leading-loose">{data.aboutMe}</p>
         <a
-          href={data.contact.find((contact) => contact.type === "whatsapp")?.link}
+          href={
+            data.contact.find((contact) => contact.type === "whatsapp")?.link
+          }
           target="_blank"
           rel="noopener noreferrer"
           className="mt-8 block text-lg font-bold text-blue-400"
