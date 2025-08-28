@@ -23,6 +23,8 @@
     "lint": "next lint",
     "build": "next build",
     "postbuild": "next-sitemap",
+    "format": "prettier --write .",
+    "analyze": "ANALYZE=true pnpm build",
     "sanity": "sanity dev",
     "sanity:build": "sanity build",
     "sanity:deploy": "sanity deploy"

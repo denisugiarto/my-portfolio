@@ -67,7 +67,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} ${montserrat.variable}`} suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://dmdxpdxy.apicdn.sanity.io" />
+        <link rel="preconnect" href="https://cdn.sanity.io" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.google-analytics.com" />
+      </head>
+      <body
+        className={`${inter.className} ${montserrat.variable}`}
+        suppressHydrationWarning
+      >
         {/* Google Analytics with Web Worker */}
         <GoogleAnalytics
           measurementId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS || ""}
