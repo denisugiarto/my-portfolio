@@ -2,8 +2,7 @@ import { PortableTextBlock } from "@portabletext/react";
 import { createClient } from "@sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
 import {
-  SanityImageSource,
-  SanityReference,
+  SanityImageSource
 } from "@sanity/image-url/lib/types/types";
 
 export const client = createClient({
