@@ -10,22 +10,6 @@ import {
   HeroAnimations,
 } from "./hero-animations";
 
-// Google Analytics event tracking function
-const trackHeroButtonClick = (buttonText: string, destination: string) => {
-  console.log("Tracking hero button click:", { buttonText, destination }); // Debug log
-
-  sendGAEvent({
-    event: "click",
-    category: "Hero CTA",
-    label: buttonText,
-    value: 1,
-    custom_parameters: {
-      destination_url: destination,
-      button_type: "primary",
-    },
-  });
-};
-
 interface HeroProps {
   heroData: HeroSection | null;
 }
@@ -110,10 +94,11 @@ const Hero = ({ heroData }: HeroProps) => {
           <Link
             href={heroData.primaryCTA?.link || "#projects"}
             onClick={() =>
-              trackHeroButtonClick(
-                heroData.primaryCTA?.text || "Hire me",
-                heroData.primaryCTA?.link || "#contact",
-              )
+              sendGAEvent("event", "hire_me_click", {
+                event_category: "engagement",
+                event_label: "hire_me_button",
+                value: 1,
+              })
             }
             className="w-3/4 md:w-auto"
           >
@@ -142,10 +127,11 @@ const Hero = ({ heroData }: HeroProps) => {
             <Link
               href={heroData.secondaryCTA.link}
               onClick={() =>
-                trackHeroButtonClick(
-                  heroData.secondaryCTA.text,
-                  heroData.secondaryCTA.link || "#projects",
-                )
+                sendGAEvent("event", "my_projects_click", {
+                  event_category: "engagement",
+                  event_label: "my_projects_button",
+                  value: 1,
+                })
               }
               target={
                 heroData.secondaryCTA.link.startsWith("http")
