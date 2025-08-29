@@ -5,6 +5,7 @@ import { ContactFormData } from "@/services/contact";
 import { cn } from "@/lib/utils";
 import { Loader2, Send, CheckCircle } from "lucide-react";
 import { Button } from "./ui/button";
+import { sendGAEvent } from "@next/third-parties/google";
 
 interface FormErrors {
   name?: string;
@@ -89,6 +90,12 @@ export default function ContactForm() {
         name: "",
         email: "",
         message: "",
+      });
+      sendGAEvent("event", "Contact Form", {
+        event_category: "Form Submission",
+        event_label: "Contact",
+        event_action: "Contact Form",
+        event_value: "Submit",
       });
     } catch (error: any) {
       setStatus("error");
