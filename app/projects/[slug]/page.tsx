@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Layout } from "@/components/Layout/Layout";
-import PortableText from "@/components/portable-text/PortableText";
+import Markdown from "@/components/ui/markdown";
 import ProjectHeader from "@/features/projects/project-header";
 import ProjectGallery from "@/features/projects/project-gallery";
 import { getProjectBySlug, getProjects } from "@/lib/sanity-queries";
@@ -10,6 +10,8 @@ import { ChevronLeft, Calendar, ExternalLink, Monitor } from "lucide-react";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import Image from "next/image";
 import Link from "next/link";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 interface ProjectPageProps {
   params: Promise<{
@@ -148,76 +150,33 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 <div className="sticky top-28">
                   {/* Project Quick Info Card */}
                   <div className="rounded-lg border border-border bg-card p-6 shadow-sm">
-                    <h3 className="mb-4 text-lg font-semibold text-card-foreground">
-                      Project Info
-                    </h3>
-
-                    <div className="space-y-4">
-                      {/* Status & Category */}
-                      <div className="flex flex-wrap gap-2">
-                        {project.category && (
-                          <span className="rounded-full bg-primary px-3 py-1 text-xs font-medium text-primary-foreground">
-                            {project.category.toUpperCase()}
-                          </span>
-                        )}
-                        {project.status && (
-                          <span
-                            className={`rounded-full px-3 py-1 text-xs font-medium ${
-                              project.status === "completed"
-                                ? "bg-success text-success-foreground"
-                                : project.status === "in-progress"
-                                  ? "bg-primary text-primary-foreground"
-                                  : "bg-muted text-muted-foreground"
-                            }`}
-                          >
-                            {project.status.replace("-", " ").toUpperCase()}
-                          </span>
-                        )}
-                      </div>
-
-                      {/* Completion Date */}
-                      {project.completedAt && (
-                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                          <Calendar size={16} />
-                          <span>
-                            Completed{" "}
-                            {new Date(project.completedAt).toLocaleDateString(
-                              "en-US",
-                              {
-                                year: "numeric",
-                                month: "long",
-                              },
-                            )}
-                          </span>
-                        </div>
+                    <div className="flex justify-between mb-4">
+                      <h3 className="text-lg font-semibold text-card-foreground">
+                        Project Info
+                      </h3>
+                      {project.category && (
+                        <Badge className="text-xs py-0.5 italic" variant="secondary">
+                          {project.category.toUpperCase()}
+                        </Badge>
                       )}
-
-                      {/* Project Links */}
-                      <div className="space-y-2">
+                    </div>
+                    <div className="space-y-4">
+                      <div className="flex flex-wrap gap-2">
                         {project.liveUrl && (
                           <a
                             href={project.liveUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-all hover:bg-primary/90"
                           >
-                            <ExternalLink size={16} />
-                            View Live Site
+                            <Button
+                              variant="link"
+                              className="flex items-center justify-center gap-2"
+                            >
+                              <ExternalLink size={16} />
+                              View Live Site
+                            </Button>
                           </a>
                         )}
-
-                        {project.demoUrl && (
-                          <a
-                            href={project.demoUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex w-full items-center justify-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-medium text-accent-foreground transition-all hover:bg-accent/90"
-                          >
-                            <Monitor size={16} />
-                            View Demo
-                          </a>
-                        )}
-
                         {project.githubUrl && (
                           <a
                             href={project.githubUrl}
@@ -230,6 +189,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                           </a>
                         )}
                       </div>
+                      {/* Project Links */}
 
                       {/* Technologies */}
                       {project.technologies &&
@@ -271,9 +231,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 <h2 className="mb-6 text-2xl font-bold text-foreground">
                   Project Details
                 </h2>
-                <div className="prose prose-slate dark:prose-invert max-w-none">
-                  <PortableText content={project.content} />
-                </div>
+                <Markdown>{project.content}</Markdown>
               </div>
             </div>
           )}

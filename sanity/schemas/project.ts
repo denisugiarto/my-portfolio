@@ -79,21 +79,7 @@ export const project = defineType({
           { title: "Other", value: "other" },
         ],
       },
-    }),
-    defineField({
-      name: "status",
-      title: "Status",
-      type: "string",
-      options: {
-        list: [
-          { title: "Completed", value: "completed" },
-          { title: "In Progress", value: "in-progress" },
-          { title: "Planning", value: "planning" },
-          { title: "On Hold", value: "on-hold" },
-        ],
-      },
-      initialValue: "completed",
-    }),
+    }),    
     defineField({
       name: "liveUrl",
       title: "Live URL",
@@ -102,11 +88,6 @@ export const project = defineType({
     defineField({
       name: "githubUrl",
       title: "GitHub URL",
-      type: "url",
-    }),
-    defineField({
-      name: "demoUrl",
-      title: "Demo URL",
       type: "url",
     }),
     defineField({
@@ -129,14 +110,9 @@ export const project = defineType({
       description: "Order for display (lower numbers appear first)",
     }),
     defineField({
-      name: "completedAt",
-      title: "Completed At",
-      type: "date",
-    }),
-    defineField({
       name: "content",
       title: "Detailed Content",
-      type: "blockContent",
+      type: "markdown",
       description: "Detailed project description and documentation",
     }),
     defineField({

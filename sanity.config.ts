@@ -1,4 +1,5 @@
 import { defineConfig } from "sanity";
+import { markdownSchema } from 'sanity-plugin-markdown';
 import { structureTool } from "sanity/structure";
 import { schemaTypes } from "./sanity/schemas";
 
@@ -12,7 +13,7 @@ export default defineConfig({
   projectId,
   dataset,
 
-  plugins: [structureTool()],
+  plugins: [structureTool(), markdownSchema()],
 
   schema: {
     types: schemaTypes,

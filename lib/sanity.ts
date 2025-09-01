@@ -1,4 +1,3 @@
-import { PortableTextBlock } from "@portabletext/react";
 import { createClient } from "@sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
 import {
@@ -31,7 +30,7 @@ export interface BlogPost {
   slug: { current: string };
   excerpt?: string;
   coverImage?: SanityImageSource;
-  content: (PortableTextBlock | SanityImageSource)[];
+  content: string;
   tags?: Tags[];
   publishedAt: string;
   readTime?: number;
@@ -104,7 +103,7 @@ export interface Project {
   featured: boolean;
   order?: number;
   completedAt?: string;
-  content?: (PortableTextBlock | SanityImageSource)[];
+  content?: string;
   seo?: {
     metaTitle?: string;
     metaDescription?: string;
@@ -150,7 +149,7 @@ export interface Experience {
   startDate: string;
   endDate?: string;
   currentJob: boolean;
-  description?: (PortableTextBlock | SanityImageSource)[];
+  description?: string[];
   achievements?: string[];
   technologies?: Technology[];
   skills?: { name: string }[];

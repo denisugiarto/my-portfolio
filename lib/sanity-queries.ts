@@ -71,7 +71,10 @@ export async function getBlogPostBySlug(
       excerpt,
       coverImage,
       content,
-      tags,
+      tags[]->{
+        _id,
+        name
+      },
       publishedAt,
       readTime,
       published,
@@ -114,14 +117,11 @@ export async function getProjects(limit?: number): Promise<Project[]> {
       order
     },
     category,
-    status,
     liveUrl,
     githubUrl,
-    demoUrl,
     published,
     featured,
     order,
-    completedAt,
     seo
   }`;
 
@@ -192,14 +192,11 @@ export async function getProjectBySlug(slug: string): Promise<Project | null> {
       order
     },
     category,
-    status,
     liveUrl,
     githubUrl,
-    demoUrl,
     published,
     featured,
     order,
-    completedAt,
     content,
     seo
   }`;

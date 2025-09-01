@@ -5,7 +5,6 @@ import { seoSettings } from "./seoSettings";
 import { experience } from "./experience";
 import { technology } from "./technology";
 import { socialLink } from "./socialLink";
-import { blockContent } from "./blockContent";
 import { heroSection } from "./heroSection";
 import { aboutSection } from "./aboutSection";
 import { skillsSection } from "./skillsSection";
@@ -30,7 +29,4 @@ export const schemaTypes = [
   socialLink,
   contact,
   tag,
-
-  // Utility Types
-  blockContent,
 ];

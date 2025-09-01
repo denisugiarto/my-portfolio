@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Layout } from "@/components/Layout/Layout";
-import PortableText from "@/components/portable-text/PortableText";
+import Markdown from "@/components/ui/markdown";
 import BlogHeader from "@/features/blog/blog-header";
 import { getBlogPostBySlug, getBlogPosts } from "@/lib/sanity-queries";
 import { ChevronLeft } from "lucide-react";
@@ -88,7 +88,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
     return (
       <Layout activeNavbar="Blog" isNavColorBlack>
-        <section className="container p-4 pt-20">
+        <section className="container lg:max-w-screen-md p-4 pt-20">
           <Link
             href="/blog"
             className="mb-4 flex w-max gap-2 rounded-md py-1 pr-2 hover:bg-slate-200 dark:hover:bg-slate-500"
@@ -98,7 +98,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             Back
           </Link>
           <BlogHeader article={article} />
-          {article.content && <PortableText content={article.content} />}
+          {article.content && <Markdown>{article.content}</Markdown>}
         </section>
       </Layout>
     );

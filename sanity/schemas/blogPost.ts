@@ -22,12 +22,6 @@ export const blogPost = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: "excerpt",
-      title: "Excerpt",
-      type: "text",
-      rows: 4,
-    }),
-    defineField({
       name: "coverImage",
       title: "Cover Image",
       type: "image",
@@ -38,7 +32,7 @@ export const blogPost = defineType({
     defineField({
       name: "content",
       title: "Content",
-      type: "blockContent",
+      type: "markdown",
     }),
     defineField({
       name: "tags",
