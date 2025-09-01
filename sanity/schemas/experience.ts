@@ -75,8 +75,10 @@ export const experience = defineType({
     defineField({
       name: "description",
       title: "Job Description",
-      type: "blockContent",
-      description: "Detailed description of your role and responsibilities",
+      type: "array",
+      of: [{ type: "string" }],
+      description:
+        "List of key tasks and description about your role and responsibilities",
     }),
     defineField({
       name: "achievements",

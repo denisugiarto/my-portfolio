@@ -10,6 +10,7 @@ import {
   calculateDuration,
 } from "@/services/experience";
 import { urlFor } from "@/lib/sanity";
+import { ListItem } from "@/components/ui/list";
 
 const Experience = () => {
   const {

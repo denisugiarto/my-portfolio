@@ -1,15 +1,15 @@
 "use client";
 
-import React from "react";
-import Image from "next/image";
-import { LazyMotion, domAnimation, m } from "framer-motion";
-import { useQuery } from "@tanstack/react-query";
+import { ListItem } from "@/components/ui/list";
+import { urlFor } from "@/lib/sanity";
 import {
+  calculateDuration,
   fetchExperiences,
   formatDateRange,
-  calculateDuration,
 } from "@/services/experience";
-import { urlFor } from "@/lib/sanity";
+import { useQuery } from "@tanstack/react-query";
+import { LazyMotion, domAnimation, m } from "framer-motion";
+import Image from "next/image";
 
 const ExperienceClient = () => {
   const {
@@ -341,39 +341,9 @@ const ExperienceClient = () => {
                             <h4 className="mb-3 text-base font-semibold text-foreground md:mb-4 md:text-lg">
                               Role & Responsibilities
                             </h4>
-                            <div className="text-muted-foreground">
-                              <ul className="space-y-2">
-                                {Array.isArray(experience.description) ? (
-                                  experience.description.map(
-                                    (block: any, idx: number) => {
-                                      if (block._type === "block") {
-                                        const text =
-                                          block.children
-                                            ?.map((child: any) => child.text)
-                                            .join("") || "";
-                                        return text ? (
-                                          <li
-                                            key={idx}
-                                            className="mb-2 flex items-start gap-3 text-base leading-relaxed"
-                                          >
-                                            <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary"></div>
-                                            <span>{text}</span>
-                                          </li>
-                                        ) : null;
-                                      }
-                                      return null;
-                                    },
-                                  )
-                                ) : (
-                                  <li className="flex items-start gap-3 text-base leading-relaxed">
-                                    <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary"></div>
-                                    <span>
-                                      {String(experience.description)}
-                                    </span>
-                                  </li>
-                                )}
-                              </ul>
-                            </div>
+                            {experience.description.map((paragraph, idx) => (
+                              <ListItem key={idx}>{paragraph}</ListItem>
+                            ))}
                           </div>
                         )}
 
@@ -387,19 +357,7 @@ const ExperienceClient = () => {
                               <ul className="space-y-3">
                                 {experience.achievements.map(
                                   (achievement, idx) => (
-                                    <m.li
-                                      key={idx}
-                                      className="flex items-start gap-3 leading-relaxed text-muted-foreground"
-                                      initial={{ opacity: 0, x: -20 }}
-                                      whileInView={{ opacity: 1, x: 0 }}
-                                      transition={{ delay: idx * 0.1 }}
-                                      viewport={{ once: true }}
-                                    >
-                                      <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary"></div>
-                                      <span className="text-base">
-                                        {achievement}
-                                      </span>
-                                    </m.li>
+                                    <ListItem key={idx}>{achievement}</ListItem>
                                   ),
                                 )}
                               </ul>
