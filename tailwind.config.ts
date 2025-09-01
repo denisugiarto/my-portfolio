@@ -36,6 +36,10 @@ const config = {
         title: ["var(--font-suez-one)", "sans-serif"],
         sans: ["sans-serif", "system-ui", "-apple-system"],
       },
+      fontSize: {
+        "3xl": "32px",
+        "5xl": "42px",
+      },
       backgroundImage: {
         "custom-gradient":
           "linear-gradient(to left bottom, #a8d8ea, #d8b4fe, #fecaca)",
