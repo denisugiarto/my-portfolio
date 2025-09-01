@@ -336,13 +336,15 @@ const ExperienceClient = () => {
                         </div>
 
                         {/* Job Description */}
-                        {experience.description && (
+                        {experience.description && experience.description.length > 0 && (
                           <div className="mb-6 md:mb-8">
                             <h4 className="mb-3 text-base font-semibold text-foreground md:mb-4 md:text-lg">
                               Role & Responsibilities
                             </h4>
                             {experience.description.map((paragraph, idx) => (
-                              <ListItem key={idx}>{paragraph}</ListItem>
+                              <ListItem key={idx}>
+                                {typeof paragraph === 'string' ? paragraph : JSON.stringify(paragraph)}
+                              </ListItem>
                             ))}
                           </div>
                         )}
@@ -357,7 +359,9 @@ const ExperienceClient = () => {
                               <ul className="space-y-3">
                                 {experience.achievements.map(
                                   (achievement, idx) => (
-                                    <ListItem key={idx}>{achievement}</ListItem>
+                                    <ListItem key={idx}>
+                                      {typeof achievement === 'string' ? achievement : JSON.stringify(achievement)}
+                                    </ListItem>
                                   ),
                                 )}
                               </ul>
