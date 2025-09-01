@@ -1,11 +1,13 @@
-import { Metadata } from "next";
-import { notFound } from "next/navigation";
 import { Layout } from "@/components/Layout/Layout";
 import Markdown from "@/components/ui/markdown";
 import BlogHeader from "@/features/blog/blog-header";
+import { urlFor } from "@/lib/sanity";
 import { getBlogPostBySlug, getBlogPosts } from "@/lib/sanity-queries";
 import { ChevronLeft } from "lucide-react";
+import { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -88,15 +90,43 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
     return (
       <Layout activeNavbar="Blog" isNavColorBlack>
-        <section className="container lg:max-w-screen-md p-4 pt-20">
-          <Link
-            href="/blog"
-            className="mb-4 flex w-max gap-2 rounded-md py-1 pr-2 hover:bg-slate-200 dark:hover:bg-slate-500"
-            title="back to blog page"
-          >
-            <ChevronLeft />
-            Back
-          </Link>
+        {/* Hero Section with Cover Image */}
+        {article.coverImage && (
+          <div className="relative h-[40vh] min-h-[300px] w-full">
+            <Image
+              src={urlFor(article.coverImage).width(1920).height(600).url()}
+              alt={article.title}
+              fill
+              className="object-scale-down"
+              priority
+            />
+            <div className="absolute inset-0 bg-black/40" />
+            <div className="absolute bottom-6 left-0 right-0 z-20">
+              <div className="container">
+                <Link
+                  href="/blog"
+                  className="mb-4 inline-flex items-center gap-2 rounded-lg bg-black/70 px-3 py-2 text-sm text-white backdrop-blur-sm transition-all hover:bg-black/80"
+                  title="back to blog"
+                >
+                  <ChevronLeft size={16} />
+                  Back to Blog
+                </Link>
+              </div>
+            </div>
+          </div>
+        )}
+        
+        <section className={`container lg:max-w-screen-md p-4 ${article.coverImage ? 'pt-6' : 'pt-20'}`}>
+          {!article.coverImage && (
+            <Link
+              href="/blog"
+              className="mb-4 flex w-max gap-2 rounded-md py-1 pr-2 hover:bg-slate-200 dark:hover:bg-slate-500"
+              title="back to blog page"
+            >
+              <ChevronLeft />
+              Back
+            </Link>
+          )}
           <BlogHeader article={article} />
           {article.content && <Markdown>{article.content}</Markdown>}
         </section>
