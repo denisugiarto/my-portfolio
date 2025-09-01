@@ -60,15 +60,7 @@ export default async function ProjectsPage() {
               <div className="flex items-center gap-2">
                 <div className="h-3 w-3 rounded-full bg-green-500"></div>
                 <span className="whitespace-nowrap">
-                  {projects.filter((p) => p.status === "completed").length}{" "}
-                  Completed
-                </span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="h-3 w-3 rounded-full bg-blue-500"></div>
-                <span className="whitespace-nowrap">
-                  {projects.filter((p) => p.status === "in-progress").length} In
-                  Progress
+                  {projects.length} Projects
                 </span>
               </div>
               <div className="flex items-center gap-2">

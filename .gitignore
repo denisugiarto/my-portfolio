@@ -44,3 +44,6 @@ swe-worker-*
 # build
 dist
 tsconfig.tsbuildinfo
+
+# backup
+backup-folder

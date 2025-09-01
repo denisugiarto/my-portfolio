@@ -17,7 +17,7 @@ export default function BlogCategoryNav({
   return (
     <div className="mb-6">
       <h3 className="mb-3 text-sm font-medium text-muted-foreground">
-        Filter by category
+        Filter by tag
       </h3>
       <div className="flex flex-wrap gap-2">
         <Badge

@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function BlogCardItem({ blog }: { blog: BlogPost }) {
   return (
-    <div key={blog._id} className="rounded-md bg-card">
+    <div key={blog._id} className="rounded-lg overflow-hidden shadow-sm bg-card">
       <Link href={`/blog/${blog.slug.current}`}>
         <Image
           src={
@@ -17,7 +17,7 @@ export default function BlogCardItem({ blog }: { blog: BlogPost }) {
           alt={blog?.title}
           width={256}
           height={200}
-          className="h-auto w-full rounded-t-md object-cover dark:bg-black"
+          className="h-auto w-full object-scale-down dark:bg-black"
         />
         <div className="p-4">
           <h2 className="text-lg font-semibold text-foreground">
