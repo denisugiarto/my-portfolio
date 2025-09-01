@@ -41,12 +41,7 @@ export default function EmptyState({
         </h3>
         <p className="mb-4 text-sm text-gray-600 dark:text-gray-400">
           {description}
-        </p>
-        {showStudioLink && (
-          <p className="text-xs text-gray-500 dark:text-gray-500">
-            Visit Sanity Studio to add your projects.
-          </p>
-        )}
+        </p>        
       </div>
     </div>
   );

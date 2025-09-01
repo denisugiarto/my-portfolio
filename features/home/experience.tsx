@@ -68,12 +68,6 @@ const Experience = () => {
               <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
                 No work experience found
               </h3>
-              <p className="mb-4 text-sm text-gray-600 dark:text-gray-400">
-                Work experiences will appear here once they're added to the CMS.
-              </p>
-              <p className="text-xs text-gray-500 dark:text-gray-500">
-                Visit Sanity Studio to add your work experience.
-              </p>
             </div>
           </div>
         </div>

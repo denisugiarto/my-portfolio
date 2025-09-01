@@ -18,12 +18,6 @@ export default function BlogList({ blogs, isLoading, error }: BlogListProps) {
           <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
             No articles found
           </h3>
-          <p className="mb-4 text-sm text-gray-600 dark:text-gray-400">
-            Blog posts will appear here once they&apos;re added to the CMS.
-          </p>
-          <p className="text-xs text-gray-500 dark:text-gray-500">
-            Visit Sanity Studio to add your first blog post.
-          </p>
         </div>
       </div>
     );
