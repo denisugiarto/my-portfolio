@@ -28,6 +28,7 @@ const buttonVariants = cva(
         bluePurple: "",
         greenBlue: "",
         pinkOrange: "",
+        white: "",
       },
       size: {
         default: "px-4 py-2.5 text-sm",
@@ -70,6 +71,11 @@ const buttonVariants = cva(
         variant: "default",
         color: "info",
         class: "bg-blue-600 text-white hover:bg-blue-700",
+      },
+      {
+        variant: "default",
+        color: "white",
+        class: "bg-white text-black border-border hover:bg-white/90",
       },
 
       // Outline variant colors
