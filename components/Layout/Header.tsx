@@ -43,7 +43,7 @@ export type HeaderProps = {
 };
 export default function Header({ activeNavbar }: HeaderProps) {
   const headerStyleOnScroll =
-    "bg-background/80 backdrop-blur-md shadow-lg border-b border-border/50";
+    "bg-background backdrop-blur-md shadow-lg border-b border-border/50";
   const [scrollY, setScrollY] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
 
