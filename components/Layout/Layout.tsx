@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import Header, { HeaderProps } from "./Header";
+import BackToTopButton from "@/components/ui/back-to-top-button";
 
 const Footer = dynamic(() => import("./Footer"));
 
@@ -13,6 +14,7 @@ export const Layout = ({ children, ...headerProps }: LayoutProps) => {
       <Header {...headerProps} />
       <main className="min-h-[calc(100dvh-56px)]">{children}</main>
       <Footer />
+      <BackToTopButton />
     </>
   );
 };

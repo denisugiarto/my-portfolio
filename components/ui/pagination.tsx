@@ -1,5 +1,6 @@
 import { ChevronLeft, ChevronRight, MoreHorizontal } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Button } from "./button";
 
 interface PaginationProps {
   currentPage: number;
@@ -18,8 +19,6 @@ export function Pagination({
   maxVisiblePages = 5,
   className,
 }: PaginationProps) {
-  if (totalPages <= 1) return null;
-
   const handlePageChange = (page: number) => {
     if (page >= 1 && page <= totalPages && page !== currentPage) {
       onPageChange(page);
@@ -60,31 +59,22 @@ export function Pagination({
       aria-label="Pagination Navigation"
     >
       {/* Previous Button */}
-      <button
+      <Button
         onClick={() => handlePageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className={cn(
-          "flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium transition-colors",
-          "border border-border hover:bg-muted",
-          "disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-transparent",
-          currentPage === 1
-            ? "text-muted-foreground"
-            : "text-foreground hover:text-foreground",
-        )}
+        color="white"
         aria-label="Go to previous page"
       >
         <ChevronLeft className="mr-1 h-4 w-4" />
         Previous
-      </button>
+      </Button>
 
       {/* First Page + Ellipsis */}
       {showFirstLast && showStartEllipsis && (
         <>
-          <button
+          <Button
             onClick={() => handlePageChange(1)}
             className={cn(
-              "flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium transition-colors",
-              "border border-border hover:bg-muted hover:text-foreground",
               currentPage === 1
                 ? "border-primary bg-primary text-primary-foreground"
                 : "text-muted-foreground",
@@ -92,7 +82,7 @@ export function Pagination({
             aria-label="Go to page 1"
           >
             1
-          </button>
+          </Button>
           <span className="flex items-center justify-center px-2 py-2 text-muted-foreground">
             <MoreHorizontal className="h-4 w-4" />
           </span>
@@ -101,21 +91,15 @@ export function Pagination({
 
       {/* Visible Page Numbers */}
       {visiblePages.map((page) => (
-        <button
+        <Button
           key={page}
           onClick={() => handlePageChange(page)}
-          className={cn(
-            "flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium transition-colors",
-            "border border-border hover:bg-muted hover:text-foreground",
-            currentPage === page
-              ? "border-primary bg-primary text-primary-foreground"
-              : "text-muted-foreground",
-          )}
+          color={currentPage === page ? "primary" : "white"}
           aria-label={`Go to page ${page}`}
           aria-current={currentPage === page ? "page" : undefined}
         >
           {page}
-        </button>
+        </Button>
       ))}
 
       {/* Last Page + Ellipsis */}
@@ -124,39 +108,26 @@ export function Pagination({
           <span className="flex items-center justify-center px-2 py-2 text-muted-foreground">
             <MoreHorizontal className="h-4 w-4" />
           </span>
-          <button
+          <Button
             onClick={() => handlePageChange(totalPages)}
-            className={cn(
-              "flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium transition-colors",
-              "border border-border hover:bg-muted hover:text-foreground",
-              currentPage === totalPages
-                ? "border-primary bg-primary text-primary-foreground"
-                : "text-muted-foreground",
-            )}
+            color={currentPage === totalPages ? "primary" : "white"}
             aria-label={`Go to page ${totalPages}`}
           >
             {totalPages}
-          </button>
+          </Button>
         </>
       )}
 
       {/* Next Button */}
-      <button
+      <Button
         onClick={() => handlePageChange(currentPage + 1)}
-        disabled={currentPage === totalPages}
-        className={cn(
-          "flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium transition-colors",
-          "border border-border hover:bg-muted",
-          "disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-transparent",
-          currentPage === totalPages
-            ? "text-muted-foreground"
-            : "text-foreground hover:text-foreground",
-        )}
+        disabled={currentPage === totalPages || totalPages === 0}
+        color="white"
         aria-label="Go to next page"
       >
         Next
         <ChevronRight className="ml-1 h-4 w-4" />
-      </button>
+      </Button>
     </nav>
   );
 }

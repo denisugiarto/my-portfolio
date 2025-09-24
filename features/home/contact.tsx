@@ -1,3 +1,4 @@
+"use client";
 import ContactForm from "@/components/contact-form";
 import {
   SiGithub,

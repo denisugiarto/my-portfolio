@@ -2,7 +2,8 @@ import * as React from "react";
 import { motion as m, HTMLMotionProps } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-export interface ListItemProps extends Omit<React.HTMLAttributes<HTMLLIElement>, 'onAnimationStart'> {
+export interface ListItemProps
+  extends Omit<React.HTMLAttributes<HTMLLIElement>, "onAnimationStart"> {
   children: React.ReactNode;
   animated?: boolean;
   animationDelay?: number;
@@ -10,18 +11,15 @@ export interface ListItemProps extends Omit<React.HTMLAttributes<HTMLLIElement>,
 
 const ListItem = React.forwardRef<HTMLLIElement, ListItemProps>(
   (
-    {
-      className,
-      children,
-      animated = false,
-      animationDelay = 0,
-      ...props
-    },
+    { className, children, animated = false, animationDelay = 0, ...props },
     ref,
   ) => {
     const baseProps = {
       ref,
-      className: cn("flex items-start gap-3 leading-relaxed text-muted-foreground", className),
+      className: cn(
+        "flex items-start gap-3 leading-relaxed text-muted-foreground",
+        className,
+      ),
     };
 
     if (animated) {

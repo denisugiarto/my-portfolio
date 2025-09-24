@@ -160,15 +160,9 @@ export default function Footer() {
             <h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-card-foreground">
               Navigation
             </h4>
-            <nav className="space-y-2">
+            <nav className="space-y-2">              
               <Link
-                href="/#about"
-                className="block text-sm text-muted-foreground transition-colors hover:text-primary"
-              >
-                About
-              </Link>
-              <Link
-                href="/#experience"
+                href="/experience"
                 className="block text-sm text-muted-foreground transition-colors hover:text-primary"
               >
                 Experience

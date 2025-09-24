@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import { getIconComponent } from "@/lib/icon-mapping";
 import { HeroSection, Technology } from "@/lib/sanity";

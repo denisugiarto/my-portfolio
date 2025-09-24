@@ -336,18 +336,21 @@ const ExperienceClient = () => {
                         </div>
 
                         {/* Job Description */}
-                        {experience.description && experience.description.length > 0 && (
-                          <div className="mb-6 md:mb-8">
-                            <h4 className="mb-3 text-base font-semibold text-foreground md:mb-4 md:text-lg">
-                              Role & Responsibilities
-                            </h4>
-                            {experience.description.map((paragraph, idx) => (
-                              <ListItem key={idx}>
-                                {typeof paragraph === 'string' ? paragraph : JSON.stringify(paragraph)}
-                              </ListItem>
-                            ))}
-                          </div>
-                        )}
+                        {experience.description &&
+                          experience.description.length > 0 && (
+                            <div className="mb-6 md:mb-8">
+                              <h4 className="mb-3 text-base font-semibold text-foreground md:mb-4 md:text-lg">
+                                Role & Responsibilities
+                              </h4>
+                              {experience.description.map((paragraph, idx) => (
+                                <ListItem key={idx}>
+                                  {typeof paragraph === "string"
+                                    ? paragraph
+                                    : JSON.stringify(paragraph)}
+                                </ListItem>
+                              ))}
+                            </div>
+                          )}
 
                         {/* Key Achievements */}
                         {experience.achievements &&
@@ -360,7 +363,9 @@ const ExperienceClient = () => {
                                 {experience.achievements.map(
                                   (achievement, idx) => (
                                     <ListItem key={idx}>
-                                      {typeof achievement === 'string' ? achievement : JSON.stringify(achievement)}
+                                      {typeof achievement === "string"
+                                        ? achievement
+                                        : JSON.stringify(achievement)}
                                     </ListItem>
                                   ),
                                 )}

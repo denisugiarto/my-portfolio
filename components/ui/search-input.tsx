@@ -1,8 +1,8 @@
 // SearchInput.tsx
 import { useDebounce } from "@/hooks/useDebounce";
-import React, { useState, useCallback, useEffect } from "react";
-import { Input } from "./input";
 import { Search, X } from "lucide-react";
+import React, { useCallback, useEffect, useState } from "react";
+import { Input } from "./input";
 
 type SearchInputProps = {
   onSearch: (query: string) => void;
@@ -21,16 +21,13 @@ const SearchInput = ({
   const [query, setQuery] = useState(initialValue);
   const debouncedQuery = useDebounce(query, delay);
 
-  // Memoize onSearch to prevent unnecessary effect triggers
-  const stableOnSearch = useCallback(onSearch, [onSearch]);
-
   useEffect(() => {
     try {
-      stableOnSearch(debouncedQuery);
+      onSearch(debouncedQuery);
     } catch (error) {
       console.error("Search callback error:", error);
     }
-  }, [debouncedQuery, stableOnSearch]);
+  }, [debouncedQuery, onSearch]);
 
   const handleChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {

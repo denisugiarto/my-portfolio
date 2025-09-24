@@ -41,7 +41,7 @@ export default function EmptyState({
         </h3>
         <p className="mb-4 text-sm text-gray-600 dark:text-gray-400">
           {description}
-        </p>        
+        </p>
       </div>
     </div>
   );

@@ -23,7 +23,9 @@ export default function BlogStaticContainer({
 
   const [filteredBlogs, setFilteredBlogs] = useState<BlogPost[]>(initialBlogs);
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(
+    searchParams.get("category") || null,
+  );
   const [availableCategories, setAvailableCategories] = useState<string[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -49,8 +51,6 @@ export default function BlogStaticContainer({
 
   useEffect(() => {
     if (initialBlogs) {
-      setFilteredBlogs(initialBlogs);
-
       // Extract unique categories from all blog posts
       const categories = new Set<string>();
       initialBlogs.forEach((blog) => {
@@ -115,16 +115,24 @@ export default function BlogStaticContainer({
     category: string | null;
     page: number;
   }) {
-    const params = new URLSearchParams();
+    const params = new URLSearchParams(searchParams.toString());
 
     if (search) {
       params.set("search", search);
+    } else {
+      params.delete("search");
     }
+
     if (category) {
       params.set("category", category);
+    } else {
+      params.delete("category");
     }
-    if (page > 1) {
+
+    if (page) {
       params.set("page", page.toString());
+    } else {
+      params.delete("page");
     }
 
     const queryString = params.toString();
@@ -139,9 +147,12 @@ export default function BlogStaticContainer({
   const startIndex = (currentPage - 1) * BLOGS_PER_PAGE;
   const endIndex = startIndex + BLOGS_PER_PAGE;
   const paginatedBlogs = filteredBlogs.slice(startIndex, endIndex);
+  const onSearchHandler = useCallback((query: string) => {
+    handleSearch(query);
+  }, []);
 
   return (
-    <section className="container pt-40">
+    <section className="container max-w-3xl pt-40">
       <div className="mb-6">
         <div className="mb-4 flex flex-col justify-between sm:flex-row">
           <h1 className="mb-4 text-3xl font-bold dark:text-slate-100 ">Blog</h1>
@@ -150,18 +161,16 @@ export default function BlogStaticContainer({
               name="search"
               placeholder="Search articles..."
               type="text"
-              onSearch={(query) => handleSearch(query)}
+              onSearch={onSearchHandler}
             />
           </div>
         </div>
 
-        {availableCategories.length > 0 && (
-          <BlogCategoryNav
-            categories={availableCategories}
-            selectedCategory={selectedCategory}
-            onCategoryChange={handleCategoryChange}
-          />
-        )}
+        <BlogCategoryNav
+          categories={availableCategories}
+          selectedCategory={selectedCategory}
+          onCategoryChange={handleCategoryChange}
+        />
 
         {/* Show pagination info */}
         {totalBlogs > 0 && (
@@ -179,16 +188,14 @@ export default function BlogStaticContainer({
       <BlogList blogs={paginatedBlogs} isLoading={false} error={undefined} />
 
       {/* Pagination */}
-      {totalPages > 1 && (
-        <div className="mt-12">
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={handlePageChange}
-            className="mb-8"
-          />
-        </div>
-      )}
+      <div className="mt-12">
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+          className="mb-8"
+        />
+      </div>
     </section>
   );
 }

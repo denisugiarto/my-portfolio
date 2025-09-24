@@ -150,46 +150,56 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 <div className="sticky top-28">
                   {/* Project Quick Info Card */}
                   <div className="rounded-lg border border-border bg-card p-6 shadow-sm">
-                    <div className="flex justify-between mb-4">
+                    <div className="flex justify-between">
                       <h3 className="text-lg font-semibold text-card-foreground">
                         Project Info
                       </h3>
                       {project.category && (
-                        <Badge className="text-xs py-0.5 italic" variant="secondary">
+                        <Badge
+                          className="py-0.5 text-xs italic"
+                          variant="secondary"
+                        >
                           {project.category.toUpperCase()}
                         </Badge>
                       )}
                     </div>
                     <div className="space-y-4">
-                      <div className="flex flex-wrap gap-2">
-                        {project.liveUrl && (
-                          <a
-                            href={project.liveUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <Button
-                              variant="link"
-                              className="flex items-center justify-center gap-2"
-                            >
-                              <ExternalLink size={16} />
-                              View Live Site
-                            </Button>
-                          </a>
-                        )}
-                        {project.githubUrl && (
-                          <a
-                            href={project.githubUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex w-full items-center justify-center gap-2 rounded-lg border border-border bg-background px-4 py-2 text-sm font-medium text-foreground transition-all hover:bg-muted"
-                          >
-                            <SiGithub size={16} />
-                            View Source Code
-                          </a>
-                        )}
-                      </div>
-                      {/* Project Links */}
+                      {project.liveUrl ||
+                        (project.githubUrl && (
+                          <div className="flex flex-wrap gap-2">
+                            {project?.liveUrl && (
+                              <a
+                                href={project.liveUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                <Button
+                                  variant="link"
+                                  className="flex items-center justify-center gap-2"
+                                >
+                                  <ExternalLink size={16} />
+                                  View Live Site
+                                </Button>
+                              </a>
+                            )}
+                            {project?.githubUrl && (
+                              <a
+                                href={project.githubUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                <Button
+                                  variant="link"
+                                  className="flex items-center justify-center gap-2"
+                                >
+                                  <SiGithub size={16} />
+                                  View Source Code
+                                </Button>
+                              </a>
+                            )}
+                            test
+                          </div>
+                        ))}
 
                       {/* Technologies */}
                       {project.technologies &&
