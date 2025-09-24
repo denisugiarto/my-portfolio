@@ -1,8 +1,6 @@
 import { createClient } from "@sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
-import {
-  SanityImageSource
-} from "@sanity/image-url/lib/types/types";
+import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 
 export const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "dmdxpdxy",
@@ -179,6 +177,38 @@ export interface HeroSection {
   };
   technologies?: Technology[];
   socialLinks?: SocialLink[];
+}
+
+export interface AboutSection {
+  _id: string;
+  title: string;
+  introduction: string;
+  uniqueSellingProposition: string;
+  profileImage?: SanityImageSource;
+  skillCategories: {
+    category: string;
+    skills: {
+      name: string;
+      proficiency: number;
+      icon?: string;
+      color?: string;
+    }[];
+  }[];
+  achievements: {
+    title: string;
+    description?: string;
+    metric?: string;
+    icon?: string;
+  }[];
+  personalInfo: {
+    location?: string;
+    timezone?: string;
+    languages: {
+      language: string;
+      proficiency: string;
+    }[];
+    yearsOfExperience?: number;
+  };
 }
 
 export interface SiteSettings {

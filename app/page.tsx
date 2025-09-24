@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { Metadata } from "next";
 import HomeSections from "@/components/home-sections";
-import { getHeroSection, getFeaturedProjects } from "@/lib/sanity-queries";
+import { getHeroSection, getFeaturedProjects, getAboutSection } from "@/lib/sanity-queries";
 
 export const metadata: Metadata = {
   title: "Portfolio | Full-Stack Developer",
@@ -14,14 +14,15 @@ export const revalidate = 3600;
 
 export default async function HomePage() {
   // Fetch data at build time
-  const [heroData, projectsData] = await Promise.all([
+  const [heroData, projectsData, aboutData] = await Promise.all([
     getHeroSection(),
     getFeaturedProjects(),
+    getAboutSection(),
   ]);
 
   return (
     <Suspense fallback={<div className="min-h-screen bg-slate-900" />}>
-      <HomeSections heroData={heroData} projectsData={projectsData} />
+      <HomeSections heroData={heroData} projectsData={projectsData} aboutData={aboutData} />
     </Suspense>
   );
 }
