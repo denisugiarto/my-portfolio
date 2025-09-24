@@ -35,16 +35,16 @@ const CustomComponents: Components = {
   ),
   // Lists
   ul: ({ children }) => (
-    <ul className="mb-4 list-inside list-disc text-gray-700 dark:text-gray-300">
+    <ul className="mb-6 ml-6 list-disc space-y-2 text-gray-700 marker:text-blue-500 dark:text-gray-300 dark:marker:text-blue-400">
       {children}
     </ul>
   ),
   ol: ({ children }) => (
-    <ol className="mb-4 list-inside list-decimal text-gray-700 dark:text-gray-300">
+    <ol className="mb-6 ml-6 list-decimal space-y-2 text-gray-700 marker:text-blue-500 dark:text-gray-300 dark:marker:text-blue-400">
       {children}
     </ol>
   ),
-  li: ({ children }) => <li className="mb-1">{children}</li>,
+  li: ({ children }) => <li className="pl-2 leading-7">{children}</li>,
   // Blockquotes
   blockquote: ({ children }) => (
     <blockquote className="my-4 border-l-4 border-blue-500 pl-4 italic text-gray-700 dark:text-gray-300">
@@ -69,11 +69,11 @@ const CustomComponents: Components = {
   code: ({ node, className, children, ...props }) => {
     const match = /^language-(\w+)/.exec(className || "");
     const isInline = !match;
-    
+
     if (isInline) {
       return (
-        <code 
-          className="rounded bg-gray-100 px-1 py-0.5 text-sm text-gray-800 dark:bg-gray-800 dark:text-gray-200 mb-4"
+        <code
+          className="mb-4 break-words rounded bg-neutral-200 px-1.5 py-1 text-sm text-gray-800 dark:bg-gray-800 dark:text-gray-200"
           {...props}
         >
           {children}
@@ -82,14 +82,21 @@ const CustomComponents: Components = {
     }
 
     return (
-      <SyntaxHighlighter
-        className="!mb-4 !mt-4 rounded-lg"
-        language={match[1]}
-        style={a11yDark}
-        PreTag="div"
-      >
-        {String(children).replace(/\n$/, "")}
-      </SyntaxHighlighter>
+      <div className="!mb-4 !mt-4 overflow-x-auto">
+        <SyntaxHighlighter
+          className="rounded-lg text-sm"
+          language={match[1]}
+          style={a11yDark}
+          PreTag="div"
+          customStyle={{ 
+            margin: 0,
+            padding: '1rem',
+            fontSize: '14px',
+          }}
+        >
+          {String(children).replace(/\n$/, "")}
+        </SyntaxHighlighter>
+      </div>
     );
   },
   // Strong and emphasis
@@ -103,6 +110,35 @@ const CustomComponents: Components = {
   ),
   // Horizontal rule
   hr: () => <hr className="my-8 border-gray-300 dark:border-gray-700" />,
+  // Tables
+  table: ({ children }) => (
+    <div className="my-6 overflow-x-auto">
+      <table className="w-full border-collapse">{children}</table>
+    </div>
+  ),
+  thead: ({ children }) => (
+    <thead className="bg-gray-100 dark:bg-gray-800">{children}</thead>
+  ),
+  tbody: ({ children }) => (
+    <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+      {children}
+    </tbody>
+  ),
+  tr: ({ children }) => (
+    <tr className="border-b border-gray-200 dark:border-gray-700">
+      {children}
+    </tr>
+  ),
+  th: ({ children }) => (
+    <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900 dark:text-white">
+      {children}
+    </th>
+  ),
+  td: ({ children }) => (
+    <td className="px-4 py-3 text-sm text-gray-700 dark:text-gray-300">
+      {children}
+    </td>
+  ),
 };
 
 interface MarkdownProps {
@@ -110,12 +146,9 @@ interface MarkdownProps {
   className?: string;
 }
 
-export default function Markdown({
-  children,
-  className = "",
-}: MarkdownProps) {
+export default function Markdown({ children, className = "" }: MarkdownProps) {
   if (!children) return null;
-  
+
   return (
     <div className={`prose prose-lg dark:prose-invert max-w-none ${className}`}>
       <MarkdownComponent

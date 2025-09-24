@@ -9,6 +9,7 @@ import {
   Technology,
   SocialLink,
   SiteSettings,
+  AboutSection,
 } from "./sanity";
 
 export async function getBlogPosts(limit?: number): Promise<BlogPost[]> {
@@ -87,6 +88,61 @@ export async function getBlogPostBySlug(
   } catch (error) {
     console.error("Error fetching blog post:", error);
     return null;
+  }
+}
+
+export async function getRelatedBlogPosts(
+  currentPostId: string,
+  tagIds: string[],
+  limit: number = 3,
+): Promise<BlogPost[]> {
+  try {
+    const query = `*[
+      _type == "blogPost" && 
+      published == true && 
+      _id != $currentPostId &&
+      count((tags[]._ref)[@ in $tagIds]) > 0
+    ] | order(publishedAt desc) [0...${limit}] {
+      _id,
+      title,
+      slug,
+      excerpt,
+      tags[]->{
+        _id,
+        name
+      },
+      publishedAt,
+      readTime
+    }`;
+
+    const result = await client.fetch(query, { currentPostId, tagIds });
+    
+    if (result && result.length > 0) {
+      return result;
+    }
+
+    const fallbackQuery = `*[
+      _type == "blogPost" && 
+      published == true && 
+      _id != $currentPostId
+    ] | order(publishedAt desc) [0...${limit}] {
+      _id,
+      title,
+      slug,
+      excerpt,
+      tags[]->{
+        _id,
+        name
+      },
+      publishedAt,
+      readTime
+    }`;
+
+    const fallbackResult = await client.fetch(fallbackQuery, { currentPostId });
+    return fallbackResult || [];
+  } catch (error) {
+    console.error("Error fetching related blog posts:", error);
+    return [];
   }
 }
 
@@ -572,6 +628,48 @@ export async function getSiteSettings(): Promise<SiteSettings | null> {
     return result || null;
   } catch (error) {
     console.error("Error fetching site settings:", error);
+    return null;
+  }
+}
+
+export async function getAboutSection(): Promise<AboutSection | null> {
+  try {
+    const query = `*[_type == "aboutSection"][0] {
+      _id,
+      title,
+      introduction,
+      uniqueSellingProposition,
+      profileImage,
+      skillCategories[] {
+        category,
+        skills[] {
+          name,
+          proficiency,
+          icon,
+          color
+        }
+      },
+      achievements[] {
+        title,
+        description,
+        metric,
+        icon
+      },
+      personalInfo {
+        location,
+        timezone,
+        languages[] {
+          language,
+          proficiency
+        },
+        yearsOfExperience
+      }
+    }`;
+
+    const result = await client.fetch(query);
+    return result || null;
+  } catch (error) {
+    console.error("Error fetching about section:", error);
     return null;
   }
 }

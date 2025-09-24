@@ -10,12 +10,13 @@ export const metadata: Metadata = {
     "Latest articles and insights about web development, React, Next.js, and modern frontend technologies.",
 };
 
-// Enable ISR with 60 second revalidation
-export const revalidate = 3600;
+// // Enable ISR with 60 second revalidation
+// export const revalidate = 3600;
 
 export default async function BlogPage() {
   // Fetch blog posts at build time and revalidate every 60 seconds
   const blogs = await fetchArticles();
+  console.log("🚀 ~ BlogPage ~ blogs:", blogs);
 
   return (
     <Layout activeNavbar="Blog" isNavColorBlack>

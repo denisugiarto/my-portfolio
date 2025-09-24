@@ -8,7 +8,9 @@ interface BlogHeaderProps {
 export default function BlogHeader({ article }: BlogHeaderProps) {
   return (
     <>
-      <h1 className="mb-4 text-3xl font-bold md:text-5xl md:leading-tight">{article.title}</h1>
+      <h1 className="mb-4 text-3xl font-bold md:text-5xl md:leading-tight">
+        {article.title}
+      </h1>
 
       <div className="mb-4 flex items-center gap-4 text-sm text-neutral-500">
         <div className="flex items-center gap-1">
@@ -34,7 +36,7 @@ export default function BlogHeader({ article }: BlogHeaderProps) {
           {article.tags.map((tag) => (
             <div
               key={tag._id}
-              className="rounded-full bg-slate-200 px-3 py-1 italic text-xs font-medium text-gray-500 dark:bg-slate-800 dark:text-slate-300"
+              className="rounded-full bg-slate-200 px-3 py-1 text-xs font-medium italic text-gray-500 dark:bg-slate-800 dark:text-slate-300"
             >
               #{tag.name}
             </div>

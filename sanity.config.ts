@@ -1,5 +1,5 @@
 import { defineConfig } from "sanity";
-import { markdownSchema } from 'sanity-plugin-markdown';
+import { markdownSchema } from "sanity-plugin-markdown";
 import { structureTool } from "sanity/structure";
 import { schemaTypes } from "./sanity/schemas";
 
