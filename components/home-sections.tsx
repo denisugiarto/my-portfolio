@@ -22,7 +22,7 @@ export default function HomeSections({
   return (
     <Layout activeNavbar="Home">
       <Hero heroData={heroData} />
-      <About aboutData={aboutData} />
+      {/* <About aboutData={aboutData} /> */}
       <Projects projects={projectsData} />
       <BlogSection />
       <Contact />
