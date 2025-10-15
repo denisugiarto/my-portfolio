@@ -22,6 +22,16 @@ export interface Tags {
   name: string;
 }
 
+export interface BlogCategory {
+  _id: string;
+  name: string;
+  slug: { current: string };
+  description?: string;
+  color?: string;
+  customColor?: string;
+  icon?: string;
+}
+
 export interface BlogPost {
   _id: string;
   title: string;
@@ -29,6 +39,7 @@ export interface BlogPost {
   excerpt?: string;
   coverImage?: SanityImageSource;
   content: string;
+  category?: BlogCategory;
   tags?: Tags[];
   publishedAt: string;
   readTime?: number;

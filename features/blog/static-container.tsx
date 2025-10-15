@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { BlogPost } from "@/lib/sanity";
+import { BlogPost, BlogCategory } from "@/lib/sanity";
 import { useEffect, useState, useCallback } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import BlogList from "./blog-list";
@@ -11,12 +11,14 @@ import { Pagination, PaginationInfo } from "@/components/ui/pagination";
 
 interface BlogStaticContainerProps {
   initialBlogs: BlogPost[];
+  categories: BlogCategory[];
 }
 
 const BLOGS_PER_PAGE = 6;
 
 export default function BlogStaticContainer({
   initialBlogs,
+  categories,
 }: BlogStaticContainerProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -26,7 +28,6 @@ export default function BlogStaticContainer({
   const [selectedCategory, setSelectedCategory] = useState<string | null>(
     searchParams.get("category") || null,
   );
-  const [availableCategories, setAvailableCategories] = useState<string[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
 
   // Initialize from URL params
@@ -35,111 +36,88 @@ export default function BlogStaticContainer({
     const searchFromUrl = searchParams.get("search");
     const pageFromUrl = searchParams.get("page");
 
-    if (categoryFromUrl) {
-      setSelectedCategory(categoryFromUrl);
-    }
-    if (searchFromUrl) {
-      setSearchQuery(searchFromUrl);
-    }
-    if (pageFromUrl) {
-      const page = parseInt(pageFromUrl, 10);
-      if (page > 0) {
-        setCurrentPage(page);
-      }
-    }
+    setSelectedCategory(categoryFromUrl);
+    setSearchQuery(searchFromUrl || "");
+    setCurrentPage(pageFromUrl ? parseInt(pageFromUrl, 10) : 1);
   }, [searchParams]);
-
-  useEffect(() => {
-    if (initialBlogs) {
-      // Extract unique categories from all blog posts
-      const categories = new Set<string>();
-      initialBlogs.forEach((blog) => {
-        if (blog.tags) {
-          blog.tags.forEach((tag) => categories.add(tag.name));
-        }
-      });
-      setAvailableCategories(Array.from(categories).sort());
-    }
-  }, []);
 
   useEffect(() => {
     if (!initialBlogs) return;
 
     let filtered = initialBlogs;
 
-    // Filter by search query
+    // Filter by search query (search in title, excerpt, content, and tags)
     if (searchQuery) {
-      filtered = filtered.filter(
-        (blog) =>
-          blog.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          blog.excerpt?.toLowerCase().includes(searchQuery.toLowerCase()),
-      );
+      const lowerQuery = searchQuery.toLowerCase();
+      filtered = filtered.filter((blog) => {
+        const titleMatch = blog.title.toLowerCase().includes(lowerQuery);
+        const excerptMatch = blog.excerpt?.toLowerCase().includes(lowerQuery);
+        const contentMatch = blog.content?.toLowerCase().includes(lowerQuery);
+        const tagMatch = blog.tags?.some((tag) =>
+          tag.name.toLowerCase().includes(lowerQuery),
+        );
+
+        return titleMatch || excerptMatch || contentMatch || tagMatch;
+      });
     }
 
     // Filter by category
     if (selectedCategory) {
       filtered = filtered.filter(
-        (blog) => blog.tags?.some((tag) => tag.name === selectedCategory),
+        (blog) => blog.category?._id === selectedCategory,
       );
     }
 
     setFilteredBlogs(filtered);
-
-    // Reset to page 1 when filters change
-    setCurrentPage(1);
   }, [initialBlogs, searchQuery, selectedCategory]);
 
-  function handleSearch(query: string) {
-    setSearchQuery(query);
-    setCurrentPage(1);
-    updateUrl({ search: query, category: selectedCategory, page: 1 });
-  }
-
   function handleCategoryChange(category: string | null) {
-    setSelectedCategory(category);
-    setCurrentPage(1);
+    // Only update URL, let useEffect handle state changes
     updateUrl({ search: searchQuery, category, page: 1 });
   }
 
   function handlePageChange(page: number) {
-    setCurrentPage(page);
+    // Only update URL, let useEffect handle state changes
     updateUrl({ search: searchQuery, category: selectedCategory, page });
   }
 
-  function updateUrl({
-    search,
-    category,
-    page,
-  }: {
-    search: string;
-    category: string | null;
-    page: number;
-  }) {
-    const params = new URLSearchParams(searchParams.toString());
+  const updateUrl = useCallback(
+    ({
+      search,
+      category,
+      page,
+    }: {
+      search: string;
+      category: string | null;
+      page: number;
+    }) => {
+      const params = new URLSearchParams(searchParams.toString());
 
-    if (search) {
-      params.set("search", search);
-    } else {
-      params.delete("search");
-    }
+      if (search) {
+        params.set("search", search);
+      } else {
+        params.delete("search");
+      }
 
-    if (category) {
-      params.set("category", category);
-    } else {
-      params.delete("category");
-    }
+      if (category) {
+        params.set("category", category);
+      } else {
+        params.delete("category");
+      }
 
-    if (page) {
-      params.set("page", page.toString());
-    } else {
-      params.delete("page");
-    }
+      if (page) {
+        params.set("page", page.toString());
+      } else {
+        params.delete("page");
+      }
 
-    const queryString = params.toString();
-    const newUrl = queryString ? `/blog?${queryString}` : "/blog";
+      const queryString = params.toString();
+      const newUrl = queryString ? `/blog?${queryString}` : "/blog";
 
-    router.replace(newUrl, { scroll: false });
-  }
+      router.replace(newUrl, { scroll: false });
+    },
+    [router, searchParams],
+  );
 
   // Calculate pagination values
   const totalBlogs = filteredBlogs.length;
@@ -147,12 +125,16 @@ export default function BlogStaticContainer({
   const startIndex = (currentPage - 1) * BLOGS_PER_PAGE;
   const endIndex = startIndex + BLOGS_PER_PAGE;
   const paginatedBlogs = filteredBlogs.slice(startIndex, endIndex);
-  const onSearchHandler = useCallback((query: string) => {
-    handleSearch(query);
-  }, []);
+  const onSearchHandler = useCallback(
+    (query: string) => {
+      // Only update URL, let useEffect handle state changes
+      updateUrl({ search: query, category: selectedCategory, page: 1 });
+    },
+    [selectedCategory, updateUrl],
+  );
 
   return (
-    <section className="container max-w-3xl pt-40">
+    <section className="container max-w-6xl pt-40">
       <div className="mb-6">
         <div className="mb-4 flex flex-col justify-between sm:flex-row">
           <h1 className="mb-4 text-3xl font-bold dark:text-slate-100 ">Blog</h1>
@@ -167,7 +149,7 @@ export default function BlogStaticContainer({
         </div>
 
         <BlogCategoryNav
-          categories={availableCategories}
+          categories={categories}
           selectedCategory={selectedCategory}
           onCategoryChange={handleCategoryChange}
         />

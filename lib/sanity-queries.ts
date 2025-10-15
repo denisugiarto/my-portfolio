@@ -1,6 +1,7 @@
 import {
   client,
   BlogPost,
+  BlogCategory,
   Project,
   SEOSettings,
   ContactMessage,
@@ -12,6 +13,26 @@ import {
   AboutSection,
 } from "./sanity";
 
+export async function getBlogCategories(): Promise<BlogCategory[]> {
+  try {
+    const query = `*[_type == "blogCategory"] | order(name asc) {
+      _id,
+      name,
+      slug,
+      description,
+      color,
+      customColor,
+      icon
+    }`;
+
+    const result = await client.fetch(query);
+    return result || [];
+  } catch (error) {
+    console.error("Error fetching blog categories:", error);
+    return [];
+  }
+}
+
 export async function getBlogPosts(limit?: number): Promise<BlogPost[]> {
   try {
     const query = `*[_type == "blogPost" && published == true] | order(publishedAt desc) ${
@@ -22,6 +43,16 @@ export async function getBlogPosts(limit?: number): Promise<BlogPost[]> {
       slug,
       excerpt,
       coverImage,
+      content,
+      category->{
+        _id,
+        name,
+        slug,
+        description,
+        color,
+        customColor,
+        icon
+      },
       tags[]->{
         _id,
         name
@@ -48,6 +79,15 @@ export async function getFeaturedBlogPosts(): Promise<BlogPost[]> {
     slug,
     excerpt,
     coverImage,
+    category->{
+      _id,
+      name,
+      slug,
+      description,
+      color,
+      customColor,
+      icon
+    },
     tags[]->{
     _id,
     name},
@@ -72,6 +112,15 @@ export async function getBlogPostBySlug(
       excerpt,
       coverImage,
       content,
+      category->{
+        _id,
+        name,
+        slug,
+        description,
+        color,
+        customColor,
+        icon
+      },
       tags[]->{
         _id,
         name
@@ -98,8 +147,8 @@ export async function getRelatedBlogPosts(
 ): Promise<BlogPost[]> {
   try {
     const query = `*[
-      _type == "blogPost" && 
-      published == true && 
+      _type == "blogPost" &&
+      published == true &&
       _id != $currentPostId &&
       count((tags[]._ref)[@ in $tagIds]) > 0
     ] | order(publishedAt desc) [0...${limit}] {
@@ -107,6 +156,15 @@ export async function getRelatedBlogPosts(
       title,
       slug,
       excerpt,
+      category->{
+        _id,
+        name,
+        slug,
+        description,
+        color,
+        customColor,
+        icon
+      },
       tags[]->{
         _id,
         name
@@ -116,20 +174,29 @@ export async function getRelatedBlogPosts(
     }`;
 
     const result = await client.fetch(query, { currentPostId, tagIds });
-    
+
     if (result && result.length > 0) {
       return result;
     }
 
     const fallbackQuery = `*[
-      _type == "blogPost" && 
-      published == true && 
+      _type == "blogPost" &&
+      published == true &&
       _id != $currentPostId
     ] | order(publishedAt desc) [0...${limit}] {
       _id,
       title,
       slug,
       excerpt,
+      category->{
+        _id,
+        name,
+        slug,
+        description,
+        color,
+        customColor,
+        icon
+      },
       tags[]->{
         _id,
         name

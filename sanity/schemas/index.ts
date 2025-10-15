@@ -1,4 +1,5 @@
 import { blogPost } from "./blogPost";
+import { blogCategory } from "./blogCategory";
 import { project } from "./project";
 import { contact } from "./contact";
 import { seoSettings } from "./seoSettings";
@@ -23,6 +24,7 @@ export const schemaTypes = [
 
   // Content Types
   blogPost,
+  blogCategory,
   project,
   experience,
   technology,

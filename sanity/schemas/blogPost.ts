@@ -30,9 +30,23 @@ export const blogPost = defineType({
       },
     }),
     defineField({
+      name: "excerpt",
+      title: "Excerpt",
+      type: "text",
+      rows: 3,
+      description: "Short description of the article (for previews and SEO)",
+    }),
+    defineField({
       name: "content",
       title: "Content",
       type: "markdown",
+    }),
+    defineField({
+      name: "category",
+      title: "Category",
+      type: "reference",
+      to: [{ type: "blogCategory" }],
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "tags",
