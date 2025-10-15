@@ -28,12 +28,12 @@ export const technology = defineType({
       type: "string",
       options: {
         list: [
-          { title: "Frontend Framework", value: "frontend-framework" },
+          { title: "Frontend", value: "frontend" },
           { title: "Programming Language", value: "programming-language" },
-          { title: "Backend Framework", value: "backend-framework" },
+          { title: "Backend", value: "backend" },
           { title: "Database", value: "database" },
-          { title: "CSS Framework", value: "css-framework" },
-          { title: "Mobile Framework", value: "mobile-framework" },
+          { title: "CSS", value: "css" },
+          { title: "Mobile", value: "mobile" },
           { title: "Cloud Service", value: "cloud-service" },
           { title: "DevOps Tool", value: "devops-tool" },
           { title: "Testing Tool", value: "testing-tool" },
