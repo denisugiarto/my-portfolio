@@ -26,8 +26,13 @@
     "format": "prettier --write .",
     "analyze": "ANALYZE=true pnpm build",
     "sanity": "sanity dev",
+    "sanity:login": "sanity login",
+    "sanity:logout": "sanity logout",
     "sanity:build": "sanity build",
-    "sanity:deploy": "sanity deploy"
+    "sanity:deploy": "sanity deploy",
+    "sanity:manage": "sanity manage",
+    "sanity:dataset:export": "sanity dataset export",
+    "sanity:dataset:import": "sanity dataset import"
   },
   "dependencies": {
     "@icons-pack/react-simple-icons": "9.6.0",
