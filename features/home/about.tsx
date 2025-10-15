@@ -197,7 +197,7 @@ export default function About({ aboutData }: AboutProps) {
                         {category.category}
                       </h4>
                       <div className="space-y-3">
-                        {category.skills.map((skill) => {
+                        {category.skills?.map((skill) => {
                           const IconComponent = skill.icon
                             ? getIconComponent(skill.icon)
                             : null;
