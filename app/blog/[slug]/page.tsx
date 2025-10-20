@@ -42,7 +42,7 @@ export async function generateMetadata({
 
     if (!article) {
       return {
-        title: "Article Not Found",
+        title: `Article ${slug} Not Found`,
       };
     }
 
