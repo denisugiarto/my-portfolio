@@ -1,8 +1,6 @@
 import { BlogPost } from "@/lib/sanity";
-import { Calendar, Clock, ArrowRight, User } from "lucide-react";
+import { ArrowRight, Calendar, Clock, User } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
-import { cn } from "@/lib/utils";
 
 export default function BlogCardItem({ blog }: { blog: BlogPost }) {
   // Get the first few tags to display
@@ -14,29 +12,6 @@ export default function BlogCardItem({ blog }: { blog: BlogPost }) {
       href={`/blog/${blog.slug.current}`}
       className="group relative block overflow-hidden rounded-xl bg-card border border-border/50 shadow-sm transition-all duration-300 hover:shadow-lg hover:border-primary/30 hover:-translate-y-1"
     >
-      {/* Featured Image */}
-      {blog.mainImage && (
-        <div className="relative h-48 w-full overflow-hidden">
-          <Image
-            src={blog.mainImage.asset.url}
-            alt={blog.title}
-            fill
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-          
-          {/* Category badge on image */}
-          {blog.category && (
-            <div className="absolute bottom-3 left-3">
-              <span className="inline-flex items-center rounded-full bg-primary/90 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
-                {blog.category.name}
-              </span>
-            </div>
-          )}
-        </div>
-      )}
-
       {/* Content */}
       <div className="p-5">
         {/* Title */}
@@ -67,12 +42,6 @@ export default function BlogCardItem({ blog }: { blog: BlogPost }) {
             <div className="flex items-center gap-1.5">
               <Clock size={14} className="text-primary/70" />
               <span>{blog.readTime} min read</span>
-            </div>
-          )}
-          {blog.author && (
-            <div className="flex items-center gap-1.5">
-              <User size={14} className="text-primary/70" />
-              <span>{blog.author.name}</span>
             </div>
           )}
         </div>

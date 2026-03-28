@@ -85,7 +85,6 @@ export default function BlogCategoryNav({
             <button
               key={category._id}
               onClick={() => onCategoryChange(category._id)}
-              style={style.style}
               className={cn(
                 "inline-flex items-center gap-1.5 rounded-full border px-4 py-2 text-sm font-medium transition-all duration-200",
                 style.className
