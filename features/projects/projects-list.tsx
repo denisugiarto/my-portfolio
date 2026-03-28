@@ -55,7 +55,7 @@ export default function ProjectsList() {
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`rounded-full px-4 py-2 text-sm font-medium transition-all ${
+                className={`rounded-none px-4 py-2 text-sm font-medium transition-all ${
                   selectedCategory === category
                     ? "bg-primary text-primary-foreground"
                     : "bg-muted text-muted-foreground hover:bg-accent hover:text-accent-foreground"

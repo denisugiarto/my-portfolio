@@ -8,46 +8,46 @@ import MarkdownComponent from "react-markdown";
 const CustomComponents: Components = {
   // Headings with consistent styling matching PortableText
   h1: ({ children }) => (
-    <h1 className="mb-4 text-4xl font-bold text-gray-900 dark:text-white">
+    <h1 className="text-balance mb-6 mt-10 font-title text-4xl font-bold tracking-tight text-foreground first:mt-0">
       {children}
     </h1>
   ),
   h2: ({ children }) => (
-    <h2 className="mb-3 text-3xl font-semibold text-gray-900 dark:text-white">
+    <h2 className="text-balance mb-4 mt-12 font-title text-3xl font-semibold tracking-tight text-foreground">
       {children}
     </h2>
   ),
   h3: ({ children }) => (
-    <h3 className="mb-2 text-2xl font-semibold text-gray-900 dark:text-white">
+    <h3 className="mb-3 mt-10 text-2xl font-semibold tracking-tight text-foreground">
       {children}
     </h3>
   ),
   h4: ({ children }) => (
-    <h4 className="mb-2 text-xl font-semibold text-gray-900 dark:text-white">
+    <h4 className="mb-3 mt-8 text-xl font-semibold text-foreground">
       {children}
     </h4>
   ),
   // Paragraphs and text
   p: ({ children }) => (
-    <p className="mb-4 leading-7 text-gray-700 dark:text-gray-300">
+    <p className="text-foreground/85 mb-5 text-[1.05rem] leading-8">
       {children}
     </p>
   ),
   // Lists
   ul: ({ children }) => (
-    <ul className="mb-6 ml-6 list-disc space-y-2 text-gray-700 marker:text-blue-500 dark:text-gray-300 dark:marker:text-blue-400">
+    <ul className="text-foreground/85 mb-6 ml-6 list-disc space-y-3 text-[1.02rem] leading-8 marker:text-primary">
       {children}
     </ul>
   ),
   ol: ({ children }) => (
-    <ol className="mb-6 ml-6 list-decimal space-y-2 text-gray-700 marker:text-blue-500 dark:text-gray-300 dark:marker:text-blue-400">
+    <ol className="text-foreground/85 mb-6 ml-6 list-decimal space-y-3 text-[1.02rem] leading-8 marker:text-primary">
       {children}
     </ol>
   ),
-  li: ({ children }) => <li className="pl-2 leading-7">{children}</li>,
+  li: ({ children }) => <li className="pl-2">{children}</li>,
   // Blockquotes
   blockquote: ({ children }) => (
-    <blockquote className="my-4 border-l-4 border-blue-500 pl-4 italic text-gray-700 dark:text-gray-300">
+    <blockquote className="my-8 rounded-none border-l-4 border-primary bg-primary/5 px-5 py-4 text-lg italic leading-8 text-foreground/80">
       {children}
     </blockquote>
   ),
@@ -58,7 +58,7 @@ const CustomComponents: Components = {
       <a
         href={href}
         rel={rel}
-        className="text-blue-600 hover:underline dark:text-blue-400"
+        className="font-medium text-primary underline decoration-primary/30 underline-offset-4 transition-colors hover:text-primary/80"
         target={!href?.startsWith("/") ? "_blank" : undefined}
       >
         {children}
@@ -73,7 +73,7 @@ const CustomComponents: Components = {
     if (isInline) {
       return (
         <code
-          className="mb-4 break-words rounded bg-neutral-200 px-1.5 py-1 text-sm text-gray-800 dark:bg-gray-800 dark:text-gray-200"
+          className="break-words rounded-none border border-border/60 bg-muted px-1.5 py-1 text-[0.95em] text-foreground"
           {...props}
         >
           {children}
@@ -82,16 +82,16 @@ const CustomComponents: Components = {
     }
 
     return (
-      <div className="!mb-4 !mt-4 overflow-x-auto">
+      <div className="!mb-8 !mt-8 overflow-x-auto rounded-none border border-border/70">
         <SyntaxHighlighter
-          className="rounded-lg text-sm"
+          className="rounded-none text-sm"
           language={match[1]}
           style={a11yDark}
           PreTag="div"
-          customStyle={{ 
+          customStyle={{
             margin: 0,
-            padding: '1rem',
-            fontSize: '14px',
+            padding: "1.25rem",
+            fontSize: "14px",
           }}
         >
           {String(children).replace(/\n$/, "")}
@@ -101,41 +101,35 @@ const CustomComponents: Components = {
   },
   // Strong and emphasis
   strong: ({ children }) => (
-    <strong className="font-semibold text-gray-900 dark:text-white">
-      {children}
-    </strong>
+    <strong className="font-semibold text-foreground">{children}</strong>
   ),
   em: ({ children }) => (
-    <em className="italic text-gray-700 dark:text-gray-300">{children}</em>
+    <em className="italic text-foreground/80">{children}</em>
   ),
   // Horizontal rule
-  hr: () => <hr className="my-8 border-gray-300 dark:border-gray-700" />,
+  hr: () => <hr className="my-10 border-border/80" />,
   // Tables
   table: ({ children }) => (
-    <div className="my-6 overflow-x-auto">
-      <table className="w-full border-collapse">{children}</table>
+    <div className="my-8 overflow-x-auto rounded-none border border-border/70">
+      <table className="w-full border-collapse overflow-hidden">
+        {children}
+      </table>
     </div>
   ),
-  thead: ({ children }) => (
-    <thead className="bg-gray-100 dark:bg-gray-800">{children}</thead>
-  ),
+  thead: ({ children }) => <thead className="bg-muted/70">{children}</thead>,
   tbody: ({ children }) => (
-    <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
-      {children}
-    </tbody>
+    <tbody className="divide-y divide-border/70">{children}</tbody>
   ),
   tr: ({ children }) => (
-    <tr className="border-b border-gray-200 dark:border-gray-700">
-      {children}
-    </tr>
+    <tr className="border-b border-border/70">{children}</tr>
   ),
   th: ({ children }) => (
-    <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900 dark:text-white">
+    <th className="px-4 py-3 text-left text-sm font-semibold text-foreground">
       {children}
     </th>
   ),
   td: ({ children }) => (
-    <td className="px-4 py-3 text-sm text-gray-700 dark:text-gray-300">
+    <td className="px-4 py-3 text-sm leading-6 text-foreground/80">
       {children}
     </td>
   ),
@@ -150,7 +144,7 @@ export default function Markdown({ children, className = "" }: MarkdownProps) {
   if (!children) return null;
 
   return (
-    <div className={`prose prose-lg dark:prose-invert max-w-none ${className}`}>
+    <div className={`prose prose-lg max-w-none text-foreground ${className}`}>
       <MarkdownComponent
         remarkPlugins={[remarkGfm]}
         components={CustomComponents}

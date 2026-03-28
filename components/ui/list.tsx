@@ -32,7 +32,7 @@ const ListItem = React.forwardRef<HTMLLIElement, ListItemProps>(
           viewport={{ once: true }}
           {...(props as HTMLMotionProps<"li">)}
         >
-          <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary" />
+          <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-none bg-primary" />
           <span>{children}</span>
         </m.li>
       );
@@ -40,7 +40,7 @@ const ListItem = React.forwardRef<HTMLLIElement, ListItemProps>(
 
     return (
       <li {...baseProps} {...props}>
-        <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary" />
+        <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-none bg-primary" />
         <span>{children}</span>
       </li>
     );

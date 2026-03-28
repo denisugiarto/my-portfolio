@@ -114,7 +114,7 @@ export default function ProjectsStaticList({
                             setSelectedCategory(category),
                           )
                         }
-                        className={`rounded-lg px-3 py-2 text-sm font-medium transition-all ${
+                        className={`rounded-none px-3 py-2 text-sm font-medium transition-all ${
                           selectedCategory === category
                             ? "bg-primary text-primary-foreground shadow-lg shadow-primary/25"
                             : "border border-border bg-card text-muted-foreground hover:border-accent hover:bg-accent hover:text-accent-foreground"
@@ -149,19 +149,19 @@ export default function ProjectsStaticList({
             {Array.from({ length: 6 }).map((_, index) => (
               <div
                 key={index}
-                className="overflow-hidden rounded-xl border border-border bg-card"
+                className="overflow-hidden rounded-none border border-border bg-card"
               >
                 <div className="h-52 animate-pulse bg-muted"></div>
                 <div className="p-6">
-                  <div className="mb-3 h-6 animate-pulse rounded bg-muted"></div>
-                  <div className="mb-2 h-4 w-3/4 animate-pulse rounded bg-muted"></div>
-                  <div className="mb-4 h-4 w-1/2 animate-pulse rounded bg-muted"></div>
+                  <div className="mb-3 h-6 animate-pulse rounded-none bg-muted"></div>
+                  <div className="mb-2 h-4 w-3/4 animate-pulse rounded-none bg-muted"></div>
+                  <div className="mb-4 h-4 w-1/2 animate-pulse rounded-none bg-muted"></div>
                   <div className="mb-4 flex gap-2">
-                    <div className="h-6 w-16 animate-pulse rounded-full bg-muted"></div>
-                    <div className="h-6 w-20 animate-pulse rounded-full bg-muted"></div>
-                    <div className="h-6 w-14 animate-pulse rounded-full bg-muted"></div>
+                    <div className="h-6 w-16 animate-pulse rounded-none bg-muted"></div>
+                    <div className="h-6 w-20 animate-pulse rounded-none bg-muted"></div>
+                    <div className="h-6 w-14 animate-pulse rounded-none bg-muted"></div>
                   </div>
-                  <div className="h-3 w-24 animate-pulse rounded bg-muted"></div>
+                  <div className="h-3 w-24 animate-pulse rounded-none bg-muted"></div>
                 </div>
               </div>
             ))}
@@ -194,7 +194,7 @@ export default function ProjectsStaticList({
           >
             {searchQuery ? (
               <div className="mx-auto max-w-md">
-                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-muted">
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-none bg-muted">
                   <Search className="h-8 w-8 text-muted-foreground" />
                 </div>
                 <h3 className="mb-2 text-lg font-semibold text-foreground">
@@ -206,7 +206,7 @@ export default function ProjectsStaticList({
                 </p>
                 <button
                   onClick={() => setSearchQuery("")}
-                  className="rounded-lg bg-primary px-4 py-2 text-primary-foreground transition-colors hover:bg-primary/90"
+                  className="rounded-none bg-primary px-4 py-2 text-primary-foreground transition-colors hover:bg-primary/90"
                 >
                   Clear Search
                 </button>

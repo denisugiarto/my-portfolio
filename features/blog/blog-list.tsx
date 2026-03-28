@@ -13,7 +13,7 @@ export default function BlogList({ blogs, isLoading, error }: BlogListProps) {
 
   if (error) return (
     <div className="flex flex-col items-center justify-center py-16 text-center">
-      <div className="mb-4 rounded-full bg-destructive/10 p-4">
+      <div className="mb-4 rounded-none bg-destructive/10 p-4">
         <svg
           className="h-8 w-8 text-destructive"
           fill="none"

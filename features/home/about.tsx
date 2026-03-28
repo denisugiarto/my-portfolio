@@ -52,14 +52,14 @@ export default function About({ aboutData }: AboutProps) {
       <section id="about" className="py-20">
         <div className="container mx-auto px-4">
           <div className="animate-pulse">
-            <div className="mx-auto mb-12 h-8 w-48 rounded bg-gray-700"></div>
+            <div className="mx-auto mb-12 h-8 w-48 rounded-none bg-gray-700"></div>
             <div className="grid gap-8 lg:grid-cols-2">
               <div className="space-y-4">
-                <div className="h-6 w-full rounded bg-gray-700"></div>
-                <div className="h-6 w-5/6 rounded bg-gray-700"></div>
-                <div className="h-6 w-4/6 rounded bg-gray-700"></div>
+                <div className="h-6 w-full rounded-none bg-gray-700"></div>
+                <div className="h-6 w-5/6 rounded-none bg-gray-700"></div>
+                <div className="h-6 w-4/6 rounded-none bg-gray-700"></div>
               </div>
-              <div className="h-64 rounded bg-gray-700"></div>
+              <div className="h-64 rounded-none bg-gray-700"></div>
             </div>
           </div>
         </div>
@@ -158,7 +158,7 @@ export default function About({ aboutData }: AboutProps) {
             {/* Right Column - Profile Image */}
             <motion.div variants={item} className="flex justify-center">
               {aboutData.profileImage ? (
-                <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+                <div className="relative overflow-hidden rounded-none shadow-2xl">
                   <Image
                     src={urlFor(aboutData.profileImage).width(400).height(500).url()}
                     alt="Profile"
@@ -170,9 +170,9 @@ export default function About({ aboutData }: AboutProps) {
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-900/20 to-transparent"></div>
                 </div>
               ) : (
-                <div className="flex h-96 w-80 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 shadow-2xl">
+                <div className="flex h-96 w-80 items-center justify-center rounded-none bg-gradient-to-br from-blue-500/20 to-purple-500/20 shadow-2xl">
                   <div className="text-center">
-                    <div className="mx-auto mb-4 h-24 w-24 rounded-full bg-gradient-to-r from-blue-400 to-purple-400"></div>
+                    <div className="mx-auto mb-4 h-24 w-24 rounded-none bg-gradient-to-r from-blue-400 to-purple-400"></div>
                     <p className="text-gray-400">Profile Image</p>
                   </div>
                 </div>
@@ -192,7 +192,7 @@ export default function About({ aboutData }: AboutProps) {
               >
                 {aboutData.skillCategories.map((category) => (
                   <motion.div key={category.category} variants={item}>
-                    <div className="rounded-lg border border-gray-700 bg-gray-800/50 p-6 backdrop-blur">
+                    <div className="rounded-none border border-gray-700 bg-gray-800/50 p-6 backdrop-blur">
                       <h4 className="mb-4 text-lg font-semibold capitalize text-white">
                         {category.category}
                       </h4>
@@ -223,7 +223,7 @@ export default function About({ aboutData }: AboutProps) {
                                   {skill.proficiency}/5
                                 </Badge>
                               </div>
-                              <div className="h-2 overflow-hidden rounded-full bg-gray-700">
+                              <div className="h-2 overflow-hidden rounded-none bg-gray-700">
                                 <motion.div
                                   className={`h-full ${getProficiencyColor(skill.proficiency)}`}
                                   initial={{ width: 0 }}
@@ -263,9 +263,9 @@ export default function About({ aboutData }: AboutProps) {
                       variants={item}
                       className="group"
                     >
-                      <div className="rounded-lg border border-gray-700 bg-gray-800/50 p-6 backdrop-blur transition-all duration-300 hover:border-blue-500/50 hover:bg-gray-800/70">
+                      <div className="rounded-none border border-gray-700 bg-gray-800/50 p-6 backdrop-blur transition-all duration-300 hover:border-blue-500/50 hover:bg-gray-800/70">
                         <div className="flex items-start gap-4">
-                          <div className="rounded-lg bg-gradient-to-r from-blue-500/20 to-purple-500/20 p-3">
+                          <div className="rounded-none bg-gradient-to-r from-blue-500/20 to-purple-500/20 p-3">
                             {IconComponent ? React.createElement(IconComponent, { className: "h-6 w-6 text-blue-400" }) : null}
                           </div>
                           <div className="flex-1">

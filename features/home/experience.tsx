@@ -31,13 +31,13 @@ const Experience = () => {
           {[...Array(3)].map((_, index) => (
             <div
               key={index}
-              className="flex animate-pulse gap-4 rounded-lg bg-gray-200 p-4 dark:bg-gray-800"
+              className="flex animate-pulse gap-4 rounded-none bg-gray-200 p-4 dark:bg-gray-800"
             >
-              <div className="h-12 w-12 basis-12 rounded-lg bg-gray-300 dark:bg-gray-700"></div>
+              <div className="h-12 w-12 basis-12 rounded-none bg-gray-300 dark:bg-gray-700"></div>
               <div className="flex-1 space-y-2">
-                <div className="h-4 w-3/4 rounded bg-gray-300 dark:bg-gray-700"></div>
-                <div className="h-3 w-1/2 rounded bg-gray-300 dark:bg-gray-700"></div>
-                <div className="h-3 w-2/3 rounded bg-gray-300 dark:bg-gray-700"></div>
+                <div className="h-4 w-3/4 rounded-none bg-gray-300 dark:bg-gray-700"></div>
+                <div className="h-3 w-1/2 rounded-none bg-gray-300 dark:bg-gray-700"></div>
+                <div className="h-3 w-2/3 rounded-none bg-gray-300 dark:bg-gray-700"></div>
               </div>
             </div>
           ))}
@@ -65,7 +65,7 @@ const Experience = () => {
         <h2 className="title-section text-center">Experience</h2>
         <div className="mx-auto flex flex-col gap-4 lg:max-w-lg">
           <div className="py-12 text-center">
-            <div className="mx-auto w-auto rounded-md bg-slate-100 px-6 py-4 text-center dark:bg-slate-800">
+            <div className="mx-auto w-auto rounded-none bg-slate-100 px-6 py-4 text-center dark:bg-slate-800">
               <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
                 No work experience found
               </h3>
@@ -79,108 +79,6 @@ const Experience = () => {
   return (
     <LazyMotion features={domAnimation}>
       <section className="relative overflow-hidden py-20 lg:py-32">
-        {/* SVG Background for Experience */}
-        <div className="pointer-events-none absolute inset-0">
-          <svg
-            className="absolute inset-0 h-full w-full"
-            viewBox="0 0 1000 1000"
-            preserveAspectRatio="xMidYMid slice"
-          >
-            <defs>
-              <linearGradient
-                id="exp-gradient1"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="100%"
-              >
-                <stop offset="0%" stopColor="rgba(34, 197, 94, 0.08)" />
-                <stop offset="100%" stopColor="rgba(59, 130, 246, 0.08)" />
-              </linearGradient>
-              <linearGradient
-                id="exp-gradient2"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="100%"
-              >
-                <stop offset="0%" stopColor="rgba(168, 85, 247, 0.05)" />
-                <stop offset="100%" stopColor="rgba(34, 197, 94, 0.05)" />
-              </linearGradient>
-            </defs>
-
-            {/* Timeline-inspired shapes */}
-            <m.line
-              x1="50"
-              y1="100"
-              x2="50"
-              y2="900"
-              stroke="rgba(59, 130, 246, 0.1)"
-              strokeWidth="2"
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ duration: 3, ease: "easeInOut" }}
-            />
-
-            {/* Floating hexagons */}
-            <m.polygon
-              points="150,200 200,170 250,200 250,260 200,290 150,260"
-              fill="url(#exp-gradient1)"
-              initial={{ rotate: 0, scale: 0.8 }}
-              animate={{
-                rotate: [0, 120, 240, 360],
-                scale: [0.8, 1.1, 0.8],
-                x: [0, 20, 0],
-                y: [0, -15, 0],
-              }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-
-            <m.polygon
-              points="750,400 800,370 850,400 850,460 800,490 750,460"
-              fill="url(#exp-gradient2)"
-              initial={{ rotate: 0, scale: 0.9 }}
-              animate={{
-                rotate: [0, -90, -180, -270, -360],
-                scale: [0.9, 1.2, 0.9],
-                x: [0, -25, 0],
-                y: [0, 20, 0],
-              }}
-              transition={{
-                duration: 10,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-
-            {/* Career milestones */}
-            {[...Array(6)].map((_, i) => (
-              <m.circle
-                key={i}
-                cx={100 + i * 150}
-                cy={700}
-                r="8"
-                fill="rgba(59, 130, 246, 0.3)"
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{
-                  scale: [0, 1.5, 1],
-                  opacity: [0, 1, 0.6],
-                }}
-                transition={{
-                  duration: 2,
-                  delay: i * 0.3,
-                  repeat: Infinity,
-                  repeatDelay: 4,
-                }}
-              />
-            ))}
-          </svg>
-        </div>
-
         <div className="container relative z-10">
           <h2 className="title-section mb-16 text-center">Experience</h2>
           <div className="mx-auto max-w-5xl">
@@ -200,20 +98,20 @@ const Experience = () => {
                   <div className="flex items-start gap-8 md:gap-12">
                     {/* Timeline Dot */}
                     <div className="relative z-10 flex-shrink-0">
-                      <div className="flex h-20 w-20 items-center justify-center rounded-full border-4 border-primary bg-background shadow-xl">
+                      <div className="flex h-20 w-20 items-center justify-center rounded-none border-4 border-primary bg-background shadow-xl">
                         {experience.companyLogo ? (
                           <Image
                             src={urlFor(experience.companyLogo)
                               .width(56)
                               .height(56)
                               .url()}
-                            className="rounded-full object-cover"
+                            className="rounded-none object-cover"
                             width={56}
                             height={56}
                             alt={`${experience.company} logo`}
                           />
                         ) : (
-                          <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground">
+                          <div className="flex h-14 w-14 items-center justify-center rounded-none bg-primary text-primary-foreground">
                             <span className="text-xl font-bold">
                               {experience.company.charAt(0)}
                             </span>
@@ -223,7 +121,7 @@ const Experience = () => {
                     </div>
 
                     {/* Timeline Content */}
-                    <div className="flex-1 overflow-hidden rounded-xl border border-border bg-card shadow-sm transition-all duration-300 hover:shadow-lg">
+                    <div className="flex-1 overflow-hidden rounded-none border border-border bg-card shadow-sm transition-all duration-300 hover:shadow-lg">
                       {/* Header */}
                       <div className="p-8 pb-6">
                         <div className="mb-6 flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
@@ -301,7 +199,7 @@ const Experience = () => {
                                       key={idx}
                                       className="flex items-start gap-3 leading-relaxed text-muted-foreground"
                                     >
-                                      <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary"></div>
+                                      <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-none bg-primary"></div>
                                       <span className="text-base">
                                         {achievement}
                                       </span>
@@ -329,7 +227,7 @@ const Experience = () => {
                                     {experience.technologies.map((tech) => (
                                       <span
                                         key={tech.name}
-                                        className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1.5 text-sm font-medium text-primary"
+                                        className="inline-flex items-center rounded-none bg-primary/10 px-3 py-1.5 text-sm font-medium text-primary"
                                       >
                                         {tech.name}
                                       </span>
@@ -348,7 +246,7 @@ const Experience = () => {
                                     {experience.skills.map((skill) => (
                                       <span
                                         key={skill.name}
-                                        className="inline-flex items-center rounded-full bg-secondary px-3 py-1.5 text-sm font-medium text-secondary-foreground"
+                                        className="inline-flex items-center rounded-none bg-secondary px-3 py-1.5 text-sm font-medium text-secondary-foreground"
                                       >
                                         {skill.name}
                                       </span>

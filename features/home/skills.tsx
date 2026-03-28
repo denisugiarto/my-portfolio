@@ -8,7 +8,7 @@ export default function Skills() {
           {data.skills.map((item, index) => (
             <div
               key={`${index}`}
-              className="rounded-lg bg-primary px-3 py-2 font-semibold text-white shadow-md "
+              className="rounded-none bg-primary px-3 py-2 font-semibold text-white shadow-md "
             >
               {item}
             </div>

@@ -112,7 +112,7 @@ export default function SimpleContactForm() {
         </p>
         <button
           onClick={resetForm}
-          className="rounded-md bg-primary px-4 py-2 text-primary-foreground transition-colors hover:bg-primary/90"
+          className="rounded-none bg-primary px-4 py-2 text-primary-foreground transition-colors hover:bg-primary/90"
         >
           Send Another Message
         </button>
@@ -123,7 +123,7 @@ export default function SimpleContactForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       {errors.general && (
-        <div className="rounded-md border border-destructive/20 bg-destructive/10 p-3">
+        <div className="rounded-none border border-destructive/20 bg-destructive/10 p-3">
           <p className="text-sm text-destructive">{errors.general}</p>
         </div>
       )}
@@ -144,7 +144,7 @@ export default function SimpleContactForm() {
             onChange={handleInputChange}
             autoComplete="name"
             className={cn(
-              "w-full rounded-md border bg-background px-3 py-2 text-foreground",
+              "w-full rounded-none border bg-background px-3 py-2 text-foreground",
               "placeholder:text-muted-foreground",
               "focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary",
               "transition-colors",
@@ -173,7 +173,7 @@ export default function SimpleContactForm() {
             inputMode="email"
             autoComplete="email"
             className={cn(
-              "w-full rounded-md border bg-background px-3 py-2 text-foreground",
+              "w-full rounded-none border bg-background px-3 py-2 text-foreground",
               "placeholder:text-muted-foreground",
               "focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary",
               "transition-colors",
@@ -201,7 +201,7 @@ export default function SimpleContactForm() {
           value={formData.message}
           onChange={handleInputChange}
           className={cn(
-            "w-full rounded-md border bg-background px-3 py-2 text-foreground",
+            "w-full rounded-none border bg-background px-3 py-2 text-foreground",
             "resize-vertical placeholder:text-muted-foreground",
             "focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary",
             "transition-colors",
@@ -219,7 +219,7 @@ export default function SimpleContactForm() {
         disabled={status === "submitting"}
         className={cn(
           "flex w-full items-center justify-center gap-2 px-4 py-3",
-          "rounded-md bg-primary font-medium text-primary-foreground",
+          "rounded-none bg-primary font-medium text-primary-foreground",
           "hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
           "transition-colors disabled:cursor-not-allowed disabled:opacity-50",
         )}

@@ -34,14 +34,14 @@ export default async function ProjectsPage() {
       <section className="relative overflow-hidden pb-0 pt-20 lg:pt-32">
         {/* Background Elements */}
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute left-10 top-20 h-72 w-72 rounded-full bg-primary/5 blur-3xl"></div>
-          <div className="absolute bottom-20 right-10 h-96 w-96 rounded-full bg-secondary/5 blur-3xl"></div>
+          <div className="absolute left-10 top-20 h-72 w-72 rounded-none bg-primary/5 blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 h-96 w-96 rounded-none bg-secondary/5 blur-3xl"></div>
         </div>
 
         <div className="container relative z-10">
           <div className="mb-2 text-center">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
-              <span className="h-2 w-2 animate-pulse rounded-full bg-primary"></span>
+            <div className="mb-6 inline-flex items-center gap-2 rounded-none bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
+              <span className="h-2 w-2 animate-pulse rounded-none bg-primary"></span>
               Portfolio Showcase
             </div>
 
@@ -58,13 +58,13 @@ export default async function ProjectsPage() {
 
             <div className="mt-4 flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground md:gap-8">
               <div className="flex items-center gap-2">
-                <div className="h-3 w-3 rounded-full bg-green-500"></div>
+                <div className="h-3 w-3 rounded-none bg-green-500"></div>
                 <span className="whitespace-nowrap">
                   {projects.length} Projects
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="h-3 w-3 rounded-full bg-purple-500"></div>
+                <div className="h-3 w-3 rounded-none bg-purple-500"></div>
                 <span className="whitespace-nowrap">
                   {
                     new Set(

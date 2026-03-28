@@ -65,7 +65,7 @@ export default function BlogCategoryNav({
         <button
           onClick={() => onCategoryChange(null)}
           className={cn(
-            "inline-flex items-center gap-1.5 rounded-full border px-4 py-2 text-sm font-medium transition-all duration-200",
+            "inline-flex items-center gap-1.5 rounded-none border px-4 py-2 text-sm font-medium transition-all duration-200",
             selectedCategory === null
               ? "bg-primary border-primary text-primary-foreground shadow-sm"
               : "bg-transparent border-border hover:bg-muted hover:border-primary/30"
@@ -86,7 +86,7 @@ export default function BlogCategoryNav({
               key={category._id}
               onClick={() => onCategoryChange(category._id)}
               className={cn(
-                "inline-flex items-center gap-1.5 rounded-full border px-4 py-2 text-sm font-medium transition-all duration-200",
+                "inline-flex items-center gap-1.5 rounded-none border px-4 py-2 text-sm font-medium transition-all duration-200",
                 style.className
               )}
             >

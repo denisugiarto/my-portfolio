@@ -26,7 +26,7 @@ const ThemeToggle = () => {
         variant="ghost"
         size="icon"
         color="primary"
-        className="rounded-md p-1"
+        className="rounded-none p-1"
         aria-label="Toggle Theme"
         title="Toggle Theme"
         disabled
@@ -44,7 +44,7 @@ const ThemeToggle = () => {
       onClick={handleThemeToggle}
       className={cn(
         resolvedTheme === "dark" ? "text-slate-50" : "text-slate-950",
-        "rounded-md p-1",
+        "rounded-none p-1",
       )}
       aria-label="Toggle Theme"
       title="Toggle Theme"

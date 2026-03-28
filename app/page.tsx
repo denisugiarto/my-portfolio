@@ -21,8 +21,16 @@ export default async function HomePage() {
   ]);
 
   return (
-    <Suspense fallback={<div className="min-h-screen bg-slate-900" />}>
-      <HomeSections heroData={heroData} projectsData={projectsData} aboutData={aboutData} />
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(244,114,182,0.14),_transparent_28%),radial-gradient(circle_at_right,_rgba(59,130,246,0.14),_transparent_32%),linear-gradient(180deg,_hsl(var(--background)),_hsl(var(--muted)))]" />
+      }
+    >
+      <HomeSections
+        heroData={heroData}
+        projectsData={projectsData}
+        aboutData={aboutData}
+      />
     </Suspense>
   );
 }

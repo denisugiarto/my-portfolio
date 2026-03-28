@@ -2,13 +2,13 @@ import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 import { QueryProvider } from "@/components/query-provider";
 import { ThemeProvider } from "@/components/theme-provider";
 import type { Metadata } from "next";
-import { Inter, Montserrat } from "next/font/google";
+import { Archivo, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
-const montserrat = Montserrat({
+const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space-grotesk" });
+const archivo = Archivo({
   subsets: ["latin"],
-  variable: "--font-montserrat",
+  variable: "--font-archivo",
 });
 
 export const metadata: Metadata = {
@@ -74,7 +74,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://www.google-analytics.com" />
       </head>
       <body
-        className={`${inter.className} ${montserrat.variable}`}
+        className={`${spaceGrotesk.className} ${archivo.variable} ${spaceGrotesk.variable}`}
         suppressHydrationWarning
       >
         {/* Google Analytics with Web Worker */}

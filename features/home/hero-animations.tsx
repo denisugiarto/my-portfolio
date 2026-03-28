@@ -12,89 +12,8 @@ export function HeroAnimations({ children }: HeroAnimationsProps) {
     <LazyMotion features={domAnimation}>
       <section
         id="home"
-        className="relative flex flex-col justify-center pt-20 text-center lg:pt-32"
+        className="relative flex flex-col justify-center overflow-hidden pt-24 pb-12 text-center lg:pt-36 lg:pb-24"
       >
-        {/* Optimized SVG Background */}
-        <div className="pointer-events-none absolute inset-0">
-          <svg
-            className="absolute inset-0 h-full w-full"
-            viewBox="0 0 1000 1000"
-            preserveAspectRatio="xMidYMid slice"
-            style={{ willChange: "transform" }}
-          >
-            <defs>
-              <linearGradient
-                id="hero-gradient1"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="100%"
-              >
-                <stop offset="0%" stopColor="rgba(59, 130, 246, 0.08)" />
-                <stop offset="50%" stopColor="rgba(147, 51, 234, 0.08)" />
-                <stop offset="100%" stopColor="rgba(59, 130, 246, 0.08)" />
-              </linearGradient>
-              <linearGradient
-                id="hero-gradient2"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="100%"
-              >
-                <stop offset="0%" stopColor="rgba(147, 51, 234, 0.04)" />
-                <stop offset="100%" stopColor="rgba(59, 130, 246, 0.04)" />
-              </linearGradient>
-              <pattern
-                id="hero-grid"
-                width="50"
-                height="50"
-                patternUnits="userSpaceOnUse"
-              >
-                <path
-                  d="M 50 0 L 0 0 0 50"
-                  fill="none"
-                  stroke="rgba(255,255,255,0.02)"
-                  strokeWidth="1"
-                />
-              </pattern>
-            </defs>
-
-            {/* Optimized floating shapes with reduced complexity */}
-            <m.circle
-              cx="200"
-              cy="200"
-              r="120"
-              fill="url(#hero-gradient1)"
-              initial={{ scale: 0.9, opacity: 0.4 }}
-              animate={{ scale: [0.9, 1.1, 0.9], opacity: [0.4, 0.6, 0.4] }}
-              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            />
-
-            <m.polygon
-              points="800,150 850,250 750,250"
-              fill="url(#hero-gradient2)"
-              initial={{ rotate: 0, opacity: 0.3 }}
-              animate={{ rotate: [0, 360], opacity: [0.3, 0.5, 0.3] }}
-              transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-            />
-
-            <m.rect
-              x="150"
-              y="600"
-              width="120"
-              height="120"
-              rx="15"
-              fill="url(#hero-gradient1)"
-              initial={{ rotate: 45, opacity: 0.3 }}
-              animate={{ rotate: [45, 225, 45], opacity: [0.3, 0.5, 0.3] }}
-              transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-            />
-
-            <rect width="100%" height="100%" fill="url(#hero-grid)" />
-          </svg>
-        </div>
-
-        {/* Main content container */}
         <div className="container relative z-10 mx-auto">{children}</div>
       </section>
     </LazyMotion>
@@ -109,9 +28,9 @@ interface AnimatedTextProps {
 export function AnimatedText({ children, delay = 0 }: AnimatedTextProps) {
   return (
     <m.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay, ease: "easeOut" }}
+      transition={{ duration: 0.4, delay, ease: "circOut" }}
     >
       {children}
     </m.div>
@@ -123,7 +42,7 @@ export function AnimatedContent({ children, delay = 0.2 }: AnimatedTextProps) {
     <m.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay, ease: "easeOut" }}
+      transition={{ duration: 0.4, delay, ease: "circOut" }}
     >
       {children}
     </m.div>
@@ -134,7 +53,7 @@ interface AnimatedTechStackProps {
   techs: Array<{
     icon: any;
     name: string;
-    color: string; // Now expects hex color values
+    color: string;
   }>;
 }
 
@@ -143,24 +62,26 @@ export function AnimatedTechStack({ techs }: AnimatedTechStackProps) {
     <m.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
-      className="mt-8"
+      transition={{ duration: 0.4, delay: 0.4, ease: "circOut" }}
+      className="mt-16"
     >
-      <p className="mb-6 text-sm text-gray-400">Technologies I work with</p>
-      <div className="mx-auto flex max-w-max flex-wrap items-center justify-center gap-6 rounded-2xl border border-black/20 bg-slate-700 px-10 py-6 backdrop-blur-md dark:border-white/20 dark:bg-slate-600/10 md:gap-8">
+      <p className="mb-4 inline-block bg-accent px-2 py-1 text-sm font-black uppercase tracking-[0.2em] text-accent-foreground border-2 border-foreground shadow-[2px_2px_0px_0px_hsl(var(--foreground))]">
+        CORE STACK
+      </p>
+      <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-center gap-4 border-4 border-foreground bg-card px-6 py-8 shadow-[8px_8px_0px_0px_hsl(var(--foreground))] md:gap-6 md:px-10">
         {techs.map((tech, index) => (
           <m.div
             key={tech.name}
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.3, delay: 0.8 + index * 0.1 }}
-            className="flex cursor-default items-center gap-2 transition-transform hover:scale-110"
+            initial={{ opacity: 0, scale: 0.9, y: 10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: 0.5 + index * 0.05 }}
+            className="flex cursor-default items-center gap-2 border-2 border-foreground bg-background px-4 py-3 shadow-[4px_4px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))]"
           >
             <tech.icon
-              className="h-5 w-5 md:h-6 md:w-6"
+              className="h-6 w-6 md:h-7 md:w-7"
               style={{ color: tech.color }}
             />
-            <span className="hidden text-xs text-gray-100 sm:inline md:text-sm">
+            <span className="text-sm font-bold uppercase tracking-wider text-foreground md:text-base">
               {tech.name}
             </span>
           </m.div>

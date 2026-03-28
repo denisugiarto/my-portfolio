@@ -20,44 +20,12 @@ export default function ProjectCard({
   project,
   index = 0,
   variant = "list",
-  showStatus = true,
 }: ProjectCardProps) {
   const isHomeVariant = variant === "home";
 
-  const getStatusConfig = (status: string) => {
-    switch (status) {
-      case "completed":
-        return {
-          bg: "bg-green-500/10",
-          text: "text-green-700 dark:text-green-400",
-          label: "Completed",
-        };
-      case "in-progress":
-        return {
-          bg: "bg-blue-500/10",
-          text: "text-blue-700 dark:text-blue-400",
-          label: "In Progress",
-        };
-      case "planning":
-        return {
-          bg: "bg-purple-500/10",
-          text: "text-purple-700 dark:text-purple-400",
-          label: "Planning",
-        };
-      default:
-        return {
-          bg: "bg-gray-500/10",
-          text: "text-gray-700 dark:text-gray-400",
-          label: status,
-        };
-    }
-  };
-
-  const statusConfig = project.status ? getStatusConfig(project.status) : null;
-
   return (
     <m.div
-      className="group overflow-hidden rounded-xl border border-border bg-card"
+      className="group overflow-hidden rounded-none border-4 border-foreground bg-card shadow-[8px_8px_0px_0px_hsl(var(--foreground))] transition-none hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-[4px_4px_0px_0px_hsl(var(--foreground))]"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{
@@ -68,7 +36,7 @@ export default function ProjectCard({
       viewport={{ once: true }}
     >
       <Link href={`/projects/${project.slug.current}`}>
-        <div className="relative overflow-hidden">
+        <div className="relative overflow-hidden border-b-4 border-foreground">
           <Image
             src={
               project.coverImage
@@ -85,43 +53,41 @@ export default function ProjectCard({
 
       <div className="p-6 pt-5">
         <Link href={`/projects/${project.slug.current}`}>
-          <h3 className="mb-2 text-xl font-bold text-card-foreground">
+          <h3 className="mb-2 text-xl font-black uppercase tracking-tight text-foreground transition-none group-hover:bg-primary group-hover:text-primary-foreground group-hover:px-1 inline-block">
             {project.title}
           </h3>
         </Link>
 
-        <p className="mb-4 line-clamp-2 text-sm leading-relaxed text-muted-foreground">
+        <p className="mb-4 line-clamp-2 text-sm leading-relaxed text-muted-foreground font-medium">
           {project.shortDescription || project.description}
         </p>
 
         {/* Technologies */}
         {project.technologies && project.technologies.length > 0 && (
           <div
-            className={`flex flex-wrap gap-1.5 ${
-              isHomeVariant ? "pb-2 pt-0" : "mb-5"
-            }`}
+            className={`flex flex-wrap gap-2 ${isHomeVariant ? "pb-2 pt-0" : "mb-5"
+              }`}
           >
             {project.technologies
               .slice(0, isHomeVariant ? undefined : 4)
               .map((tech, techIndex) => (
                 <span
                   key={techIndex}
-                  className="inline-flex items-center rounded-md bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary"
+                  className="inline-flex items-center rounded-none border-2 border-foreground bg-secondary px-2 py-1 text-xs font-bold uppercase tracking-wider text-foreground shadow-[2px_2px_0px_0px_hsl(var(--foreground))]"
                 >
                   {tech.name}
                 </span>
               ))}
             {!isHomeVariant && project.technologies.length > 4 && (
-              <span className="px-2 py-1 text-xs text-muted-foreground">
-                +{project.technologies.length - 4} more
+              <span className="px-2 py-1 text-xs font-bold text-foreground">
+                +{project.technologies.length - 4} MORE
               </span>
             )}
           </div>
         )}
 
-        {/* Project Links - Only show in home variant or as fallback */}
-
-        <div className="mt-4 flex gap-2">
+        {/* Project Links */}
+        <div className="mt-4 flex gap-3 flex-wrap">
           {project.liveUrl && (
             <a
               href={project.liveUrl}
@@ -131,12 +97,12 @@ export default function ProjectCard({
               onClick={(e) => e.stopPropagation()}
             >
               <Button
-                size="xs"
+                size="sm"
                 variant="outline"
                 className="flex items-center gap-2"
               >
                 <GlobeIcon className="h-4 w-4" />
-                Link
+                LINK
               </Button>
             </a>
           )}
@@ -146,11 +112,16 @@ export default function ProjectCard({
               target="_blank"
               rel="noreferrer"
               title="demo link"
-              className="flex items-center gap-2 rounded-lg border bg-secondary px-2 py-1 text-sm leading-none text-white shadow-md"
               onClick={(e) => e.stopPropagation()}
             >
-              <ExternalLink className="h-4 w-4" />
-              Demo
+              <Button
+                size="sm"
+                variant="outline"
+                className="flex items-center gap-2"
+              >
+                <ExternalLink className="h-4 w-4" />
+                DEMO
+              </Button>
             </a>
           )}
           {project.githubUrl && (
@@ -159,11 +130,15 @@ export default function ProjectCard({
               target="_blank"
               rel="noreferrer"
               title="github repo"
-              className="flex items-center gap-2 rounded-lg border bg-primary px-2 py-1 text-sm leading-none text-white shadow-md"
               onClick={(e) => e.stopPropagation()}
             >
-              <SiGithub className="h-4 w-4" />
-              Repository
+              <Button
+                size="sm"
+                className="flex items-center gap-2"
+              >
+                <SiGithub className="h-4 w-4" />
+                REPO
+              </Button>
             </a>
           )}
         </div>

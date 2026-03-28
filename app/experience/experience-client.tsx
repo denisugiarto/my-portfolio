@@ -24,24 +24,22 @@ const ExperienceClient = () => {
 
   if (isLoading) {
     return (
-      <section className="relative pt-0">
+      <section className="relative px-4 pb-16 sm:px-6 lg:px-8">
         <div className="container">
           <div className="mx-auto max-w-5xl">
-            <div className="space-y-16">
+            <div className="space-y-8">
               {[...Array(3)].map((_, index) => (
-                <div key={index} className="relative">
+                <div
+                  key={index}
+                  className="relative overflow-hidden rounded-none border-4 border-foreground bg-card shadow-[8px_8px_0px_0px_hsl(var(--foreground))] p-6 md:p-8"
+                >
                   <div className="flex items-start gap-4 md:gap-8">
-                    <div className="hidden h-16 w-16 flex-shrink-0 animate-pulse rounded-full bg-gray-200 dark:bg-gray-800 md:block"></div>
-                    <div className="flex-1 animate-pulse rounded-xl border border-border bg-card p-6 md:p-8">
+                    <div className="hidden h-16 w-16 flex-shrink-0 animate-pulse bg-secondary border-4 border-foreground md:block"></div>
+                    <div className="flex-1 animate-pulse border-4 border-foreground bg-secondary p-6 md:p-8">
                       <div className="space-y-4">
-                        <div className="h-6 w-3/4 rounded bg-gray-200 dark:bg-gray-800"></div>
-                        <div className="h-4 w-1/2 rounded bg-gray-200 dark:bg-gray-800"></div>
-                        <div className="h-4 w-2/3 rounded bg-gray-200 dark:bg-gray-800"></div>
-                        <div className="space-y-2">
-                          <div className="h-3 w-full rounded bg-gray-200 dark:bg-gray-800"></div>
-                          <div className="h-3 w-5/6 rounded bg-gray-200 dark:bg-gray-800"></div>
-                          <div className="h-3 w-4/5 rounded bg-gray-200 dark:bg-gray-800"></div>
-                        </div>
+                        <div className="h-8 w-3/4 bg-muted"></div>
+                        <div className="h-6 w-1/2 bg-muted"></div>
+                        <div className="h-6 w-2/3 bg-muted"></div>
                       </div>
                     </div>
                   </div>
@@ -56,15 +54,15 @@ const ExperienceClient = () => {
 
   if (error) {
     return (
-      <section className="relative pt-0">
+      <section className="relative px-4 pb-16 sm:px-6 lg:px-8">
         <div className="container">
           <div className="mx-auto max-w-5xl">
             <div className="py-12 text-center">
-              <div className="mx-auto w-auto rounded-md border border-red-200 bg-red-50 px-6 py-4 dark:border-red-800 dark:bg-red-900/20">
-                <h3 className="mb-2 text-lg font-semibold text-red-900 dark:text-red-100">
+              <div className="mx-auto w-auto rounded-none border-4 border-foreground bg-destructive px-6 py-5 shadow-[8px_8px_0px_0px_hsl(var(--foreground))]">
+                <h3 className="mb-2 text-xl font-bold uppercase tracking-tight text-white">
                   Error Loading Experience
                 </h3>
-                <p className="text-sm text-red-700 dark:text-red-300">
+                <p className="text-sm font-bold text-white">
                   Unable to load experience data. Please try again later.
                 </p>
               </div>
@@ -77,12 +75,12 @@ const ExperienceClient = () => {
 
   if (!experiences || experiences.length === 0) {
     return (
-      <section className="relative pt-0">
+      <section className="relative px-4 pb-16 sm:px-6 lg:px-8">
         <div className="container">
           <div className="mx-auto max-w-5xl">
             <div className="py-12 text-center">
-              <div className="mx-auto w-auto rounded-md border border-slate-200 bg-slate-100 px-6 py-4 dark:border-slate-700 dark:bg-slate-800">
-                <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
+              <div className="mx-auto w-auto rounded-none border-4 border-foreground bg-card px-6 py-5 shadow-[8px_8px_0px_0px_hsl(var(--foreground))]">
+                <h3 className="mb-2 text-xl font-bold uppercase tracking-tight text-foreground">
                   No Experience Found
                 </h3>
               </div>
@@ -95,114 +93,28 @@ const ExperienceClient = () => {
 
   return (
     <LazyMotion features={domAnimation}>
-      <section className="relative pt-0">
-        {/* Decorative Background */}
-        <div className="pointer-events-none absolute inset-0">
-          <svg
-            className="absolute inset-0 h-full w-full"
-            viewBox="0 0 1000 1000"
-            preserveAspectRatio="xMidYMid slice"
-          >
-            <defs>
-              <linearGradient
-                id="exp-gradient1"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="100%"
-              >
-                <stop offset="0%" stopColor="rgba(34, 197, 94, 0.08)" />
-                <stop offset="100%" stopColor="rgba(59, 130, 246, 0.08)" />
-              </linearGradient>
-              <linearGradient
-                id="exp-gradient2"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="100%"
-              >
-                <stop offset="0%" stopColor="rgba(168, 85, 247, 0.05)" />
-                <stop offset="100%" stopColor="rgba(34, 197, 94, 0.05)" />
-              </linearGradient>
-            </defs>
-
-            {/* Animated timeline line */}
-            <m.line
-              x1="50"
-              y1="100"
-              x2="50"
-              y2="900"
-              stroke="rgba(59, 130, 246, 0.15)"
-              strokeWidth="3"
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ duration: 3, ease: "easeInOut" }}
-            />
-
-            {/* Floating geometric shapes */}
-            <m.polygon
-              points="150,200 200,170 250,200 250,260 200,290 150,260"
-              fill="url(#exp-gradient1)"
-              initial={{ rotate: 0, scale: 0.8 }}
-              animate={{
-                rotate: [0, 120, 240, 360],
-                scale: [0.8, 1.1, 0.8],
-                x: [0, 20, 0],
-                y: [0, -15, 0],
-              }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-
-            <m.polygon
-              points="750,400 800,370 850,400 850,460 800,490 750,460"
-              fill="url(#exp-gradient2)"
-              initial={{ rotate: 0, scale: 0.9 }}
-              animate={{
-                rotate: [0, -90, -180, -270, -360],
-                scale: [0.9, 1.2, 0.9],
-                x: [0, -25, 0],
-                y: [0, 20, 0],
-              }}
-              transition={{
-                duration: 10,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-
-            {/* Career milestone indicators */}
-            {[...Array(6)].map((_, i) => (
-              <m.circle
-                key={i}
-                cx={100 + i * 150}
-                cy={700}
-                r="8"
-                fill="rgba(59, 130, 246, 0.3)"
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{
-                  scale: [0, 1.5, 1],
-                  opacity: [0, 1, 0.6],
-                }}
-                transition={{
-                  duration: 2,
-                  delay: i * 0.3,
-                  repeat: Infinity,
-                  repeatDelay: 4,
-                }}
-              />
-            ))}
-          </svg>
-        </div>
-
+      <section className="relative px-4 pb-16 sm:px-6 lg:px-8">
         <div className="container relative z-10">
           <div className="mx-auto max-w-5xl">
+            <div className="mb-10 rounded-none border-4 border-foreground bg-secondary px-6 py-10 shadow-[8px_8px_0px_0px_hsl(var(--foreground))] sm:px-10">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+                  <p className="inline-block bg-primary text-primary-foreground border-2 border-foreground px-3 py-1 text-xs font-bold uppercase tracking-widest shadow-[2px_2px_0px_0px_hsl(var(--foreground))]">
+                    TIMELINE
+                  </p>
+                  <h2 className="mt-4 font-title text-3xl font-black uppercase text-foreground">
+                    ROLES, OUTCOMES AND TOOLS
+                  </h2>
+                </div>
+                <p className="max-w-xl font-bold text-lg leading-relaxed text-foreground border-l-4 border-foreground pl-4 bg-background p-3 shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
+                  Each role is organized to highlight responsibilities, achievements, and the tech stack execution.
+                </p>
+              </div>
+            </div>
+
             <div className="relative">
               {/* Main Timeline Line */}
-              <div className="absolute bottom-6 left-8 top-6 hidden w-px bg-gradient-to-b from-primary/50 via-primary/30 to-primary/50 md:block"></div>
+              <div className="absolute bottom-10 left-8 top-10 hidden w-1.5 bg-foreground border-r border-background md:block"></div>
 
               {/* Experience Cards */}
               {experiences.map((experience, index) => (
@@ -212,13 +124,13 @@ const ExperienceClient = () => {
                   transition={{ duration: 0.6, delay: index * 0.15 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-100px" }}
-                  className="relative mb-16 last:mb-0"
+                  className="relative mb-12 last:mb-0"
                 >
                   <div className="flex items-start gap-4 md:gap-8">
                     {/* Timeline Node - Desktop only with logo */}
                     <div className="relative z-10 hidden flex-shrink-0 md:block">
                       <m.div
-                        className="flex h-16 w-16 items-center justify-center rounded-full border-4 border-primary bg-background shadow-xl"
+                        className="flex h-16 w-16 items-center justify-center rounded-none border-4 border-foreground bg-card shadow-[4px_4px_0px_0px_hsl(var(--foreground))]"
                         whileHover={{ scale: 1.1 }}
                         transition={{ type: "spring", stiffness: 300 }}
                       >
@@ -228,14 +140,14 @@ const ExperienceClient = () => {
                               .width(40)
                               .height(40)
                               .url()}
-                            className="rounded-full object-cover"
+                            className="rounded-none object-cover"
                             width={40}
                             height={40}
                             alt={`${experience.company} logo`}
                           />
                         ) : (
-                          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground">
-                            <span className="text-sm font-bold">
+                          <div className="flex h-full w-full items-center justify-center bg-primary text-primary-foreground">
+                            <span className="text-xl font-black">
                               {experience.company.charAt(0)}
                             </span>
                           </div>
@@ -245,198 +157,269 @@ const ExperienceClient = () => {
 
                     {/* Experience Card */}
                     <m.div
-                      className="flex-1 overflow-hidden rounded-xl border border-border bg-card shadow-sm transition-all duration-300 hover:shadow-xl"
-                      whileHover={{ y: -5 }}
-                      transition={{ type: "spring", stiffness: 300 }}
+                      className="flex-1 overflow-hidden rounded-none border-4 border-foreground bg-card shadow-[8px_8px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-y-[4px] hover:-translate-x-[4px] hover:shadow-[12px_12px_0px_0px_hsl(var(--foreground))]"
                     >
                       {/* Card Header */}
-                      <div className="p-6 pb-6 md:p-8">
-                        <div className="mb-6 flex flex-col gap-4 sm:flex-row xl:items-start xl:justify-between">
-                          <div className="flex flex-1 items-start gap-3">
+                      <div className="p-6 md:p-8 bg-background border-b-4 border-foreground">
+                        <div className="flex flex-col gap-4 sm:flex-row xl:items-start xl:justify-between">
+                          <div className="flex flex-1 items-start gap-4">
                             {/* Company Logo - Mobile only */}
-                            <div className="flex-shrink-0 md:hidden">
+                            <div className="flex-shrink-0 md:hidden border-4 border-foreground bg-card shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
                               {experience.companyLogo ? (
                                 <Image
                                   src={urlFor(experience.companyLogo)
-                                    .width(40)
-                                    .height(40)
+                                    .width(48)
+                                    .height(48)
                                     .url()}
-                                  className="rounded-lg object-cover"
-                                  width={40}
-                                  height={40}
+                                  className="rounded-none object-cover"
+                                  width={48}
+                                  height={48}
                                   alt={`${experience.company} logo`}
                                 />
                               ) : (
-                                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-                                  <span className="text-sm font-bold">
+                                <div className="flex h-12 w-12 items-center justify-center bg-primary text-primary-foreground">
+                                  <span className="text-lg font-black">
                                     {experience.company.charAt(0)}
                                   </span>
                                 </div>
                               )}
                             </div>
 
-                            <div className="min-w-0 flex-1 space-y-2">
-                              <h3 className="text-xl font-bold leading-tight text-foreground transition-colors hover:text-primary md:text-2xl">
+                            <div className="min-w-0 flex-1 space-y-3">
+                              {experience.currentJob && (
+                                <span className="inline-flex rounded-none border-2 border-foreground bg-success px-2.5 py-1 text-xs font-bold uppercase tracking-wider text-success-foreground shadow-[2px_2px_0px_0px_hsl(var(--foreground))]">
+                                  CURRENT ROLE
+                                </span>
+                              )}
+                              <h3 className="text-2xl font-black uppercase leading-tight tracking-tight text-foreground md:text-3xl inline-block bg-primary text-primary-foreground px-2 py-1 shadow-[4px_4px_0px_0px_hsl(var(--foreground))] border-2 border-foreground">
                                 {experience.jobTitle}
                               </h3>
-                              <div className="flex items-center gap-2 text-base md:text-lg">
+                              <div className="flex flex-wrap items-center gap-2 text-lg md:text-xl font-bold uppercase pt-2">
                                 {experience.companyUrl ? (
                                   <a
                                     href={experience.companyUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="font-medium text-primary transition-colors hover:text-primary/80"
+                                    className="font-black text-foreground underline decoration-primary decoration-4 underline-offset-4 hover:bg-primary hover:text-primary-foreground"
                                   >
                                     {experience.company}
                                   </a>
                                 ) : (
-                                  <span className="font-medium text-primary">
+                                  <span className="font-black text-foreground underline decoration-foreground decoration-4 underline-offset-4">
                                     {experience.company}
                                   </span>
-                                )}
-                                {experience.employmentType && (
-                                  <>
-                                    <span className="text-muted-foreground">
-                                      ·
-                                    </span>
-                                    <span className="text-sm text-muted-foreground md:text-base">
-                                      {experience.employmentType}
-                                    </span>
-                                  </>
                                 )}
                               </div>
                             </div>
                           </div>
 
-                          <div className="flex-shrink-0 space-y-1 xl:text-right">
-                            <p className="text-base font-semibold text-foreground">
+                          <div className="flex-shrink-0 xl:text-right mt-4 xl:mt-0">
+                            <p className="inline-block border-2 border-foreground bg-secondary px-4 py-2 text-sm font-black uppercase tracking-wider text-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
                               {formatDateRange(
                                 experience.startDate,
                                 experience.endDate,
-                                experience.currentJob,
+                                experience.currentJob
                               )}
                             </p>
-                            <p className="text-sm text-muted-foreground">
-                              {calculateDuration(
-                                experience.startDate,
-                                experience.endDate,
-                                experience.currentJob,
-                              )}
-                            </p>
-                            {(experience.location || experience.workType) && (
-                              <p className="text-sm text-muted-foreground">
-                                {experience.location}
-                                {experience.workType &&
-                                  experience.location &&
-                                  " · "}
-                                {experience.workType}
-                              </p>
-                            )}
                           </div>
                         </div>
 
-                        {/* Job Description */}
-                        {experience.description &&
-                          experience.description.length > 0 && (
-                            <div className="mb-6 md:mb-8">
-                              <h4 className="mb-3 text-base font-semibold text-foreground md:mb-4 md:text-lg">
-                                Role & Responsibilities
-                              </h4>
-                              {experience.description.map((paragraph, idx) => (
-                                <ListItem key={idx}>
-                                  {typeof paragraph === "string"
-                                    ? paragraph
-                                    : JSON.stringify(paragraph)}
-                                </ListItem>
-                              ))}
-                            </div>
+                        <div className="mt-6 flex flex-wrap gap-2 text-sm font-bold uppercase text-foreground">
+                          <span className="bg-muted border-2 border-foreground px-2 py-1 shadow-[2px_2px_0px_0px_hsl(var(--foreground))]">
+                            {calculateDuration(
+                              experience.startDate,
+                              experience.endDate,
+                              experience.currentJob
+                            )}
+                          </span>
+                          {experience.employmentType && (
+                            <span className="bg-muted border-2 border-foreground px-2 py-1 shadow-[2px_2px_0px_0px_hsl(var(--foreground))]">
+                              {experience.employmentType}
+                            </span>
                           )}
-
-                        {/* Key Achievements */}
-                        {experience.achievements &&
-                          experience.achievements.length > 0 && (
-                            <div className="mb-6 md:mb-8">
-                              <h4 className="mb-3 text-base font-semibold text-foreground md:mb-4 md:text-lg">
-                                Key Achievements
-                              </h4>
-                              <ul className="space-y-3">
-                                {experience.achievements.map(
-                                  (achievement, idx) => (
-                                    <ListItem key={idx}>
-                                      {typeof achievement === "string"
-                                        ? achievement
-                                        : JSON.stringify(achievement)}
-                                    </ListItem>
-                                  ),
-                                )}
-                              </ul>
-                            </div>
+                          {experience.location && (
+                            <span className="bg-muted border-2 border-foreground px-2 py-1 shadow-[2px_2px_0px_0px_hsl(var(--foreground))]">
+                              {experience.location}
+                            </span>
                           )}
+                          {experience.workType && (
+                            <span className="bg-muted border-2 border-foreground px-2 py-1 shadow-[2px_2px_0px_0px_hsl(var(--foreground))]">
+                              {experience.workType}
+                            </span>
+                          )}
+                        </div>
                       </div>
 
                       {/* Technologies & Skills Section */}
-                      {((experience.technologies &&
-                        experience.technologies.length > 0) ||
+                      {((experience.description &&
+                        experience.description.length > 0) ||
+                        (experience.achievements &&
+                          experience.achievements.length > 0) ||
+                        (experience.technologies &&
+                          experience.technologies.length > 0) ||
                         (experience.skills &&
                           experience.skills.length > 0)) && (
-                        <div className="px-6 pb-6 pt-0 md:px-8 md:pb-8">
-                          <div className="space-y-6 border-t border-border pt-6">
-                            {experience.technologies &&
-                              experience.technologies.length > 0 && (
-                                <div>
-                                  <h5 className="mb-3 text-sm font-semibold uppercase tracking-wide text-foreground">
-                                    Technologies
-                                  </h5>
-                                  <div className="flex flex-wrap gap-2">
-                                    {experience.technologies.map(
-                                      (tech, idx) => (
-                                        <m.span
-                                          key={tech.name}
-                                          className="inline-flex cursor-default items-center rounded-full bg-primary/10 px-3 py-1.5 text-sm font-medium text-primary transition-colors hover:bg-primary/20"
-                                          initial={{ opacity: 0, scale: 0.8 }}
-                                          whileInView={{ opacity: 1, scale: 1 }}
-                                          transition={{ delay: idx * 0.05 }}
-                                          viewport={{ once: true }}
-                                          whileHover={{ scale: 1.05 }}
-                                        >
-                                          {tech.name}
-                                        </m.span>
-                                      ),
-                                    )}
-                                  </div>
-                                </div>
-                              )}
+                          <div className="px-6 py-6 md:px-8 bg-card">
+                            <div className="space-y-8">
+                              {((experience.description &&
+                                experience.description.length > 0) ||
+                                (experience.achievements &&
+                                  experience.achievements.length > 0)) && (
+                                  <div>
+                                    <p className="mb-4 text-sm font-black uppercase tracking-widest text-foreground border-b-4 border-foreground inline-block pb-1">
+                                      DETAILS
+                                    </p>
+                                    <div className="grid gap-6 mt-2 lg:grid-cols-2">
+                                      {experience.description &&
+                                        experience.description.length > 0 && (
+                                          <div className="rounded-none border-4 border-foreground bg-background p-6 shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
+                                            <h4 className="mb-4 bg-primary text-primary-foreground px-2 py-1 inline-block text-sm font-black uppercase tracking-wider border-2 border-foreground">
+                                              RESPONSIBILITIES
+                                            </h4>
+                                            {experience.description.map(
+                                              (paragraph, idx) => (
+                                                <ListItem
+                                                  key={idx}
+                                                  className="text-base font-semibold leading-relaxed text-foreground"
+                                                >
+                                                  {typeof paragraph === "string"
+                                                    ? paragraph
+                                                    : JSON.stringify(paragraph)}
+                                                </ListItem>
+                                              )
+                                            )}
+                                          </div>
+                                        )}
 
-                            {experience.skills &&
-                              experience.skills.length > 0 && (
-                                <div>
-                                  <h5 className="mb-3 text-sm font-semibold uppercase tracking-wide text-foreground">
-                                    Skills
-                                  </h5>
-                                  <div className="flex flex-wrap gap-2">
-                                    {experience.skills.map((skill, idx) => (
-                                      <m.span
-                                        key={skill.name}
-                                        className="inline-flex cursor-default items-center rounded-full bg-secondary px-3 py-1.5 text-sm font-medium text-secondary-foreground transition-colors hover:bg-secondary/80"
-                                        initial={{ opacity: 0, scale: 0.8 }}
-                                        whileInView={{ opacity: 1, scale: 1 }}
-                                        transition={{ delay: idx * 0.05 }}
-                                        viewport={{ once: true }}
-                                        whileHover={{ scale: 1.05 }}
-                                      >
-                                        {skill.name}
-                                      </m.span>
-                                    ))}
+                                      {experience.achievements &&
+                                        experience.achievements.length > 0 && (
+                                          <div className="rounded-none border-4 border-foreground bg-background p-6 shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
+                                            <h4 className="mb-4 bg-accent text-accent-foreground px-2 py-1 inline-block text-sm font-black uppercase tracking-wider border-2 border-foreground">
+                                              ACHIEVEMENTS
+                                            </h4>
+                                            <ul className="space-y-4 font-semibold text-foreground leading-relaxed mt-2">
+                                              {experience.achievements.map((achievement, idx) => (
+                                                <ListItem
+                                                  key={idx}
+                                                  className="text-base font-semibold leading-relaxed text-foreground"
+                                                >
+                                                  {typeof achievement === "string"
+                                                    ? achievement
+                                                    : JSON.stringify(achievement)}
+                                                </ListItem>
+                                              ))}
+                                            </ul>
+                                          </div>
+                                        )}
+                                    </div>
                                   </div>
-                                </div>
-                              )}
+                                )}
+
+                              {((experience.technologies &&
+                                experience.technologies.length > 0) ||
+                                (experience.skills &&
+                                  experience.skills.length > 0)) && (
+                                  <div>
+                                    <p className="mb-4 text-sm font-black uppercase tracking-widest text-foreground border-b-4 border-foreground inline-block pb-1">
+                                      TOOLBOX
+                                    </p>
+
+                                    {experience.technologies &&
+                                      experience.technologies.length > 0 && (
+                                        <div className="mb-6">
+                                          <div className="flex flex-wrap gap-2">
+                                            {experience.technologies.map(
+                                              (tech, idx) => (
+                                                <m.span
+                                                  key={tech.name}
+                                                  className="inline-flex cursor-default items-center rounded-none border-2 border-foreground bg-primary px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-primary-foreground shadow-[3px_3px_0px_0px_hsl(var(--foreground))]"
+                                                  initial={{
+                                                    opacity: 0,
+                                                    scale: 0.8,
+                                                  }}
+                                                  whileInView={{
+                                                    opacity: 1,
+                                                    scale: 1,
+                                                  }}
+                                                  transition={{ delay: idx * 0.05 }}
+                                                  viewport={{ once: true }}
+                                                  whileHover={{
+                                                    x: 3,
+                                                    y: 3,
+                                                    boxShadow: "0px 0px 0px 0px hsl(var(--foreground))"
+                                                  }}
+                                                >
+                                                  {tech.name}
+                                                </m.span>
+                                              )
+                                            )}
+                                          </div>
+                                        </div>
+                                      )}
+
+                                    {experience.skills &&
+                                      experience.skills.length > 0 && (
+                                        <div>
+                                          <div className="flex flex-wrap gap-2">
+                                            {experience.skills.map((skill, idx) => (
+                                              <m.span
+                                                key={skill.name}
+                                                className="inline-flex cursor-default items-center rounded-none border-2 border-foreground bg-secondary px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-foreground shadow-[3px_3px_0px_0px_hsl(var(--foreground))]"
+                                                initial={{ opacity: 0, scale: 0.8 }}
+                                                whileInView={{
+                                                  opacity: 1,
+                                                  scale: 1,
+                                                }}
+                                                transition={{ delay: idx * 0.05 }}
+                                                viewport={{ once: true }}
+                                                whileHover={{
+                                                  x: 3,
+                                                  y: 3,
+                                                  boxShadow: "0px 0px 0px 0px hsl(var(--foreground))"
+                                                }}
+                                              >
+                                                {skill.name}
+                                              </m.span>
+                                            ))}
+                                          </div>
+                                        </div>
+                                      )}
+                                  </div>
+                                )}
+                            </div>
                           </div>
-                        </div>
-                      )}
+                        )}
                     </m.div>
                   </div>
                 </m.div>
               ))}
+            </div>
+
+            <div className="mt-16 grid gap-6 sm:grid-cols-3">
+              <div className="rounded-none border-4 border-foreground bg-card p-6 shadow-[8px_8px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-y-2 hover:-translate-x-2 hover:shadow-[16px_16px_0px_0px_hsl(var(--foreground))]">
+                <p className="inline-block border-2 border-foreground bg-primary text-primary-foreground px-3 py-1 text-xs font-black uppercase tracking-widest shadow-[2px_2px_0px_0px_hsl(var(--foreground))]">
+                  FOCUS
+                </p>
+                <p className="mt-4 font-bold max-w-sm text-base leading-relaxed text-foreground">
+                  Product-minded front-end engineering and shipping polished UI/UX experiences.
+                </p>
+              </div>
+              <div className="rounded-none border-4 border-foreground bg-card p-6 shadow-[8px_8px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-y-2 hover:-translate-x-2 hover:shadow-[16px_16px_0px_0px_hsl(var(--foreground))]">
+                <p className="inline-block border-2 border-foreground bg-accent text-accent-foreground px-3 py-1 text-xs font-black uppercase tracking-widest shadow-[2px_2px_0px_0px_hsl(var(--foreground))]">
+                  STRENGTH
+                </p>
+                <p className="mt-4 font-bold max-w-sm text-base leading-relaxed text-foreground">
+                  Bridging design, code, and collaboration across fast moving teams seamlessly.
+                </p>
+              </div>
+              <div className="rounded-none border-4 border-foreground bg-card p-6 shadow-[8px_8px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-y-2 hover:-translate-x-2 hover:shadow-[16px_16px_0px_0px_hsl(var(--foreground))]">
+                <p className="inline-block border-2 border-foreground bg-success text-success-foreground px-3 py-1 text-xs font-black uppercase tracking-widest shadow-[2px_2px_0px_0px_hsl(var(--foreground))]">
+                  THROUGHLINE
+                </p>
+                <p className="mt-4 font-bold max-w-sm text-base leading-relaxed text-foreground">
+                  Clear brutalist execution, thoughtful scalable systems, and stark UX at every layer.
+                </p>
+              </div>
             </div>
           </div>
         </div>

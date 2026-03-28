@@ -54,7 +54,7 @@ const SearchInput = ({
         onChange={handleChange}
         aria-label="Search"
         aria-describedby="search-help"
-        className="w-full rounded-xl border border-border bg-card py-3 pl-10 pr-10 transition-all focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+        className="w-full rounded-none border border-border bg-card py-3 pl-10 pr-10 transition-all focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
         placeholder="Search..."
         {...props}
       />

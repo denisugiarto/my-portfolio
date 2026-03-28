@@ -2,105 +2,57 @@
 
 import React from "react";
 import { LazyMotion, domAnimation, m } from "framer-motion";
+import Link from "next/link";
+import { ArrowLeft, BriefcaseBusiness } from "lucide-react";
 
 const ExperienceHero = () => {
   return (
     <LazyMotion features={domAnimation}>
-      <section className="relative pb-4 pt-20 lg:pt-12">
-        {/* Background Elements */}
-        <div className="pointer-events-none absolute inset-0">
-          <svg
-            className="absolute inset-0 h-full w-full"
-            viewBox="0 0 1000 1000"
-            preserveAspectRatio="xMidYMid slice"
-          >
-            <defs>
-              <linearGradient
-                id="hero-gradient1"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="100%"
-              >
-                <stop offset="0%" stopColor="rgba(34, 197, 94, 0.1)" />
-                <stop offset="100%" stopColor="rgba(59, 130, 246, 0.1)" />
-              </linearGradient>
-              <linearGradient
-                id="hero-gradient2"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="100%"
-              >
-                <stop offset="0%" stopColor="rgba(168, 85, 247, 0.08)" />
-                <stop offset="100%" stopColor="rgba(34, 197, 94, 0.08)" />
-              </linearGradient>
-            </defs>
-
-            <m.circle
-              cx="200"
-              cy="200"
-              r="100"
-              fill="url(#hero-gradient1)"
-              initial={{ scale: 0.8, opacity: 0.3 }}
-              animate={{
-                scale: [0.8, 1.2, 0.8],
-                opacity: [0.3, 0.6, 0.3],
-                x: [0, 50, 0],
-                y: [0, -30, 0],
-              }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-
-            <m.circle
-              cx="800"
-              cy="300"
-              r="80"
-              fill="url(#hero-gradient2)"
-              initial={{ scale: 0.9, opacity: 0.4 }}
-              animate={{
-                scale: [0.9, 1.1, 0.9],
-                opacity: [0.4, 0.7, 0.4],
-                x: [0, -40, 0],
-                y: [0, 25, 0],
-              }}
-              transition={{
-                duration: 6,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-          </svg>
-        </div>
-
+      <section className="relative overflow-hidden px-4 pb-8 pt-24 sm:px-6 lg:px-8">
         <div className="container relative z-10">
-          <div className="mx-auto max-w-4xl text-center">
-            <m.h1
-              className="mb-6 font-bold text-foreground"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+          <div className="mx-auto max-w-5xl">
+            <Link
+              href="/"
+              className="mb-8 font-bold uppercase tracking-wider inline-flex items-center gap-2 border-2 border-foreground bg-background px-4 py-2 text-sm text-foreground transition-none shadow-[2px_2px_0px_0px_hsl(var(--foreground))] hover:shadow-[0px_0px_0px_0px_hsl(var(--foreground))] hover:translate-x-[2px] hover:translate-y-[2px]"
             >
-              Professional
-              <span className="block bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-4xl text-transparent md:text-5xl">
-                Experience
-              </span>
-            </m.h1>
+              <ArrowLeft className="h-4 w-4" />
+              BACK TO HOME
+            </Link>
 
-            <m.p
-              className="text-xl leading-relaxed text-muted-foreground md:text-2xl"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              A journey through my career, showcasing the roles, achievements,
-              and technologies that have shaped my professional growth and
-              expertise.
-            </m.p>
+            <div className="overflow-hidden border-4 border-foreground bg-card shadow-[8px_8px_0px_0px_hsl(var(--foreground))]">
+              <div className="px-6 py-10 sm:px-8 sm:py-12 lg:px-12 bg-secondary">
+                <div className="mx-auto max-w-3xl">
+                  <m.div
+                    className="mb-6 inline-flex items-center gap-2 border-2 border-foreground bg-primary px-3 py-1.5 text-xs font-black uppercase tracking-[0.2em] text-primary-foreground shadow-[2px_2px_0px_0px_hsl(var(--foreground))]"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7 }}
+                  >
+                    <BriefcaseBusiness className="h-4 w-4" />
+                    CAREER JOURNEY
+                  </m.div>
+
+                  <m.h1
+                    className="text-balance font-title text-5xl font-black uppercase tracking-tight text-foreground md:text-6xl md:leading-[1.1]"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                  >
+                    EXPERIENCE THAT SHAPED HOW I BUILD, LEAD, AND DELIVER.
+                  </m.h1>
+
+                  <m.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.15 }}
+                  >
+                    <p className="mt-8 font-bold max-w-2xl text-lg leading-relaxed text-foreground md:text-xl border-l-4 border-primary pl-4 bg-background p-4 shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
+                      A closer look at the teams, roles, and outcomes behind my work, with the context needed to understand both scope and impact.
+                    </p>
+                  </m.div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

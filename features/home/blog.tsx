@@ -1,7 +1,7 @@
 "use client";
 
 import { Tags, urlFor } from "@/lib/sanity";
-import { fetchArticles, fetchArticlesFeatured } from "@/services/blog";
+import { fetchArticlesFeatured } from "@/services/blog";
 import { useQuery } from "@tanstack/react-query";
 import { LazyMotion, domAnimation, m } from "framer-motion";
 import { ArrowRight, Calendar, Clock } from "lucide-react";
@@ -26,17 +26,19 @@ export default function BlogSection() {
 
   if (isLoading) {
     return (
-      <section className="relative overflow-hidden py-20 lg:py-32">
+      <section className="relative overflow-hidden py-20 lg:py-28">
         <div className="container relative z-10">
-          <h2 className="title-section font-title">latest articles</h2>
+          <h2 className="font-title text-4xl font-bold text-foreground">
+            Notes from the build process
+          </h2>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {skeletonItems.map((_, index) => (
               <div key={`skeleton-${index}`} className="animate-pulse">
-                <div className="mb-4 h-48 w-full rounded-lg bg-gray-300 dark:bg-gray-700"></div>
+                <div className="mb-4 h-48 w-full rounded-none bg-gray-300 dark:bg-gray-700"></div>
                 <div className="space-y-2">
-                  <div className="h-6 w-3/4 rounded bg-gray-300 dark:bg-gray-700"></div>
-                  <div className="h-4 w-full rounded bg-gray-300 dark:bg-gray-700"></div>
-                  <div className="h-4 w-2/3 rounded bg-gray-300 dark:bg-gray-700"></div>
+                  <div className="h-6 w-3/4 rounded-none bg-gray-300 dark:bg-gray-700"></div>
+                  <div className="h-4 w-full rounded-none bg-gray-300 dark:bg-gray-700"></div>
+                  <div className="h-4 w-2/3 rounded-none bg-gray-300 dark:bg-gray-700"></div>
                 </div>
               </div>
             ))}
@@ -52,9 +54,9 @@ export default function BlogSection() {
 
   return (
     <LazyMotion features={domAnimation}>
-      <section className="relative overflow-hidden bg-muted/30 py-20 lg:py-32">
-        {/* SVG Background for Blog */}
+      <section className="relative overflow-hidden py-20 lg:py-28">
         <div className="pointer-events-none absolute inset-0">
+          <div className="absolute inset-x-0 top-10 mx-auto h-[32rem] w-[92%] rounded-none border border-border/40 bg-gradient-to-br from-background/70 via-background/55 to-muted/60 shadow-[0_30px_100px_rgba(15,23,42,0.12)] backdrop-blur-2xl" />
           <svg
             className="absolute inset-0 h-full w-full"
             viewBox="0 0 1000 1000"
@@ -163,10 +165,15 @@ export default function BlogSection() {
           viewport={{ once: true }}
         >
           <div className="mb-12 text-center">
-            <h2 className="title-section font-title">latest articles</h2>
-            <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-              Insights and tutorials on web development, React, and modern
-              technologies
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.26em] text-amber-700 dark:text-amber-300">
+              Writing
+            </p>
+            <h2 className="font-title text-4xl font-bold tracking-tight text-foreground">
+              Notes from the build process
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+              Practical thoughts on front-end engineering, product craft, and
+              the details that make digital work feel sharp.
             </p>
           </div>
 
@@ -174,7 +181,7 @@ export default function BlogSection() {
             {featuredBlogs?.map((blog, index) => (
               <m.article
                 key={blog._id}
-                className="group overflow-hidden rounded-xl bg-card shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                className="group overflow-hidden rounded-none border border-border/60 bg-background/80 shadow-[0_20px_70px_rgba(15,23,42,0.1)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_28px_90px_rgba(15,23,42,0.14)]"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -198,7 +205,7 @@ export default function BlogSection() {
                         <div className="text-6xl opacity-20">📝</div>
                       </div>
                     )}
-                    <div className="absolute inset-0 bg-black/20 transition-colors duration-300 group-hover:bg-black/10" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/30 to-transparent transition-opacity duration-300 group-hover:opacity-70" />
                   </div>
                 </Link>
 
@@ -240,7 +247,7 @@ export default function BlogSection() {
                       {blog.tags.slice(0, 2).map((tag: Tags) => (
                         <span
                           key={tag._id}
-                          className="inline-flex items-center rounded-full bg-primary/10 px-2 py-1 text-xs font-medium text-primary"
+                          className="inline-flex items-center rounded-none bg-primary/10 px-2 py-1 text-xs font-medium text-primary"
                         >
                           #{tag.name}
                         </span>
@@ -260,7 +267,7 @@ export default function BlogSection() {
           <div className="text-center">
             <Link
               href="/blog"
-              className="group inline-flex items-center gap-2 rounded-lg border-2 border-primary/50 bg-transparent px-8 py-4 font-semibold text-primary transition-all duration-300 hover:scale-105 hover:border-primary hover:bg-primary hover:text-white"
+              className="group inline-flex items-center gap-2 rounded-none border border-border/70 bg-background/75 px-8 py-4 font-semibold text-foreground shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/30 hover:text-primary hover:shadow-lg"
             >
               View All Articles
               <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />

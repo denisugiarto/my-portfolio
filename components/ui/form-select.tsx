@@ -68,7 +68,7 @@ export const FormSelect = React.forwardRef<
             ref={ref}
             id={id}
             className={cn(
-              "h-auto w-full rounded-lg border bg-background px-4 py-3 text-foreground",
+              "h-auto w-full rounded-none border bg-background px-4 py-3 text-foreground",
               "placeholder:text-muted-foreground",
               "focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary",
               "transition-colors duration-200",

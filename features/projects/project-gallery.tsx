@@ -42,15 +42,17 @@ export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
   if (!images || images.length === 0) return null;
 
   return (
-    <div className="mb-8">
-      <h3 className="mb-4 text-lg font-semibold">Project Gallery</h3>
+    <div className="mb-12">
+      <h3 className="mb-8 inline-block border-b-4 border-foreground pb-2 text-2xl md:text-3xl font-black uppercase tracking-widest">
+        PROJECT GALLERY
+      </h3>
 
       {/* Gallery Grid */}
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {images.map((image, index) => (
           <div
             key={index}
-            className="group cursor-pointer overflow-hidden rounded-lg transition-transform hover:scale-105"
+            className="group cursor-pointer overflow-hidden border-4 border-foreground bg-card shadow-[8px_8px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-y-[4px] hover:-translate-x-[4px] hover:shadow-[12px_12px_0px_0px_hsl(var(--foreground))]"
             onClick={() => openModal(index)}
           >
             <Image
@@ -58,7 +60,7 @@ export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
               alt={`${title} - Image ${index + 1}`}
               width={400}
               height={300}
-              className="h-auto w-full object-cover transition-transform group-hover:scale-110"
+              className="h-auto w-full object-cover transition-none grayscale-[20%] group-hover:grayscale-0"
             />
           </div>
         ))}
@@ -67,18 +69,18 @@ export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
       {/* Modal */}
       {selectedImage !== null && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/95"
           onClick={closeModal}
           onKeyDown={handleKeyDown}
           tabIndex={0}
         >
-          <div className="relative max-h-[90vh] max-w-[90vw]">
+          <div className="relative flex max-h-[90vh] max-w-[90vw] flex-col items-center justify-center pt-8">
             {/* Close Button */}
             <button
               onClick={closeModal}
-              className="absolute -top-12 right-0 text-white hover:text-gray-300"
+              className="absolute -top-16 right-0 z-10 flex h-14 w-14 items-center justify-center border-4 border-background bg-foreground text-background transition-none hover:bg-background hover:text-foreground"
             >
-              <X size={32} />
+              <X size={36} className="stroke-[3]" />
             </button>
 
             {/* Navigation Buttons */}
@@ -89,35 +91,37 @@ export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
                     e.stopPropagation();
                     prevImage();
                   }}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-gray-300"
+                  className="absolute -left-16 sm:left-4 top-1/2 -translate-y-1/2 z-10 flex h-14 w-14 sm:h-20 sm:w-20 items-center justify-center border-4 border-background bg-foreground text-background hover:bg-background hover:text-foreground hover:-translate-x-[4px]"
                 >
-                  <ChevronLeft size={32} />
+                  <ChevronLeft size={48} className="stroke-[3]" />
                 </button>
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
                     nextImage();
                   }}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-gray-300"
+                  className="absolute -right-16 sm:right-4 top-1/2 -translate-y-1/2 z-10 flex h-14 w-14 sm:h-20 sm:w-20 items-center justify-center border-4 border-background bg-foreground text-background hover:bg-background hover:text-foreground hover:translate-x-[4px]"
                 >
-                  <ChevronRight size={32} />
+                  <ChevronRight size={48} className="stroke-[3]" />
                 </button>
               </>
             )}
 
             {/* Image */}
-            <Image
-              src={urlFor(images[selectedImage]).width(1200).height(800).url()}
-              alt={`${title} - Image ${selectedImage + 1}`}
-              width={1200}
-              height={800}
-              className="max-h-[90vh] max-w-[90vw] object-contain"
-              onClick={(e) => e.stopPropagation()}
-            />
+            <div className="border-8 border-background bg-foreground p-2 md:p-4 shadow-[16px_16px_0px_0px_#000]">
+              <Image
+                src={urlFor(images[selectedImage]).width(1200).height(800).url()}
+                alt={`${title} - Image ${selectedImage + 1}`}
+                width={1200}
+                height={800}
+                className="max-h-[75vh] max-w-[80vw] sm:max-w-[85vw] object-contain bg-background"
+                onClick={(e) => e.stopPropagation()}
+              />
+            </div>
 
             {/* Image Counter */}
             {images.length > 1 && (
-              <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 text-white">
+              <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 border-4 border-background bg-foreground px-6 py-2 text-2xl font-black tracking-widest text-background">
                 {selectedImage + 1} / {images.length}
               </div>
             )}

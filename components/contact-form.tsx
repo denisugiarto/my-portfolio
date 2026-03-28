@@ -112,42 +112,45 @@ export default function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="py-12 text-center">
-        <CheckCircle className="mx-auto mb-6 h-20 w-20 text-green-500" />
-        <h3 className="mb-4 text-2xl font-bold text-foreground">
-          Message Sent Successfully!
+      <div className="py-12 border-4 border-foreground bg-success p-8 shadow-[8px_8px_0px_0px_hsl(var(--foreground))]">
+        <CheckCircle className="mb-6 h-24 w-24 text-success-foreground stroke-[3] mx-auto" />
+        <h3 className="mb-6 text-3xl md:text-5xl font-black uppercase tracking-tight text-success-foreground text-center">
+          MESSAGE SENT!
         </h3>
-        <p className="mb-8 text-lg text-muted-foreground">
-          Thank you for reaching out. I&apos;ll get back to you within 24 hours.
+        <p className="mb-10 text-xl font-bold leading-relaxed text-success-foreground text-center max-w-lg mx-auto bg-background/20 p-4 border-2 border-foreground">
+          THANK YOU FOR REACHING OUT. I'LL GET BACK TO YOU WITHIN 24 HOURS.
         </p>
-        <button
-          onClick={resetForm}
-          className="rounded-lg bg-primary px-6 py-3 font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-        >
-          Send Another Message
-        </button>
+        <div className="flex justify-center">
+          <Button
+            size="lg"
+            onClick={resetForm}
+            className="border-4 border-foreground bg-background text-foreground px-8 py-6 text-xl font-black uppercase shadow-[6px_6px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:bg-background hover:text-foreground hover:shadow-[10px_10px_0px_0px_hsl(var(--foreground))]"
+          >
+            SEND ANOTHER MESSAGE
+          </Button>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="mx-auto max-w-2xl">
-      <form onSubmit={handleSubmit} className="space-y-6">
+    <div className="mx-auto w-full">
+      <form onSubmit={handleSubmit} className="space-y-8">
         {errors.general && (
-          <div className="rounded-lg border border-destructive/20 bg-destructive/10 p-4">
-            <p className="text-sm font-medium text-destructive">
+          <div className="border-4 border-foreground bg-destructive p-4 shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
+            <p className="text-lg font-black uppercase tracking-wider text-destructive-foreground">
               {errors.general}
             </p>
           </div>
         )}
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          <div>
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+          <div className="flex flex-col">
             <label
               htmlFor="name"
-              className="mb-2 block text-sm font-semibold text-foreground"
+              className="mb-3 text-lg font-black uppercase tracking-widest text-foreground"
             >
-              Full Name *
+              FULL NAME *
             </label>
             <input
               type="text"
@@ -157,29 +160,30 @@ export default function ContactForm() {
               onChange={handleInputChange}
               autoComplete="name"
               className={cn(
-                "w-full rounded-lg border-2 bg-background px-4 py-3 text-foreground",
-                "placeholder:text-muted-foreground",
-                "focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary",
-                "transition-all duration-200",
+                "w-full rounded-none border-4 bg-background px-4 py-4 text-lg font-bold text-foreground transition-none",
+                "placeholder:text-muted-foreground placeholder:font-bold",
+                "focus:outline-none focus:translate-x-1 focus:translate-y-1",
                 errors.name
-                  ? "border-destructive"
-                  : "border-border hover:border-primary/50",
+                  ? "border-destructive focus:shadow-none shadow-[4px_4px_0px_0px_hsl(var(--destructive))]"
+                  : "border-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] focus:shadow-none hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))]",
               )}
-              placeholder="Your full name"
+              placeholder="YOUR FULL NAME"
             />
             {errors.name && (
-              <p className="mt-2 text-sm font-medium text-destructive">
-                {errors.name}
-              </p>
+              <div className="mt-3 inline-block bg-destructive px-2 py-1 border-2 border-foreground">
+                <p className="text-sm font-black uppercase text-destructive-foreground">
+                  {errors.name}
+                </p>
+              </div>
             )}
           </div>
 
-          <div>
+          <div className="flex flex-col">
             <label
               htmlFor="email"
-              className="mb-2 block text-sm font-semibold text-foreground"
+              className="mb-3 text-lg font-black uppercase tracking-widest text-foreground"
             >
-              Email Address *
+              EMAIL ADDRESS *
             </label>
             <input
               type="email"
@@ -190,30 +194,31 @@ export default function ContactForm() {
               inputMode="email"
               autoComplete="email"
               className={cn(
-                "w-full rounded-lg border-2 bg-background px-4 py-3 text-foreground",
-                "placeholder:text-muted-foreground",
-                "focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary",
-                "transition-all duration-200",
+                "w-full rounded-none border-4 bg-background px-4 py-4 text-lg font-bold text-foreground transition-none",
+                "placeholder:text-muted-foreground placeholder:font-bold",
+                "focus:outline-none focus:translate-x-1 focus:translate-y-1",
                 errors.email
-                  ? "border-destructive"
-                  : "border-border hover:border-primary/50",
+                  ? "border-destructive focus:shadow-none shadow-[4px_4px_0px_0px_hsl(var(--destructive))]"
+                  : "border-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] focus:shadow-none hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))]",
               )}
-              placeholder="your@email.com"
+              placeholder="YOUR@EMAIL.COM"
             />
             {errors.email && (
-              <p className="mt-2 text-sm font-medium text-destructive">
-                {errors.email}
-              </p>
+              <div className="mt-3 inline-block bg-destructive px-2 py-1 border-2 border-foreground">
+                <p className="text-sm font-black uppercase text-destructive-foreground">
+                  {errors.email}
+                </p>
+              </div>
             )}
           </div>
         </div>
 
-        <div>
+        <div className="flex flex-col">
           <label
             htmlFor="message"
-            className="mb-2 block text-sm font-semibold text-foreground"
+            className="mb-3 text-lg font-black uppercase tracking-widest text-foreground"
           >
-            Your Message *
+            YOUR MESSAGE *
           </label>
           <textarea
             id="message"
@@ -222,49 +227,47 @@ export default function ContactForm() {
             value={formData.message}
             onChange={handleInputChange}
             className={cn(
-              "w-full rounded-lg border-2 bg-background px-4 py-3 text-foreground",
-              "resize-vertical placeholder:text-muted-foreground",
-              "focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary",
-              "transition-all duration-200",
+              "w-full rounded-none border-4 bg-background px-4 py-4 text-lg font-bold text-foreground transition-none",
+              "resize-y placeholder:text-muted-foreground placeholder:font-bold",
+              "focus:outline-none focus:translate-x-1 focus:translate-y-1",
               errors.message
-                ? "border-destructive"
-                : "border-border hover:border-primary/50",
+                ? "border-destructive focus:shadow-none shadow-[4px_4px_0px_0px_hsl(var(--destructive))]"
+                : "border-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] focus:shadow-none hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))]",
             )}
-            placeholder="Tell me about your project, questions, or how I can help you..."
+            placeholder="TELL ME ABOUT YOUR PROJECT, QUESTIONS, OR HOW I CAN HELP YOU..."
           />
           {errors.message && (
-            <p className="mt-2 text-sm font-medium text-destructive">
-              {errors.message}
-            </p>
+            <div className="mt-3 inline-block bg-destructive px-2 py-1 border-2 border-foreground">
+              <p className="text-sm font-black uppercase text-destructive-foreground">
+                {errors.message}
+              </p>
+            </div>
           )}
-          <div className="mt-2 text-xs text-muted-foreground">
-            {formData.message.length}/2000 characters
+          <div className="mt-4 inline-block border-2 border-foreground bg-muted px-2 py-1 text-sm font-black uppercase">
+            {formData.message.length}/2000 CHARACTERS
           </div>
         </div>
 
-        <div className="flex justify-center md:justify-end">
+        <div className="flex md:justify-end pt-4">
           <Button
             type="submit"
             disabled={status === "submitting"}
-            className="w-full gap-2 md:w-auto"
+            size="lg"
+            className="w-full flex h-16 items-center justify-center gap-3 border-4 border-foreground bg-primary px-8 text-xl font-black uppercase tracking-widest text-primary-foreground shadow-[8px_8px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[12px_12px_0px_0px_hsl(var(--foreground))] disabled:opacity-100 disabled:bg-muted disabled:text-muted-foreground disabled:shadow-none disabled:translate-x-1 disabled:translate-y-1 md:w-auto"
           >
             {status === "submitting" ? (
               <>
-                <Loader2 className="h-5 w-5 animate-spin" />
-                Sending Message...
+                <Loader2 className="h-6 w-6 animate-spin stroke-[3]" />
+                SENDING...
               </>
             ) : (
               <>
-                <Send className="h-5 w-5" />
-                Send Message
+                <Send className="h-6 w-6 stroke-[3]" />
+                SEND MESSAGE
               </>
             )}
           </Button>
         </div>
-
-        <p className="text-center text-sm text-muted-foreground">
-          * Required fields | I typically respond within 24 hours
-        </p>
       </form>
     </div>
   );

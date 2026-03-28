@@ -29,18 +29,18 @@ export default function ContactPage() {
       <div className="min-h-screen">
         <section className="py-24 lg:py-32">
           <div className="container">
-            <div className="mx-auto max-w-2xl">
-              <div className="mb-12 text-center">
-                <h1 className="mb-4 text-4xl font-bold text-foreground md:text-5xl">
-                  Get in Touch
+            <div className="mx-auto max-w-4xl">
+              <div className="mb-16">
+                <h1 className="mb-8 inline-block text-5xl font-black uppercase leading-none tracking-tight text-foreground md:text-7xl lg:text-8xl border-b-8 border-foreground pb-2">
+                  GET IN TOUCH
                 </h1>
-                <p className="text-lg text-muted-foreground">
-                  Ready to bring your ideas to life? Send me a message and
-                  I&apos;ll get back to you within 24 hours.
+                <p className="max-w-2xl border-l-8 border-primary bg-secondary p-6 text-xl font-bold leading-relaxed shadow-[8px_8px_0px_0px_hsl(var(--foreground))] text-foreground">
+                  READY TO BRING YOUR IDEAS TO LIFE? SEND ME A MESSAGE AND
+                  I&apos;LL GET BACK TO YOU WITHIN 24 HOURS.
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-border bg-card p-8 shadow-sm">
+              <div className="border-4 border-foreground bg-card p-6 shadow-[12px_12px_0px_0px_hsl(var(--foreground))] md:p-12">
                 <ContactForm />
               </div>
             </div>

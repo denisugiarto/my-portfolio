@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { getIconComponent } from "@/lib/icon-mapping";
 import { HeroSection, Technology } from "@/lib/sanity";
 import { sendGAEvent } from "@next/third-parties/google";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import {
   AnimatedContent,
@@ -16,82 +17,78 @@ interface HeroProps {
 }
 
 const Hero = ({ heroData }: HeroProps) => {
-  // Show minimal loading skeleton if no data (shouldn't happen with SSR but good fallback)
   if (!heroData) {
     return (
       <section className="relative flex flex-col justify-center pt-20 text-center lg:pt-32">
         <div className="container mx-auto">
           <div className="animate-pulse">
-            <div className="mx-auto mb-4 h-8 w-3/4 rounded bg-gray-700 lg:h-12"></div>
-            <div className="mx-auto mb-8 h-16 rounded bg-gray-700 lg:h-20"></div>
-            <div className="mx-auto mb-10 h-6 w-2/3 rounded bg-gray-700"></div>
-            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <div className="h-12 w-40 rounded bg-gray-700"></div>
-              <div className="h-12 w-32 rounded bg-gray-700"></div>
-            </div>
+            <div className="mx-auto mb-4 h-12 w-3/4 border-4 border-foreground bg-muted lg:h-16"></div>
+            <div className="mx-auto mb-8 h-24 border-4 border-foreground bg-muted lg:h-32"></div>
+            <div className="mx-auto mb-10 h-8 w-2/3 border-4 border-foreground bg-muted"></div>
           </div>
         </div>
       </section>
     );
   }
 
-  // Tech stack data from Sanity (with fallback)
   const techStack = heroData.technologies?.length
     ? heroData.technologies
-        .map((tech: Technology) => ({
-          icon: getIconComponent(tech.icon),
-          name: tech.name,
-          color: tech.color || "#9ca3af", // Default to gray-400 hex
-        }))
-        .filter((tech) => tech.icon) // Only include technologies with valid icons
+      .map((tech: Technology) => ({
+        icon: getIconComponent(tech.icon),
+        name: tech.name,
+        color: tech.color || "#09090b",
+      }))
+      .filter((tech) => tech.icon)
     : [
-        // Fallback hardcoded tech stack
-        { icon: getIconComponent("SiReact"), name: "React", color: "#60a5fa" },
-        {
-          icon: getIconComponent("SiNextdotjs"),
-          name: "Next.js",
-          color: "#ffffff",
-        },
-        {
-          icon: getIconComponent("SiNodedotjs"),
-          name: "Node.js",
-          color: "#34d399",
-        },
-        {
-          icon: getIconComponent("SiTypescript"),
-          name: "TypeScript",
-          color: "#60a5fa",
-        },
-        {
-          icon: getIconComponent("SiTailwindcss"),
-          name: "TailwindCSS",
-          color: "#22d3ee",
-        },
-      ].filter((tech) => tech.icon);
+      { icon: getIconComponent("SiReact"), name: "React", color: "#60a5fa" },
+      {
+        icon: getIconComponent("SiNextdotjs"),
+        name: "Next.js",
+        color: "#09090b",
+      },
+      {
+        icon: getIconComponent("SiNodedotjs"),
+        name: "Node.js",
+        color: "#059669",
+      },
+      {
+        icon: getIconComponent("SiTypescript"),
+        name: "TypeScript",
+        color: "#2563eb",
+      },
+      {
+        icon: getIconComponent("SiTailwindcss"),
+        name: "TailwindCSS",
+        color: "#0891b2",
+      },
+    ].filter((tech) => tech.icon);
 
   return (
     <HeroAnimations>
-      {/* Main heading with staggered animation */}
       <AnimatedText>
-        <h1 className="mb-2 bg-gradient-to-r from-blue-400 via-purple-400 to-blue-500 bg-clip-text text-lg font-bold text-transparent lg:text-2xl">
-          {heroData.headline || "Full-Stack Developer"}
-        </h1>
-        <h2 className="mx-auto block max-w-4xl text-2xl font-semibold leading-tight dark:text-white sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
-          {heroData.subheadline || "Building Modern Web Applications"}
-        </h2>
+        <div className="mx-auto max-w-5xl">
+          <div className="mb-6 inline-flex items-center gap-2 border-4 border-foreground bg-warning px-4 py-2 text-sm font-black uppercase tracking-[0.2em] text-warning-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
+            <span className="h-3 w-3 border-2 border-foreground bg-success" />
+            {heroData.headline || "Full-Stack Developer"}
+          </div>
+
+          <h1 className="mx-auto block max-w-5xl text-5xl font-black uppercase leading-[1.1] tracking-tight text-foreground sm:text-6xl lg:text-7xl xl:text-8xl">
+            {heroData.subheadline || "Building Modern Web Applications"}
+          </h1>
+
+          <div className="mx-auto mt-8 h-2 w-32 border-2 border-foreground bg-primary shadow-[2px_2px_0px_0px_hsl(var(--foreground))]" />
+        </div>
       </AnimatedText>
 
-      {/* About text with animation */}
       <AnimatedContent delay={0.2}>
-        <p className="mx-auto mb-10 mt-6 max-w-2xl text-base leading-relaxed text-gray-400 md:text-lg">
+        <p className="mx-auto mb-12 mt-8 max-w-3xl text-lg font-bold leading-relaxed text-foreground md:text-xl border-4 border-foreground bg-background p-6 shadow-[8px_8px_0px_0px_hsl(var(--foreground))]">
           {heroData.bio ||
             "I create fast, scalable, and user-friendly web applications using modern technologies. Specializing in React, Next.js, and Node.js with a focus on clean code and great user experiences."}
         </p>
       </AnimatedContent>
 
-      {/* CTA Buttons with animation */}
       <AnimatedContent delay={0.4}>
-        <div className="mb-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <div className="mb-8 flex flex-col items-center justify-center gap-6 sm:flex-row font-black">
           <Link
             href={heroData.primaryCTA?.link || "#projects"}
             onClick={() =>
@@ -104,23 +101,11 @@ const Hero = ({ heroData }: HeroProps) => {
             className="w-3/4 md:w-auto"
           >
             <Button
-              variant="gradient"
-              color="bluePurple"
               size="lg"
-              className="group w-full gap-2 shadow-lg transition-shadow hover:shadow-xl"
+              className="group flex h-16 w-full items-center justify-center gap-3 border-4 border-foreground bg-primary px-8 text-xl font-black uppercase tracking-widest text-primary-foreground shadow-[8px_8px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[12px_12px_0px_0px_hsl(var(--foreground))]"
             >
               <span>{heroData.primaryCTA?.text || "Hire me"}</span>
-              <svg
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1"
-              >
-                <path
-                  clipRule="evenodd"
-                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                  fillRule="evenodd"
-                />
-              </svg>
+              <ArrowRight className="h-6 w-6 stroke-[3] transition-none group-hover:translate-x-2" />
             </Button>
           </Link>
 
@@ -147,9 +132,8 @@ const Hero = ({ heroData }: HeroProps) => {
               className="w-3/4 md:w-auto"
             >
               <Button
-                variant="outline"
                 size="lg"
-                className="w-full transition-shadow hover:shadow-lg"
+                className="group flex h-16 w-full items-center justify-center gap-3 border-4 border-foreground bg-secondary px-8 text-xl font-black uppercase tracking-widest text-foreground shadow-[8px_8px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[12px_12px_0px_0px_hsl(var(--foreground))]"
               >
                 <span>{heroData.secondaryCTA.text}</span>
               </Button>
@@ -158,7 +142,6 @@ const Hero = ({ heroData }: HeroProps) => {
         </div>
       </AnimatedContent>
 
-      {/* Tech stack indicator */}
       <AnimatedTechStack techs={techStack} />
     </HeroAnimations>
   );

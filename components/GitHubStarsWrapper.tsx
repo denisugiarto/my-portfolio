@@ -18,7 +18,7 @@ export default function GitHubStarsWrapper({
         target="_blank"
         rel="noreferrer"
         title="Star on Github"
-        className="group flex items-center gap-1 rounded-xl border border-border/30 bg-card/80 p-2 px-3 font-title text-sm font-medium text-foreground backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-primary hover:text-primary-foreground hover:shadow-lg"
+        className="group flex items-center gap-1 rounded-none border border-border/30 bg-card/80 p-2 px-3 font-title text-sm font-medium text-foreground backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-primary hover:text-primary-foreground hover:shadow-lg"
       >
         <SiGithub title="Star on Github" className="h-4 text-current" />
         <span>

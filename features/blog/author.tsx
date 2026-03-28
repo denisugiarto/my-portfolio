@@ -10,7 +10,7 @@ export default function Author({
       <Image
         src={profile_image}
         alt={name}
-        className="h-8 w-8 rounded-full"
+        className="h-8 w-8 rounded-none"
         width={32}
         height={32}
       />

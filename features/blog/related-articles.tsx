@@ -12,26 +12,47 @@ export default function RelatedArticles({ articles }: RelatedArticlesProps) {
   }
 
   return (
-    <div className="mt-12 border-t pt-8">
-      <h2 className="mb-6 text-2xl font-bold">Related Articles</h2>
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+    <section className="mt-16 border-4 border-foreground bg-card px-6 py-10 shadow-[8px_8px_0px_0px_hsl(var(--foreground))] sm:px-10 lg:px-12">
+      <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between border-b-4 border-foreground pb-6">
+        <div>
+          <p className="inline-block bg-accent px-2 py-1 text-xs font-black uppercase tracking-widest text-accent-foreground border-2 border-foreground shadow-[2px_2px_0px_0px_hsl(var(--foreground))]">
+            CONTINUE READING
+          </p>
+          <h2 className="mt-4 font-title text-3xl md:text-4xl font-black uppercase tracking-widest text-foreground">
+            RELATED ARTICLES
+          </h2>
+        </div>
+        <p className="max-w-xl text-lg font-bold leading-relaxed text-foreground bg-secondary p-4 border-4 border-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
+          A FEW MORE POSTS IN THE SAME ORBIT, PICKED TO KEEP THE READING FLOW
+          GOING.
+        </p>
+      </div>
+
+      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         {articles.map((article) => (
           <Link
             key={article._id}
             href={`/blog/${article.slug.current}`}
-            className="block overflow-hidden rounded-lg bg-card p-4 shadow-sm transition-shadow hover:shadow-md"
+            className="group block border-4 border-foreground bg-background p-6 transition-none hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[12px_12px_0px_0px_hsl(var(--foreground))] shadow-[4px_4px_0px_0px_hsl(var(--foreground))]"
           >
-            <h3 className="mb-2 font-semibold text-foreground line-clamp-2">
+            {article.category && (
+              <div className="mb-4 inline-block border-2 border-foreground bg-primary px-2 py-1 text-xs font-black uppercase tracking-widest text-primary-foreground shadow-[2px_2px_0px_0px_hsl(var(--foreground))]">
+                {article.category.name}
+              </div>
+            )}
+
+            <h3 className="mb-3 line-clamp-2 text-xl font-black uppercase leading-snug text-foreground transition-none group-hover:underline decoration-4 underline-offset-4">
               {article.title}
             </h3>
             {article.excerpt && (
-              <p className="mb-3 text-sm text-muted-foreground line-clamp-2">
+              <p className="mb-6 line-clamp-3 text-sm font-bold leading-relaxed text-muted-foreground">
                 {article.excerpt}
               </p>
             )}
-            <div className="flex gap-x-3 text-xs text-slate-500">
-              <div className="flex items-center gap-1">
-                <Calendar size={12} />
+
+            <div className="mb-4 flex flex-wrap gap-3 text-xs font-black uppercase text-foreground">
+              <div className="inline-flex items-center gap-2 border-2 border-foreground bg-muted px-2 py-1 shadow-[2px_2px_0px_0px_hsl(var(--foreground))]">
+                <Calendar size={14} className="stroke-[3]" />
                 <span>
                   {new Date(article.publishedAt).toLocaleDateString("en-US", {
                     year: "numeric",
@@ -41,18 +62,19 @@ export default function RelatedArticles({ articles }: RelatedArticlesProps) {
                 </span>
               </div>
               {article.readTime && (
-                <div className="flex items-center gap-1">
-                  <Clock size={12} />
-                  <span>{article.readTime} min</span>
+                <div className="inline-flex items-center gap-2 border-2 border-foreground bg-muted px-2 py-1 shadow-[2px_2px_0px_0px_hsl(var(--foreground))]">
+                  <Clock size={14} className="stroke-[3]" />
+                  <span>{article.readTime} MIN READ</span>
                 </div>
               )}
             </div>
+
             {article.tags && article.tags.length > 0 && (
-              <div className="mt-2 flex flex-wrap gap-1">
+              <div className="mt-4 flex flex-wrap gap-2">
                 {article.tags.slice(0, 2).map((tag) => (
                   <span
                     key={tag._id}
-                    className="rounded-full bg-slate-100 px-2 py-0.5 text-xs text-gray-700 dark:bg-slate-800 dark:text-slate-300"
+                    className="border-2 border-foreground bg-background px-2 py-1 text-xs font-black uppercase text-muted-foreground"
                   >
                     #{tag.name}
                   </span>
@@ -62,6 +84,6 @@ export default function RelatedArticles({ articles }: RelatedArticlesProps) {
           </Link>
         ))}
       </div>
-    </div>
+    </section>
   );
 }

@@ -35,7 +35,7 @@ export default function EmptyState({
 
   return (
     <div className="py-12 text-center">
-      <div className="mx-auto w-auto rounded-md bg-slate-100 px-6 py-4 text-center dark:bg-slate-800">
+      <div className="mx-auto w-auto rounded-none bg-slate-100 px-6 py-4 text-center dark:bg-slate-800">
         <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
           {title}
         </h3>

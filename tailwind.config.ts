@@ -32,9 +32,9 @@ const config = {
     scrollBehavior: "smooth",
     extend: {
       fontFamily: {
-        body: ["var(--font-inter)", "sans-serif"],
-        title: ["var(--font-suez-one)", "sans-serif"],
-        sans: ["sans-serif", "system-ui", "-apple-system"],
+        body: ["var(--font-space-grotesk)", "sans-serif"],
+        title: ["var(--font-archivo)", "sans-serif"],
+        sans: ["var(--font-space-grotesk)", "system-ui", "-apple-system"],
       },
       fontSize: {
         "3xl": "32px",
@@ -127,7 +127,8 @@ const config = {
         "spin-slow": "spin 5s linear infinite",
       },
       boxShadow: {
-        card: "5px 5px 14px #8f8f8f, -5px -5px 14px #fff",
+        card: "8px 8px 0px 0px hsl(var(--foreground))",
+        brutal: "4px 4px 0px 0px hsl(var(--foreground))",
       },
     },
   },

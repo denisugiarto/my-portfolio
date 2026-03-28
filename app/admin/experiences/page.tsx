@@ -22,14 +22,14 @@ export default function ExperienceManagementPage() {
         </div>
 
         <div className="mx-auto max-w-4xl">
-          <div className="rounded-lg bg-white p-8 shadow-lg dark:bg-gray-800">
+          <div className="rounded-none bg-white p-8 shadow-lg dark:bg-gray-800">
             <h1 className="mb-8 text-3xl font-bold text-gray-900 dark:text-white">
               Experience Management
             </h1>
 
             <div className="grid gap-8 md:grid-cols-2">
               {/* Add Experience */}
-              <div className="rounded-lg bg-blue-50 p-6 dark:bg-blue-900/20">
+              <div className="rounded-none bg-blue-50 p-6 dark:bg-blue-900/20">
                 <h2 className="mb-4 text-xl font-semibold text-blue-900 dark:text-blue-100">
                   Add New Experience
                 </h2>
@@ -46,7 +46,7 @@ export default function ExperienceManagementPage() {
               </div>
 
               {/* Manage Existing */}
-              <div className="rounded-lg bg-green-50 p-6 dark:bg-green-900/20">
+              <div className="rounded-none bg-green-50 p-6 dark:bg-green-900/20">
                 <h2 className="mb-4 text-xl font-semibold text-green-900 dark:text-green-100">
                   Manage Existing
                 </h2>
@@ -63,7 +63,7 @@ export default function ExperienceManagementPage() {
               </div>
 
               {/* SEO & Settings */}
-              <div className="rounded-lg bg-purple-50 p-6 dark:bg-purple-900/20">
+              <div className="rounded-none bg-purple-50 p-6 dark:bg-purple-900/20">
                 <h2 className="mb-4 text-xl font-semibold text-purple-900 dark:text-purple-100">
                   Experience Display
                 </h2>
@@ -80,7 +80,7 @@ export default function ExperienceManagementPage() {
               </div>
 
               {/* Analytics */}
-              <div className="rounded-lg bg-orange-50 p-6 dark:bg-orange-900/20">
+              <div className="rounded-none bg-orange-50 p-6 dark:bg-orange-900/20">
                 <h2 className="mb-4 text-xl font-semibold text-orange-900 dark:text-orange-100">
                   Career Timeline
                 </h2>
@@ -97,7 +97,7 @@ export default function ExperienceManagementPage() {
             </div>
 
             {/* Quick Access */}
-            <div className="mt-12 rounded-lg bg-gray-100 p-6 dark:bg-gray-700">
+            <div className="mt-12 rounded-none bg-gray-100 p-6 dark:bg-gray-700">
               <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-white">
                 Quick Access
               </h3>
@@ -108,7 +108,7 @@ export default function ExperienceManagementPage() {
                   }/studio`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block rounded-lg bg-white p-4 transition-shadow hover:shadow-md dark:bg-gray-600"
+                  className="block rounded-none bg-white p-4 transition-shadow hover:shadow-md dark:bg-gray-600"
                 >
                   <h4 className="mb-2 font-semibold text-gray-900 dark:text-white">
                     Sanity Studio
@@ -120,7 +120,7 @@ export default function ExperienceManagementPage() {
 
                 <Link
                   href="/"
-                  className="block rounded-lg bg-white p-4 transition-shadow hover:shadow-md dark:bg-gray-600"
+                  className="block rounded-none bg-white p-4 transition-shadow hover:shadow-md dark:bg-gray-600"
                 >
                   <h4 className="mb-2 font-semibold text-gray-900 dark:text-white">
                     View Portfolio
@@ -134,7 +134,7 @@ export default function ExperienceManagementPage() {
                   href={`${
                     process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
                   }#experience`}
-                  className="block rounded-lg bg-white p-4 transition-shadow hover:shadow-md dark:bg-gray-600"
+                  className="block rounded-none bg-white p-4 transition-shadow hover:shadow-md dark:bg-gray-600"
                 >
                   <h4 className="mb-2 font-semibold text-gray-900 dark:text-white">
                     Experience Section

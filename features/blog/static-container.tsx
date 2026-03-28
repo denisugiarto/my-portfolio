@@ -141,22 +141,22 @@ export default function BlogStaticContainer({
   const paginatedBlogs = filteredBlogs.slice(startIndex, endIndex);
 
   return (
-    <section className="container max-w-6xl pt-40">
+    <section className="container max-w-6xl pt-32 lg:pt-40">
       {/* Header Section */}
-      <div className="mb-8">
-        <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <h1 className="text-3xl font-bold text-foreground dark:text-slate-100">
-              Blog
+      <div className="mb-16">
+        <div className="mb-8 flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
+          <div className="flex-1">
+            <h1 className="mb-4 inline-block text-5xl font-black uppercase tracking-tight text-foreground md:text-7xl lg:text-8xl border-b-8 border-foreground pb-2">
+              BLOG
             </h1>
-            <p className="mt-1 text-sm text-muted-foreground">
-              Insights, tutorials, and thoughts on web development
+            <p className="max-w-xl border-l-8 border-primary bg-secondary p-4 text-lg font-bold uppercase leading-relaxed text-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
+              INSIGHTS, TUTORIALS, AND THOUGHTS ON WEB DEVELOPMENT
             </p>
           </div>
-          <div className="sm:w-72">
+          <div className="w-full sm:w-80">
             <SearchInput
               name="search"
-              placeholder="Search articles..."
+              placeholder="SEARCH ARTICLES..."
               type="text"
               onSearch={onSearchHandler}
             />
@@ -164,74 +164,83 @@ export default function BlogStaticContainer({
         </div>
 
         {/* Category Filter */}
-        <BlogCategoryNav
-          categories={categories}
-          selectedCategory={selectedCategory}
-          onCategoryChange={handleCategoryChange}
-        />
+        <div className="mb-8 border-4 border-foreground p-4 bg-card shadow-[8px_8px_0px_0px_hsl(var(--foreground))]">
+          <p className="mb-3 text-sm font-black uppercase tracking-widest text-foreground">CATEGORIES</p>
+          <BlogCategoryNav
+            categories={categories}
+            selectedCategory={selectedCategory}
+            onCategoryChange={handleCategoryChange}
+          />
+        </div>
 
         {/* Active Filters & Results Info */}
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-4 border-foreground bg-primary p-4 shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
           {/* Active Filters */}
-          {hasActiveFilters && (
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="flex items-center gap-1 text-sm text-muted-foreground">
-                <Filter size={14} />
-                Active filters:
-              </span>
-              {searchQuery && (
-                <span className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
-                  <Search size={12} />
-                  "{searchQuery}"
-                  <button
-                    onClick={() => onSearchHandler("")}
-                    className="ml-1 hover:text-primary/80"
-                    aria-label="Clear search filter"
-                  >
-                    <X size={12} />
-                  </button>
-                </span>
-              )}
-              {selectedCategoryName && (
-                <span className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
-                  {selectedCategoryName}
-                  <button
-                    onClick={() => handleCategoryChange(null)}
-                    className="ml-1 hover:text-primary/80"
-                    aria-label="Clear category filter"
-                  >
-                    <X size={12} />
-                  </button>
-                </span>
-              )}
-              <button
-                onClick={clearAllFilters}
-                className="text-xs text-muted-foreground hover:text-foreground underline underline-offset-2"
-              >
-                Clear all
-              </button>
-            </div>
-          )}
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="flex items-center gap-2 font-black uppercase text-sm text-primary-foreground tracking-wider">
+              <Filter size={18} className="stroke-[3]" />
+              FILTERS:
+            </span>
+            {hasActiveFilters ? (
+              <>
+                {searchQuery && (
+                  <span className="inline-flex items-center gap-2 border-2 border-foreground bg-background px-3 py-1 text-xs font-black uppercase text-foreground shadow-[2px_2px_0px_0px_hsl(var(--foreground))]">
+                    <Search size={14} className="stroke-[3]" />
+                    "{searchQuery}"
+                    <button
+                      onClick={() => onSearchHandler("")}
+                      className="ml-2 border-l-2 border-foreground pl-2 transition-none hover:text-destructive"
+                      aria-label="Clear search filter"
+                    >
+                      <X size={14} className="stroke-[3]" />
+                    </button>
+                  </span>
+                )}
+                {selectedCategoryName && (
+                  <span className="inline-flex items-center gap-2 border-2 border-foreground bg-background px-3 py-1 text-xs font-black uppercase text-foreground shadow-[2px_2px_0px_0px_hsl(var(--foreground))]">
+                    {selectedCategoryName}
+                    <button
+                      onClick={() => handleCategoryChange(null)}
+                      className="ml-2 border-l-2 border-foreground pl-2 transition-none hover:text-destructive"
+                      aria-label="Clear category filter"
+                    >
+                      <X size={14} className="stroke-[3]" />
+                    </button>
+                  </span>
+                )}
+                <button
+                  onClick={clearAllFilters}
+                  className="text-sm font-black uppercase text-primary-foreground underline decoration-2 underline-offset-4 hover:text-background transition-none ml-2"
+                >
+                  CLEAR ALL
+                </button>
+              </>
+            ) : (
+              <span className="text-sm font-bold uppercase text-primary-foreground">NONE</span>
+            )}
+          </div>
 
           {/* Results Count */}
           <div
             className={cn(
-              "text-sm text-muted-foreground",
+              "text-sm font-black uppercase text-primary-foreground tracking-wider",
               hasActiveFilters ? "sm:text-right" : "",
             )}
           >
             {totalBlogs > 0 ? (
               <span>
-                Showing{" "}
-                <span className="font-medium text-foreground">
+                SHOWING{" "}
+                <span className="bg-background text-foreground px-2 py-1 border-2 border-foreground">
                   {startIndex + 1}-{Math.min(endIndex, totalBlogs)}
                 </span>{" "}
-                of{" "}
-                <span className="font-medium text-foreground">{totalBlogs}</span>{" "}
-                {totalBlogs === 1 ? "article" : "articles"}
+                OF{" "}
+                <span className="bg-background text-foreground px-2 py-1 border-2 border-foreground">
+                  {totalBlogs}
+                </span>{" "}
+                {totalBlogs === 1 ? "ARTICLE" : "ARTICLES"}
               </span>
             ) : (
-              <span>No articles found</span>
+              <span className="bg-destructive text-destructive-foreground px-3 py-1 border-2 border-foreground">NO ARTICLES FOUND</span>
             )}
           </div>
         </div>
@@ -242,26 +251,26 @@ export default function BlogStaticContainer({
 
       {/* Empty State with Filters */}
       {totalBlogs === 0 && hasActiveFilters && (
-        <div className="flex flex-col items-center justify-center py-16 text-center">
-          <div className="mb-4 rounded-full bg-muted p-4">
-            <Search className="h-8 w-8 text-muted-foreground" />
+        <div className="flex flex-col items-center justify-center py-20 text-center border-4 border-foreground bg-card shadow-[12px_12px_0px_0px_hsl(var(--foreground))] mt-8">
+          <div className="mb-6 border-4 border-foreground bg-muted p-6 shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
+            <Search className="h-12 w-12 text-foreground stroke-[3]" />
           </div>
-          <h3 className="mb-2 text-lg font-semibold text-foreground">
-            No articles found
+          <h3 className="mb-4 text-3xl font-black uppercase tracking-tight text-foreground">
+            NO ARTICLES FOUND
           </h3>
-          <p className="mb-4 max-w-md text-sm text-muted-foreground">
-            We couldn't find any articles matching your search criteria. Try
-            adjusting your filters or search query.
+          <p className="mb-8 max-w-lg text-lg font-bold text-foreground">
+            WE COULDN'T FIND ANY ARTICLES MATCHING YOUR SEARCH CRITERIA. TRY
+            ADJUSTING YOUR FILTERS OR SEARCH QUERY.
           </p>
-          <Button variant="outline" onClick={clearAllFilters}>
-            Clear all filters
+          <Button size="lg" onClick={clearAllFilters} className="border-4 border-foreground bg-primary text-primary-foreground text-lg font-black uppercase tracking-widest px-8 shadow-[6px_6px_0px_0px_hsl(var(--foreground))] hover:shadow-[0px_0px_0px_0px_hsl(var(--foreground))] hover:translate-x-1 hover:translate-y-1 transition-none">
+            CLEAR ALL FILTERS
           </Button>
         </div>
       )}
 
       {/* Pagination */}
       {totalPages > 1 && (
-        <div className="mt-12">
+        <div className="mt-16 pb-16">
           <Pagination
             currentPage={currentPage}
             totalPages={totalPages}

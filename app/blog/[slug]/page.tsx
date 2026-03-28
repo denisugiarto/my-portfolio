@@ -2,13 +2,17 @@ import { Layout } from "@/components/Layout/Layout";
 import Markdown from "@/components/ui/markdown";
 import BlogHeader from "@/features/blog/blog-header";
 import RelatedArticles from "@/features/blog/related-articles";
+import { urlFor } from "@/lib/sanity";
 import {
   getBlogPostBySlug,
   getBlogPosts,
   getRelatedBlogPosts,
 } from "@/lib/sanity-queries";
 import { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ArrowLeft } from "lucide-react";
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -36,6 +40,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: BlogPostPageProps): Promise<Metadata> {
+  // Return early if error to maintain default metadata handling
   try {
     const { slug } = await params;
     const article = await getBlogPostBySlug(slug);
@@ -58,13 +63,13 @@ export async function generateMetadata({
         tags: article.tags?.map((tag) => tag.name),
         images: article.coverImage
           ? [
-              {
-                url: article.coverImage.toString(),
-                width: 1200,
-                height: 630,
-                alt: article.title,
-              },
-            ]
+            {
+              url: article.coverImage.toString(),
+              width: 1200,
+              height: 630,
+              alt: article.title,
+            },
+          ]
           : undefined,
       },
       twitter: {
@@ -94,10 +99,51 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
     return (
       <Layout activeNavbar="Blog" isNavColorBlack>
-        <section className="container p-4 pt-24 lg:max-w-screen-md">
-          <BlogHeader article={article} />
-          {article.content && <Markdown>{article.content}</Markdown>}
-          <RelatedArticles articles={relatedArticles} />
+        <section className="container px-4 pb-16 pt-32 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-5xl">
+            <Link
+              href="/blog"
+              className="mb-8 inline-flex items-center gap-2 border-4 border-foreground bg-accent px-4 py-2 text-sm font-black uppercase tracking-widest text-accent-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))]"
+            >
+              <ArrowLeft className="h-5 w-5 stroke-[3]" />
+              BACK TO ARTICLES
+            </Link>
+
+            <article className="mb-8 w-full border-4 border-foreground bg-card shadow-[6px_6px_0px_0px_hsl(var(--foreground))] md:mb-12 md:shadow-[12px_12px_0px_0px_hsl(var(--foreground))] overflow-hidden">
+              <div className="border-b-4 border-foreground bg-background px-4 py-8 sm:px-8 lg:px-16">
+                <div className="mx-auto max-w-3xl">
+                  <BlogHeader article={article} />
+                </div>
+              </div>
+
+              {article.coverImage && (
+                <div className="border-b-4 border-foreground bg-background px-4 py-4 sm:px-6 lg:px-8">
+                  <div className="relative mx-auto aspect-[16/9] max-w-4xl overflow-hidden border-4 border-foreground bg-muted shadow-[8px_8px_0px_0px_hsl(var(--foreground))]">
+                    <Image
+                      src={urlFor(article.coverImage)
+                        .width(1600)
+                        .height(900)
+                        .url()}
+                      alt={article.title}
+                      fill
+                      className="object-cover"
+                      priority
+                    />
+                  </div>
+                </div>
+              )}
+
+              {article.content && (
+                <div className="bg-background px-6 py-10 sm:px-10 lg:px-16">
+                  <Markdown className="mx-auto max-w-3xl prose prose-xl dark:prose-invert prose-headings:font-black prose-headings:uppercase prose-p:font-bold prose-p:leading-relaxed prose-a:font-black prose-a:text-primary hover:prose-a:underline hover:prose-a:bg-primary hover:prose-a:text-primary-foreground prose-img:border-4 prose-img:border-foreground prose-img:shadow-[8px_8px_0px_0px_hsl(var(--foreground))]">
+                    {article.content}
+                  </Markdown>
+                </div>
+              )}
+            </article>
+
+            <RelatedArticles articles={relatedArticles} />
+          </div>
         </section>
       </Layout>
     );

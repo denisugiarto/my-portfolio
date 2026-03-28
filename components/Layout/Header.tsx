@@ -43,15 +43,15 @@ export type HeaderProps = {
 };
 export default function Header({ activeNavbar }: HeaderProps) {
   const headerStyleOnScroll =
-    "bg-background backdrop-blur-md shadow-lg border-b border-border/50";
+    "bg-background border-b-4 border-foreground shadow-[0_8px_0px_0px_hsl(var(--foreground))] py-1";
   const [scrollY, setScrollY] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
 
   const { data: repoStars, isLoading } = useQuery({
     queryKey: ["github-stars"],
     queryFn: getRepoStars,
-    staleTime: 10 * 60 * 1000, // 10 minutes
-    gcTime: 30 * 60 * 1000, // 30 minutes
+    staleTime: 10 * 60 * 1000,
+    gcTime: 30 * 60 * 1000,
     refetchOnWindowFocus: false,
     refetchOnMount: false,
     refetchOnReconnect: false,
@@ -96,39 +96,38 @@ export default function Header({ activeNavbar }: HeaderProps) {
       className={cn(
         isScrollLimit
           ? headerStyleOnScroll
-          : "border-b border-transparent bg-transparent",
-        "fixed top-0 z-50 w-full transition-all duration-500 ease-out",
+          : "border-b-4 border-transparent bg-background/0 py-2",
+        "fixed top-0 z-50 w-full transition-all duration-300 ease-none",
       )}
     >
       <div className="container py-2">
         <div className="relative flex h-16 items-center justify-between">
           <div className="flex items-center sm:hidden">
             {/* Mobile menu button*/}
-            <Button
-              variant="ghost"
+            <button
               onClick={mobileMenuToggleHandler}
-              className="inline-flex items-center justify-center rounded-xl p-2 text-muted-foreground transition-all duration-200 hover:bg-primary/20 hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary/50"
+              className="inline-flex items-center justify-center rounded-none border-4 border-foreground bg-primary px-3 py-2 text-primary-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))] focus:outline-none"
             >
               <span className="sr-only">Open main menu</span>
               {isOpen ? (
-                <XIcon className="block h-6 w-6" aria-hidden="true" />
+                <XIcon className="block h-6 w-6 stroke-[3]" aria-hidden="true" />
               ) : (
-                <MenuIcon className="block h-6 w-6" aria-hidden="true" />
+                <MenuIcon className="block h-6 w-6 stroke-[3]" aria-hidden="true" />
               )}
-            </Button>
+            </button>
           </div>
           <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
             <div className="flex flex-shrink-0 items-center">
               <Link
                 href="/"
-                className="rounded-xl border border-border/30 bg-card/80 p-2 px-3 font-title text-3xl font-bold text-foreground backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-primary hover:text-primary-foreground hover:shadow-lg"
+                className="rounded-none border-4 border-foreground bg-accent px-3 py-1 font-title text-3xl font-black uppercase text-accent-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))]"
                 title={data.profile.name}
               >
                 DS
               </Link>
             </div>
-            <div className="my-auto hidden font-body sm:ml-8 sm:block">
-              <div className="flex space-x-2">
+            <div className="my-auto hidden font-body sm:ml-10 sm:block">
+              <div className="flex space-x-4">
                 {navigation.map((item: NavigationItem) => (
                   <Link
                     key={item.name}
@@ -136,9 +135,9 @@ export default function Header({ activeNavbar }: HeaderProps) {
                     onClick={() => handleNavClick(item.href)}
                     className={cn(
                       activeNavbar?.toLowerCase() === item.name.toLowerCase()
-                        ? "border border-primary/20 bg-primary/90 text-primary-foreground shadow-lg backdrop-blur-sm"
-                        : "text-foreground/90 hover:border-border/30 hover:bg-card/60 hover:text-foreground hover:backdrop-blur-sm",
-                      "rounded-xl border border-transparent px-4 py-2.5 text-sm font-medium backdrop-blur-sm transition-all duration-300 ease-out hover:shadow-md",
+                        ? "border-4 border-foreground bg-foreground text-background shadow-[4px_4px_0px_0px_hsl(var(--foreground))]"
+                        : "border-4 border-transparent text-foreground hover:border-foreground hover:bg-secondary hover:shadow-[4px_4px_0px_0px_hsl(var(--foreground))]",
+                      "rounded-none px-4 py-2 font-black uppercase tracking-widest text-sm transition-none hover:-translate-y-1 hover:-translate-x-1",
                     )}
                     aria-current={item.name ? "page" : undefined}
                   >
@@ -158,7 +157,7 @@ export default function Header({ activeNavbar }: HeaderProps) {
       {/* Mobile menu backdrop */}
       {isOpen && (
         <div
-          className="fixed inset-0 z-30 bg-black/60 backdrop-blur-sm"
+          className="fixed inset-0 z-30 bg-foreground/90 backdrop-blur-none"
           onClick={() => setIsOpen(false)}
         />
       )}
@@ -166,11 +165,11 @@ export default function Header({ activeNavbar }: HeaderProps) {
       {/* Mobile menu, show/hide based on menu state. */}
       <div
         className={cn(
-          isOpen ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0",
-          "fixed left-0 top-0 z-40 h-screen w-80 border-r border-border/50 bg-background/90 shadow-2xl backdrop-blur-lg transition-all duration-300 ease-out",
+          isOpen ? "translate-x-0" : "-translate-x-full",
+          "fixed left-0 top-0 z-40 h-screen w-80 border-r-8 border-foreground bg-background shadow-[16px_0_0_0_hsl(var(--foreground))] transition-transform duration-300 ease-out",
         )}
       >
-        <div className="flex h-full flex-col justify-center space-y-4 px-8">
+        <div className="flex h-full flex-col justify-center space-y-6 px-8">
           {navigation.map((item: NavigationItem) => (
             <Link
               key={item.name}
@@ -178,9 +177,9 @@ export default function Header({ activeNavbar }: HeaderProps) {
               onClick={() => handleNavClick(item.href)}
               className={cn(
                 activeNavbar?.toLowerCase() === item.name.toLowerCase()
-                  ? "border border-primary/20 bg-primary/90 text-primary-foreground shadow-lg backdrop-blur-sm"
-                  : "border border-border/30 text-foreground backdrop-blur-sm hover:bg-card/60 hover:text-foreground",
-                "block transform cursor-pointer rounded-xl px-6 py-4 text-center text-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-md",
+                  ? "border-4 border-foreground bg-primary text-primary-foreground shadow-[6px_6px_0px_0px_hsl(var(--foreground))]"
+                  : "border-4 border-foreground bg-card text-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] hover:bg-secondary hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_hsl(var(--foreground))]",
+                "block cursor-pointer rounded-none px-6 py-4 text-center text-xl font-black uppercase tracking-widest transition-none",
               )}
               aria-current={item.name ? "page" : undefined}
             >

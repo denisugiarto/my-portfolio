@@ -13,7 +13,6 @@ import { getSiteSettings, getFooterSocialLinks } from "@/lib/sanity-queries";
 import data from "../../constant/data.json";
 import { iconMap } from "@/lib/icon-mapping";
 import CachedInlineSVG from "../cached-inline-svg";
-import { getAccessibleColorForContext } from "@/lib/contrast-checker";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -53,36 +52,33 @@ export default function Footer() {
   const email = siteSettings?.personalInfo?.email;
 
   return (
-    <footer className="border-t border-border bg-card">
-      <div className="container py-8">
+    <footer className="mt-16 border-t-4 border-foreground bg-card text-foreground">
+      <div className="container py-12 md:py-16">
         {/* Main Footer Content */}
-        <div className="mb-8 grid grid-cols-1 gap-8 md:grid-cols-4">
+        <div className="mb-12 grid grid-cols-1 gap-12 md:grid-cols-4 lg:gap-16">
           {/* Brand & Description */}
           <div className="md:col-span-2">
-            <h3 className="mb-3 text-lg font-semibold text-card-foreground">
+            <h3 className="mb-4 text-3xl md:text-5xl font-black uppercase tracking-tight text-foreground">
               {displayName}
             </h3>
-            <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
+            <p className="mb-6 max-w-md text-lg font-bold leading-relaxed text-foreground border-l-4 border-primary pl-4 bg-secondary p-4 shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
               {description}
             </p>
 
             {/* Location */}
-            <div className="mb-4 flex items-center gap-2 text-sm text-muted-foreground">
-              <MapPin size={16} />
+            <div className="mb-8 flex items-center gap-2 font-bold uppercase tracking-wider text-sm border-2 border-foreground bg-background px-3 py-1 shadow-[2px_2px_0px_0px_hsl(var(--foreground))] w-fit">
+              <MapPin size={18} className="stroke-[3]" />
               <span>
-                Based in {location} ({timezone})
+                BASED IN {location} ({timezone})
               </span>
             </div>
 
             {/* Social Links */}
-            <div className="flex space-x-4">
+            <div className="flex flex-wrap gap-4">
               {footerSocialLinks && footerSocialLinks.length > 0 ? (
                 footerSocialLinks.map((link) => {
                   const IconPlatform =
                     iconMap[link.icon ?? link.platform] || SiGithub;
-                  const accessibleColor = link.color
-                    ? getAccessibleColorForContext(link.color, "card")
-                    : "currentColor";
 
                   return (
                     <a
@@ -92,7 +88,7 @@ export default function Footer() {
                       rel={
                         link.openInNewTab ? "noopener noreferrer" : undefined
                       }
-                      className="text-muted-foreground transition-colors hover:text-primary"
+                      className="flex h-12 w-12 items-center justify-center border-4 border-foreground bg-background text-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:bg-primary hover:text-primary-foreground hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))]"
                       aria-label={link.label || `${link.platform} Profile`}
                       title={link.label || `${link.platform} Profile`}
                     >
@@ -100,16 +96,12 @@ export default function Footer() {
                         <CachedInlineSVG
                           src={link.customIcon.asset.url}
                           alt={link.customPlatformName || link.platform}
-                          className="block h-5 w-5"
-                          color={link.color || "currentColor"}
-                          enableContrastCheck={true}
-                          themeContext="card"
+                          className="block h-6 w-6"
+                          color="currentColor"
+                          enableContrastCheck={false}
                         />
                       ) : (
-                        <IconPlatform
-                          size={20}
-                          style={{ color: accessibleColor }}
-                        />
+                        <IconPlatform size={24} />
                       )}
                     </a>
                   );
@@ -122,10 +114,10 @@ export default function Footer() {
                       href={contacts.github.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-muted-foreground transition-colors hover:text-primary"
+                      className="flex h-12 w-12 items-center justify-center border-4 border-foreground bg-background text-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:bg-primary hover:text-primary-foreground hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))]"
                       aria-label="GitHub Profile"
                     >
-                      <SiGithub size={20} />
+                      <SiGithub size={24} />
                     </a>
                   )}
                   {contacts.linkedin && (
@@ -133,10 +125,10 @@ export default function Footer() {
                       href={contacts.linkedin.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-muted-foreground transition-colors hover:text-primary"
+                      className="flex h-12 w-12 items-center justify-center border-4 border-foreground bg-background text-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:bg-primary hover:text-primary-foreground hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))]"
                       aria-label="LinkedIn Profile"
                     >
-                      <SiLinkedin size={20} />
+                      <SiLinkedin size={24} />
                     </a>
                   )}
                   {contacts.upwork && (
@@ -144,10 +136,10 @@ export default function Footer() {
                       href={contacts.upwork.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-muted-foreground transition-colors hover:text-primary"
+                      className="flex h-12 w-12 items-center justify-center border-4 border-foreground bg-background text-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:bg-primary hover:text-primary-foreground hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))]"
                       aria-label="Upwork Profile"
                     >
-                      <SiUpwork size={20} />
+                      <SiUpwork size={24} />
                     </a>
                   )}
                 </>
@@ -157,31 +149,31 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-card-foreground">
-              Navigation
+            <h4 className="mb-6 inline-block border-2 border-foreground bg-accent px-3 py-1 text-xs font-black uppercase tracking-widest text-accent-foreground shadow-[3px_3px_0px_0px_hsl(var(--foreground))]">
+              NAVIGATION
             </h4>
-            <nav className="space-y-2">              
+            <nav className="flex flex-col space-y-3 font-black text-lg uppercase tracking-wider">
               <Link
                 href="/experience"
-                className="block text-sm text-muted-foreground transition-colors hover:text-primary"
+                className="w-fit text-foreground decoration-4 underline-offset-4 hover:bg-foreground hover:text-background px-1 transition-none"
               >
                 Experience
               </Link>
               <Link
                 href="/projects"
-                className="block text-sm text-muted-foreground transition-colors hover:text-primary"
+                className="w-fit text-foreground decoration-4 underline-offset-4 hover:bg-foreground hover:text-background px-1 transition-none"
               >
                 Projects
               </Link>
               <Link
                 href="/blog"
-                className="block text-sm text-muted-foreground transition-colors hover:text-primary"
+                className="w-fit text-foreground decoration-4 underline-offset-4 hover:bg-foreground hover:text-background px-1 transition-none"
               >
                 Blog
               </Link>
               <Link
                 href="/contact"
-                className="block text-sm text-muted-foreground transition-colors hover:text-primary"
+                className="w-fit text-foreground decoration-4 underline-offset-4 hover:bg-foreground hover:text-background px-1 transition-none"
               >
                 Contact
               </Link>
@@ -190,16 +182,16 @@ export default function Footer() {
 
           {/* Contact Information */}
           <div>
-            <h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-card-foreground">
-              Get in Touch
+            <h4 className="mb-6 inline-block border-2 border-foreground bg-success px-3 py-1 text-xs font-black uppercase tracking-widest text-success-foreground shadow-[3px_3px_0px_0px_hsl(var(--foreground))]">
+              GET IN TOUCH
             </h4>
-            <div className="space-y-3">
+            <div className="flex flex-col space-y-4 font-bold text-base">
               {email && (
                 <a
                   href={`mailto:${email}`}
-                  className="group flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-primary"
+                  className="group flex w-fit items-center gap-3 text-foreground hover:bg-primary hover:text-primary-foreground px-2 py-1 transition-none"
                 >
-                  <Mail size={16} className="group-hover:text-primary" />
+                  <Mail size={20} className="stroke-[3]" />
                   <span>{email}</span>
                 </a>
               )}
@@ -209,51 +201,46 @@ export default function Footer() {
                   href={contacts.whatsapp.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-primary"
+                  className="group flex w-fit items-center gap-3 text-foreground hover:bg-success hover:text-success-foreground px-2 py-1 transition-none"
                 >
-                  <SiWhatsapp size={16} className="group-hover:text-primary" />
+                  <SiWhatsapp size={20} />
                   <span>{contacts.whatsapp.value}</span>
                 </a>
               )}
 
               <Link
                 href="/contact"
-                className="group flex items-center gap-2 text-sm text-primary transition-colors hover:text-primary/80"
+                className="group flex w-fit items-center gap-3 text-foreground hover:bg-accent hover:text-accent-foreground px-2 py-1 transition-none"
               >
-                <MessageCircle
-                  size={16}
-                  className="group-hover:text-primary/80"
-                />
-                <span>Send Message</span>
+                <MessageCircle size={20} className="stroke-[3]" />
+                <span className="uppercase tracking-widest font-black">Send Message</span>
               </Link>
 
               {/* Services */}
-              <div className="border-t border-border/50 pt-2">
-                <p className="mb-2 text-xs font-medium text-muted-foreground">
-                  Services:
+              <div className="mt-8 border-t-4 border-foreground pt-6">
+                <p className="mb-3 inline-block bg-muted px-2 py-1 text-xs font-black uppercase tracking-widest text-foreground border-2 border-foreground shadow-[2px_2px_0px_0px_hsl(var(--foreground))]">
+                  SERVICES
                 </p>
-                <p className="text-xs text-muted-foreground">
-                  Web Development • Mobile Apps
-                </p>
-                <p className="text-xs text-muted-foreground">
-                  UI/UX • Technical Consulting
-                </p>
+                <div className="flex flex-col gap-2 uppercase tracking-wide font-black text-sm">
+                  <p className="border-l-4 border-foreground bg-background px-2 py-1">WEB DEVELOPMENT • MOBILE APPS</p>
+                  <p className="border-l-4 border-foreground bg-background px-2 py-1">UI/UX • TECHNICAL CONSULTING</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
         {/* Footer Bottom */}
-        <div className="border-t border-border pt-6">
-          <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-            <div className="text-sm text-muted-foreground">
+        <div className="border-t-4 border-foreground pt-8">
+          <div className="flex flex-col items-center justify-between gap-6 md:flex-row font-black uppercase tracking-wider text-xs md:text-sm">
+            <div className="bg-foreground text-background px-3 py-1.5 border-2 border-foreground">
               <span>
-                &copy; {currentYear} {displayName}. All rights reserved.
+                &copy; {currentYear} {displayName}. ALL RIGHTS RESERVED.
               </span>
             </div>
 
-            <div className="flex items-center gap-1 text-sm text-muted-foreground">
-              <span>Made with Next.js & Tailwind CSS</span>
+            <div className="flex items-center gap-2 border-2 border-foreground bg-primary text-primary-foreground px-3 py-1.5 shadow-[3px_3px_0px_0px_hsl(var(--foreground))]">
+              <span>MADE WITH NEXT.JS & TAILWIND CSS</span>
             </div>
           </div>
         </div>

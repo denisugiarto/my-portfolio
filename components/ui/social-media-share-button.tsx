@@ -7,7 +7,7 @@ function SocialMediaShareButton({ link, text }: SocialMediaShareButtonProps) {
   return (
     <div className="sharing-buttons flex flex-wrap">
       <a
-        className="ease mb-1 mr-1 inline-flex items-center rounded border-2 border-sky-600 bg-sky-600 p-1 text-white transition duration-200 hover:border-sky-700 hover:bg-sky-700"
+        className="ease mb-1 mr-1 inline-flex items-center rounded-none border-2 border-sky-600 bg-sky-600 p-1 text-white transition duration-200 hover:border-sky-700 hover:bg-sky-700"
         target="_blank"
         rel="noopener"
         href={`https://facebook.com/sharer/sharer.php?u=${link}`}
@@ -26,7 +26,7 @@ function SocialMediaShareButton({ link, text }: SocialMediaShareButtonProps) {
         </svg>
       </a>
       <a
-        className="ease mb-1 mr-1 inline-flex items-center rounded border-2 border-sky-600 bg-sky-600 p-1 text-white transition duration-200 hover:border-sky-700 hover:bg-sky-700"
+        className="ease mb-1 mr-1 inline-flex items-center rounded-none border-2 border-sky-600 bg-sky-600 p-1 text-white transition duration-200 hover:border-sky-700 hover:bg-sky-700"
         target="_blank"
         rel="noopener"
         href={`https://twitter.com/intent/tweet?url=${link}&amp;text=${text}`}
@@ -45,7 +45,7 @@ function SocialMediaShareButton({ link, text }: SocialMediaShareButtonProps) {
         </svg>
       </a>
       <a
-        className="ease mb-1 mr-1 inline-flex items-center rounded border-2 border-sky-600 bg-sky-600 p-1 text-white transition duration-200 hover:border-sky-700 hover:bg-sky-700"
+        className="ease mb-1 mr-1 inline-flex items-center rounded-none border-2 border-sky-600 bg-sky-600 p-1 text-white transition duration-200 hover:border-sky-700 hover:bg-sky-700"
         target="_blank"
         rel="noopener"
         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Flocalhost%3A3000%2Fblog%2Flevel-up-your-git-security-verified-commits-with-kleopatra-5147&amp;title=halo&amp;summary=halo&amp;source=http%3A%2F%2Flocalhost%3A3000%2Fblog%2Flevel-up-your-git-security-verified-commits-with-kleopatra-5147"
@@ -64,7 +64,7 @@ function SocialMediaShareButton({ link, text }: SocialMediaShareButtonProps) {
         </svg>
       </a>
       <a
-        className="ease mb-1 mr-1 inline-flex items-center rounded border-2 border-sky-600 bg-sky-600 p-1 text-white transition duration-200 hover:border-sky-700 hover:bg-sky-700"
+        className="ease mb-1 mr-1 inline-flex items-center rounded-none border-2 border-sky-600 bg-sky-600 p-1 text-white transition duration-200 hover:border-sky-700 hover:bg-sky-700"
         target="_blank"
         rel="noopener"
         href="https://www.tumblr.com/widgets/share/tool?posttype=link&amp;title=halo&amp;caption=halo&amp;content=http%3A%2F%2Flocalhost%3A3000%2Fblog%2Flevel-up-your-git-security-verified-commits-with-kleopatra-5147&amp;canonicalUrl=http%3A%2F%2Flocalhost%3A3000%2Fblog%2Flevel-up-your-git-security-verified-commits-with-kleopatra-5147&amp;shareSource=tumblr_share_button"
@@ -83,7 +83,7 @@ function SocialMediaShareButton({ link, text }: SocialMediaShareButtonProps) {
         </svg>
       </a>
       <a
-        className="ease mb-1 mr-1 inline-flex items-center rounded border-2 border-sky-600 bg-sky-600 p-1 text-white transition duration-200 hover:border-sky-700 hover:bg-sky-700"
+        className="ease mb-1 mr-1 inline-flex items-center rounded-none border-2 border-sky-600 bg-sky-600 p-1 text-white transition duration-200 hover:border-sky-700 hover:bg-sky-700"
         target="_blank"
         rel="noopener"
         href="https://wa.me/?text=halo%20http%3A%2F%2Flocalhost%3A3000%2Fblog%2Flevel-up-your-git-security-verified-commits-with-kleopatra-5147"
@@ -102,7 +102,7 @@ function SocialMediaShareButton({ link, text }: SocialMediaShareButtonProps) {
         </svg>
       </a>
       <a
-        className="ease mb-1 mr-1 inline-flex items-center rounded border-2 border-sky-600 bg-sky-600 p-1 text-white transition duration-200 hover:border-sky-700 hover:bg-sky-700"
+        className="ease mb-1 mr-1 inline-flex items-center rounded-none border-2 border-sky-600 bg-sky-600 p-1 text-white transition duration-200 hover:border-sky-700 hover:bg-sky-700"
         target="_blank"
         rel="noopener"
         href="https://telegram.me/share/url?text=halo&amp;url=http%3A%2F%2Flocalhost%3A3000%2Fblog%2Flevel-up-your-git-security-verified-commits-with-kleopatra-5147"
@@ -121,7 +121,7 @@ function SocialMediaShareButton({ link, text }: SocialMediaShareButtonProps) {
         </svg>
       </a>
       <a
-        className="ease mb-1 mr-1 inline-flex items-center rounded border-2 border-sky-600 bg-sky-600 p-1 text-white transition duration-200 hover:border-sky-700 hover:bg-sky-700"
+        className="ease mb-1 mr-1 inline-flex items-center rounded-none border-2 border-sky-600 bg-sky-600 p-1 text-white transition duration-200 hover:border-sky-700 hover:bg-sky-700"
         target="_blank"
         rel="noopener"
         href="mailto:?subject=halo&amp;body=http%3A%2F%2Flocalhost%3A3000%2Fblog%2Flevel-up-your-git-security-verified-commits-with-kleopatra-5147"
