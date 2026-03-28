@@ -118,7 +118,7 @@ export default function ContactForm() {
           MESSAGE SENT!
         </h3>
         <p className="mb-10 text-xl font-bold leading-relaxed text-success-foreground text-center max-w-lg mx-auto bg-background/20 p-4 border-2 border-foreground">
-          THANK YOU FOR REACHING OUT. I'LL GET BACK TO YOU WITHIN 24 HOURS.
+          THANK YOU FOR REACHING OUT. I&apos;LL GET BACK TO YOU WITHIN 24 HOURS.
         </p>
         <div className="flex justify-center">
           <Button
