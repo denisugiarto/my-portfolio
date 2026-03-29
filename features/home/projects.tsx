@@ -51,16 +51,16 @@ export default function Projects({ projects }: ProjectsProps) {
   return (
     <ProjectsAnimations>
       <AnimatedProjectSection>
-        <div className="mb-10 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+        <div className="mb-6 flex flex-col gap-2 md:mb-10 md:flex-row md:items-end md:justify-between md:gap-5">
           <div>
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.26em] text-amber-700 dark:text-amber-300">
+            <p className="mb-1 text-xs font-bold uppercase tracking-widest text-amber-700 dark:text-amber-300 md:mb-3">
               Selected work
             </p>
-            <h2 className="font-title text-4xl font-bold tracking-tight text-foreground">
+            <h2 className="font-title text-2xl font-black uppercase tracking-tight text-foreground md:text-4xl">
               Projects with a product-first lens
             </h2>
           </div>
-          <p className="max-w-2xl text-sm leading-7 text-muted-foreground md:text-base">
+          <p className="mt-1 max-w-2xl text-sm font-bold leading-relaxed text-foreground/80 md:mt-0 md:text-base md:leading-7">
             A few builds that balance clean engineering, strong UX, and the kind
             of polish people actually remember.
           </p>

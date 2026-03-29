@@ -25,7 +25,7 @@ export default function ProjectCard({
 
   return (
     <m.div
-      className="group overflow-hidden rounded-none border-4 border-foreground bg-card shadow-[8px_8px_0px_0px_hsl(var(--foreground))] transition-none hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-[4px_4px_0px_0px_hsl(var(--foreground))]"
+      className="group overflow-hidden rounded-lg border-[3px] border-foreground bg-card shadow-[4px_4px_0px_0px_hsl(var(--foreground))] transition-all duration-150 hover:-translate-x-[4px] hover:-translate-y-[4px] hover:shadow-[8px_8px_0px_0px_hsl(var(--foreground))]"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{

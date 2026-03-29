@@ -18,24 +18,24 @@
 
 | Role | Hex | CSS Variable |
 |------|-----|--------------|
-| Primary | `#0F172A` | `--color-primary` |
-| Secondary | `#334155` | `--color-secondary` |
-| CTA/Accent | `#0369A1` | `--color-cta` |
-| Background | `#F8FAFC` | `--color-background` |
-| Text | `#020617` | `--color-text` |
+| Primary | `#000000` | `--color-primary` |
+| Secondary | `#FFFFFF` | `--color-secondary` |
+| CTA/Accent | `#FF3366` | `--color-cta` |
+| Background | `#FFD260` | `--color-background` |
+| Text | `#000000` | `--color-text` |
 
-**Color Notes:** High contrast navy + blue
+**Color Notes:** High contrast black, white, bright yellow background, and vibrant pink accent.
 
 ### Typography
 
 - **Heading Font:** Archivo
 - **Body Font:** Space Grotesk
-- **Mood:** minimal, portfolio, designer, creative, clean, artistic
-- **Google Fonts:** [Archivo + Space Grotesk](https://fonts.google.com/share?selection.family=Archivo:wght@300;400;500;600;700|Space+Grotesk:wght@300;400;500;600;700)
+- **Mood:** modern, playful, bold, neo-brutalist, striking, clean but aggressive
+- **Google Fonts:** [Archivo + Space Grotesk](https://fonts.google.com/share?selection.family=Archivo:wght@300;400;500;600;700;800;900|Space+Grotesk:wght@300;400;500;600;700)
 
 **CSS Import:**
 ```css
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 ```
 
 ### Spacing Variables
@@ -50,14 +50,14 @@
 | `--space-2xl` | `48px` / `3rem` | Section margins |
 | `--space-3xl` | `64px` / `4rem` | Hero padding |
 
-### Shadow Depths
+### Shadow Depths (Neo-Brutalist Hard Shadows)
 
 | Level | Value | Usage |
 |-------|-------|-------|
-| `--shadow-sm` | `0 1px 2px rgba(0,0,0,0.05)` | Subtle lift |
-| `--shadow-md` | `0 4px 6px rgba(0,0,0,0.1)` | Cards, buttons |
-| `--shadow-lg` | `0 10px 15px rgba(0,0,0,0.1)` | Modals, dropdowns |
-| `--shadow-xl` | `0 20px 25px rgba(0,0,0,0.15)` | Hero images, featured cards |
+| `--shadow-sm` | `2px 2px 0px rgba(0,0,0,1)` | Tags, small buttons, inputs |
+| `--shadow-md` | `4px 4px 0px rgba(0,0,0,1)` | Cards, primary buttons |
+| `--shadow-lg` | `8px 8px 0px rgba(0,0,0,1)` | Modals, dropdowns, featured cards |
+| `--shadow-xl` | `12px 12px 0px rgba(0,0,0,1)` | Hero images, large interactive areas |
 
 ---
 
@@ -68,30 +68,50 @@
 ```css
 /* Primary Button */
 .btn-primary {
-  background: #0369A1;
-  color: white;
+  background: var(--color-cta);
+  color: #000000;
   padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: all 200ms ease;
+  border-radius: 4px;
+  border: 3px solid #000000;
+  font-weight: 800;
+  box-shadow: var(--shadow-md);
+  transition: all 150ms ease;
   cursor: pointer;
+  text-transform: uppercase;
 }
 
 .btn-primary:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px rgba(0,0,0,1);
+}
+
+.btn-primary:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0px 0px 0px rgba(0,0,0,1);
 }
 
 /* Secondary Button */
 .btn-secondary {
-  background: transparent;
-  color: #0F172A;
-  border: 2px solid #0F172A;
+  background: var(--color-secondary);
+  color: var(--color-text);
+  border: 3px solid #000000;
   padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: all 200ms ease;
+  border-radius: 4px;
+  font-weight: 800;
+  box-shadow: var(--shadow-sm);
+  transition: all 150ms ease;
   cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background: #E2E8F0;
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0px rgba(0,0,0,1);
+}
+
+.btn-secondary:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px rgba(0,0,0,1);
 }
 ```
 
@@ -99,17 +119,18 @@
 
 ```css
 .card {
-  background: #F8FAFC;
-  border-radius: 12px;
+  background: var(--color-secondary);
+  border: 3px solid #000000;
+  border-radius: 8px;
   padding: 24px;
   box-shadow: var(--shadow-md);
-  transition: all 200ms ease;
+  transition: all 150ms ease;
   cursor: pointer;
 }
 
 .card:hover {
   box-shadow: var(--shadow-lg);
-  transform: translateY(-2px);
+  transform: translate(-4px, -4px);
 }
 ```
 
@@ -118,16 +139,20 @@
 ```css
 .input {
   padding: 12px 16px;
-  border: 1px solid #E2E8F0;
-  border-radius: 8px;
+  border: 3px solid #000000;
+  border-radius: 4px;
+  background: #FFFFFF;
   font-size: 16px;
-  transition: border-color 200ms ease;
+  font-weight: 500;
+  box-shadow: var(--shadow-sm);
+  transition: all 150ms ease;
+  color: var(--color-text);
 }
 
 .input:focus {
-  border-color: #0F172A;
   outline: none;
-  box-shadow: 0 0 0 3px #0F172A20;
+  box-shadow: var(--shadow-md);
+  transform: translate(-2px, -2px);
 }
 ```
 
@@ -135,13 +160,14 @@
 
 ```css
 .modal-overlay {
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
 }
 
 .modal {
-  background: white;
-  border-radius: 16px;
+  background: var(--color-background);
+  border: 4px solid #000000;
+  border-radius: 12px;
   padding: 32px;
   box-shadow: var(--shadow-xl);
   max-width: 500px;
@@ -153,37 +179,38 @@
 
 ## Style Guidelines
 
-**Style:** Brutalism
+**Style:** Neo-Brutalism
 
-**Keywords:** Raw, unpolished, stark, high contrast, plain text, default fonts, visible borders, asymmetric, anti-design
+**Keywords:** Playful, hard shadows, thick borders, modern, high contrast, vibrant colors, solid shapes, legible typography, visible grids
 
-**Best For:** Design portfolios, artistic projects, counter-culture brands, editorial/media sites, tech blogs
+**Best For:** Developer portfolios, modern agencies, design portfolios, trendy SaaS products, startups
 
-**Key Effects:** No smooth transitions (instant), sharp corners (0px), bold typography (700+), visible grid, large blocks
+**Key Effects:** Hard solid shadows (no blur), thick stroke borders (2-4px), vibrant background colors combined with pitch black elements, hover states that move elements up/left while expanding the shadow, active states that press the element down to remove the shadow.
 
 ### Page Pattern
 
-**Pattern Name:** Portfolio Grid
+**Pattern Name:** Modern Creator Grid
 
-- **Conversion Strategy:**  hover overlay info,  lightbox view, Visuals first. Filter by category. Fast loading essential.
-- **CTA Placement:** Project Card Hover + Footer Contact
-- **Section Order:** 1. Hero (Name/Role), 2. Project Grid (Masonry), 3. About/Philosophy, 4. Contact
+- **Conversion Strategy:** bold immediate visual hierarchy, playful interactive hover states, highly legible call to actions.
+- **CTA Placement:** Sticky Header + Bold Footer block
+- **Section Order:** 1. Hero (Massive Typography & Playful Shapes), 2. Project Grid (Chunky Cards), 3. About/Skills, 4. Contact
 
 ---
 
 ## Anti-Patterns (Do NOT Use)
 
-- ❌ Boring design
+- ❌ Soft blurred shadows (`box-shadow: 0 4px 6px rgba(0,0,0,0.1)`)
+- ❌ Thin, subtle borders (`border: 1px solid #E2E8F0`)
+- ❌ Low contrast gray text on white backgrounds
+- ❌ Overly complex gradients
 - ❌ Hidden work
 
 ### Additional Forbidden Patterns
 
-- ❌ **Emojis as icons** — Use SVG icons (Heroicons, Lucide, Simple Icons)
+- ❌ **Emojis as icons** — Use SVG icons (Heroicons, Lucide, Simple Icons) but consider giving them thick stroke-widths (e.g., 2.5 or 3).
 - ❌ **Missing cursor:pointer** — All clickable elements must have cursor:pointer
-- ❌ **Layout-shifting hovers** — Avoid scale transforms that shift layout
-- ❌ **Low contrast text** — Maintain 4.5:1 minimum contrast ratio
-- ❌ **Instant state changes** — Always use transitions (150-300ms)
-- ❌ **Invisible focus states** — Focus states must be visible for a11y
+- ❌ **Inconsistent border radiuses** — Pick round or sharp for the project and stick to it.
+- ❌ **Invisible focus states** — Focus states must be highly visible and bold.
 
 ---
 
@@ -191,13 +218,16 @@
 
 Before delivering any UI code, verify:
 
-- [ ] No emojis used as icons (use SVG instead)
+- [ ] "Hard" shadows without blur mapped correctly
+- [ ] Borders are thick and highly visible (usually 2px-4px)
+- [ ] Hover effects translate the element (e.g., `-2px, -2px`) and increase shadow appropriately
+- [ ] Active/Click states compress the shadow and translate the element positively
+- [ ] No emojis used as icons (use SVG instead with matching stroke weight)
 - [ ] All icons from consistent icon set (Heroicons/Lucide)
 - [ ] `cursor-pointer` on all clickable elements
-- [ ] Hover states with smooth transitions (150-300ms)
-- [ ] Light mode: text contrast 4.5:1 minimum
+- [ ] Hover states with snappy but visible transitions (e.g. 150ms)
+- [ ] Light mode: text contrast 4.5:1 minimum (Neo-brutalism usually exceeds this easily)
 - [ ] Focus states visible for keyboard navigation
 - [ ] `prefers-reduced-motion` respected
-- [ ] Responsive: 375px, 768px, 1024px, 1440px
-- [ ] No content hidden behind fixed navbars
+- [ ] Mobile Layouts: Adjust padding and shadow offsets for small screens
 - [ ] No horizontal scroll on mobile

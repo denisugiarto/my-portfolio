@@ -4,30 +4,32 @@
 
 @layer base {
   :root {
-    --background: 210 20% 98%;
-    /* #f8fafc equivalent but slightly warmer */
-    --foreground: 222 47% 11%;
-    /* #020617 text */
+    --background: 43 100% 69%;
+    /* #ffd260 */
+    --foreground: 0 0% 0%;
+    /* #000000 text */
 
     --card: 0 0% 100%;
     /* #ffffff */
-    --card-foreground: 222 47% 11%;
+    --card-foreground: 0 0% 0%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover-foreground: 0 0% 0%;
 
-    --primary: 200 98% 39%;
-    /* #0369a1 */
+    --primary: 0 0% 0%;
+    /* #000000 */
     --primary-foreground: 0 0% 100%;
+    /* #ffffff */
 
-    --secondary: 214 32% 91%;
-    /* #e2e8f0 */
-    --secondary-foreground: 222 47% 11%;
+    --secondary: 0 0% 100%;
+    /* #ffffff */
+    --secondary-foreground: 0 0% 0%;
 
-    --muted: 214 32% 91%;
-    --muted-foreground: 215 16% 47%;
+    --muted: 0 0% 90%;
+    --muted-foreground: 0 0% 30%;
 
-    --accent: 200 98% 39%;
+    --accent: 345 100% 60%;
+    /* #ff3366 */
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
@@ -37,56 +39,60 @@
     --success-foreground: 0 0% 100%;
 
     --warning: 38 92% 50%;
-    --warning-foreground: 222 47% 11%;
+    --warning-foreground: 0 0% 0%;
 
-    --border: 222 47% 11%;
+    --border: 0 0% 0%;
     /* Dark, hard borders in light mode */
     --input: 0 0% 100%;
-    --ring: 222 47% 11%;
+    --ring: 0 0% 0%;
 
-    --radius: 0rem;
-    /* Sharp corners for Brutalism */
+    --radius: 0.25rem;
+    /* 4px sharp corners for Brutalism */
   }
 
   .dark {
-    --background: 222 47% 11%;
-    /* #020617 */
-    --foreground: 210 20% 98%;
-    /* #f8fafc */
+    --background: 0 0% 7%;
+    /* #121212 very dark background */
+    --foreground: 0 0% 100%;
+    /* #ffffff (white text, borders, and shadows) */
 
-    --card: 222 47% 8%;
-    /* Slightly darker than background */
-    --card-foreground: 210 20% 98%;
+    --card: 0 0% 0%;
+    /* #000000 pitch black cards */
+    --card-foreground: 0 0% 100%;
 
-    --popover: 222 47% 8%;
-    --popover-foreground: 210 20% 98%;
+    --popover: 0 0% 0%;
+    --popover-foreground: 0 0% 100%;
 
-    --primary: 199 89% 48%;
-    /* #0ea5e9 brighter blue for dark */
-    --primary-foreground: 222 47% 11%;
+    --primary: 43 100% 69%;
+    /* #ffd260 (Yellow from light mode becomes the primary accent/button color) */
+    --primary-foreground: 0 0% 0%;
+    /* #000000 (black text on yellow buttons) */
 
-    --secondary: 215 28% 17%;
-    --secondary-foreground: 210 20% 98%;
+    --secondary: 0 0% 15%;
+    /* #262626 subtle dark blocks */
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 215 28% 17%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
 
-    --accent: 199 89% 48%;
-    --accent-foreground: 222 47% 11%;
+    --accent: 345 100% 60%;
+    /* #ff3366 (neon pink) */
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 62% 30%;
-    --destructive-foreground: 210 20% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
     --success: 142 76% 36%;
     --success-foreground: 0 0% 100%;
 
     --warning: 38 92% 50%;
-    --warning-foreground: 222 47% 11%;
+    --warning-foreground: 0 0% 0%;
 
-    --border: 210 20% 98%;
-    /* Light, hard borders in dark mode */
-    --input: 222 47% 11%;
-    --ring: 210 20% 98%;
+    --border: 0 0% 100%;
+    /* White, hard borders in dark mode */
+    --input: 0 0% 0%;
+    /* Pitch black inputs */
+    --ring: 0 0% 100%;
   }
 }
 

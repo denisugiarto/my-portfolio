@@ -45,7 +45,7 @@ const SearchInput = ({
   return (
     <div className="relative w-full flex-grow md:max-w-sm" role="search">
       <Search
-        className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 transform text-muted-foreground"
+        className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 transform text-foreground stroke-[3] md:left-4 md:h-5 md:w-5"
         aria-hidden="true"
       />
       <Input
@@ -54,7 +54,7 @@ const SearchInput = ({
         onChange={handleChange}
         aria-label="Search"
         aria-describedby="search-help"
-        className="w-full rounded-none border border-border bg-card py-3 pl-10 pr-10 transition-all focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+        className="h-12 w-full rounded-none border-[3px] border-foreground pl-10 pr-10 text-base font-black uppercase tracking-wider transition-none placeholder:font-bold placeholder:normal-case focus-visible:ring-0 md:h-14 md:border-4 md:pl-12 md:pr-12 md:text-lg"
         placeholder="Search..."
         {...props}
       />
@@ -62,10 +62,10 @@ const SearchInput = ({
         <button
           type="button"
           onClick={handleClear}
-          className="absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 transform text-muted-foreground transition-colors hover:text-foreground"
+          className="absolute right-3 top-1/2 flex h-5 w-5 -translate-y-1/2 transform items-center justify-center text-foreground transition-none hover:text-destructive md:right-4"
           aria-label="Clear search"
         >
-          <X className="h-4 w-4" />
+          <X className="h-4 w-4 stroke-[3] md:h-5 md:w-5" />
         </button>
       )}
     </div>

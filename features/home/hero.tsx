@@ -72,7 +72,7 @@ const Hero = ({ heroData }: HeroProps) => {
             {heroData.headline || "Full-Stack Developer"}
           </div>
 
-          <h1 className="mx-auto block max-w-5xl text-5xl font-black uppercase leading-[1.1] tracking-tight text-foreground sm:text-6xl lg:text-7xl xl:text-8xl">
+          <h1 className="mx-auto block max-w-5xl text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black uppercase leading-[1.1] tracking-tight text-foreground">
             {heroData.subheadline || "Building Modern Web Applications"}
           </h1>
 
@@ -88,7 +88,7 @@ const Hero = ({ heroData }: HeroProps) => {
       </AnimatedContent>
 
       <AnimatedContent delay={0.4}>
-        <div className="mb-8 flex flex-col items-center justify-center gap-6 sm:flex-row font-black">
+        <div className="mb-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6 font-black">
           <Link
             href={heroData.primaryCTA?.link || "#projects"}
             onClick={() =>
@@ -98,14 +98,14 @@ const Hero = ({ heroData }: HeroProps) => {
                 value: 1,
               })
             }
-            className="w-3/4 md:w-auto"
+            className="w-full md:w-auto"
           >
             <Button
               size="lg"
-              className="group flex h-16 w-full items-center justify-center gap-3 border-4 border-foreground bg-primary px-8 text-xl font-black uppercase tracking-widest text-primary-foreground shadow-[8px_8px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[12px_12px_0px_0px_hsl(var(--foreground))]"
+              className="group flex h-14 w-full items-center justify-center gap-2 border-[3px] bg-primary px-6 text-base font-black uppercase tracking-widest text-primary-foreground shadow-[6px_6px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_hsl(var(--foreground))] md:h-16 md:gap-3 md:border-4 md:px-8 md:text-xl md:shadow-[8px_8px_0px_0px_hsl(var(--foreground))] md:hover:shadow-[12px_12px_0px_0px_hsl(var(--foreground))]"
             >
               <span>{heroData.primaryCTA?.text || "Hire me"}</span>
-              <ArrowRight className="h-6 w-6 stroke-[3] transition-none group-hover:translate-x-2" />
+              <ArrowRight className="h-5 w-5 stroke-[3] transition-none group-hover:translate-x-2 md:h-6 md:w-6" />
             </Button>
           </Link>
 
@@ -129,11 +129,11 @@ const Hero = ({ heroData }: HeroProps) => {
                   ? "noopener noreferrer"
                   : undefined
               }
-              className="w-3/4 md:w-auto"
+              className="w-full sm:w-auto"
             >
               <Button
                 size="lg"
-                className="group flex h-16 w-full items-center justify-center gap-3 border-4 border-foreground bg-secondary px-8 text-xl font-black uppercase tracking-widest text-foreground shadow-[8px_8px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[12px_12px_0px_0px_hsl(var(--foreground))]"
+                className="group flex h-14 w-full items-center justify-center gap-2 border-[3px] border-foreground bg-secondary px-6 text-base font-black uppercase tracking-widest text-foreground shadow-[6px_6px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_hsl(var(--foreground))] md:h-16 md:gap-3 md:border-4 md:px-8 md:text-xl md:shadow-[8px_8px_0px_0px_hsl(var(--foreground))] md:hover:shadow-[12px_12px_0px_0px_hsl(var(--foreground))]"
               >
                 <span>{heroData.secondaryCTA.text}</span>
               </Button>

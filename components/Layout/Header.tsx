@@ -11,6 +11,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import data from "../../constant/data.json";
 import GitHubStarsWrapper from "../GitHubStarsWrapper";
+import { useIsMobile } from "@/hooks/useIsMobile";
 const ThemeToggle = dynamic(() => import("./ThemeToggle"), { ssr: true });
 
 const navigation = [
@@ -46,6 +47,7 @@ export default function Header({ activeNavbar }: HeaderProps) {
     "bg-background border-b-4 border-foreground shadow-[0_8px_0px_0px_hsl(var(--foreground))] py-1";
   const [scrollY, setScrollY] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
+  const isMobile = useIsMobile(640);
 
   const { data: repoStars, isLoading } = useQuery({
     queryKey: ["github-stars"],
@@ -102,21 +104,7 @@ export default function Header({ activeNavbar }: HeaderProps) {
     >
       <div className="container py-2">
         <div className="relative flex h-16 items-center justify-between">
-          <div className="flex items-center sm:hidden">
-            {/* Mobile menu button*/}
-            <button
-              onClick={mobileMenuToggleHandler}
-              className="inline-flex items-center justify-center rounded-none border-4 border-foreground bg-primary px-3 py-2 text-primary-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))] focus:outline-none"
-            >
-              <span className="sr-only">Open main menu</span>
-              {isOpen ? (
-                <XIcon className="block h-6 w-6 stroke-[3]" aria-hidden="true" />
-              ) : (
-                <MenuIcon className="block h-6 w-6 stroke-[3]" aria-hidden="true" />
-              )}
-            </button>
-          </div>
-          <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+          <div className="flex flex-1 items-center justify-start sm:items-stretch">
             <div className="flex flex-shrink-0 items-center">
               <Link
                 href="/"
@@ -147,7 +135,21 @@ export default function Header({ activeNavbar }: HeaderProps) {
               </div>
             </div>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center sm:hidden">
+            {/* Mobile menu button*/}
+            <button
+              onClick={mobileMenuToggleHandler}
+              className="inline-flex items-center justify-center rounded-none border-4 border-foreground bg-primary px-3 py-2 text-primary-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))] focus:outline-none"
+            >
+              <span className="sr-only">Open main menu</span>
+              {isOpen ? (
+                <XIcon className="block h-6 w-6 stroke-[3]" aria-hidden="true" />
+              ) : (
+                <MenuIcon className="block h-6 w-6 stroke-[3]" aria-hidden="true" />
+              )}
+            </button>
+          </div>
+          <div className="hidden sm:flex items-center gap-4">
             <GitHubStarsWrapper stars={repoStars || 0} loading={isLoading} />
             <ThemeToggle />
           </div>
@@ -163,31 +165,48 @@ export default function Header({ activeNavbar }: HeaderProps) {
       )}
 
       {/* Mobile menu, show/hide based on menu state. */}
-      <div
-        className={cn(
-          isOpen ? "translate-x-0" : "-translate-x-full",
-          "fixed left-0 top-0 z-40 h-screen w-80 border-r-8 border-foreground bg-background shadow-[16px_0_0_0_hsl(var(--foreground))] transition-transform duration-300 ease-out",
-        )}
-      >
-        <div className="flex h-full flex-col justify-center space-y-6 px-8">
-          {navigation.map((item: NavigationItem) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              onClick={() => handleNavClick(item.href)}
-              className={cn(
-                activeNavbar?.toLowerCase() === item.name.toLowerCase()
-                  ? "border-4 border-foreground bg-primary text-primary-foreground shadow-[6px_6px_0px_0px_hsl(var(--foreground))]"
-                  : "border-4 border-foreground bg-card text-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] hover:bg-secondary hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_hsl(var(--foreground))]",
-                "block cursor-pointer rounded-none px-6 py-4 text-center text-xl font-black uppercase tracking-widest transition-none",
-              )}
-              aria-current={item.name ? "page" : undefined}
+
+      {isMobile && (
+        <div
+          className={cn(
+            isOpen ? "translate-x-0" : "-translate-x-full",
+            "fixed left-0 top-0 z-40 h-screen w-full bg-background shadow-[2px_0_0_0_hsl(var(--foreground))] transition-transform duration-300 ease-out",
+          )}
+        >
+          <div className="absolute right-4 top-4 flex items-center sm:hidden pt-2 pl-2">
+            <button
+              onClick={() => setIsOpen(false)}
+              className="inline-flex items-center justify-center rounded-none border-4 border-foreground bg-primary px-3 py-2 text-primary-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))] focus:outline-none"
             >
-              {item.name}
-            </Link>
-          ))}
+              <span className="sr-only">Close main menu</span>
+              <XIcon className="block h-6 w-6 stroke-[3]" aria-hidden="true" />
+            </button>
+          </div>
+          <div className="flex h-full flex-col justify-center space-y-6 px-8">
+            {navigation.map((item: NavigationItem) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                onClick={() => handleNavClick(item.href)}
+                className={cn(
+                  activeNavbar?.toLowerCase() === item.name.toLowerCase()
+                    ? "border-4 border-foreground bg-primary text-primary-foreground shadow-[6px_6px_0px_0px_hsl(var(--foreground))]"
+                    : "border-4 border-foreground bg-card text-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] hover:bg-secondary hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_hsl(var(--foreground))]",
+                  "block cursor-pointer rounded-none px-6 py-4 text-center text-xl font-black uppercase tracking-widest transition-none",
+                )}
+                aria-current={item.name ? "page" : undefined}
+              >
+                {item.name}
+              </Link>
+            ))}
+
+            <div className="pt-6 mt-2 border-t-4 border-foreground flex flex-row items-center justify-center gap-6">
+              <GitHubStarsWrapper stars={repoStars || 0} loading={isLoading} />
+              <ThemeToggle />
+            </div>
+          </div>
         </div>
-      </div>
+      )}
     </header>
   );
 }

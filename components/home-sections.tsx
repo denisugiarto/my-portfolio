@@ -1,5 +1,4 @@
 import { Layout } from "@/components/Layout/Layout";
-import { AuroraBackground } from "@/components/ui/starfall-portfolio-landing";
 import Hero from "@/features/home/hero";
 import Projects from "@/features/home/projects";
 import { HeroSection, Project, AboutSection } from "@/lib/sanity";
@@ -20,7 +19,6 @@ export default function HomeSections({
   return (
     <Layout activeNavbar="Home">
       <div className="relative overflow-hidden">
-        <AuroraBackground />
         <div className="relative z-10">
           <Hero heroData={heroData} />
           {/* <About aboutData={aboutData} /> */}

@@ -22,35 +22,28 @@ const ThemeToggle = () => {
   // Show loading state until mounted to prevent hydration mismatch
   if (!mounted) {
     return (
-      <Button
-        variant="ghost"
-        size="icon"
-        color="primary"
-        className="rounded-none p-1"
+      <button
+        className="inline-flex h-12 w-12 items-center justify-center rounded-none border-[3px] border-foreground bg-background p-1 text-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] transition-none pointer-events-none"
         aria-label="Toggle Theme"
         title="Toggle Theme"
         disabled
       >
-        <div className="h-4 w-4" /> {/* Placeholder to maintain layout */}
-      </Button>
+        <div className="h-5 w-5" /> {/* Placeholder to maintain layout */}
+      </button>
     );
   }
 
   return (
-    <Button
-      variant="ghost"
-      size="icon"
-      color="primary"
+    <button
       onClick={handleThemeToggle}
       className={cn(
-        resolvedTheme === "dark" ? "text-slate-50" : "text-slate-950",
-        "rounded-none p-1",
+        "inline-flex h-12 w-12 items-center justify-center rounded-none border-[3px] border-foreground bg-background text-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-[2px] hover:-translate-y-[2px] hover:bg-primary hover:text-primary-foreground hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
       )}
       aria-label="Toggle Theme"
       title="Toggle Theme"
     >
-      {resolvedTheme === "dark" ? <MoonIcon /> : <Sun />}
-    </Button>
+      {resolvedTheme === "dark" ? <MoonIcon className="h-5 w-5 stroke-[3]" /> : <Sun className="h-5 w-5 stroke-[3]" />}
+    </button>
   );
 };
 

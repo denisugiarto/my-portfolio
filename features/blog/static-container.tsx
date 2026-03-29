@@ -146,10 +146,10 @@ export default function BlogStaticContainer({
       <div className="mb-16">
         <div className="mb-8 flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
           <div className="flex-1">
-            <h1 className="mb-4 inline-block text-5xl font-black uppercase tracking-tight text-foreground md:text-7xl lg:text-8xl border-b-8 border-foreground pb-2">
+            <h1 className="mb-4 inline-block text-4xl font-black uppercase tracking-tight text-foreground md:text-7xl lg:text-8xl border-b-6 md:border-b-8 border-foreground pb-2">
               BLOG
             </h1>
-            <p className="max-w-xl border-l-8 border-primary bg-secondary p-4 text-lg font-bold uppercase leading-relaxed text-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
+            <p className="max-w-xl border-l-4 md:border-l-8 border-primary bg-secondary p-3 md:p-4 text-sm md:text-lg font-bold uppercase leading-relaxed text-foreground shadow-[3px_3px_0px_0px_hsl(var(--foreground))] md:shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
               INSIGHTS, TUTORIALS, AND THOUGHTS ON WEB DEVELOPMENT
             </p>
           </div>
@@ -164,8 +164,8 @@ export default function BlogStaticContainer({
         </div>
 
         {/* Category Filter */}
-        <div className="mb-8 border-4 border-foreground p-4 bg-card shadow-[8px_8px_0px_0px_hsl(var(--foreground))]">
-          <p className="mb-3 text-sm font-black uppercase tracking-widest text-foreground">CATEGORIES</p>
+        <div className="mb-6 border-[3px] md:border-4 border-foreground p-4 bg-card shadow-[4px_4px_0px_0px_hsl(var(--foreground))] md:mb-8 md:p-6 md:shadow-[8px_8px_0px_0px_hsl(var(--foreground))]">
+          <p className="mb-2 md:mb-3 text-xs md:text-sm font-black uppercase tracking-widest text-foreground">CATEGORIES</p>
           <BlogCategoryNav
             categories={categories}
             selectedCategory={selectedCategory}

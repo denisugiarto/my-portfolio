@@ -52,8 +52,8 @@ export default function Footer() {
   const email = siteSettings?.personalInfo?.email;
 
   return (
-    <footer className="mt-16 border-t-4 border-foreground bg-card text-foreground">
-      <div className="container py-12 md:py-16">
+    <footer className="mt-16 border-t-[3px] border-foreground bg-card text-foreground">
+      <div className="container px-8 sm:px-12 md:px-16 lg:px-8 py-12 md:py-16">
         {/* Main Footer Content */}
         <div className="mb-12 grid grid-cols-1 gap-12 md:grid-cols-4 lg:gap-16">
           {/* Brand & Description */}
@@ -61,12 +61,12 @@ export default function Footer() {
             <h3 className="mb-4 text-3xl md:text-5xl font-black uppercase tracking-tight text-foreground">
               {displayName}
             </h3>
-            <p className="mb-6 max-w-md text-lg font-bold leading-relaxed text-foreground border-l-4 border-primary pl-4 bg-secondary p-4 shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
+            <p className="mb-6 max-w-md text-lg font-bold leading-relaxed text-foreground border-[3px] border-primary pl-4 bg-secondary p-4 shadow-[4px_4px_0px_0px_hsl(var(--foreground))] rounded">
               {description}
             </p>
 
             {/* Location */}
-            <div className="mb-8 flex items-center gap-2 font-bold uppercase tracking-wider text-sm border-2 border-foreground bg-background px-3 py-1 shadow-[2px_2px_0px_0px_hsl(var(--foreground))] w-fit">
+            <div className="mb-8 flex items-center gap-2 font-bold uppercase tracking-wider text-sm border-[3px] border-foreground bg-background px-3 py-1 shadow-[4px_4px_0px_0px_hsl(var(--foreground))] rounded w-fit">
               <MapPin size={18} className="stroke-[3]" />
               <span>
                 BASED IN {location} ({timezone})
@@ -88,7 +88,7 @@ export default function Footer() {
                       rel={
                         link.openInNewTab ? "noopener noreferrer" : undefined
                       }
-                      className="flex h-12 w-12 items-center justify-center border-4 border-foreground bg-background text-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:bg-primary hover:text-primary-foreground hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))]"
+                      className="flex h-12 w-12 items-center justify-center rounded border-[3px] border-foreground bg-background text-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] transition-all duration-150 hover:-translate-x-[2px] hover:-translate-y-[2px] hover:bg-primary hover:text-primary-foreground hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
                       aria-label={link.label || `${link.platform} Profile`}
                       title={link.label || `${link.platform} Profile`}
                     >
@@ -114,7 +114,7 @@ export default function Footer() {
                       href={contacts.github.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex h-12 w-12 items-center justify-center border-4 border-foreground bg-background text-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:bg-primary hover:text-primary-foreground hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))]"
+                      className="flex h-12 w-12 items-center justify-center rounded border-[3px] border-foreground bg-background text-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] transition-all duration-150 hover:-translate-x-[2px] hover:-translate-y-[2px] hover:bg-primary hover:text-primary-foreground hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
                       aria-label="GitHub Profile"
                     >
                       <SiGithub size={24} />
@@ -125,7 +125,7 @@ export default function Footer() {
                       href={contacts.linkedin.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex h-12 w-12 items-center justify-center border-4 border-foreground bg-background text-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:bg-primary hover:text-primary-foreground hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))]"
+                      className="flex h-12 w-12 items-center justify-center rounded border-[3px] border-foreground bg-background text-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] transition-all duration-150 hover:-translate-x-[2px] hover:-translate-y-[2px] hover:bg-primary hover:text-primary-foreground hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
                       aria-label="LinkedIn Profile"
                     >
                       <SiLinkedin size={24} />
@@ -136,7 +136,7 @@ export default function Footer() {
                       href={contacts.upwork.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex h-12 w-12 items-center justify-center border-4 border-foreground bg-background text-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:bg-primary hover:text-primary-foreground hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))]"
+                      className="flex h-12 w-12 items-center justify-center rounded border-[3px] border-foreground bg-background text-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] transition-all duration-150 hover:-translate-x-[2px] hover:-translate-y-[2px] hover:bg-primary hover:text-primary-foreground hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
                       aria-label="Upwork Profile"
                     >
                       <SiUpwork size={24} />
@@ -149,7 +149,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="mb-6 inline-block border-2 border-foreground bg-accent px-3 py-1 text-xs font-black uppercase tracking-widest text-accent-foreground shadow-[3px_3px_0px_0px_hsl(var(--foreground))]">
+            <h4 className="mb-6 inline-block rounded border-[3px] border-foreground bg-accent px-3 py-1 text-xs font-black uppercase tracking-widest text-accent-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
               NAVIGATION
             </h4>
             <nav className="flex flex-col space-y-3 font-black text-lg uppercase tracking-wider">
@@ -182,7 +182,7 @@ export default function Footer() {
 
           {/* Contact Information */}
           <div>
-            <h4 className="mb-6 inline-block border-2 border-foreground bg-success px-3 py-1 text-xs font-black uppercase tracking-widest text-success-foreground shadow-[3px_3px_0px_0px_hsl(var(--foreground))]">
+            <h4 className="mb-6 inline-block rounded border-[3px] border-foreground bg-success px-3 py-1 text-xs font-black uppercase tracking-widest text-success-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
               GET IN TOUCH
             </h4>
             <div className="flex flex-col space-y-4 font-bold text-base">
@@ -217,13 +217,13 @@ export default function Footer() {
               </Link>
 
               {/* Services */}
-              <div className="mt-8 border-t-4 border-foreground pt-6">
-                <p className="mb-3 inline-block bg-muted px-2 py-1 text-xs font-black uppercase tracking-widest text-foreground border-2 border-foreground shadow-[2px_2px_0px_0px_hsl(var(--foreground))]">
+              <div className="mt-8 border-t-[3px] border-foreground pt-6">
+                <p className="mb-3 inline-block rounded bg-muted px-2 py-1 text-xs font-black uppercase tracking-widest text-foreground border-[3px] border-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
                   SERVICES
                 </p>
                 <div className="flex flex-col gap-2 uppercase tracking-wide font-black text-sm">
-                  <p className="border-l-4 border-foreground bg-background px-2 py-1">WEB DEVELOPMENT • MOBILE APPS</p>
-                  <p className="border-l-4 border-foreground bg-background px-2 py-1">UI/UX • TECHNICAL CONSULTING</p>
+                  <p className="border-[3px] rounded border-foreground bg-background px-2 py-1">WEB DEVELOPMENT • MOBILE APPS</p>
+                  <p className="border-[3px] rounded border-foreground bg-background px-2 py-1">UI/UX • TECHNICAL CONSULTING</p>
                 </div>
               </div>
             </div>
@@ -231,15 +231,15 @@ export default function Footer() {
         </div>
 
         {/* Footer Bottom */}
-        <div className="border-t-4 border-foreground pt-8">
+        <div className="border-t-[3px] border-foreground pt-8">
           <div className="flex flex-col items-center justify-between gap-6 md:flex-row font-black uppercase tracking-wider text-xs md:text-sm">
-            <div className="bg-foreground text-background px-3 py-1.5 border-2 border-foreground">
+            <div className="bg-foreground rounded text-background px-3 py-1.5 border-[3px] border-foreground">
               <span>
                 &copy; {currentYear} {displayName}. ALL RIGHTS RESERVED.
               </span>
             </div>
 
-            <div className="flex items-center gap-2 border-2 border-foreground bg-primary text-primary-foreground px-3 py-1.5 shadow-[3px_3px_0px_0px_hsl(var(--foreground))]">
+            <div className="flex rounded items-center gap-2 border-[3px] border-foreground bg-primary text-primary-foreground px-3 py-1.5 shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
               <span>MADE WITH NEXT.JS & TAILWIND CSS</span>
             </div>
           </div>

@@ -40,32 +40,32 @@ export default async function ProjectsPage() {
 
         <div className="container relative z-10">
           <div className="mb-2 text-center">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-none bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
-              <span className="h-2 w-2 animate-pulse rounded-none bg-primary"></span>
+            <div className="mb-4 inline-flex items-center gap-2 border-[3px] border-foreground bg-primary px-3 py-1 text-xs font-black uppercase tracking-widest text-primary-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] md:mb-6 md:px-4 md:py-2 md:text-sm">
+              <span className="h-2.5 w-2.5 animate-pulse border-2 border-foreground bg-success"></span>
               Portfolio Showcase
             </div>
 
-            <h1 className="mb-6 text-4xl font-bold leading-tight text-foreground md:text-5xl lg:text-6xl">
-              My <span className="text-primary">Projects</span>
+            <h1 className="mb-4 text-4xl font-black uppercase tracking-tight text-foreground md:mb-6 md:text-5xl lg:text-7xl">
+              My <span className="inline-block bg-primary px-2 text-primary-foreground border-[3px] border-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">Projects</span>
             </h1>
 
-            <p className="mx-auto max-w-3xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+            <p className="mx-auto max-w-3xl text-sm font-bold leading-relaxed text-foreground/80 md:text-lg md:leading-relaxed">
               A curated collection of web applications, mobile apps, and
               software solutions I&apos;ve crafted. Each project represents a
               unique challenge and showcases different technologies and
               methodologies.
             </p>
 
-            <div className="mt-4 flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground md:gap-8">
-              <div className="flex items-center gap-2">
-                <div className="h-3 w-3 rounded-none bg-green-500"></div>
-                <span className="whitespace-nowrap">
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-xs font-black uppercase md:mt-8 md:gap-6 md:text-sm">
+              <div className="flex items-center gap-2 border-[3px] border-foreground bg-background px-3 py-1.5 shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
+                <div className="h-3.5 w-3.5 border-2 border-foreground bg-success"></div>
+                <span className="whitespace-nowrap text-foreground">
                   {projects.length} Projects
                 </span>
               </div>
-              <div className="flex items-center gap-2">
-                <div className="h-3 w-3 rounded-none bg-purple-500"></div>
-                <span className="whitespace-nowrap">
+              <div className="flex items-center gap-2 border-[3px] border-foreground bg-background px-3 py-1.5 shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
+                <div className="h-3.5 w-3.5 border-2 border-foreground bg-accent"></div>
+                <span className="whitespace-nowrap text-foreground">
                   {
                     new Set(
                       projects.flatMap(

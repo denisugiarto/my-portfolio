@@ -28,7 +28,7 @@ export default function BlogSection() {
     return (
       <section className="relative overflow-hidden py-20 lg:py-28">
         <div className="container relative z-10">
-          <h2 className="font-title text-4xl font-bold text-foreground">
+          <h2 className="font-title text-3xl md:text-4xl font-bold text-foreground">
             Notes from the build process
           </h2>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -168,7 +168,7 @@ export default function BlogSection() {
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.26em] text-amber-700 dark:text-amber-300">
               Writing
             </p>
-            <h2 className="font-title text-4xl font-bold tracking-tight text-foreground">
+            <h2 className="font-title text-3xl md:text-4xl font-bold tracking-tight text-foreground">
               Notes from the build process
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
@@ -181,7 +181,7 @@ export default function BlogSection() {
             {featuredBlogs?.map((blog, index) => (
               <m.article
                 key={blog._id}
-                className="group overflow-hidden rounded-none border border-border/60 bg-background/80 shadow-[0_20px_70px_rgba(15,23,42,0.1)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_28px_90px_rgba(15,23,42,0.14)]"
+                className="group overflow-hidden rounded-lg border-[3px] border-foreground bg-card shadow-[4px_4px_0px_0px_hsl(var(--foreground))] transition-all duration-150 hover:-translate-x-[4px] hover:-translate-y-[4px] hover:shadow-[8px_8px_0px_0px_hsl(var(--foreground))]"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -267,10 +267,10 @@ export default function BlogSection() {
           <div className="text-center">
             <Link
               href="/blog"
-              className="group inline-flex items-center gap-2 rounded-none border border-border/70 bg-background/75 px-8 py-4 font-semibold text-foreground shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/30 hover:text-primary hover:shadow-lg"
+              className="group inline-flex items-center gap-2 rounded border-[3px] border-foreground bg-primary text-primary-foreground px-8 py-4 font-bold uppercase tracking-wider shadow-[4px_4px_0px_0px_hsl(var(--foreground))] transition-all duration-150 hover:-translate-y-[2px] hover:-translate-x-[2px] hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))] active:translate-y-[2px] active:translate-x-[2px] active:shadow-none"
             >
               View All Articles
-              <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+              <ArrowRight className="h-4 w-4 transition-none group-hover:translate-x-1" />
             </Link>
           </div>
         </m.div>

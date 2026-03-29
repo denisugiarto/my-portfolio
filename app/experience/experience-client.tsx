@@ -96,19 +96,16 @@ const ExperienceClient = () => {
       <section className="relative px-4 pb-16 sm:px-6 lg:px-8">
         <div className="container relative z-10">
           <div className="mx-auto max-w-5xl">
-            <div className="mb-10 rounded-none border-4 border-foreground bg-secondary px-6 py-10 shadow-[8px_8px_0px_0px_hsl(var(--foreground))] sm:px-10">
+            <div className="mb-8 md:mb-10 rounded-none border-[3px] md:border-4 border-foreground bg-secondary px-5 py-6 shadow-[4px_4px_0px_0px_hsl(var(--foreground))] sm:px-10 sm:py-10 md:shadow-[8px_8px_0px_0px_hsl(var(--foreground))]">
               <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                 <div>
-                  <p className="inline-block bg-primary text-primary-foreground border-2 border-foreground px-3 py-1 text-xs font-bold uppercase tracking-widest shadow-[2px_2px_0px_0px_hsl(var(--foreground))]">
+                  <p className="inline-block bg-primary text-primary-foreground border-2 border-foreground px-2.5 py-1 text-[10px] md:text-xs font-black uppercase tracking-widest shadow-[2px_2px_0px_0px_hsl(var(--foreground))]">
                     TIMELINE
                   </p>
-                  <h2 className="mt-4 font-title text-3xl font-black uppercase text-foreground">
+                  <h2 className="mt-3 md:mt-4 font-title text-2xl sm:text-3xl md:text-4xl font-black uppercase tracking-tight text-foreground">
                     ROLES, OUTCOMES AND TOOLS
                   </h2>
                 </div>
-                <p className="max-w-xl font-bold text-lg leading-relaxed text-foreground border-l-4 border-foreground pl-4 bg-background p-3 shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
-                  Each role is organized to highlight responsibilities, achievements, and the tech stack execution.
-                </p>
               </div>
             </div>
 
@@ -124,25 +121,26 @@ const ExperienceClient = () => {
                   transition={{ duration: 0.6, delay: index * 0.15 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-100px" }}
-                  className="relative mb-12 last:mb-0"
+                  className="relative mb-8 md:mb-12 last:mb-0"
                 >
                   <div className="flex items-start gap-4 md:gap-8">
                     {/* Timeline Node - Desktop only with logo */}
                     <div className="relative z-10 hidden flex-shrink-0 md:block">
                       <m.div
-                        className="flex h-16 w-16 items-center justify-center rounded-none border-4 border-foreground bg-card shadow-[4px_4px_0px_0px_hsl(var(--foreground))]"
+                        className="flex h-16 w-16 items-center justify-center rounded-none border-[3px] md:border-4 border-foreground bg-card shadow-[4px_4px_0px_0px_hsl(var(--foreground))]"
+
                         whileHover={{ scale: 1.1 }}
                         transition={{ type: "spring", stiffness: 300 }}
                       >
                         {experience.companyLogo ? (
                           <Image
                             src={urlFor(experience.companyLogo)
-                              .width(40)
-                              .height(40)
+                              .width(58)
+                              .height(58)
                               .url()}
-                            className="rounded-none object-cover"
-                            width={40}
-                            height={40}
+                            className="object-cover"
+                            width={58}
+                            height={58}
                             alt={`${experience.company} logo`}
                           />
                         ) : (
@@ -157,14 +155,14 @@ const ExperienceClient = () => {
 
                     {/* Experience Card */}
                     <m.div
-                      className="flex-1 overflow-hidden rounded-none border-4 border-foreground bg-card shadow-[8px_8px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-y-[4px] hover:-translate-x-[4px] hover:shadow-[12px_12px_0px_0px_hsl(var(--foreground))]"
+                      className="flex-1 overflow-hidden rounded-none border-[3px] md:border-4 border-foreground bg-card shadow-[4px_4px_0px_0px_hsl(var(--foreground))] md:shadow-[8px_8px_0px_0px_hsl(var(--foreground))]"
                     >
                       {/* Card Header */}
-                      <div className="p-6 md:p-8 bg-background border-b-4 border-foreground">
+                      <div className="p-4 sm:p-6 md:p-8 bg-background border-b-[3px] md:border-b-4 border-foreground">
                         <div className="flex flex-col gap-4 sm:flex-row xl:items-start xl:justify-between">
-                          <div className="flex flex-1 items-start gap-4">
+                          <div className="flex flex-1 items-start gap-3 md:gap-4">
                             {/* Company Logo - Mobile only */}
-                            <div className="flex-shrink-0 md:hidden border-4 border-foreground bg-card shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
+                            <div className="flex-shrink-0 md:hidden border-[3px] md:border-4 border-foreground bg-card shadow-[3px_3px_0px_0px_hsl(var(--foreground))]">
                               {experience.companyLogo ? (
                                 <Image
                                   src={urlFor(experience.companyLogo)
@@ -185,27 +183,27 @@ const ExperienceClient = () => {
                               )}
                             </div>
 
-                            <div className="min-w-0 flex-1 space-y-3">
+                            <div className="min-w-0 flex-1 space-y-2 md:space-y-3">
                               {experience.currentJob && (
-                                <span className="inline-flex rounded-none border-2 border-foreground bg-success px-2.5 py-1 text-xs font-bold uppercase tracking-wider text-success-foreground shadow-[2px_2px_0px_0px_hsl(var(--foreground))]">
+                                <span className="inline-flex rounded-none border-2 border-foreground bg-success px-2 py-0.5 md:px-2.5 md:py-1 text-[10px] md:text-xs font-black uppercase tracking-wider text-success-foreground shadow-[2px_2px_0px_0px_hsl(var(--foreground))]">
                                   CURRENT ROLE
                                 </span>
                               )}
-                              <h3 className="text-2xl font-black uppercase leading-tight tracking-tight text-foreground md:text-3xl inline-block bg-primary text-primary-foreground px-2 py-1 shadow-[4px_4px_0px_0px_hsl(var(--foreground))] border-2 border-foreground">
+                              <h3 className="text-xl font-black uppercase leading-tight tracking-tight text-foreground sm:text-2xl md:text-3xl inline-block bg-primary text-primary-foreground px-2 py-1 shadow-[3px_3px_0px_0px_hsl(var(--foreground))] md:shadow-[4px_4px_0px_0px_hsl(var(--foreground))] border-[3px] md:border-4 border-foreground">
                                 {experience.jobTitle}
                               </h3>
-                              <div className="flex flex-wrap items-center gap-2 text-lg md:text-xl font-bold uppercase pt-2">
+                              <div className="flex flex-wrap items-center gap-2 text-base md:text-xl font-black uppercase pt-1 md:pt-2">
                                 {experience.companyUrl ? (
                                   <a
                                     href={experience.companyUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="font-black text-foreground underline decoration-primary decoration-4 underline-offset-4 hover:bg-primary hover:text-primary-foreground"
+                                    className="font-black text-foreground underline decoration-primary decoration-[3px] md:decoration-4 underline-offset-4 hover:bg-primary hover:text-primary-foreground"
                                   >
                                     {experience.company}
                                   </a>
                                 ) : (
-                                  <span className="font-black text-foreground underline decoration-foreground decoration-4 underline-offset-4">
+                                  <span className="font-black text-foreground underline decoration-foreground decoration-[3px] md:decoration-4 underline-offset-4">
                                     {experience.company}
                                   </span>
                                 )}
@@ -213,8 +211,8 @@ const ExperienceClient = () => {
                             </div>
                           </div>
 
-                          <div className="flex-shrink-0 xl:text-right mt-4 xl:mt-0">
-                            <p className="inline-block border-2 border-foreground bg-secondary px-4 py-2 text-sm font-black uppercase tracking-wider text-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
+                          <div className="flex-shrink-0 xl:text-right mt-3 xl:mt-0">
+                            <p className="inline-block border-[3px] border-foreground bg-secondary px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm font-black uppercase tracking-wider text-foreground shadow-[3px_3px_0px_0px_hsl(var(--foreground))] md:shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
                               {formatDateRange(
                                 experience.startDate,
                                 experience.endDate,
@@ -224,7 +222,7 @@ const ExperienceClient = () => {
                           </div>
                         </div>
 
-                        <div className="mt-6 flex flex-wrap gap-2 text-sm font-bold uppercase text-foreground">
+                        <div className="mt-4 md:mt-6 flex flex-wrap gap-2 text-xs md:text-sm font-black uppercase text-foreground">
                           <span className="bg-muted border-2 border-foreground px-2 py-1 shadow-[2px_2px_0px_0px_hsl(var(--foreground))]">
                             {calculateDuration(
                               experience.startDate,
@@ -259,28 +257,28 @@ const ExperienceClient = () => {
                           experience.technologies.length > 0) ||
                         (experience.skills &&
                           experience.skills.length > 0)) && (
-                          <div className="px-6 py-6 md:px-8 bg-card">
-                            <div className="space-y-8">
+                          <div className="p-4 sm:p-6 md:p-8 bg-card">
+                            <div className="space-y-6 md:space-y-8">
                               {((experience.description &&
                                 experience.description.length > 0) ||
                                 (experience.achievements &&
                                   experience.achievements.length > 0)) && (
                                   <div>
-                                    <p className="mb-4 text-sm font-black uppercase tracking-widest text-foreground border-b-4 border-foreground inline-block pb-1">
+                                    <p className="mb-3 md:mb-4 text-xs md:text-sm font-black uppercase tracking-widest text-foreground border-b-[3px] md:border-b-4 border-foreground inline-block pb-1">
                                       DETAILS
                                     </p>
-                                    <div className="grid gap-6 mt-2 lg:grid-cols-2">
+                                    <div className="grid gap-4 md:gap-6 mt-2 lg:grid-cols-2">
                                       {experience.description &&
                                         experience.description.length > 0 && (
-                                          <div className="rounded-none border-4 border-foreground bg-background p-6 shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
-                                            <h4 className="mb-4 bg-primary text-primary-foreground px-2 py-1 inline-block text-sm font-black uppercase tracking-wider border-2 border-foreground">
+                                          <div className="rounded-none border-[3px] md:border-4 border-foreground bg-background p-4 md:p-6 shadow-[4px_4px_0px_0px_hsl(var(--foreground))] md:shadow-[6px_6px_0px_0px_hsl(var(--foreground))]">
+                                            <h4 className="mb-3 md:mb-4 bg-primary text-primary-foreground px-2 py-1 inline-block text-xs md:text-sm font-black uppercase tracking-wider border-2 border-foreground">
                                               RESPONSIBILITIES
                                             </h4>
                                             {experience.description.map(
                                               (paragraph, idx) => (
                                                 <ListItem
                                                   key={idx}
-                                                  className="text-base font-semibold leading-relaxed text-foreground"
+                                                  className="text-sm md:text-base font-bold leading-relaxed text-foreground"
                                                 >
                                                   {typeof paragraph === "string"
                                                     ? paragraph
@@ -293,15 +291,15 @@ const ExperienceClient = () => {
 
                                       {experience.achievements &&
                                         experience.achievements.length > 0 && (
-                                          <div className="rounded-none border-4 border-foreground bg-background p-6 shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
-                                            <h4 className="mb-4 bg-accent text-accent-foreground px-2 py-1 inline-block text-sm font-black uppercase tracking-wider border-2 border-foreground">
+                                          <div className="rounded-none border-[3px] md:border-4 border-foreground bg-background p-4 md:p-6 shadow-[4px_4px_0px_0px_hsl(var(--foreground))] md:shadow-[6px_6px_0px_0px_hsl(var(--foreground))]">
+                                            <h4 className="mb-3 md:mb-4 bg-accent text-accent-foreground px-2 py-1 inline-block text-xs md:text-sm font-black uppercase tracking-wider border-2 border-foreground">
                                               ACHIEVEMENTS
                                             </h4>
-                                            <ul className="space-y-4 font-semibold text-foreground leading-relaxed mt-2">
+                                            <ul className="space-y-3 md:space-y-4 font-bold text-foreground leading-relaxed mt-2">
                                               {experience.achievements.map((achievement, idx) => (
                                                 <ListItem
                                                   key={idx}
-                                                  className="text-base font-semibold leading-relaxed text-foreground"
+                                                  className="text-sm md:text-base font-bold leading-relaxed text-foreground"
                                                 >
                                                   {typeof achievement === "string"
                                                     ? achievement
@@ -320,7 +318,7 @@ const ExperienceClient = () => {
                                 (experience.skills &&
                                   experience.skills.length > 0)) && (
                                   <div>
-                                    <p className="mb-4 text-sm font-black uppercase tracking-widest text-foreground border-b-4 border-foreground inline-block pb-1">
+                                    <p className="mb-3 md:mb-4 text-xs md:text-sm font-black uppercase tracking-widest text-foreground border-b-[3px] md:border-b-4 border-foreground inline-block pb-1">
                                       TOOLBOX
                                     </p>
 
@@ -393,33 +391,6 @@ const ExperienceClient = () => {
                   </div>
                 </m.div>
               ))}
-            </div>
-
-            <div className="mt-16 grid gap-6 sm:grid-cols-3">
-              <div className="rounded-none border-4 border-foreground bg-card p-6 shadow-[8px_8px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-y-2 hover:-translate-x-2 hover:shadow-[16px_16px_0px_0px_hsl(var(--foreground))]">
-                <p className="inline-block border-2 border-foreground bg-primary text-primary-foreground px-3 py-1 text-xs font-black uppercase tracking-widest shadow-[2px_2px_0px_0px_hsl(var(--foreground))]">
-                  FOCUS
-                </p>
-                <p className="mt-4 font-bold max-w-sm text-base leading-relaxed text-foreground">
-                  Product-minded front-end engineering and shipping polished UI/UX experiences.
-                </p>
-              </div>
-              <div className="rounded-none border-4 border-foreground bg-card p-6 shadow-[8px_8px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-y-2 hover:-translate-x-2 hover:shadow-[16px_16px_0px_0px_hsl(var(--foreground))]">
-                <p className="inline-block border-2 border-foreground bg-accent text-accent-foreground px-3 py-1 text-xs font-black uppercase tracking-widest shadow-[2px_2px_0px_0px_hsl(var(--foreground))]">
-                  STRENGTH
-                </p>
-                <p className="mt-4 font-bold max-w-sm text-base leading-relaxed text-foreground">
-                  Bridging design, code, and collaboration across fast moving teams seamlessly.
-                </p>
-              </div>
-              <div className="rounded-none border-4 border-foreground bg-card p-6 shadow-[8px_8px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-y-2 hover:-translate-x-2 hover:shadow-[16px_16px_0px_0px_hsl(var(--foreground))]">
-                <p className="inline-block border-2 border-foreground bg-success text-success-foreground px-3 py-1 text-xs font-black uppercase tracking-widest shadow-[2px_2px_0px_0px_hsl(var(--foreground))]">
-                  THROUGHLINE
-                </p>
-                <p className="mt-4 font-bold max-w-sm text-base leading-relaxed text-foreground">
-                  Clear brutalist execution, thoughtful scalable systems, and stark UX at every layer.
-                </p>
-              </div>
             </div>
           </div>
         </div>

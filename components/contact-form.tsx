@@ -135,20 +135,20 @@ export default function ContactForm() {
 
   return (
     <div className="mx-auto w-full">
-      <form onSubmit={handleSubmit} className="space-y-8">
+      <form onSubmit={handleSubmit} className="space-y-6 md:space-y-8">
         {errors.general && (
-          <div className="border-4 border-foreground bg-destructive p-4 shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
-            <p className="text-lg font-black uppercase tracking-wider text-destructive-foreground">
+          <div className="border-4 border-foreground bg-destructive p-3 md:p-4 shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
+            <p className="text-base md:text-lg font-black uppercase tracking-wider text-destructive-foreground">
               {errors.general}
             </p>
           </div>
         )}
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-8">
           <div className="flex flex-col">
             <label
               htmlFor="name"
-              className="mb-3 text-lg font-black uppercase tracking-widest text-foreground"
+              className="mb-2 text-sm md:text-base font-black uppercase tracking-widest text-foreground md:mb-3"
             >
               FULL NAME *
             </label>
@@ -160,7 +160,7 @@ export default function ContactForm() {
               onChange={handleInputChange}
               autoComplete="name"
               className={cn(
-                "w-full rounded-none border-4 bg-background px-4 py-4 text-lg font-bold text-foreground transition-none",
+                "w-full rounded-none border-[3px] md:border-4 bg-background px-3 py-3 md:px-4 md:py-4 text-base md:text-lg font-bold text-foreground transition-none",
                 "placeholder:text-muted-foreground placeholder:font-bold",
                 "focus:outline-none focus:translate-x-1 focus:translate-y-1",
                 errors.name
@@ -181,7 +181,7 @@ export default function ContactForm() {
           <div className="flex flex-col">
             <label
               htmlFor="email"
-              className="mb-3 text-lg font-black uppercase tracking-widest text-foreground"
+              className="mb-2 text-sm md:text-base font-black uppercase tracking-widest text-foreground md:mb-3"
             >
               EMAIL ADDRESS *
             </label>
@@ -194,7 +194,7 @@ export default function ContactForm() {
               inputMode="email"
               autoComplete="email"
               className={cn(
-                "w-full rounded-none border-4 bg-background px-4 py-4 text-lg font-bold text-foreground transition-none",
+                "w-full rounded-none border-[3px] md:border-4 bg-background px-3 py-3 md:px-4 md:py-4 text-base md:text-lg font-bold text-foreground transition-none",
                 "placeholder:text-muted-foreground placeholder:font-bold",
                 "focus:outline-none focus:translate-x-1 focus:translate-y-1",
                 errors.email
@@ -216,18 +216,18 @@ export default function ContactForm() {
         <div className="flex flex-col">
           <label
             htmlFor="message"
-            className="mb-3 text-lg font-black uppercase tracking-widest text-foreground"
+            className="mb-2 text-sm md:text-base font-black uppercase tracking-widest text-foreground md:mb-3"
           >
             YOUR MESSAGE *
           </label>
           <textarea
             id="message"
             name="message"
-            rows={6}
+            rows={5}
             value={formData.message}
             onChange={handleInputChange}
             className={cn(
-              "w-full rounded-none border-4 bg-background px-4 py-4 text-lg font-bold text-foreground transition-none",
+              "w-full rounded-none border-[3px] md:border-4 bg-background px-3 py-3 md:px-4 md:py-4 text-base md:text-lg font-bold text-foreground transition-none",
               "resize-y placeholder:text-muted-foreground placeholder:font-bold",
               "focus:outline-none focus:translate-x-1 focus:translate-y-1",
               errors.message
@@ -248,12 +248,12 @@ export default function ContactForm() {
           </div>
         </div>
 
-        <div className="flex md:justify-end pt-4">
+        <div className="flex md:justify-end pt-2 md:pt-4">
           <Button
             type="submit"
             disabled={status === "submitting"}
             size="lg"
-            className="w-full flex h-16 items-center justify-center gap-3 border-4 border-foreground bg-primary px-8 text-xl font-black uppercase tracking-widest text-primary-foreground shadow-[8px_8px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[12px_12px_0px_0px_hsl(var(--foreground))] disabled:opacity-100 disabled:bg-muted disabled:text-muted-foreground disabled:shadow-none disabled:translate-x-1 disabled:translate-y-1 md:w-auto"
+            className="w-full flex h-14 md:h-16 items-center justify-center gap-3 border-[3px] md:border-4 border-foreground bg-primary px-6 md:px-8 text-base md:text-xl font-black uppercase tracking-widest text-primary-foreground shadow-[6px_6px_0px_0px_hsl(var(--foreground))] md:shadow-[8px_8px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_hsl(var(--foreground))] md:hover:shadow-[12px_12px_0px_0px_hsl(var(--foreground))] disabled:opacity-100 disabled:bg-muted disabled:text-muted-foreground disabled:shadow-none disabled:translate-x-1 disabled:translate-y-1 md:w-auto"
           >
             {status === "submitting" ? (
               <>
