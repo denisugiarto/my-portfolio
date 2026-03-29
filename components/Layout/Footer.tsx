@@ -55,7 +55,7 @@ export default function Footer() {
     <footer className="mt-16 border-t-[3px] border-foreground bg-card text-foreground">
       <div className="container px-8 sm:px-12 md:px-16 lg:px-8 py-12 md:py-16">
         {/* Main Footer Content */}
-        <div className="mb-12 grid grid-cols-1 gap-12 md:grid-cols-4 lg:gap-16">
+        <div className="mb-12 grid grid-cols-1 gap-12 lg:grid-cols-4 lg:gap-16">
           {/* Brand & Description */}
           <div className="md:col-span-2">
             <h3 className="mb-4 text-3xl md:text-5xl font-black uppercase tracking-tight text-foreground">

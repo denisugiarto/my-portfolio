@@ -189,7 +189,7 @@ const ExperienceClient = () => {
                                   CURRENT ROLE
                                 </span>
                               )}
-                              <h3 className="text-xl font-black uppercase leading-tight tracking-tight text-foreground sm:text-2xl md:text-3xl inline-block bg-primary text-primary-foreground px-2 py-1 shadow-[3px_3px_0px_0px_hsl(var(--foreground))] md:shadow-[4px_4px_0px_0px_hsl(var(--foreground))] border-[3px] md:border-4 border-foreground">
+                              <h3 className="text-xl font-black uppercase leading-tight tracking-tight text-foreground sm:text-2xl md:text-3xl inline-block bg-primary px-2 py-1 shadow-[3px_3px_0px_0px_hsl(var(--foreground))] md:shadow-[4px_4px_0px_0px_hsl(var(--foreground))] border-[3px] md:border-4 border-foreground">
                                 {experience.jobTitle}
                               </h3>
                               <div className="flex flex-wrap items-center gap-2 text-base md:text-xl font-black uppercase pt-1 md:pt-2">

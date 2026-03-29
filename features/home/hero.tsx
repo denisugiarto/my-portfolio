@@ -101,8 +101,8 @@ const Hero = ({ heroData }: HeroProps) => {
             className="w-full md:w-auto"
           >
             <Button
-              size="lg"
-              className="group flex h-14 w-full items-center justify-center gap-2 border-[3px] bg-primary px-6 text-base font-black uppercase tracking-widest text-primary-foreground shadow-[6px_6px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_hsl(var(--foreground))] md:h-16 md:gap-3 md:border-4 md:px-8 md:text-xl md:shadow-[8px_8px_0px_0px_hsl(var(--foreground))] md:hover:shadow-[12px_12px_0px_0px_hsl(var(--foreground))]"
+              size="2xl"
+            // className="group flex h-14 w-full items-center justify-center gap-2 border-[3px] bg-primary px-6 text-base font-black uppercase tracking-widest text-primary-foreground shadow-[6px_6px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_hsl(var(--foreground))] md:h-16 md:gap-3 md:border-4 md:px-8 md:text-xl md:shadow-[8px_8px_0px_0px_hsl(var(--foreground))] md:hover:shadow-[12px_12px_0px_0px_hsl(var(--foreground))]"
             >
               <span>{heroData.primaryCTA?.text || "Hire me"}</span>
               <ArrowRight className="h-5 w-5 stroke-[3] transition-none group-hover:translate-x-2 md:h-6 md:w-6" />
@@ -132,8 +132,9 @@ const Hero = ({ heroData }: HeroProps) => {
               className="w-full sm:w-auto"
             >
               <Button
-                size="lg"
-                className="group flex h-14 w-full items-center justify-center gap-2 border-[3px] border-foreground bg-secondary px-6 text-base font-black uppercase tracking-widest text-foreground shadow-[6px_6px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_hsl(var(--foreground))] md:h-16 md:gap-3 md:border-4 md:px-8 md:text-xl md:shadow-[8px_8px_0px_0px_hsl(var(--foreground))] md:hover:shadow-[12px_12px_0px_0px_hsl(var(--foreground))]"
+                size="2xl"
+                color="secondary"
+              // className="group flex h-14 w-full items-center justify-center gap-2 border-[3px] border-foreground bg-secondary px-6 text-base font-black uppercase tracking-widest text-foreground shadow-[6px_6px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_hsl(var(--foreground))] md:h-16 md:gap-3 md:border-4 md:px-8 md:text-xl md:shadow-[8px_8px_0px_0px_hsl(var(--foreground))] md:hover:shadow-[12px_12px_0px_0px_hsl(var(--foreground))]"
               >
                 <span>{heroData.secondaryCTA.text}</span>
               </Button>

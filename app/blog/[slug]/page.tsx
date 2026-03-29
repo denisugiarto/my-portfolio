@@ -100,7 +100,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     return (
       <Layout activeNavbar="Blog" isNavColorBlack>
         <section className="container px-4 pb-16 pt-32 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-5xl">
+          <div className="mx-auto max-w-5xl w-full min-w-0">
             <Link
               href="/blog"
               className="mb-8 inline-flex items-center gap-2 border-4 border-foreground bg-accent px-4 py-2 text-sm font-black uppercase tracking-widest text-accent-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))]"
@@ -109,16 +109,16 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               BACK TO ARTICLES
             </Link>
 
-            <article className="mb-8 w-full border-4 border-foreground bg-card shadow-[6px_6px_0px_0px_hsl(var(--foreground))] md:mb-12 md:shadow-[12px_12px_0px_0px_hsl(var(--foreground))] overflow-hidden">
+            <article className="mb-8 w-full border-4 border-foreground bg-card shadow-[4px_4px_0px_0px_hsl(var(--foreground))] md:mb-12 md:shadow-[12px_12px_0px_0px_hsl(var(--foreground))] overflow-hidden">
               <div className="border-b-4 border-foreground bg-background px-4 py-8 sm:px-8 lg:px-16">
-                <div className="mx-auto max-w-3xl">
+                <div className="mx-auto max-w-3xl w-full min-w-0 overflow-hidden">
                   <BlogHeader article={article} />
                 </div>
               </div>
 
               {article.coverImage && (
                 <div className="border-b-4 border-foreground bg-background px-4 py-4 sm:px-6 lg:px-8">
-                  <div className="relative mx-auto aspect-[16/9] max-w-4xl overflow-hidden border-4 border-foreground bg-muted shadow-[8px_8px_0px_0px_hsl(var(--foreground))]">
+                  <div className="relative mx-auto aspect-[16/9] max-w-4xl overflow-hidden border-4 border-foreground bg-muted shadow-[4px_4px_0px_0px_hsl(var(--foreground))] md:shadow-[8px_8px_0px_0px_hsl(var(--foreground))]">
                     <Image
                       src={urlFor(article.coverImage)
                         .width(1600)
@@ -134,8 +134,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               )}
 
               {article.content && (
-                <div className="bg-background px-6 py-10 sm:px-10 lg:px-16">
-                  <Markdown className="mx-auto max-w-3xl prose prose-xl dark:prose-invert prose-headings:font-black prose-headings:uppercase prose-p:font-bold prose-p:leading-relaxed prose-a:font-black prose-a:text-primary hover:prose-a:underline hover:prose-a:bg-primary hover:prose-a:text-primary-foreground prose-img:border-4 prose-img:border-foreground prose-img:shadow-[8px_8px_0px_0px_hsl(var(--foreground))]">
+                <div className="bg-background px-4 py-8 sm:px-8 lg:px-16 w-full max-w-full overflow-hidden">
+                  <Markdown className="mx-auto max-w-3xl prose prose-base sm:prose-lg md:prose-xl dark:prose-invert break-words prose-headings:font-black prose-headings:uppercase prose-p:font-bold prose-p:leading-relaxed prose-a:font-black prose-a:text-primary hover:prose-a:underline hover:prose-a:bg-primary hover:prose-a:text-primary-foreground prose-img:border-4 prose-img:border-foreground prose-img:max-w-full prose-img:h-auto prose-img:shadow-[4px_4px_0px_0px_hsl(var(--foreground))] md:prose-img:shadow-[8px_8px_0px_0px_hsl(var(--foreground))]">
                     {article.content}
                   </Markdown>
                 </div>

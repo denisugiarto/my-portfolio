@@ -58,7 +58,7 @@ const CustomComponents: Components = {
       <a
         href={href}
         rel={rel}
-        className="font-medium text-primary underline decoration-primary/30 underline-offset-4 transition-colors hover:text-primary/80"
+        className="font-medium text-primary underline decoration-primary/30 underline-offset-4 transition-colors hover:text-primary/80 break-all"
         target={!href?.startsWith("/") ? "_blank" : undefined}
       >
         {children}
@@ -73,7 +73,7 @@ const CustomComponents: Components = {
     if (isInline) {
       return (
         <code
-          className="break-words rounded-none border border-border/60 bg-muted px-1.5 py-1 text-[0.95em] text-foreground"
+          className="break-all rounded-none border border-border/60 bg-muted px-1.5 py-1 text-[0.95em] text-foreground"
           {...props}
         >
           {children}
@@ -144,7 +144,7 @@ export default function Markdown({ children, className = "" }: MarkdownProps) {
   if (!children) return null;
 
   return (
-    <div className={`prose prose-lg max-w-none text-foreground ${className}`}>
+    <div className={`prose max-w-none text-foreground ${className}`}>
       <MarkdownComponent
         remarkPlugins={[remarkGfm]}
         components={CustomComponents}

@@ -51,7 +51,7 @@ export default function Projects({ projects }: ProjectsProps) {
   return (
     <ProjectsAnimations>
       <AnimatedProjectSection>
-        <div className="mb-6 flex flex-col gap-2 md:mb-10 md:flex-row md:items-end md:justify-between md:gap-5">
+        <div className="mb-6 flex flex-col gap-2 md:mb-10">
           <div>
             <p className="mb-1 text-xs font-bold uppercase tracking-widest text-amber-700 dark:text-amber-300 md:mb-3">
               Selected work

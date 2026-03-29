@@ -12,20 +12,14 @@ export default function RelatedArticles({ articles }: RelatedArticlesProps) {
   }
 
   return (
-    <section className="mt-16 border-4 border-foreground bg-card px-6 py-10 shadow-[8px_8px_0px_0px_hsl(var(--foreground))] sm:px-10 lg:px-12">
-      <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between border-b-4 border-foreground pb-6">
-        <div>
-          <p className="inline-block bg-accent px-2 py-1 text-xs font-black uppercase tracking-widest text-accent-foreground border-2 border-foreground shadow-[2px_2px_0px_0px_hsl(var(--foreground))]">
-            CONTINUE READING
-          </p>
-          <h2 className="mt-4 font-title text-3xl md:text-4xl font-black uppercase tracking-widest text-foreground">
-            RELATED ARTICLES
-          </h2>
-        </div>
-        <p className="max-w-xl text-lg font-bold leading-relaxed text-foreground bg-secondary p-4 border-4 border-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
-          A FEW MORE POSTS IN THE SAME ORBIT, PICKED TO KEEP THE READING FLOW
-          GOING.
+    <section className="mt-16 w-full overflow-hidden border-4 border-foreground bg-card px-4 py-8 shadow-[4px_4px_0px_0px_hsl(var(--foreground))] md:shadow-[8px_8px_0px_0px_hsl(var(--foreground))] sm:px-10 lg:px-12">
+      <div className="mb-4 xl:mb-10">
+        <p className="inline-block bg-accent px-2 py-1 text-xs font-black uppercase tracking-widest text-accent-foreground border-2 border-foreground shadow-[2px_2px_0px_0px_hsl(var(--foreground))]">
+          CONTINUE READING
         </p>
+        <h2 className="mt-4 font-title text-3xl md:text-4xl font-black uppercase tracking-widest text-foreground">
+          RELATED ARTICLES
+        </h2>
       </div>
 
       <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
@@ -33,7 +27,7 @@ export default function RelatedArticles({ articles }: RelatedArticlesProps) {
           <Link
             key={article._id}
             href={`/blog/${article.slug.current}`}
-            className="group block border-4 border-foreground bg-background p-6 transition-none hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[12px_12px_0px_0px_hsl(var(--foreground))] shadow-[4px_4px_0px_0px_hsl(var(--foreground))]"
+            className="group block w-full border-4 border-foreground bg-background p-4 sm:p-6 transition-none hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[8px_8px_0px_0px_hsl(var(--foreground))] shadow-[4px_4px_0px_0px_hsl(var(--foreground))] md:hover:shadow-[12px_12px_0px_0px_hsl(var(--foreground))]"
           >
             {article.category && (
               <div className="mb-4 inline-block border-2 border-foreground bg-primary px-2 py-1 text-xs font-black uppercase tracking-widest text-primary-foreground shadow-[2px_2px_0px_0px_hsl(var(--foreground))]">

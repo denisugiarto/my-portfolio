@@ -14,7 +14,7 @@ export default function BlogHeader({ article }: BlogHeaderProps) {
         </div>
       )}
 
-      <h1 className="mb-8 block break-words font-title text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight text-foreground md:leading-[1.1] border-b-8 border-foreground pb-2">
+      <h1 className="mb-8 block break-words font-title text-xl md:text-3xl lg:text-5xl font-black uppercase tracking-tight text-foreground md:leading-[1.1] border-b-8 border-foreground pb-2">
         {article.title}
       </h1>
 
