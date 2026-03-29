@@ -47,7 +47,7 @@ export default function Header({ activeNavbar }: HeaderProps) {
     "bg-background border-b-4 border-foreground shadow-[0_8px_0px_0px_hsl(var(--foreground))] py-1";
   const [scrollY, setScrollY] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
-  const isMobile = useIsMobile(640);
+  const isMobile = useIsMobile(1023);
 
   const { data: repoStars, isLoading } = useQuery({
     queryKey: ["github-stars"],
@@ -114,7 +114,7 @@ export default function Header({ activeNavbar }: HeaderProps) {
                 DS
               </Link>
             </div>
-            <div className="my-auto hidden font-body sm:ml-10 sm:block">
+            <div className="my-auto hidden font-body sm:ml-10 lg:block">
               <div className="flex space-x-4">
                 {navigation.map((item: NavigationItem) => (
                   <Link
@@ -135,7 +135,7 @@ export default function Header({ activeNavbar }: HeaderProps) {
               </div>
             </div>
           </div>
-          <div className="flex items-center sm:hidden">
+          <div className="flex items-center lg:hidden">
             {/* Mobile menu button*/}
             <button
               onClick={mobileMenuToggleHandler}
@@ -149,7 +149,7 @@ export default function Header({ activeNavbar }: HeaderProps) {
               )}
             </button>
           </div>
-          <div className="hidden sm:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-4">
             <GitHubStarsWrapper stars={repoStars || 0} loading={isLoading} />
             <ThemeToggle />
           </div>
@@ -173,7 +173,7 @@ export default function Header({ activeNavbar }: HeaderProps) {
             "fixed left-0 top-0 z-40 h-screen w-full bg-background shadow-[2px_0_0_0_hsl(var(--foreground))] transition-transform duration-300 ease-out",
           )}
         >
-          <div className="absolute right-4 top-4 flex items-center sm:hidden pt-2 pl-2">
+          <div className="absolute right-4 top-4 flex items-center lg:hidden pt-2 pl-2">
             <button
               onClick={() => setIsOpen(false)}
               className="inline-flex items-center justify-center rounded-none border-4 border-foreground bg-primary px-3 py-2 text-primary-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))] focus:outline-none"
