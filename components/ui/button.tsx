@@ -5,11 +5,12 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../../lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded border-[3px] border-foreground text-sm font-bold uppercase tracking-wide ring-offset-background transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 shadow-[4px_4px_0px_0px_hsl(var(--foreground))] hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))] hover:-translate-x-[2px] hover:-translate-y-[2px] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-none border-[3px] border-foreground text-sm font-bold uppercase tracking-wide ring-offset-background transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 shadow-[4px_4px_0px_0px_hsl(var(--foreground))] hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))] hover:-translate-x-[2px] hover:-translate-y-[2px] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none",
   {
     variants: {
       variant: {
         default: "",
+        icon: "normal-case tracking-normal",
         outline: "bg-transparent hover:scale-105",
         ghost: "hover:scale-105",
         link: "underline-offset-4 hover:underline",
@@ -31,13 +32,14 @@ const buttonVariants = cva(
         white: "",
       },
       size: {
-        default: "px-4 py-2.5 text-sm",
-        xs: "px-2.5 py-1.5 text-xs",
-        sm: "px-3.5 py-2 text-sm",
-        lg: "px-5 py-2.5",
-        xl: "px-6 py-4 text-lg",
-        "2xl": "px-8 py-6 text-xl",
+        default: "h-11 px-4 text-sm",
+        xs: "h-8 px-2.5 text-xs",
+        sm: "h-9 px-3.5 text-sm",
+        lg: "h-12 px-5 text-base",
+        xl: "h-14 px-6 text-lg",
+        "2xl": "h-16 px-7 text-lg md:text-xl",
         icon: "h-10 w-10",
+        iconLg: "h-12 w-12",
       },
     },
     compoundVariants: [
@@ -77,6 +79,12 @@ const buttonVariants = cva(
         variant: "default",
         color: "white",
         class: "bg-white text-black border-border hover:bg-white/90",
+      },
+      {
+        variant: "icon",
+        color: "primary",
+        class:
+          "bg-background text-foreground hover:bg-primary hover:text-primary-foreground active:translate-x-[2px] active:translate-y-[2px]",
       },
 
       // Outline variant colors

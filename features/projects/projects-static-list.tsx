@@ -8,6 +8,7 @@ import ProjectCard from "@/components/ui/project-card";
 import EmptyState from "@/components/ui/empty-state";
 import { Select } from "@/components/ui/select";
 import SearchInput from "@/components/ui/search-input";
+import { Button } from "@/components/ui/button";
 
 interface ProjectsStaticListProps {
   initialProjects: Project[];
@@ -16,6 +17,7 @@ interface ProjectsStaticListProps {
 export default function ProjectsStaticList({
   initialProjects,
 }: ProjectsStaticListProps) {
+  const MotionButton = m(Button);
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [sortBy, setSortBy] = useState<"newest" | "oldest" | "title">("newest");
@@ -107,7 +109,8 @@ export default function ProjectsStaticList({
                   </h3>
                   <div className="flex flex-wrap justify-center gap-2 lg:justify-start">
                     {categories.map((category) => (
-                      <m.button
+                      <MotionButton
+                        type="button"
                         key={category}
                         onClick={() =>
                           handleFilterChange(() =>
@@ -127,7 +130,7 @@ export default function ProjectsStaticList({
                           : category
                               ?.replace("-", " ")
                               .replace(/\b\w/g, (l) => l.toUpperCase())}
-                      </m.button>
+                      </MotionButton>
                     ))}
                   </div>
                 </>
@@ -204,12 +207,13 @@ export default function ProjectsStaticList({
                   No projects match your search for &quot;{searchQuery}&quot;.
                   Try adjusting your search terms.
                 </p>
-                <button
+                <Button
+                  type="button"
                   onClick={() => setSearchQuery("")}
                   className="rounded-none bg-primary px-4 py-2 text-primary-foreground transition-colors hover:bg-primary/90"
                 >
                   Clear Search
-                </button>
+                </Button>
               </div>
             ) : (
               <EmptyState variant="category" categoryName={selectedCategory} />

@@ -253,7 +253,7 @@ export default function ContactForm() {
             type="submit"
             disabled={status === "submitting"}
             size="lg"
-            className="w-full flex h-14 md:h-16 items-center justify-center gap-3 border-[3px] md:border-4 border-foreground bg-primary px-6 md:px-8 text-base md:text-xl font-black uppercase tracking-widest text-primary-foreground shadow-[6px_6px_0px_0px_hsl(var(--foreground))] md:shadow-[8px_8px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_hsl(var(--foreground))] md:hover:shadow-[12px_12px_0px_0px_hsl(var(--foreground))] disabled:opacity-100 disabled:bg-muted disabled:text-muted-foreground disabled:shadow-none disabled:translate-x-1 disabled:translate-y-1 md:w-auto"
+            className="w-full"
           >
             {status === "submitting" ? (
               <>
@@ -262,7 +262,7 @@ export default function ContactForm() {
               </>
             ) : (
               <>
-                <Send className="h-6 w-6 stroke-[3]" />
+                <Send className="h-6 w-6 stroke-[3] mr-2" />
                 SEND MESSAGE
               </>
             )}

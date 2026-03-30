@@ -9,6 +9,7 @@ import {
   Layers3,
   Sparkles,
 } from "lucide-react";
+import { Button } from "./button";
 
 interface NavLink {
   label: string;
@@ -279,12 +280,13 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({
               ))}
             </div>
 
-            <button
+            <Button
+              type="button"
               onClick={resume.onClick}
               className="glass-button inter-font rounded-none px-4 py-2 text-sm font-medium text-foreground"
             >
               {resume.label}
-            </button>
+            </Button>
           </div>
         </nav>
 
@@ -309,19 +311,21 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({
             </div>
 
             <div className="mb-16 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <button
+              <Button
+                type="button"
                 onClick={ctaButtons.primary.onClick}
                 className="primary-button min-w-[160px] rounded-none px-6 py-3 text-sm font-medium text-foreground"
               >
                 <span>{ctaButtons.primary.label}</span>
                 <ArrowUpRight className="h-4 w-4" />
-              </button>
-              <button
+              </Button>
+              <Button
+                type="button"
                 onClick={ctaButtons.secondary.onClick}
                 className="glass-button inter-font min-w-[160px] rounded-none px-6 py-3 text-sm font-medium text-foreground"
               >
                 {ctaButtons.secondary.label}
-              </button>
+              </Button>
             </div>
 
             <div className="divider mb-16" />

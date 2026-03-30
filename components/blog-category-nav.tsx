@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils";
 import { BlogCategory } from "@/lib/sanity";
 import * as LucideIcons from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface BlogCategoryNavProps {
   categories: BlogCategory[];
@@ -58,7 +59,8 @@ export default function BlogCategoryNav({
     <div>
       <div className="flex flex-wrap gap-2 md:gap-3">
         {/* All categories button */}
-        <button
+        <Button
+          type="button"
           onClick={() => onCategoryChange(null)}
           className={cn(
             "inline-flex items-center gap-1.5 rounded-none border-[3px] border-foreground px-3 py-1.5 text-xs font-black uppercase tracking-wider transition-none md:gap-2 md:px-4 md:py-2 md:text-sm",
@@ -69,7 +71,7 @@ export default function BlogCategoryNav({
         >
           <LucideIcons.LayoutGrid className="h-4 w-4 md:h-5 md:w-5 stroke-[3]" />
           All
-        </button>
+        </Button>
 
         {/* Category buttons */}
         {categories.map((category) => {
@@ -78,7 +80,8 @@ export default function BlogCategoryNav({
           const style = getCategoryStyle(category, isSelected);
 
           return (
-            <button
+            <Button
+              type="button"
               key={category._id}
               onClick={() => onCategoryChange(category._id)}
               style={style.style}
@@ -92,7 +95,7 @@ export default function BlogCategoryNav({
             >
               {Icon}
               {category.name}
-            </button>
+            </Button>
           );
         })}
       </div>

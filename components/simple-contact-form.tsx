@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ContactFormData } from "@/services/contact";
 import { cn } from "@/lib/utils";
 import { Loader2, Send, CheckCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface FormErrors {
   name?: string;
@@ -110,12 +111,13 @@ export default function SimpleContactForm() {
         <p className="mb-6 text-muted-foreground">
           Thank you for reaching out. I&apos;ll get back to you soon.
         </p>
-        <button
+        <Button
+          type="button"
           onClick={resetForm}
           className="rounded-none bg-primary px-4 py-2 text-primary-foreground transition-colors hover:bg-primary/90"
         >
           Send Another Message
-        </button>
+        </Button>
       </div>
     );
   }
@@ -214,7 +216,7 @@ export default function SimpleContactForm() {
         )}
       </div>
 
-      <button
+      <Button
         type="submit"
         disabled={status === "submitting"}
         className={cn(
@@ -235,7 +237,7 @@ export default function SimpleContactForm() {
             Send Message
           </>
         )}
-      </button>
+      </Button>
 
       <p className="text-center text-sm text-muted-foreground">
         * Required fields

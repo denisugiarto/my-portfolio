@@ -7,6 +7,7 @@ import { fetchProjects } from "@/services/projects";
 import ProjectCard from "@/components/ui/project-card";
 import LoadingState from "@/components/ui/loading-state";
 import EmptyState from "@/components/ui/empty-state";
+import { Button } from "@/components/ui/button";
 
 export default function ProjectsList() {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
@@ -52,7 +53,8 @@ export default function ProjectsList() {
         {categories.length > 2 && (
           <div className="mb-8 flex flex-wrap justify-center gap-3">
             {categories.map((category) => (
-              <button
+              <Button
+                type="button"
                 key={category}
                 onClick={() => setSelectedCategory(category)}
                 className={`rounded-none px-4 py-2 text-sm font-medium transition-all ${
@@ -64,7 +66,7 @@ export default function ProjectsList() {
                 {category === "all"
                   ? "All Projects"
                   : category?.replace("-", " ").toUpperCase()}
-              </button>
+              </Button>
             ))}
           </div>
         )}

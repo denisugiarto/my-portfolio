@@ -3,6 +3,7 @@ import { useDebounce } from "@/hooks/useDebounce";
 import { Search, X } from "lucide-react";
 import React, { useCallback, useEffect, useState } from "react";
 import { Input } from "./input";
+import { Button } from "./button";
 
 type SearchInputProps = {
   onSearch: (query: string) => void;
@@ -45,7 +46,7 @@ const SearchInput = ({
   return (
     <div className="relative w-full flex-grow md:max-w-sm" role="search">
       <Search
-        className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 transform text-foreground stroke-[3] md:left-4 md:h-5 md:w-5"
+        className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 transform text-foreground stroke-[3] md:left-4 md:h-5 md:w-5 z-50"
         aria-hidden="true"
       />
       <Input
@@ -59,14 +60,14 @@ const SearchInput = ({
         {...props}
       />
       {showClearButton && hasQuery && (
-        <button
+        <Button
           type="button"
           onClick={handleClear}
-          className="absolute right-3 top-1/2 flex h-5 w-5 -translate-y-1/2 transform items-center justify-center text-foreground transition-none hover:text-destructive md:right-4"
+          className="absolute right-3 top-1/2 flex h-5 w-5 -translate-y-1/2 transform items-center justify-center border-0 bg-transparent p-0 text-foreground shadow-none transition-none hover:translate-x-0 hover:translate-y-[-50%] hover:text-destructive hover:shadow-none active:translate-x-0 active:translate-y-[-50%] md:right-4"
           aria-label="Clear search"
         >
           <X className="h-4 w-4 stroke-[3] md:h-5 md:w-5" />
-        </button>
+        </Button>
       )}
     </div>
   );

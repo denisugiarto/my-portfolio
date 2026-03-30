@@ -137,9 +137,10 @@ export default function Header({ activeNavbar }: HeaderProps) {
           </div>
           <div className="flex items-center lg:hidden">
             {/* Mobile menu button*/}
-            <button
+            <Button
+              type="button"
               onClick={mobileMenuToggleHandler}
-              className="inline-flex items-center justify-center rounded-none border-4 border-foreground bg-primary px-3 py-2 text-primary-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))] focus:outline-none"
+              className="inline-flex items-center justify-center border-4 border-foreground bg-primary px-3 py-2 text-primary-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))] focus:outline-none"
             >
               <span className="sr-only">Open main menu</span>
               {isOpen ? (
@@ -147,7 +148,7 @@ export default function Header({ activeNavbar }: HeaderProps) {
               ) : (
                 <MenuIcon className="block h-6 w-6 stroke-[3]" aria-hidden="true" />
               )}
-            </button>
+            </Button>
           </div>
           <div className="hidden lg:flex items-center gap-4">
             <GitHubStarsWrapper stars={repoStars || 0} loading={isLoading} />
@@ -174,13 +175,14 @@ export default function Header({ activeNavbar }: HeaderProps) {
           )}
         >
           <div className="absolute right-4 top-4 flex items-center lg:hidden pt-2 pl-2">
-            <button
+            <Button
+              type="button"
               onClick={() => setIsOpen(false)}
-              className="inline-flex items-center justify-center rounded-none border-4 border-foreground bg-primary px-3 py-2 text-primary-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))] focus:outline-none"
+              className="inline-flex items-center justify-center border-4 border-foreground bg-primary px-3 py-2 text-primary-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))] focus:outline-none"
             >
               <span className="sr-only">Close main menu</span>
               <XIcon className="block h-6 w-6 stroke-[3]" aria-hidden="true" />
-            </button>
+            </Button>
           </div>
           <div className="flex h-full flex-col justify-center space-y-6 px-8">
             {navigation.map((item: NavigationItem) => (

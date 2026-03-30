@@ -33,35 +33,35 @@ const Hero = ({ heroData }: HeroProps) => {
 
   const techStack = heroData.technologies?.length
     ? heroData.technologies
-      .map((tech: Technology) => ({
-        icon: getIconComponent(tech.icon),
-        name: tech.name,
-        color: tech.color || "#09090b",
-      }))
-      .filter((tech) => tech.icon)
+        .map((tech: Technology) => ({
+          icon: getIconComponent(tech.icon),
+          name: tech.name,
+          color: tech.color || "#09090b",
+        }))
+        .filter((tech) => tech.icon)
     : [
-      { icon: getIconComponent("SiReact"), name: "React", color: "#60a5fa" },
-      {
-        icon: getIconComponent("SiNextdotjs"),
-        name: "Next.js",
-        color: "#09090b",
-      },
-      {
-        icon: getIconComponent("SiNodedotjs"),
-        name: "Node.js",
-        color: "#059669",
-      },
-      {
-        icon: getIconComponent("SiTypescript"),
-        name: "TypeScript",
-        color: "#2563eb",
-      },
-      {
-        icon: getIconComponent("SiTailwindcss"),
-        name: "TailwindCSS",
-        color: "#0891b2",
-      },
-    ].filter((tech) => tech.icon);
+        { icon: getIconComponent("SiReact"), name: "React", color: "#60a5fa" },
+        {
+          icon: getIconComponent("SiNextdotjs"),
+          name: "Next.js",
+          color: "#09090b",
+        },
+        {
+          icon: getIconComponent("SiNodedotjs"),
+          name: "Node.js",
+          color: "#059669",
+        },
+        {
+          icon: getIconComponent("SiTypescript"),
+          name: "TypeScript",
+          color: "#2563eb",
+        },
+        {
+          icon: getIconComponent("SiTailwindcss"),
+          name: "TailwindCSS",
+          color: "#0891b2",
+        },
+      ].filter((tech) => tech.icon);
 
   return (
     <HeroAnimations>
@@ -72,7 +72,7 @@ const Hero = ({ heroData }: HeroProps) => {
             {heroData.headline || "Full-Stack Developer"}
           </div>
 
-          <h1 className="mx-auto block max-w-5xl text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black uppercase leading-[1.1] tracking-tight text-foreground">
+          <h1 className="mx-auto block max-w-5xl text-3xl font-black uppercase leading-[1.1] tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
             {heroData.subheadline || "Building Modern Web Applications"}
           </h1>
 
@@ -81,14 +81,14 @@ const Hero = ({ heroData }: HeroProps) => {
       </AnimatedText>
 
       <AnimatedContent delay={0.2}>
-        <p className="mx-auto mb-12 mt-8 max-w-3xl text-lg font-bold leading-relaxed text-foreground md:text-xl border-4 border-foreground bg-background p-6 shadow-[8px_8px_0px_0px_hsl(var(--foreground))]">
+        <p className="mx-auto mb-12 mt-8 max-w-3xl border-4 border-foreground bg-background p-6 text-lg font-bold leading-relaxed text-foreground shadow-[8px_8px_0px_0px_hsl(var(--foreground))] md:text-xl">
           {heroData.bio ||
             "I create fast, scalable, and user-friendly web applications using modern technologies. Specializing in React, Next.js, and Node.js with a focus on clean code and great user experiences."}
         </p>
       </AnimatedContent>
 
       <AnimatedContent delay={0.4}>
-        <div className="mb-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6 font-black">
+        <div className="mb-8 flex flex-col items-center justify-center gap-4 font-black sm:flex-row sm:gap-6">
           <Link
             href={heroData.primaryCTA?.link || "#projects"}
             onClick={() =>
@@ -100,10 +100,7 @@ const Hero = ({ heroData }: HeroProps) => {
             }
             className="w-full md:w-auto"
           >
-            <Button
-              size="2xl"
-            // className="group flex h-14 w-full items-center justify-center gap-2 border-[3px] bg-primary px-6 text-base font-black uppercase tracking-widest text-primary-foreground shadow-[6px_6px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_hsl(var(--foreground))] md:h-16 md:gap-3 md:border-4 md:px-8 md:text-xl md:shadow-[8px_8px_0px_0px_hsl(var(--foreground))] md:hover:shadow-[12px_12px_0px_0px_hsl(var(--foreground))]"
-            >
+            <Button size="2xl" className="w-full">
               <span>{heroData.primaryCTA?.text || "Hire me"}</span>
               <ArrowRight className="h-5 w-5 stroke-[3] transition-none group-hover:translate-x-2 md:h-6 md:w-6" />
             </Button>
@@ -131,11 +128,7 @@ const Hero = ({ heroData }: HeroProps) => {
               }
               className="w-full sm:w-auto"
             >
-              <Button
-                size="2xl"
-                color="secondary"
-              // className="group flex h-14 w-full items-center justify-center gap-2 border-[3px] border-foreground bg-secondary px-6 text-base font-black uppercase tracking-widest text-foreground shadow-[6px_6px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_hsl(var(--foreground))] md:h-16 md:gap-3 md:border-4 md:px-8 md:text-xl md:shadow-[8px_8px_0px_0px_hsl(var(--foreground))] md:hover:shadow-[12px_12px_0px_0px_hsl(var(--foreground))]"
-              >
+              <Button size="2xl" color="secondary" className="w-full">
                 <span>{heroData.secondaryCTA.text}</span>
               </Button>
             </Link>

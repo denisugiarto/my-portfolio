@@ -4,6 +4,7 @@ import { urlFor } from "@/lib/sanity";
 import Image from "next/image";
 import { useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface ProjectGalleryProps {
   images: any[];
@@ -76,17 +77,19 @@ export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
         >
           <div className="relative flex max-h-[90vh] max-w-[90vw] flex-col items-center justify-center pt-8">
             {/* Close Button */}
-            <button
+            <Button
+              type="button"
               onClick={closeModal}
               className="absolute -top-16 right-0 z-10 flex h-14 w-14 items-center justify-center border-4 border-background bg-foreground text-background transition-none hover:bg-background hover:text-foreground"
             >
               <X size={36} className="stroke-[3]" />
-            </button>
+            </Button>
 
             {/* Navigation Buttons */}
             {images.length > 1 && (
               <>
-                <button
+                <Button
+                  type="button"
                   onClick={(e) => {
                     e.stopPropagation();
                     prevImage();
@@ -94,8 +97,9 @@ export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
                   className="absolute -left-16 sm:left-4 top-1/2 -translate-y-1/2 z-10 flex h-14 w-14 sm:h-20 sm:w-20 items-center justify-center border-4 border-background bg-foreground text-background hover:bg-background hover:text-foreground hover:-translate-x-[4px]"
                 >
                   <ChevronLeft size={48} className="stroke-[3]" />
-                </button>
-                <button
+                </Button>
+                <Button
+                  type="button"
                   onClick={(e) => {
                     e.stopPropagation();
                     nextImage();
@@ -103,7 +107,7 @@ export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
                   className="absolute -right-16 sm:right-4 top-1/2 -translate-y-1/2 z-10 flex h-14 w-14 sm:h-20 sm:w-20 items-center justify-center border-4 border-background bg-foreground text-background hover:bg-background hover:text-foreground hover:translate-x-[4px]"
                 >
                   <ChevronRight size={48} className="stroke-[3]" />
-                </button>
+                </Button>
               </>
             )}
 

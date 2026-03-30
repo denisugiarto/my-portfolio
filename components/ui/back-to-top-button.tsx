@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils";
 import { ArrowBigUpIcon } from "lucide-react";
 import { useEffect, useState } from "react";
+import { Button } from "./button";
 
 export default function BackToTopButton() {
   const [isVisible, setIsVisible] = useState(false);
@@ -30,7 +31,8 @@ export default function BackToTopButton() {
   };
 
   return (
-    <button
+    <Button
+      type="button"
       onClick={scrollToTop}
       className={cn(
         isVisible ? "opacity-100" : "opacity-0",
@@ -39,6 +41,6 @@ export default function BackToTopButton() {
       aria-label="Back to Top"
     >
       <ArrowBigUpIcon className="h-6 w-6" />
-    </button>
+    </Button>
   );
 }
