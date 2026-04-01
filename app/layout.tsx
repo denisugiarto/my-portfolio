@@ -5,8 +5,8 @@ import type { Metadata } from "next";
 import { Archivo, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({ 
-  subsets: ["latin"], 
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
   variable: "--font-space-grotesk",
   display: "swap",
   preload: true,
@@ -19,7 +19,9 @@ const archivo = Archivo({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://denisugiarto.my.id"),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "https://denisugiarto.my.id",
+  ),
   title: {
     default: "Web Developer: Frontend web developer - Deni Sugiarto",
     template: "%s | Deni Sugiarto",
@@ -76,7 +78,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="anonymous" />
+        <link
+          rel="preconnect"
+          href="https://cdn.sanity.io"
+          crossOrigin="anonymous"
+        />
         <link rel="dns-prefetch" href="https://dmdxpdxy.apicdn.sanity.io" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />

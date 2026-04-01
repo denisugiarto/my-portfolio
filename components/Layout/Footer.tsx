@@ -53,20 +53,20 @@ export default function Footer() {
 
   return (
     <footer className="mt-16 border-t-[3px] border-foreground bg-card text-foreground">
-      <div className="container px-8 sm:px-12 md:px-16 lg:px-8 py-12 md:py-16">
+      <div className="container px-8 py-12 sm:px-12 md:px-16 md:py-16 lg:px-8">
         {/* Main Footer Content */}
         <div className="mb-12 grid grid-cols-1 gap-12 lg:grid-cols-4 lg:gap-16">
           {/* Brand & Description */}
           <div className="md:col-span-2">
-            <h3 className="mb-4 text-3xl md:text-5xl font-black uppercase tracking-tight text-foreground">
+            <h3 className="mb-4 text-3xl font-black uppercase tracking-tight text-foreground md:text-5xl">
               {displayName}
             </h3>
-            <p className="mb-6 max-w-md text-lg font-bold leading-relaxed text-foreground border-[3px] border-primary pl-4 bg-secondary p-4 shadow-[4px_4px_0px_0px_hsl(var(--foreground))] rounded">
+            <p className="mb-6 max-w-md rounded border-[3px] border-primary bg-secondary p-4 pl-4 text-lg font-bold leading-relaxed text-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
               {description}
             </p>
 
             {/* Location */}
-            <div className="mb-8 flex items-center gap-2 font-bold uppercase tracking-wider text-sm border-[3px] border-foreground bg-background px-3 py-1 shadow-[4px_4px_0px_0px_hsl(var(--foreground))] rounded w-fit">
+            <div className="mb-8 flex w-fit items-center gap-2 rounded border-[3px] border-foreground bg-background px-3 py-1 text-sm font-bold uppercase tracking-wider shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
               <MapPin size={18} className="stroke-[3]" />
               <span>
                 BASED IN {location} ({timezone})
@@ -152,28 +152,28 @@ export default function Footer() {
             <h4 className="mb-6 inline-block rounded border-[3px] border-foreground bg-accent px-3 py-1 text-xs font-black uppercase tracking-widest text-accent-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
               NAVIGATION
             </h4>
-            <nav className="flex flex-col space-y-3 font-black text-lg uppercase tracking-wider">
+            <nav className="flex flex-col space-y-3 text-lg font-black uppercase tracking-wider">
               <Link
                 href="/experience"
-                className="w-fit text-foreground decoration-4 underline-offset-4 hover:bg-foreground hover:text-background px-1 transition-none"
+                className="w-fit px-1 text-foreground decoration-4 underline-offset-4 transition-none hover:bg-foreground hover:text-background"
               >
                 Experience
               </Link>
               <Link
                 href="/projects"
-                className="w-fit text-foreground decoration-4 underline-offset-4 hover:bg-foreground hover:text-background px-1 transition-none"
+                className="w-fit px-1 text-foreground decoration-4 underline-offset-4 transition-none hover:bg-foreground hover:text-background"
               >
                 Projects
               </Link>
               <Link
                 href="/blog"
-                className="w-fit text-foreground decoration-4 underline-offset-4 hover:bg-foreground hover:text-background px-1 transition-none"
+                className="w-fit px-1 text-foreground decoration-4 underline-offset-4 transition-none hover:bg-foreground hover:text-background"
               >
                 Blog
               </Link>
               <Link
                 href="/contact"
-                className="w-fit text-foreground decoration-4 underline-offset-4 hover:bg-foreground hover:text-background px-1 transition-none"
+                className="w-fit px-1 text-foreground decoration-4 underline-offset-4 transition-none hover:bg-foreground hover:text-background"
               >
                 Contact
               </Link>
@@ -185,11 +185,11 @@ export default function Footer() {
             <h4 className="mb-6 inline-block rounded border-[3px] border-foreground bg-success px-3 py-1 text-xs font-black uppercase tracking-widest text-success-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
               GET IN TOUCH
             </h4>
-            <div className="flex flex-col space-y-4 font-bold text-base">
+            <div className="flex flex-col space-y-4 text-base font-bold">
               {email && (
                 <a
                   href={`mailto:${email}`}
-                  className="group flex w-fit items-center gap-3 text-foreground hover:bg-primary hover:text-primary-foreground px-2 py-1 transition-none"
+                  className="group flex w-fit items-center gap-3 px-2 py-1 text-foreground transition-none hover:bg-primary hover:text-primary-foreground"
                 >
                   <Mail size={20} className="stroke-[3]" />
                   <span>{email}</span>
@@ -201,7 +201,7 @@ export default function Footer() {
                   href={contacts.whatsapp.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex w-fit items-center gap-3 text-foreground hover:bg-success hover:text-success-foreground px-2 py-1 transition-none"
+                  className="group flex w-fit items-center gap-3 px-2 py-1 text-foreground transition-none hover:bg-success hover:text-success-foreground"
                 >
                   <SiWhatsapp size={20} />
                   <span>{contacts.whatsapp.value}</span>
@@ -210,20 +210,26 @@ export default function Footer() {
 
               <Link
                 href="/contact"
-                className="group flex w-fit items-center gap-3 text-foreground hover:bg-accent hover:text-accent-foreground px-2 py-1 transition-none"
+                className="group flex w-fit items-center gap-3 px-2 py-1 text-foreground transition-none hover:bg-accent hover:text-accent-foreground"
               >
                 <MessageCircle size={20} className="stroke-[3]" />
-                <span className="uppercase tracking-widest font-black">Send Message</span>
+                <span className="font-black uppercase tracking-widest">
+                  Send Message
+                </span>
               </Link>
 
               {/* Services */}
               <div className="mt-8 border-t-[3px] border-foreground pt-6">
-                <p className="mb-3 inline-block rounded bg-muted px-2 py-1 text-xs font-black uppercase tracking-widest text-foreground border-[3px] border-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
+                <p className="mb-3 inline-block rounded border-[3px] border-foreground bg-muted px-2 py-1 text-xs font-black uppercase tracking-widest text-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
                   SERVICES
                 </p>
-                <div className="flex flex-col gap-2 uppercase tracking-wide font-black text-sm">
-                  <p className="border-[3px] rounded border-foreground bg-background px-2 py-1">WEB DEVELOPMENT • MOBILE APPS</p>
-                  <p className="border-[3px] rounded border-foreground bg-background px-2 py-1">UI/UX • TECHNICAL CONSULTING</p>
+                <div className="flex flex-col gap-2 text-sm font-black uppercase tracking-wide">
+                  <p className="rounded border-[3px] border-foreground bg-background px-2 py-1">
+                    WEB DEVELOPMENT • MOBILE APPS
+                  </p>
+                  <p className="rounded border-[3px] border-foreground bg-background px-2 py-1">
+                    UI/UX • TECHNICAL CONSULTING
+                  </p>
                 </div>
               </div>
             </div>
@@ -232,14 +238,14 @@ export default function Footer() {
 
         {/* Footer Bottom */}
         <div className="border-t-[3px] border-foreground pt-8">
-          <div className="flex flex-col items-center justify-between gap-6 md:flex-row font-black uppercase tracking-wider text-xs md:text-sm">
-            <div className="bg-foreground rounded text-background px-3 py-1.5 border-[3px] border-foreground">
+          <div className="flex flex-col items-center justify-between gap-6 text-xs font-black uppercase tracking-wider md:flex-row md:text-sm">
+            <div className="rounded border-[3px] border-foreground bg-foreground px-3 py-1.5 text-background">
               <span>
                 &copy; {currentYear} {displayName}. ALL RIGHTS RESERVED.
               </span>
             </div>
 
-            <div className="flex rounded items-center gap-2 border-[3px] border-foreground bg-primary text-primary-foreground px-3 py-1.5 shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
+            <div className="flex items-center gap-2 rounded border-[3px] border-foreground bg-primary px-3 py-1.5 text-primary-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
               <span>MADE WITH NEXT.JS & TAILWIND CSS</span>
             </div>
           </div>

@@ -58,7 +58,7 @@ const CustomComponents: Components = {
       <a
         href={href}
         rel={rel}
-        className="font-medium text-primary underline decoration-primary/30 underline-offset-4 transition-colors hover:text-primary/80 break-all"
+        className="break-all font-medium text-primary underline decoration-primary/30 underline-offset-4 transition-colors hover:text-primary/80"
         target={!href?.startsWith("/") ? "_blank" : undefined}
       >
         {children}

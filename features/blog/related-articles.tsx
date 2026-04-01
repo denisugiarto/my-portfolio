@@ -12,12 +12,12 @@ export default function RelatedArticles({ articles }: RelatedArticlesProps) {
   }
 
   return (
-    <section className="mt-16 w-full overflow-hidden border-4 border-foreground bg-card px-4 py-8 shadow-[4px_4px_0px_0px_hsl(var(--foreground))] md:shadow-[8px_8px_0px_0px_hsl(var(--foreground))] sm:px-10 lg:px-12">
+    <section className="mt-16 w-full overflow-hidden border-4 border-foreground bg-card px-4 py-8 shadow-[4px_4px_0px_0px_hsl(var(--foreground))] sm:px-10 md:shadow-[8px_8px_0px_0px_hsl(var(--foreground))] lg:px-12">
       <div className="mb-4 xl:mb-10">
-        <p className="inline-block bg-accent px-2 py-1 text-xs font-black uppercase tracking-widest text-accent-foreground border-2 border-foreground shadow-[2px_2px_0px_0px_hsl(var(--foreground))]">
+        <p className="inline-block border-2 border-foreground bg-accent px-2 py-1 text-xs font-black uppercase tracking-widest text-accent-foreground shadow-[2px_2px_0px_0px_hsl(var(--foreground))]">
           CONTINUE READING
         </p>
-        <h2 className="mt-4 font-title text-3xl md:text-4xl font-black uppercase tracking-widest text-foreground">
+        <h2 className="mt-4 font-title text-3xl font-black uppercase tracking-widest text-foreground md:text-4xl">
           RELATED ARTICLES
         </h2>
       </div>
@@ -27,7 +27,7 @@ export default function RelatedArticles({ articles }: RelatedArticlesProps) {
           <Link
             key={article._id}
             href={`/blog/${article.slug.current}`}
-            className="group block w-full border-4 border-foreground bg-background p-4 sm:p-6 transition-none hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[8px_8px_0px_0px_hsl(var(--foreground))] shadow-[4px_4px_0px_0px_hsl(var(--foreground))] md:hover:shadow-[12px_12px_0px_0px_hsl(var(--foreground))]"
+            className="group block w-full border-4 border-foreground bg-background p-4 shadow-[4px_4px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_hsl(var(--foreground))] sm:p-6 md:hover:shadow-[12px_12px_0px_0px_hsl(var(--foreground))]"
           >
             {article.category && (
               <div className="mb-4 inline-block border-2 border-foreground bg-primary px-2 py-1 text-xs font-black uppercase tracking-widest text-primary-foreground shadow-[2px_2px_0px_0px_hsl(var(--foreground))]">
@@ -35,7 +35,7 @@ export default function RelatedArticles({ articles }: RelatedArticlesProps) {
               </div>
             )}
 
-            <h3 className="mb-3 line-clamp-2 text-xl font-black uppercase leading-snug text-foreground transition-none group-hover:underline decoration-4 underline-offset-4">
+            <h3 className="mb-3 line-clamp-2 text-xl font-black uppercase leading-snug text-foreground decoration-4 underline-offset-4 transition-none group-hover:underline">
               {article.title}
             </h3>
             {article.excerpt && (

@@ -23,7 +23,7 @@ export default function GitHubStarsWrapper({
         <SiGithub title="Star on Github" className="h-5 w-5 fill-current" />
         <span className="flex items-center gap-1">
           <StarIcon className="h-5 w-5 fill-current stroke-[3]" />
-          <span className="font-black text-sm">
+          <span className="text-sm font-black">
             {loading ? <span className="animate-pulse">···</span> : stars || 0}
           </span>
         </span>

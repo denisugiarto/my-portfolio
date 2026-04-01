@@ -50,29 +50,29 @@ A personal portfolio website built with **Next.js 15** (App Router) and **Sanity
 
 ## Tech Stack
 
-| Category | Technology | Version |
-|---|---|---|
-| **Framework** | Next.js (App Router) | 15.4.10 |
-| **Language** | TypeScript | 5.5.2 |
-| **UI Library** | React | 19.1.1 |
-| **Styling** | Tailwind CSS | 3.3.3 |
-| **Component Library** | Shadcn UI (Radix primitives) | — |
-| **Animations** | Framer Motion | 11.11.11 |
-| **3D** | Three.js | 0.183.2 |
-| **CMS** | Sanity | 4.4.1 |
-| **Data Fetching** | TanStack React Query | 5.48.0 |
-| **HTTP Client** | Axios | 1.7.9 |
-| **Icons** | Lucide React, Simple Icons | — |
-| **Date Utils** | dayjs | 1.11.10 |
-| **Markdown** | react-markdown + remark-gfm | — |
-| **Code Highlighting** | react-syntax-highlighter | 15.6.1 |
-| **SEO** | next-seo, next-sitemap | — |
-| **Analytics** | @next/third-parties (GA) | — |
-| **Theme** | next-themes | 0.3.0 |
-| **Image Processing** | sharp | 0.33.1 |
-| **SVG Handling** | next-plugin-svgr | 1.1.10 |
-| **Bundle Analysis** | @next/bundle-analyzer | 14.0.4 |
-| **Package Manager** | pnpm | — |
+| Category              | Technology                   | Version  |
+| --------------------- | ---------------------------- | -------- |
+| **Framework**         | Next.js (App Router)         | 15.4.10  |
+| **Language**          | TypeScript                   | 5.5.2    |
+| **UI Library**        | React                        | 19.1.1   |
+| **Styling**           | Tailwind CSS                 | 3.3.3    |
+| **Component Library** | Shadcn UI (Radix primitives) | —        |
+| **Animations**        | Framer Motion                | 11.11.11 |
+| **3D**                | Three.js                     | 0.183.2  |
+| **CMS**               | Sanity                       | 4.4.1    |
+| **Data Fetching**     | TanStack React Query         | 5.48.0   |
+| **HTTP Client**       | Axios                        | 1.7.9    |
+| **Icons**             | Lucide React, Simple Icons   | —        |
+| **Date Utils**        | dayjs                        | 1.11.10  |
+| **Markdown**          | react-markdown + remark-gfm  | —        |
+| **Code Highlighting** | react-syntax-highlighter     | 15.6.1   |
+| **SEO**               | next-seo, next-sitemap       | —        |
+| **Analytics**         | @next/third-parties (GA)     | —        |
+| **Theme**             | next-themes                  | 0.3.0    |
+| **Image Processing**  | sharp                        | 0.33.1   |
+| **SVG Handling**      | next-plugin-svgr             | 1.1.10   |
+| **Bundle Analysis**   | @next/bundle-analyzer        | 14.0.4   |
+| **Package Manager**   | pnpm                         | —        |
 
 ---
 
@@ -275,19 +275,19 @@ my-portfolio/
 
 ## App Routes
 
-| Route | Type | Description |
-|---|---|---|
-| `/` | SSG + ISR | Landing page with hero, about, skills, experience, projects, blog, and contact sections |
-| `/blog` | Page | Blog listing with category filter, search, and pagination |
-| `/blog/[slug]` | Dynamic | Individual blog post with related articles |
-| `/projects` | Page | Projects showcase grid |
-| `/projects/[slug]` | Dynamic | Individual project detail with image gallery |
-| `/experience` | Page | Work experience timeline |
-| `/contact` | Page | Contact page with form |
-| `/admin` | Page | Admin panel |
-| `/studio` | Embedded | Sanity Studio (CMS editor) |
-| `/api/contact` | API | POST — submits contact form to Sanity |
-| `/api/github-stars` | API | GET — returns GitHub repo star count |
+| Route               | Type      | Description                                                                             |
+| ------------------- | --------- | --------------------------------------------------------------------------------------- |
+| `/`                 | SSG + ISR | Landing page with hero, about, skills, experience, projects, blog, and contact sections |
+| `/blog`             | Page      | Blog listing with category filter, search, and pagination                               |
+| `/blog/[slug]`      | Dynamic   | Individual blog post with related articles                                              |
+| `/projects`         | Page      | Projects showcase grid                                                                  |
+| `/projects/[slug]`  | Dynamic   | Individual project detail with image gallery                                            |
+| `/experience`       | Page      | Work experience timeline                                                                |
+| `/contact`          | Page      | Contact page with form                                                                  |
+| `/admin`            | Page      | Admin panel                                                                             |
+| `/studio`           | Embedded  | Sanity Studio (CMS editor)                                                              |
+| `/api/contact`      | API       | POST — submits contact form to Sanity                                                   |
+| `/api/github-stars` | API       | GET — returns GitHub repo star count                                                    |
 
 ---
 
@@ -295,38 +295,38 @@ my-portfolio/
 
 ### Layout Components (`components/Layout/`)
 
-| Component | Purpose |
-|---|---|
-| `Layout.tsx` | Main page wrapper with header and footer |
-| `Header.tsx` | Responsive navigation bar with mobile menu |
-| `Footer.tsx` | Site footer with social links and copyright |
-| `ThemeToggle.tsx` | Dark/light mode toggle switch |
+| Component         | Purpose                                     |
+| ----------------- | ------------------------------------------- |
+| `Layout.tsx`      | Main page wrapper with header and footer    |
+| `Header.tsx`      | Responsive navigation bar with mobile menu  |
+| `Footer.tsx`      | Site footer with social links and copyright |
+| `ThemeToggle.tsx` | Dark/light mode toggle switch               |
 
 ### UI Components (`components/ui/`)
 
 19 reusable UI components built on **Radix UI** primitives and styled with **Tailwind CSS** + **class-variance-authority** (CVA):
 
-| Component | Description |
-|---|---|
-| `button.tsx` | Multi-variant button (CVA-based) |
-| `badge.tsx` | Status/category badge |
-| `input.tsx` | Form input field |
-| `select.tsx` | Dropdown select (Radix) |
-| `popover.tsx` | Popover overlay (Radix) |
-| `tooltip.tsx` | Tooltip (Radix) |
-| `simple-tooltip.tsx` | Simplified tooltip |
-| `pagination.tsx` | Page pagination controls |
-| `search-input.tsx` | Search input with debounce |
-| `markdown.tsx` | Markdown renderer with syntax highlighting |
-| `project-card.tsx` | Project showcase card |
-| `form-select.tsx` | Form-integrated select |
-| `list.tsx` | Styled list component |
-| `empty-state.tsx` | Empty data placeholder |
-| `loading-state.tsx` | Loading indicator |
-| `back-to-top-button.tsx` | Scroll-to-top button |
-| `social-media-share-button.tsx` | Social sharing buttons |
-| `starfall-portfolio-demo.tsx` | Starfall animation demo |
-| `starfall-portfolio-landing.tsx` | Starfall landing animation |
+| Component                        | Description                                |
+| -------------------------------- | ------------------------------------------ |
+| `button.tsx`                     | Multi-variant button (CVA-based)           |
+| `badge.tsx`                      | Status/category badge                      |
+| `input.tsx`                      | Form input field                           |
+| `select.tsx`                     | Dropdown select (Radix)                    |
+| `popover.tsx`                    | Popover overlay (Radix)                    |
+| `tooltip.tsx`                    | Tooltip (Radix)                            |
+| `simple-tooltip.tsx`             | Simplified tooltip                         |
+| `pagination.tsx`                 | Page pagination controls                   |
+| `search-input.tsx`               | Search input with debounce                 |
+| `markdown.tsx`                   | Markdown renderer with syntax highlighting |
+| `project-card.tsx`               | Project showcase card                      |
+| `form-select.tsx`                | Form-integrated select                     |
+| `list.tsx`                       | Styled list component                      |
+| `empty-state.tsx`                | Empty data placeholder                     |
+| `loading-state.tsx`              | Loading indicator                          |
+| `back-to-top-button.tsx`         | Scroll-to-top button                       |
+| `social-media-share-button.tsx`  | Social sharing buttons                     |
+| `starfall-portfolio-demo.tsx`    | Starfall animation demo                    |
+| `starfall-portfolio-landing.tsx` | Starfall landing animation                 |
 
 ---
 
@@ -336,38 +336,38 @@ my-portfolio/
 
 The homepage is composed of distinct sections, each as a separate component:
 
-| Section | File | Description |
-|---|---|---|
-| Hero | `hero.tsx` | Headline, bio, CTAs, availability status, social links |
-| Hero Animations | `hero-animations.tsx` | Framer Motion animation variants |
-| About | `about.tsx` | Introduction, skills, achievements, personal info |
-| Skills | `skills.tsx` | Technology/skills showcase |
-| Experience | `experience.tsx` | Work experience preview (featured entries) |
-| Projects | `projects.tsx` | Featured projects showcase |
-| Project Animations | `projects-animations.tsx` | Project card animation variants |
-| Blog | `blog.tsx` | Latest/featured blog posts |
-| Contact | `contact.tsx` | Contact form section |
+| Section            | File                      | Description                                            |
+| ------------------ | ------------------------- | ------------------------------------------------------ |
+| Hero               | `hero.tsx`                | Headline, bio, CTAs, availability status, social links |
+| Hero Animations    | `hero-animations.tsx`     | Framer Motion animation variants                       |
+| About              | `about.tsx`               | Introduction, skills, achievements, personal info      |
+| Skills             | `skills.tsx`              | Technology/skills showcase                             |
+| Experience         | `experience.tsx`          | Work experience preview (featured entries)             |
+| Projects           | `projects.tsx`            | Featured projects showcase                             |
+| Project Animations | `projects-animations.tsx` | Project card animation variants                        |
+| Blog               | `blog.tsx`                | Latest/featured blog posts                             |
+| Contact            | `contact.tsx`             | Contact form section                                   |
 
 ### Blog (`features/blog/`)
 
-| Component | Description |
-|---|---|
-| `blog-card-item.tsx` | Individual blog post card with cover image, category, date |
-| `blog-list.tsx` | Blog post grid/list container |
-| `blog-header.tsx` | Blog page header with search/filter |
-| `static-container.tsx` | Server-rendered blog content container |
-| `related-articles.tsx` | Related posts recommendations |
-| `author.tsx` | Author information display |
-| `skeleton.tsx` | Loading skeleton placeholders |
+| Component              | Description                                                |
+| ---------------------- | ---------------------------------------------------------- |
+| `blog-card-item.tsx`   | Individual blog post card with cover image, category, date |
+| `blog-list.tsx`        | Blog post grid/list container                              |
+| `blog-header.tsx`      | Blog page header with search/filter                        |
+| `static-container.tsx` | Server-rendered blog content container                     |
+| `related-articles.tsx` | Related posts recommendations                              |
+| `author.tsx`           | Author information display                                 |
+| `skeleton.tsx`         | Loading skeleton placeholders                              |
 
 ### Projects (`features/projects/`)
 
-| Component | Description |
-|---|---|
-| `projects-list.tsx` | Dynamic project grid with filters |
+| Component                  | Description                         |
+| -------------------------- | ----------------------------------- |
+| `projects-list.tsx`        | Dynamic project grid with filters   |
 | `projects-static-list.tsx` | Static/server-rendered project list |
-| `project-header.tsx` | Project detail page header |
-| `project-gallery.tsx` | Image gallery carousel |
+| `project-header.tsx`       | Project detail page header          |
+| `project-gallery.tsx`      | Image gallery carousel              |
 
 ---
 
@@ -385,61 +385,61 @@ The homepage is composed of distinct sections, each as a separate component:
 
 #### Site Configuration
 
-| Schema | File | Description |
-|---|---|---|
+| Schema         | File              | Description                                                        |
+| -------------- | ----------------- | ------------------------------------------------------------------ |
 | `siteSettings` | `siteSettings.ts` | Global site info, personal info, social profiles, contact settings |
-| `seoSettings` | `seoSettings.ts` | Per-page SEO (meta tags, OpenGraph, Twitter Card, structured data) |
+| `seoSettings`  | `seoSettings.ts`  | Per-page SEO (meta tags, OpenGraph, Twitter Card, structured data) |
 
 #### Content Sections
 
-| Schema | File | Description |
-|---|---|---|
-| `heroSection` | `heroSection.ts` | Homepage hero (headline, bio, CTAs, availability status, technologies) |
-| `aboutSection` | `aboutSection.ts` | About (intro, USP, skill categories, achievements, personal info) |
-| `skillsSection` | `skillsSection.ts` | Skills showcase configuration |
+| Schema          | File               | Description                                                            |
+| --------------- | ------------------ | ---------------------------------------------------------------------- |
+| `heroSection`   | `heroSection.ts`   | Homepage hero (headline, bio, CTAs, availability status, technologies) |
+| `aboutSection`  | `aboutSection.ts`  | About (intro, USP, skill categories, achievements, personal info)      |
+| `skillsSection` | `skillsSection.ts` | Skills showcase configuration                                          |
 
 #### Content Types
 
-| Schema | File | Description |
-|---|---|---|
-| `blogPost` | `blogPost.ts` | Blog articles (title, slug, content, category, tags, SEO, featured flag) |
-| `blogCategory` | `blogCategory.ts` | Blog categories (name, slug, color, icon) |
-| `project` | `project.ts` | Portfolio projects (title, description, gallery, tech stack, links, status) |
-| `experience` | `experience.ts` | Work experience (job title, company, dates, description, achievements, technologies) |
-| `technology` | `technology.ts` | Technology catalog (name, category, icon, proficiency, featured) |
-| `socialLink` | `socialLink.ts` | Social media links (platform, URL, visibility toggles per section) |
-| `contact` | `contact.ts` | Contact form submissions |
-| `tag` | `tag.ts` | Blog post tags |
+| Schema         | File              | Description                                                                          |
+| -------------- | ----------------- | ------------------------------------------------------------------------------------ |
+| `blogPost`     | `blogPost.ts`     | Blog articles (title, slug, content, category, tags, SEO, featured flag)             |
+| `blogCategory` | `blogCategory.ts` | Blog categories (name, slug, color, icon)                                            |
+| `project`      | `project.ts`      | Portfolio projects (title, description, gallery, tech stack, links, status)          |
+| `experience`   | `experience.ts`   | Work experience (job title, company, dates, description, achievements, technologies) |
+| `technology`   | `technology.ts`   | Technology catalog (name, category, icon, proficiency, featured)                     |
+| `socialLink`   | `socialLink.ts`   | Social media links (platform, URL, visibility toggles per section)                   |
+| `contact`      | `contact.ts`      | Contact form submissions                                                             |
+| `tag`          | `tag.ts`          | Blog post tags                                                                       |
 
 ### GROQ Query Functions (`lib/sanity-queries.ts`)
 
 24 query functions for all data access needs:
 
-| Function | Returns |
-|---|---|
-| `getBlogCategories()` | `BlogCategory[]` |
-| `getBlogPosts(limit?)` | `BlogPost[]` |
-| `getFeaturedBlogPosts()` | `BlogPost[]` |
-| `getBlogPostBySlug(slug)` | `BlogPost \| null` |
-| `getRelatedBlogPosts(id, tagIds, limit)` | `BlogPost[]` |
-| `getProjects(limit?)` | `Project[]` |
-| `getFeaturedProjects()` | `Project[]` |
-| `getProjectBySlug(slug)` | `Project \| null` |
-| `getSEOSettings(pageId)` | `SEOSettings \| null` |
-| `submitContactMessage(message)` | `ContactMessage` |
-| `getContactMessages()` | `ContactMessage[]` |
-| `getExperiences()` | `Experience[]` |
-| `getFeaturedExperiences()` | `Experience[]` |
-| `getExperienceById(id)` | `Experience \| null` |
-| `getHeroSection()` | `HeroSection \| null` |
-| `getTechnologies()` | `Technology[]` |
-| `getFeaturedTechnologies()` | `Technology[]` |
-| `getSocialLinks()` | `SocialLink[]` |
-| `getHeaderSocialLinks()` | `SocialLink[]` |
-| `getFooterSocialLinks()` | `SocialLink[]` |
-| `getPrimaryContactLinks()` | `SocialLink[]` |
-| `getSiteSettings()` | `SiteSettings \| null` |
-| `getAboutSection()` | `AboutSection \| null` |
+| Function                                 | Returns                |
+| ---------------------------------------- | ---------------------- |
+| `getBlogCategories()`                    | `BlogCategory[]`       |
+| `getBlogPosts(limit?)`                   | `BlogPost[]`           |
+| `getFeaturedBlogPosts()`                 | `BlogPost[]`           |
+| `getBlogPostBySlug(slug)`                | `BlogPost \| null`     |
+| `getRelatedBlogPosts(id, tagIds, limit)` | `BlogPost[]`           |
+| `getProjects(limit?)`                    | `Project[]`            |
+| `getFeaturedProjects()`                  | `Project[]`            |
+| `getProjectBySlug(slug)`                 | `Project \| null`      |
+| `getSEOSettings(pageId)`                 | `SEOSettings \| null`  |
+| `submitContactMessage(message)`          | `ContactMessage`       |
+| `getContactMessages()`                   | `ContactMessage[]`     |
+| `getExperiences()`                       | `Experience[]`         |
+| `getFeaturedExperiences()`               | `Experience[]`         |
+| `getExperienceById(id)`                  | `Experience \| null`   |
+| `getHeroSection()`                       | `HeroSection \| null`  |
+| `getTechnologies()`                      | `Technology[]`         |
+| `getFeaturedTechnologies()`              | `Technology[]`         |
+| `getSocialLinks()`                       | `SocialLink[]`         |
+| `getHeaderSocialLinks()`                 | `SocialLink[]`         |
+| `getFooterSocialLinks()`                 | `SocialLink[]`         |
+| `getPrimaryContactLinks()`               | `SocialLink[]`         |
+| `getSiteSettings()`                      | `SiteSettings \| null` |
+| `getAboutSection()`                      | `AboutSection \| null` |
 
 ---
 
@@ -447,14 +447,14 @@ The homepage is composed of distinct sections, each as a separate component:
 
 Thin abstraction over `sanity-queries.ts` with consistent error handling:
 
-| Service | File | Functions |
-|---|---|---|
-| **Blog** | `services/blog.ts` | `fetchArticles()`, `fetchArticlesFeatured()`, `fetchArticleBySlug(slug)` |
-| **Projects** | `services/projects.ts` | `fetchProjects()`, `fetchFeaturedProjects()`, `fetchProjectBySlug(slug)` |
-| **Experience** | `services/experience.ts` | `fetchExperiences()`, `fetchFeaturedExperiences()`, `fetchExperienceById(id)`, `formatDateRange()`, `calculateDuration()` |
-| **Contact** | `services/contact.ts` | `submitContact(formData)` |
-| **Home** | `services/home.ts` | `getRepoStars()` — GitHub stars with localStorage + API caching |
-| **SEO** | `services/seo.ts` | `fetchSEOSettings(pageId)`, `generateStructuredData()`, `generatePersonStructuredData()`, `generateWebSiteStructuredData()`, `generateBlogPostStructuredData()` |
+| Service        | File                     | Functions                                                                                                                                                       |
+| -------------- | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Blog**       | `services/blog.ts`       | `fetchArticles()`, `fetchArticlesFeatured()`, `fetchArticleBySlug(slug)`                                                                                        |
+| **Projects**   | `services/projects.ts`   | `fetchProjects()`, `fetchFeaturedProjects()`, `fetchProjectBySlug(slug)`                                                                                        |
+| **Experience** | `services/experience.ts` | `fetchExperiences()`, `fetchFeaturedExperiences()`, `fetchExperienceById(id)`, `formatDateRange()`, `calculateDuration()`                                       |
+| **Contact**    | `services/contact.ts`    | `submitContact(formData)`                                                                                                                                       |
+| **Home**       | `services/home.ts`       | `getRepoStars()` — GitHub stars with localStorage + API caching                                                                                                 |
+| **SEO**        | `services/seo.ts`        | `fetchSEOSettings(pageId)`, `generateStructuredData()`, `generatePersonStructuredData()`, `generateWebSiteStructuredData()`, `generateBlogPostStructuredData()` |
 
 ---
 
@@ -466,40 +466,40 @@ The design system uses **CSS custom properties** (HSL colors) with Tailwind CSS,
 
 #### Color Tokens
 
-| Token | Light | Dark | Purpose |
-|---|---|---|---|
-| `--background` | `220 15% 97%` | `222 22% 6%` | Page background |
-| `--foreground` | `222 22% 15%` | `220 15% 88%` | Body text |
-| `--primary` | `220 85% 40%` | `220 70.9% 56.9%` | Primary brand color |
-| `--secondary` | `220 15% 95%` | `220 8% 20%` | Secondary surfaces |
-| `--accent` | `15 75% 55%` | `15 75% 60%` | Warm coral accent |
-| `--muted` | `220 15% 94%` | `222 18% 12%` | Subtle backgrounds |
-| `--destructive` | `0 70% 52%` | `0 70% 58%` | Error/danger |
-| `--success` | `142 75% 40%` | `142 75% 45%` | Success state |
-| `--warning` | `38 95% 50%` | `38 95% 56%` | Warning state |
-| `--card` | `0 0% 100%` | `222 22% 8%` | Card surfaces |
-| `--border` | `220 15% 85%` | `222 18% 18%` | Borders |
+| Token           | Light         | Dark              | Purpose             |
+| --------------- | ------------- | ----------------- | ------------------- |
+| `--background`  | `220 15% 97%` | `222 22% 6%`      | Page background     |
+| `--foreground`  | `222 22% 15%` | `220 15% 88%`     | Body text           |
+| `--primary`     | `220 85% 40%` | `220 70.9% 56.9%` | Primary brand color |
+| `--secondary`   | `220 15% 95%` | `220 8% 20%`      | Secondary surfaces  |
+| `--accent`      | `15 75% 55%`  | `15 75% 60%`      | Warm coral accent   |
+| `--muted`       | `220 15% 94%` | `222 18% 12%`     | Subtle backgrounds  |
+| `--destructive` | `0 70% 52%`   | `0 70% 58%`       | Error/danger        |
+| `--success`     | `142 75% 40%` | `142 75% 45%`     | Success state       |
+| `--warning`     | `38 95% 50%`  | `38 95% 56%`      | Warning state       |
+| `--card`        | `0 0% 100%`   | `222 22% 8%`      | Card surfaces       |
+| `--border`      | `220 15% 85%` | `222 18% 18%`     | Borders             |
 
 #### Utility Classes
 
-| Class | Description |
-|---|---|
-| `.gradient-text` | Sky → Cyan → Emerald gradient text |
-| `.glass-card` | Glassmorphism card with backdrop blur |
-| `.glass-button` | Glass-effect interactive button |
-| `.primary-button` | Gradient primary CTA button |
-| `.float-animation` | Gentle vertical floating animation |
-| `.divider` | Gradient horizontal divider |
-| `.project-image` | Styled project image container |
-| `.skill-badge` | Skill/tech badge with blur effect |
+| Class              | Description                           |
+| ------------------ | ------------------------------------- |
+| `.gradient-text`   | Sky → Cyan → Emerald gradient text    |
+| `.glass-card`      | Glassmorphism card with backdrop blur |
+| `.glass-button`    | Glass-effect interactive button       |
+| `.primary-button`  | Gradient primary CTA button           |
+| `.float-animation` | Gentle vertical floating animation    |
+| `.divider`         | Gradient horizontal divider           |
+| `.project-image`   | Styled project image container        |
+| `.skill-badge`     | Skill/tech badge with blur effect     |
 
 ### Typography
 
-| Font | Variable | Usage |
-|---|---|---|
-| **Inter** | Default body | Body text, UI elements |
+| Font           | Variable            | Usage                             |
+| -------------- | ------------------- | --------------------------------- |
+| **Inter**      | Default body        | Body text, UI elements            |
 | **Montserrat** | `--font-montserrat` | Display text, `.geist-font` class |
-| **Suez One** | `--font-suez-one` | Section titles (`.title-section`) |
+| **Suez One**   | `--font-suez-one`   | Section titles (`.title-section`) |
 
 ### Tailwind Config Highlights
 
@@ -516,66 +516,67 @@ The design system uses **CSS custom properties** (HSL colors) with Tailwind CSS,
 
 All CMS data types are defined as TypeScript interfaces in `lib/sanity.ts`:
 
-| Interface | Key Fields |
-|---|---|
-| `BlogPost` | title, slug, content, category, tags, publishedAt, featured, seo |
-| `BlogCategory` | name, slug, color, customColor, icon |
-| `Project` | title, slug, description, gallery, technologies, status, liveUrl, githubUrl |
-| `Experience` | jobTitle, company, employmentType, startDate, endDate, achievements, technologies |
-| `Technology` | name, category, icon, proficiencyLevel, yearsOfExperience, featured |
-| `SocialLink` | platform, url, icon, visibility toggles (header/footer/hero/contact) |
-| `HeroSection` | headline, subheadline, bio, primaryCTA, secondaryCTA, availabilityStatus |
-| `AboutSection` | title, introduction, skillCategories, achievements, personalInfo |
-| `SiteSettings` | siteInfo, personalInfo, socialLinks, contactSettings |
-| `SEOSettings` | pageId, metaTitle, metaDescription, ogImage, structuredData |
-| `ContactMessage` | name, email, message |
-| `Tags` | name |
+| Interface        | Key Fields                                                                        |
+| ---------------- | --------------------------------------------------------------------------------- |
+| `BlogPost`       | title, slug, content, category, tags, publishedAt, featured, seo                  |
+| `BlogCategory`   | name, slug, color, customColor, icon                                              |
+| `Project`        | title, slug, description, gallery, technologies, status, liveUrl, githubUrl       |
+| `Experience`     | jobTitle, company, employmentType, startDate, endDate, achievements, technologies |
+| `Technology`     | name, category, icon, proficiencyLevel, yearsOfExperience, featured               |
+| `SocialLink`     | platform, url, icon, visibility toggles (header/footer/hero/contact)              |
+| `HeroSection`    | headline, subheadline, bio, primaryCTA, secondaryCTA, availabilityStatus          |
+| `AboutSection`   | title, introduction, skillCategories, achievements, personalInfo                  |
+| `SiteSettings`   | siteInfo, personalInfo, socialLinks, contactSettings                              |
+| `SEOSettings`    | pageId, metaTitle, metaDescription, ogImage, structuredData                       |
+| `ContactMessage` | name, email, message                                                              |
+| `Tags`           | name                                                                              |
 
 ### Shared Types (`types/index.ts`)
 
-| Type | Description |
-|---|---|
-| `NavigationItem` | `{ name, href }` — navigation link |
-| `ContactItem` | `{ type, link, value }` — contact entry |
+| Type             | Description                             |
+| ---------------- | --------------------------------------- |
+| `NavigationItem` | `{ name, href }` — navigation link      |
+| `ContactItem`    | `{ type, link, value }` — contact entry |
 
 ---
 
 ## Configuration Files
 
-| File | Purpose |
-|---|---|
-| `next.config.mjs` | SVG plugin, bundle analyzer, remote image patterns (Sanity CDN, dev.to) |
-| `tailwind.config.ts` | Design tokens, custom fonts, animations, color system, `tailwindcss-animate` |
-| `sanity.config.ts` | Sanity Studio setup (project ID, dataset, plugins, basePath `/studio`) |
-| `sanity.cli.js` | Sanity CLI project configuration |
-| `tsconfig.json` | TypeScript config with path aliases (`@/*`) |
-| `postcss.config.js` | PostCSS with Tailwind CSS and Autoprefixer |
-| `components.json` | Shadcn UI configuration |
-| `next-sitemap.config.js` | Auto sitemap generation on build |
-| `.eslintrc.json` | ESLint with `next/core-web-vitals` |
-| `.prettierrc` | Prettier formatting rules |
-| `.npmrc` | pnpm configuration |
+| File                     | Purpose                                                                      |
+| ------------------------ | ---------------------------------------------------------------------------- |
+| `next.config.mjs`        | SVG plugin, bundle analyzer, remote image patterns (Sanity CDN, dev.to)      |
+| `tailwind.config.ts`     | Design tokens, custom fonts, animations, color system, `tailwindcss-animate` |
+| `sanity.config.ts`       | Sanity Studio setup (project ID, dataset, plugins, basePath `/studio`)       |
+| `sanity.cli.js`          | Sanity CLI project configuration                                             |
+| `tsconfig.json`          | TypeScript config with path aliases (`@/*`)                                  |
+| `postcss.config.js`      | PostCSS with Tailwind CSS and Autoprefixer                                   |
+| `components.json`        | Shadcn UI configuration                                                      |
+| `next-sitemap.config.js` | Auto sitemap generation on build                                             |
+| `.eslintrc.json`         | ESLint with `next/core-web-vitals`                                           |
+| `.prettierrc`            | Prettier formatting rules                                                    |
+| `.npmrc`                 | pnpm configuration                                                           |
 
 ---
 
 ## Environment Variables
 
-| Variable | Required | Description |
-|---|---|---|
-| `NEXT_PUBLIC_SANITY_PROJECT_ID` | ✅ | Sanity project ID |
-| `NEXT_PUBLIC_SANITY_DATASET` | ✅ | Sanity dataset name (e.g., `production`) |
-| `SANITY_API_TOKEN` | ⚠️ | Sanity API token (for write operations) |
-| `NEXT_PUBLIC_GOOGLE_ANALYTICS` | ❌ | Google Analytics measurement ID |
-| `NEXT_PUBLIC_DEV_USERNAME` | ❌ | dev.to username (blog integration) |
-| `NEXT_PUBLIC_SITE_URL` | ❌ | Canonical site URL |
-| `ANALYZE` | ❌ | Enable bundle analysis (`true`) |
-| `NODE_ENV` | ❌ | Environment mode |
+| Variable                        | Required | Description                              |
+| ------------------------------- | -------- | ---------------------------------------- |
+| `NEXT_PUBLIC_SANITY_PROJECT_ID` | ✅       | Sanity project ID                        |
+| `NEXT_PUBLIC_SANITY_DATASET`    | ✅       | Sanity dataset name (e.g., `production`) |
+| `SANITY_API_TOKEN`              | ⚠️       | Sanity API token (for write operations)  |
+| `NEXT_PUBLIC_GOOGLE_ANALYTICS`  | ❌       | Google Analytics measurement ID          |
+| `NEXT_PUBLIC_DEV_USERNAME`      | ❌       | dev.to username (blog integration)       |
+| `NEXT_PUBLIC_SITE_URL`          | ❌       | Canonical site URL                       |
+| `ANALYZE`                       | ❌       | Enable bundle analysis (`true`)          |
+| `NODE_ENV`                      | ❌       | Environment mode                         |
 
 ---
 
 ## SEO & Analytics
 
 ### SEO Features
+
 - **Meta tags**: Title, description, keywords via Next.js Metadata API
 - **OpenGraph**: Type, locale, URL, site name, images
 - **Twitter Card**: Summary with large image
@@ -587,11 +588,13 @@ All CMS data types are defined as TypeScript interfaces in `lib/sanity.ts`:
 ### SEO Service (`services/seo.ts`)
 
 Generates JSON-LD structured data for:
+
 - `Person` — developer profile
 - `WebSite` — site metadata with search action
 - `BlogPosting` — blog articles with author, dates, images
 
 ### Analytics
+
 - **Google Analytics** via `@next/third-parties` with Web Worker offloading
 - **Resource preconnects** for `googletagmanager.com` and `google-analytics.com`
 
@@ -599,22 +602,22 @@ Generates JSON-LD structured data for:
 
 ## Scripts Reference
 
-| Command | Description |
-|---|---|
-| `pnpm dev` | Start Next.js dev server (port 3000) |
-| `pnpm build` | Production build + sitemap generation |
-| `pnpm start` | Start production server |
-| `pnpm lint` | Run ESLint |
-| `pnpm format` | Format code with Prettier |
-| `pnpm analyze` | Build with bundle analyzer |
-| `pnpm sanity` | Start Sanity Studio locally |
-| `pnpm sanity:login` | Login to Sanity |
-| `pnpm sanity:logout` | Logout from Sanity |
-| `pnpm sanity:build` | Build Sanity Studio |
-| `pnpm sanity:deploy` | Deploy Sanity Studio to cloud |
-| `pnpm sanity:manage` | Open Sanity dashboard |
-| `pnpm sanity:dataset:export` | Export dataset |
-| `pnpm sanity:dataset:import` | Import dataset |
+| Command                      | Description                           |
+| ---------------------------- | ------------------------------------- |
+| `pnpm dev`                   | Start Next.js dev server (port 3000)  |
+| `pnpm build`                 | Production build + sitemap generation |
+| `pnpm start`                 | Start production server               |
+| `pnpm lint`                  | Run ESLint                            |
+| `pnpm format`                | Format code with Prettier             |
+| `pnpm analyze`               | Build with bundle analyzer            |
+| `pnpm sanity`                | Start Sanity Studio locally           |
+| `pnpm sanity:login`          | Login to Sanity                       |
+| `pnpm sanity:logout`         | Logout from Sanity                    |
+| `pnpm sanity:build`          | Build Sanity Studio                   |
+| `pnpm sanity:deploy`         | Deploy Sanity Studio to cloud         |
+| `pnpm sanity:manage`         | Open Sanity dashboard                 |
+| `pnpm sanity:dataset:export` | Export dataset                        |
+| `pnpm sanity:dataset:import` | Import dataset                        |
 
 ---
 

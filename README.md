@@ -9,6 +9,7 @@ This is a personal portfolio website built using modern web technologies to show
 ## Tech Stack
 
 ### Frontend
+
 - **Next.js 15**: Performant and SEO-friendly React framework with App Router
 - **TypeScript**: Enhanced type safety and code maintainability
 - **Tailwind CSS**: Rapid and responsive UI development
@@ -16,25 +17,30 @@ This is a personal portfolio website built using modern web technologies to show
 - **Framer Motion**: Smooth and delightful animations
 
 ### Content Management
+
 - **Sanity CMS**: Headless CMS for managing all website content
 - **Sanity Studio**: Built-in content editor accessible at `/studio`
 
 ### Data Fetching & State Management
+
 - **TanStack React Query**: Efficient data fetching with automatic caching
 - **Axios**: HTTP requests to external APIs
 
 ### UI & Utilities
+
 - **Lucide React**: Rich set of customizable icons
 - **dayjs**: Lightweight date and time manipulation
 - **react-time-ago**: Display relative time for blog posts
 - **react-markdown**: Markdown rendering with syntax highlighting
 
 ### Analytics & SEO
+
 - **Google Analytics**: Website traffic tracking and insights
 - **next-sitemap**: Automatic sitemap generation
 - **next-seo**: SEO optimization utilities
 
 ### Features
+
 - Dark/Light mode with `next-themes`
 - Responsive design with mobile-first approach
 - Blog with category filtering and pagination
@@ -46,6 +52,7 @@ This is a personal portfolio website built using modern web technologies to show
 ## Getting Started
 
 ### Prerequisites
+
 - Node.js 18+
 - pnpm (recommended) or npm
 
@@ -91,6 +98,7 @@ pnpm dev:all
 ```
 
 Visit:
+
 - **Website**: http://localhost:3000
 - **Sanity Studio**: http://localhost:3000/studio
 
@@ -110,6 +118,7 @@ pnpm sanity:build
 ## Sanity CMS Commands
 
 ### Authentication
+
 ```bash
 # Login to Sanity account
 pnpm sanity:login
@@ -122,6 +131,7 @@ sanity whoami
 ```
 
 ### Development
+
 ```bash
 # Start Sanity Studio locally
 pnpm sanity
@@ -131,6 +141,7 @@ pnpm sanity:manage
 ```
 
 ### Deployment
+
 ```bash
 # Deploy Sanity Studio to cloud
 pnpm sanity:deploy
@@ -140,6 +151,7 @@ pnpm sanity:build
 ```
 
 ### Data Management
+
 ```bash
 # Export dataset to file
 pnpm sanity:dataset:export
@@ -149,6 +161,7 @@ pnpm sanity:dataset:import <file.tar.gz>
 ```
 
 ### Advanced Sanity Commands
+
 ```bash
 # Authentication
 sanity login              # Login to Sanity
@@ -218,6 +231,7 @@ my-portfolio/
 The project includes the following Sanity schemas:
 
 ### Content Types
+
 - **Blog Post**: Articles with categories, tags, and SEO
 - **Blog Category**: Categories for organizing blog posts
 - **Project**: Portfolio projects with galleries and tech stacks
@@ -227,6 +241,7 @@ The project includes the following Sanity schemas:
 - **Contact**: Contact form submissions
 
 ### Configuration
+
 - **Site Settings**: Global site configuration
 - **SEO Settings**: Per-page SEO configuration
 - **Hero Section**: Homepage hero content
@@ -237,6 +252,7 @@ The project includes the following Sanity schemas:
 ## Content Management
 
 ### Creating Blog Posts
+
 1. Open Sanity Studio at `/studio`
 2. Create a **Blog Category** first
 3. Go to **Blog Post** and click "Create new"
@@ -252,6 +268,7 @@ The project includes the following Sanity schemas:
 5. Toggle "Published" to make it visible
 
 ### Managing Categories
+
 - Categories support custom colors and icons (Lucide icons)
 - Example icon names: `Code`, `Rocket`, `Book`, `Lightbulb`
 - Colors: blue, green, red, yellow, purple, pink, indigo, gray, or custom hex
@@ -259,12 +276,14 @@ The project includes the following Sanity schemas:
 ## Deployment
 
 ### Vercel (Recommended)
+
 1. Push code to GitHub
 2. Import project in Vercel
 3. Add environment variables
 4. Deploy
 
 ### Sanity Studio Deployment
+
 ```bash
 pnpm sanity:deploy
 ```
@@ -273,23 +292,23 @@ This deploys Sanity Studio to `https://your-project.sanity.studio`
 
 ## Scripts Reference
 
-| Command | Description |
-|---------|-------------|
-| `pnpm dev` | Start Next.js dev server |
-| `pnpm dev:all` | Start Next.js + Sanity Studio |
-| `pnpm build` | Build Next.js for production |
-| `pnpm start` | Start production server |
-| `pnpm lint` | Run ESLint |
-| `pnpm format` | Format code with Prettier |
-| `pnpm analyze` | Analyze bundle size |
-| `pnpm sanity` | Start Sanity Studio locally |
-| `pnpm sanity:login` | Login to Sanity account |
-| `pnpm sanity:logout` | Logout from Sanity account |
-| `pnpm sanity:build` | Build Sanity Studio |
-| `pnpm sanity:deploy` | Deploy Sanity Studio |
-| `pnpm sanity:manage` | Open Sanity dashboard |
-| `pnpm sanity:dataset:export` | Export Sanity data |
-| `pnpm sanity:dataset:import` | Import Sanity data |
+| Command                      | Description                   |
+| ---------------------------- | ----------------------------- |
+| `pnpm dev`                   | Start Next.js dev server      |
+| `pnpm dev:all`               | Start Next.js + Sanity Studio |
+| `pnpm build`                 | Build Next.js for production  |
+| `pnpm start`                 | Start production server       |
+| `pnpm lint`                  | Run ESLint                    |
+| `pnpm format`                | Format code with Prettier     |
+| `pnpm analyze`               | Analyze bundle size           |
+| `pnpm sanity`                | Start Sanity Studio locally   |
+| `pnpm sanity:login`          | Login to Sanity account       |
+| `pnpm sanity:logout`         | Logout from Sanity account    |
+| `pnpm sanity:build`          | Build Sanity Studio           |
+| `pnpm sanity:deploy`         | Deploy Sanity Studio          |
+| `pnpm sanity:manage`         | Open Sanity dashboard         |
+| `pnpm sanity:dataset:export` | Export Sanity data            |
+| `pnpm sanity:dataset:import` | Import Sanity data            |
 
 ## Pages
 

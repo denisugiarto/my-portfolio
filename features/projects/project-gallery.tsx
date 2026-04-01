@@ -44,7 +44,7 @@ export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
 
   return (
     <div className="mb-12">
-      <h3 className="mb-8 inline-block border-b-4 border-foreground pb-2 text-2xl md:text-3xl font-black uppercase tracking-widest">
+      <h3 className="mb-8 inline-block border-b-4 border-foreground pb-2 text-2xl font-black uppercase tracking-widest md:text-3xl">
         PROJECT GALLERY
       </h3>
 
@@ -53,7 +53,7 @@ export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
         {images.map((image, index) => (
           <div
             key={index}
-            className="group cursor-pointer overflow-hidden border-4 border-foreground bg-card shadow-[8px_8px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-y-[4px] hover:-translate-x-[4px] hover:shadow-[12px_12px_0px_0px_hsl(var(--foreground))]"
+            className="group cursor-pointer overflow-hidden border-4 border-foreground bg-card shadow-[8px_8px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-[4px] hover:-translate-y-[4px] hover:shadow-[12px_12px_0px_0px_hsl(var(--foreground))]"
             onClick={() => openModal(index)}
           >
             <Image
@@ -61,7 +61,7 @@ export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
               alt={`${title} - Image ${index + 1}`}
               width={400}
               height={300}
-              className="h-auto w-full object-cover transition-none grayscale-[20%] group-hover:grayscale-0"
+              className="h-auto w-full object-cover grayscale-[20%] transition-none group-hover:grayscale-0"
               loading="lazy"
               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
@@ -96,7 +96,7 @@ export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
                     e.stopPropagation();
                     prevImage();
                   }}
-                  className="absolute -left-16 sm:left-4 top-1/2 -translate-y-1/2 z-10 flex h-14 w-14 sm:h-20 sm:w-20 items-center justify-center border-4 border-background bg-foreground text-background hover:bg-background hover:text-foreground hover:-translate-x-[4px]"
+                  className="absolute -left-16 top-1/2 z-10 flex h-14 w-14 -translate-y-1/2 items-center justify-center border-4 border-background bg-foreground text-background hover:-translate-x-[4px] hover:bg-background hover:text-foreground sm:left-4 sm:h-20 sm:w-20"
                 >
                   <ChevronLeft size={48} className="stroke-[3]" />
                 </Button>
@@ -106,7 +106,7 @@ export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
                     e.stopPropagation();
                     nextImage();
                   }}
-                  className="absolute -right-16 sm:right-4 top-1/2 -translate-y-1/2 z-10 flex h-14 w-14 sm:h-20 sm:w-20 items-center justify-center border-4 border-background bg-foreground text-background hover:bg-background hover:text-foreground hover:translate-x-[4px]"
+                  className="absolute -right-16 top-1/2 z-10 flex h-14 w-14 -translate-y-1/2 items-center justify-center border-4 border-background bg-foreground text-background hover:translate-x-[4px] hover:bg-background hover:text-foreground sm:right-4 sm:h-20 sm:w-20"
                 >
                   <ChevronRight size={48} className="stroke-[3]" />
                 </Button>
@@ -114,13 +114,16 @@ export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
             )}
 
             {/* Image */}
-            <div className="border-8 border-background bg-foreground p-2 md:p-4 shadow-[16px_16px_0px_0px_#000]">
+            <div className="border-8 border-background bg-foreground p-2 shadow-[16px_16px_0px_0px_#000] md:p-4">
               <Image
-                src={urlFor(images[selectedImage]).width(1200).height(800).url()}
+                src={urlFor(images[selectedImage])
+                  .width(1200)
+                  .height(800)
+                  .url()}
                 alt={`${title} - Image ${selectedImage + 1}`}
                 width={1200}
                 height={800}
-                className="max-h-[75vh] max-w-[80vw] sm:max-w-[85vw] object-contain bg-background"
+                className="max-h-[75vh] max-w-[80vw] bg-background object-contain sm:max-w-[85vw]"
                 onClick={(e) => e.stopPropagation()}
               />
             </div>

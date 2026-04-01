@@ -18,7 +18,7 @@ export default function ProjectHeader({ project }: ProjectHeaderProps) {
 
         {/* Short Description */}
         {project.shortDescription && (
-          <p className="border-l-4 border-primary bg-secondary p-4 shadow-[4px_4px_0px_0px_hsl(var(--foreground))] text-xl md:text-2xl font-bold leading-relaxed text-foreground">
+          <p className="border-l-4 border-primary bg-secondary p-4 text-xl font-bold leading-relaxed text-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] md:text-2xl">
             {project.shortDescription}
           </p>
         )}
@@ -31,7 +31,7 @@ export default function ProjectHeader({ project }: ProjectHeaderProps) {
             <h2 className="mb-4 inline-block border-2 border-foreground bg-accent px-3 py-1 text-sm font-black uppercase tracking-widest text-accent-foreground shadow-[3px_3px_0px_0px_hsl(var(--foreground))]">
               PROJECT OVERVIEW
             </h2>
-            <p className="text-xl font-medium leading-relaxed text-foreground bg-card border-4 border-foreground p-6 md:p-8 shadow-[8px_8px_0px_0px_hsl(var(--foreground))]">
+            <p className="border-4 border-foreground bg-card p-6 text-xl font-medium leading-relaxed text-foreground shadow-[8px_8px_0px_0px_hsl(var(--foreground))] md:p-8">
               {project.description}
             </p>
           </div>

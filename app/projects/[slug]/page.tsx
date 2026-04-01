@@ -61,13 +61,13 @@ export async function generateMetadata({
         type: "article",
         images: project.coverImage
           ? [
-            {
-              url: project.coverImage.toString(),
-              width: 1200,
-              height: 630,
-              alt: project.title,
-            },
-          ]
+              {
+                url: project.coverImage.toString(),
+                width: 1200,
+                height: 630,
+                alt: project.title,
+              },
+            ]
           : undefined,
       },
       twitter: {
@@ -96,11 +96,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       <Layout activeNavbar="Projects" isNavColorBlack>
         {/* Main Content */}
         <div className="container py-12 md:py-24">
-
           <div className="mb-12">
             <Link
               href="/projects"
-              className="inline-flex items-center gap-2 border-2 border-foreground bg-background px-4 py-2 text-sm font-black uppercase tracking-widest text-foreground shadow-[3px_3px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))]"
+              className="inline-flex items-center gap-2 border-2 border-foreground bg-background px-4 py-2 text-sm font-black uppercase tracking-widest text-foreground shadow-[3px_3px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))]"
               title="back to projects"
             >
               <ChevronLeft size={18} className="stroke-[3]" />
@@ -111,7 +110,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           {/* Hero Image Block - Brutalist Style */}
           {project.coverImage && (
             <div className="relative mb-16 w-full overflow-hidden border-4 border-foreground bg-card shadow-[12px_12px_0px_0px_hsl(var(--foreground))]">
-              <div className="aspect-[21/9] w-full relative">
+              <div className="relative aspect-[21/9] w-full">
                 <Image
                   src={urlFor(project.coverImage).width(1200).height(500).url()}
                   alt={project.title}
@@ -160,9 +159,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                             >
                               <Button
                                 size="lg"
-                                className="w-full flex items-center justify-center gap-2 text-md font-black tracking-widest"
+                                className="text-md flex w-full items-center justify-center gap-2 font-black tracking-widest"
                               >
-                                <ExternalLink size={18} className="stroke-[3]" />
+                                <ExternalLink
+                                  size={18}
+                                  className="stroke-[3]"
+                                />
                                 VIEW LIVE SITE
                               </Button>
                             </a>
@@ -177,7 +179,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                               <Button
                                 size="lg"
                                 variant="outline"
-                                className="w-full flex items-center justify-center gap-2 text-md font-black tracking-widest bg-background"
+                                className="text-md flex w-full items-center justify-center gap-2 bg-background font-black tracking-widest"
                               >
                                 <SiGithub size={18} />
                                 SOURCE CODE
@@ -188,23 +190,24 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                       ) : null}
 
                       {/* Technologies */}
-                      {project.technologies && project.technologies.length > 0 && (
-                        <div>
-                          <h4 className="mb-4 text-sm font-black uppercase text-foreground border-b-4 border-foreground inline-block pb-1">
-                            STACK
-                          </h4>
-                          <div className="flex flex-wrap gap-2">
-                            {project.technologies.map((tech, index) => (
-                              <span
-                                key={tech._id || index}
-                                className="border-2 border-foreground bg-primary px-2 py-1 text-xs font-bold uppercase tracking-wider text-primary-foreground shadow-[2px_2px_0px_0px_hsl(var(--foreground))]"
-                              >
-                                {tech.name}
-                              </span>
-                            ))}
+                      {project.technologies &&
+                        project.technologies.length > 0 && (
+                          <div>
+                            <h4 className="mb-4 inline-block border-b-4 border-foreground pb-1 text-sm font-black uppercase text-foreground">
+                              STACK
+                            </h4>
+                            <div className="flex flex-wrap gap-2">
+                              {project.technologies.map((tech, index) => (
+                                <span
+                                  key={tech._id || index}
+                                  className="border-2 border-foreground bg-primary px-2 py-1 text-xs font-bold uppercase tracking-wider text-primary-foreground shadow-[2px_2px_0px_0px_hsl(var(--foreground))]"
+                                >
+                                  {tech.name}
+                                </span>
+                              ))}
+                            </div>
                           </div>
-                        </div>
-                      )}
+                        )}
                     </div>
                   </div>
                 </div>
@@ -221,12 +224,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
           {/* Project Content */}
           {project.content && (
-            <div className="border-t-4 border-foreground pt-16 pb-24">
-              <div className="max-w-4xl mx-auto lg:mx-0">
-                <h2 className="mb-10 text-3xl md:text-4xl font-black uppercase tracking-widest text-foreground inline-block border-b-4 border-foreground pb-2">
+            <div className="border-t-4 border-foreground pb-24 pt-16">
+              <div className="mx-auto max-w-4xl lg:mx-0">
+                <h2 className="mb-10 inline-block border-b-4 border-foreground pb-2 text-3xl font-black uppercase tracking-widest text-foreground md:text-4xl">
                   EXECUTION LOG
                 </h2>
-                <div className="prose prose-lg dark:prose-invert max-w-none prose-headings:font-black prose-headings:uppercase prose-p:font-medium prose-p:leading-relaxed prose-a:font-bold prose-a:text-primary hover:prose-a:underline prose-img:border-4 prose-img:border-foreground prose-img:shadow-[8px_8px_0px_0px_hsl(var(--foreground))] bg-card p-6 md:p-10 border-4 border-foreground shadow-[8px_8px_0px_0px_hsl(var(--foreground))]">
+                <div className="prose prose-lg dark:prose-invert prose-headings:font-black prose-headings:uppercase prose-p:font-medium prose-p:leading-relaxed prose-a:font-bold prose-a:text-primary hover:prose-a:underline prose-img:border-4 prose-img:border-foreground prose-img:shadow-[8px_8px_0px_0px_hsl(var(--foreground))] max-w-none border-4 border-foreground bg-card p-6 shadow-[8px_8px_0px_0px_hsl(var(--foreground))] md:p-10">
                   <Markdown>{project.content}</Markdown>
                 </div>
               </div>

@@ -21,14 +21,20 @@ interface BlogData {
 
 const BLOGS_PER_PAGE = 6;
 
-export default function BlogPageClient({ initialData }: { initialData: BlogData }) {
+export default function BlogPageClient({
+  initialData,
+}: {
+  initialData: BlogData;
+}) {
   const router = useRouter();
   const searchParams = useSearchParams();
 
   const [blogData, setBlogData] = useState<BlogData>(initialData);
-  const [searchQuery, setSearchQuery] = useState(searchParams.get("search") || "");
+  const [searchQuery, setSearchQuery] = useState(
+    searchParams.get("search") || "",
+  );
   const [selectedCategory, setSelectedCategory] = useState<string | null>(
-    searchParams.get("category") || null
+    searchParams.get("category") || null,
   );
   const [isLoading, setIsLoading] = useState(false);
 
@@ -58,7 +64,7 @@ export default function BlogPageClient({ initialData }: { initialData: BlogData 
         setIsLoading(false);
       }
     },
-    []
+    [],
   );
 
   // Update URL and fetch data
@@ -68,14 +74,14 @@ export default function BlogPageClient({ initialData }: { initialData: BlogData 
       if (search) params.set("search", search);
       if (category) params.set("category", category);
       if (page > 1) params.set("page", page.toString());
-      
+
       const queryString = params.toString();
       const newUrl = queryString ? `/blog?${queryString}` : "/blog";
       router.replace(newUrl, { scroll: false });
-      
+
       fetchBlogData(page, search, category);
     },
-    [router, fetchBlogData]
+    [router, fetchBlogData],
   );
 
   function handleCategoryChange(category: string | null) {
@@ -92,7 +98,7 @@ export default function BlogPageClient({ initialData }: { initialData: BlogData 
       setSearchQuery(query);
       updateAndFetch(1, query, selectedCategory);
     },
-    [selectedCategory, updateAndFetch]
+    [selectedCategory, updateAndFetch],
   );
 
   function clearAllFilters() {
@@ -196,7 +202,7 @@ export default function BlogPageClient({ initialData }: { initialData: BlogData 
           <div
             className={cn(
               "text-sm font-black uppercase tracking-wider text-primary-foreground",
-              hasActiveFilters ? "sm:text-right" : ""
+              hasActiveFilters ? "sm:text-right" : "",
             )}
           >
             {totalBlogs > 0 ? (

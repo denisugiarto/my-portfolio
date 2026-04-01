@@ -5,13 +5,23 @@ export function middleware(request: NextRequest) {
   const response = NextResponse.next();
 
   // Add caching headers for static assets
-  if (request.nextUrl.pathname.match(/\.(jpg|jpeg|png|gif|webp|svg|ico|woff|woff2|ttf|eot)$/)) {
-    response.headers.set("Cache-Control", "public, max-age=31536000, immutable");
+  if (
+    request.nextUrl.pathname.match(
+      /\.(jpg|jpeg|png|gif|webp|svg|ico|woff|woff2|ttf|eot)$/,
+    )
+  ) {
+    response.headers.set(
+      "Cache-Control",
+      "public, max-age=31536000, immutable",
+    );
   }
 
   // Add caching headers for API routes
   if (request.nextUrl.pathname.startsWith("/api/")) {
-    response.headers.set("Cache-Control", "public, s-maxage=60, stale-while-revalidate=300");
+    response.headers.set(
+      "Cache-Control",
+      "public, s-maxage=60, stale-while-revalidate=300",
+    );
   }
 
   // Add security headers
@@ -20,7 +30,7 @@ export function middleware(request: NextRequest) {
   response.headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
   response.headers.set(
     "Permissions-Policy",
-    "camera=(), microphone=(), geolocation=()"
+    "camera=(), microphone=(), geolocation=()",
   );
 
   return response;

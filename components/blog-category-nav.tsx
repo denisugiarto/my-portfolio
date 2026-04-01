@@ -32,9 +32,11 @@ export default function BlogCategoryNav({
 
     return categories.map((category) => {
       const isSelected = selectedCategory === category._id;
-      
-      let style: { style?: React.CSSProperties; className: string } = { className: "" };
-      
+
+      let style: { style?: React.CSSProperties; className: string } = {
+        className: "",
+      };
+
       if (isSelected && category.color === "other" && category.customColor) {
         style = {
           style: { backgroundColor: category.customColor, color: "white" },
@@ -45,7 +47,7 @@ export default function BlogCategoryNav({
       } else if (isSelected) {
         style = { className: "bg-primary text-primary-foreground" };
       }
-      
+
       return { category, style, isSelected };
     });
   }, [categories, selectedCategory]);
@@ -61,10 +63,10 @@ export default function BlogCategoryNav({
             "inline-flex items-center gap-1.5 rounded-none border-[3px] border-foreground px-3 py-1.5 text-xs font-black uppercase tracking-wider transition-none md:gap-2 md:px-4 md:py-2 md:text-sm",
             selectedCategory === null
               ? "bg-primary text-primary-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))]"
-              : "bg-background text-foreground hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_hsl(var(--foreground))]"
+              : "bg-background text-foreground hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_hsl(var(--foreground))]",
           )}
         >
-          <LayoutGrid className="h-4 w-4 md:h-5 md:w-5 stroke-[3]" />
+          <LayoutGrid className="h-4 w-4 stroke-[3] md:h-5 md:w-5" />
           All
         </Button>
 
@@ -80,7 +82,7 @@ export default function BlogCategoryNav({
               isSelected
                 ? "shadow-[4px_4px_0px_0px_hsl(var(--foreground))]"
                 : "bg-background text-foreground hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_hsl(var(--foreground))]",
-              style.className
+              style.className,
             )}
           >
             {category.name}

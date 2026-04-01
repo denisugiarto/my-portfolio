@@ -16,13 +16,13 @@
 
 ### Color Palette
 
-| Role | Hex | CSS Variable |
-|------|-----|--------------|
-| Primary | `#000000` | `--color-primary` |
-| Secondary | `#FFFFFF` | `--color-secondary` |
-| CTA/Accent | `#FF3366` | `--color-cta` |
+| Role       | Hex       | CSS Variable         |
+| ---------- | --------- | -------------------- |
+| Primary    | `#000000` | `--color-primary`    |
+| Secondary  | `#FFFFFF` | `--color-secondary`  |
+| CTA/Accent | `#FF3366` | `--color-cta`        |
 | Background | `#FFD260` | `--color-background` |
-| Text | `#000000` | `--color-text` |
+| Text       | `#000000` | `--color-text`       |
 
 **Color Notes:** High contrast black, white, bright yellow background, and vibrant pink accent.
 
@@ -34,29 +34,30 @@
 - **Google Fonts:** [Archivo + Space Grotesk](https://fonts.google.com/share?selection.family=Archivo:wght@300;400;500;600;700;800;900|Space+Grotesk:wght@300;400;500;600;700)
 
 **CSS Import:**
+
 ```css
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
 ```
 
 ### Spacing Variables
 
-| Token | Value | Usage |
-|-------|-------|-------|
-| `--space-xs` | `4px` / `0.25rem` | Tight gaps |
-| `--space-sm` | `8px` / `0.5rem` | Icon gaps, inline spacing |
-| `--space-md` | `16px` / `1rem` | Standard padding |
-| `--space-lg` | `24px` / `1.5rem` | Section padding |
-| `--space-xl` | `32px` / `2rem` | Large gaps |
-| `--space-2xl` | `48px` / `3rem` | Section margins |
-| `--space-3xl` | `64px` / `4rem` | Hero padding |
+| Token         | Value             | Usage                     |
+| ------------- | ----------------- | ------------------------- |
+| `--space-xs`  | `4px` / `0.25rem` | Tight gaps                |
+| `--space-sm`  | `8px` / `0.5rem`  | Icon gaps, inline spacing |
+| `--space-md`  | `16px` / `1rem`   | Standard padding          |
+| `--space-lg`  | `24px` / `1.5rem` | Section padding           |
+| `--space-xl`  | `32px` / `2rem`   | Large gaps                |
+| `--space-2xl` | `48px` / `3rem`   | Section margins           |
+| `--space-3xl` | `64px` / `4rem`   | Hero padding              |
 
 ### Shadow Depths (Neo-Brutalist Hard Shadows)
 
-| Level | Value | Usage |
-|-------|-------|-------|
-| `--shadow-sm` | `2px 2px 0px rgba(0,0,0,1)` | Tags, small buttons, inputs |
-| `--shadow-md` | `4px 4px 0px rgba(0,0,0,1)` | Cards, primary buttons |
-| `--shadow-lg` | `8px 8px 0px rgba(0,0,0,1)` | Modals, dropdowns, featured cards |
+| Level         | Value                         | Usage                                |
+| ------------- | ----------------------------- | ------------------------------------ |
+| `--shadow-sm` | `2px 2px 0px rgba(0,0,0,1)`   | Tags, small buttons, inputs          |
+| `--shadow-md` | `4px 4px 0px rgba(0,0,0,1)`   | Cards, primary buttons               |
+| `--shadow-lg` | `8px 8px 0px rgba(0,0,0,1)`   | Modals, dropdowns, featured cards    |
 | `--shadow-xl` | `12px 12px 0px rgba(0,0,0,1)` | Hero images, large interactive areas |
 
 ---
@@ -82,12 +83,12 @@
 
 .btn-primary:hover {
   transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px rgba(0,0,0,1);
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 1);
 }
 
 .btn-primary:active {
   transform: translate(4px, 4px);
-  box-shadow: 0px 0px 0px rgba(0,0,0,1);
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 1);
 }
 
 /* Secondary Button */
@@ -104,14 +105,14 @@
 }
 
 .btn-secondary:hover {
-  background: #E2E8F0;
+  background: #e2e8f0;
   transform: translate(-2px, -2px);
-  box-shadow: 4px 4px 0px rgba(0,0,0,1);
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 1);
 }
 
 .btn-secondary:active {
   transform: translate(2px, 2px);
-  box-shadow: 0px 0px 0px rgba(0,0,0,1);
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 1);
 }
 ```
 
@@ -141,7 +142,7 @@
   padding: 12px 16px;
   border: 3px solid #000000;
   border-radius: 4px;
-  background: #FFFFFF;
+  background: #ffffff;
   font-size: 16px;
   font-weight: 500;
   box-shadow: var(--shadow-sm);

@@ -46,7 +46,7 @@ const SearchInput = ({
   return (
     <div className="relative w-full flex-grow md:max-w-sm" role="search">
       <Search
-        className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 transform text-foreground stroke-[3] md:left-4 md:h-5 md:w-5 z-50"
+        className="absolute left-3 top-1/2 z-50 h-4 w-4 -translate-y-1/2 transform stroke-[3] text-foreground md:left-4 md:h-5 md:w-5"
         aria-hidden="true"
       />
       <Input

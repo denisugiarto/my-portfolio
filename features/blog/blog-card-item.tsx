@@ -15,13 +15,13 @@ export default function BlogCardItem({ blog }: { blog: BlogPost }) {
       {/* Content */}
       <div className="flex h-full flex-col">
         {/* Title */}
-        <h2 className="text-2xl font-black uppercase text-foreground line-clamp-2 transition-none group-hover:underline decoration-4 underline-offset-4 mb-4">
+        <h2 className="mb-4 line-clamp-2 text-2xl font-black uppercase text-foreground decoration-4 underline-offset-4 transition-none group-hover:underline">
           {blog.title}
         </h2>
 
         {/* Excerpt */}
         {blog.excerpt && (
-          <p className="mb-6 text-base font-bold text-muted-foreground line-clamp-3">
+          <p className="mb-6 line-clamp-3 text-base font-bold text-muted-foreground">
             {blog.excerpt}
           </p>
         )}
@@ -68,8 +68,13 @@ export default function BlogCardItem({ blog }: { blog: BlogPost }) {
 
           {/* Read more indicator */}
           <div className="flex items-center gap-2 text-sm font-black uppercase tracking-widest text-primary transition-none group-hover:text-foreground">
-            <span className="border-b-4 border-transparent group-hover:border-foreground pb-1">READ ARTICLE</span>
-            <ArrowRight size={18} className="stroke-[3] transition-none group-hover:translate-x-2" />
+            <span className="border-b-4 border-transparent pb-1 group-hover:border-foreground">
+              READ ARTICLE
+            </span>
+            <ArrowRight
+              size={18}
+              className="stroke-[3] transition-none group-hover:translate-x-2"
+            />
           </div>
         </div>
       </div>

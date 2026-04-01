@@ -9,16 +9,16 @@ const ContactForm = dynamic(() => import("@/components/contact-form"), {
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-8">
         <div className="space-y-2">
           <div className="mb-2 h-4 w-24 animate-pulse rounded-none bg-gray-300 dark:bg-gray-700" />
-          <div className="h-12 w-full animate-pulse rounded-none border-4 border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-800" />
+          <div className="h-12 w-full animate-pulse rounded-none border-4 border-gray-300 bg-gray-100 dark:border-gray-700 dark:bg-gray-800" />
         </div>
         <div className="space-y-2">
           <div className="mb-2 h-4 w-32 animate-pulse rounded-none bg-gray-300 dark:bg-gray-700" />
-          <div className="h-12 w-full animate-pulse rounded-none border-4 border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-800" />
+          <div className="h-12 w-full animate-pulse rounded-none border-4 border-gray-300 bg-gray-100 dark:border-gray-700 dark:bg-gray-800" />
         </div>
       </div>
       <div className="space-y-2">
         <div className="mb-2 h-4 w-40 animate-pulse rounded-none bg-gray-300 dark:bg-gray-700" />
-        <div className="h-32 w-full animate-pulse rounded-none border-4 border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-800" />
+        <div className="h-32 w-full animate-pulse rounded-none border-4 border-gray-300 bg-gray-100 dark:border-gray-700 dark:bg-gray-800" />
       </div>
       <div className="h-14 w-full animate-pulse rounded-none bg-gray-300 dark:bg-gray-700" />
     </div>

@@ -7,14 +7,14 @@ import { motion } from "framer-motion";
 import React from "react";
 import { Badge } from "@/components/ui/badge";
 import { getIconComponent } from "@/lib/icon-mapping";
-import { 
-  MapPin, 
-  Clock, 
-  Globe, 
-  Award, 
-  TrendingUp, 
-  Zap, 
-  Target 
+import {
+  MapPin,
+  Clock,
+  Globe,
+  Award,
+  TrendingUp,
+  Zap,
+  Target,
 } from "lucide-react";
 
 interface AboutProps {
@@ -138,7 +138,10 @@ export default function About({ aboutData }: AboutProps) {
                   {aboutData.personalInfo.yearsOfExperience && (
                     <div className="flex items-center gap-3 text-gray-300">
                       <Award className="h-5 w-5 text-emerald-400" />
-                      <span>{aboutData.personalInfo.yearsOfExperience}+ Years Experience</span>
+                      <span>
+                        {aboutData.personalInfo.yearsOfExperience}+ Years
+                        Experience
+                      </span>
                     </div>
                   )}
                   {aboutData.personalInfo.languages?.length > 0 && (
@@ -160,7 +163,10 @@ export default function About({ aboutData }: AboutProps) {
               {aboutData.profileImage ? (
                 <div className="relative overflow-hidden rounded-none shadow-2xl">
                   <Image
-                    src={urlFor(aboutData.profileImage).width(400).height(500).url()}
+                    src={urlFor(aboutData.profileImage)
+                      .width(400)
+                      .height(500)
+                      .url()}
                     alt="Profile"
                     width={400}
                     height={500}
@@ -182,69 +188,76 @@ export default function About({ aboutData }: AboutProps) {
           </div>
 
           {/* Skills Section */}
-          {aboutData.skillCategories && aboutData.skillCategories.length > 0 && (
-            <motion.div variants={item} className="mt-20">
-              <h3 className="mb-8 text-center text-2xl font-bold text-white">
-                Technical Skills
-              </h3>
-              <motion.div
-                variants={skillsContainer}
-                className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
-              >
-                {aboutData.skillCategories.map((category) => (
-                  <motion.div key={category.category} variants={item}>
-                    <div className="rounded-none border border-gray-700 bg-gray-800/50 p-6 backdrop-blur">
-                      <h4 className="mb-4 text-lg font-semibold capitalize text-white">
-                        {category.category}
-                      </h4>
-                      <div className="space-y-3">
-                        {category.skills?.map((skill) => {
-                          const IconComponent = skill.icon
-                            ? getIconComponent(skill.icon)
-                            : null;
-                          
-                          return (
-                            <div key={skill.name} className="space-y-2">
-                              <div className="flex items-center justify-between">
-                                <div className="flex items-center gap-2">
-                                  {IconComponent && (
-                                    <IconComponent 
-                                      className="h-4 w-4" 
-                                      style={{ color: skill.color || "#9ca3af" }}
-                                    />
-                                  )}
-                                  <span className="text-sm text-gray-300">
-                                    {skill.name}
-                                  </span>
+          {aboutData.skillCategories &&
+            aboutData.skillCategories.length > 0 && (
+              <motion.div variants={item} className="mt-20">
+                <h3 className="mb-8 text-center text-2xl font-bold text-white">
+                  Technical Skills
+                </h3>
+                <motion.div
+                  variants={skillsContainer}
+                  className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+                >
+                  {aboutData.skillCategories.map((category) => (
+                    <motion.div key={category.category} variants={item}>
+                      <div className="rounded-none border border-gray-700 bg-gray-800/50 p-6 backdrop-blur">
+                        <h4 className="mb-4 text-lg font-semibold capitalize text-white">
+                          {category.category}
+                        </h4>
+                        <div className="space-y-3">
+                          {category.skills?.map((skill) => {
+                            const IconComponent = skill.icon
+                              ? getIconComponent(skill.icon)
+                              : null;
+
+                            return (
+                              <div key={skill.name} className="space-y-2">
+                                <div className="flex items-center justify-between">
+                                  <div className="flex items-center gap-2">
+                                    {IconComponent && (
+                                      <IconComponent
+                                        className="h-4 w-4"
+                                        style={{
+                                          color: skill.color || "#9ca3af",
+                                        }}
+                                      />
+                                    )}
+                                    <span className="text-sm text-gray-300">
+                                      {skill.name}
+                                    </span>
+                                  </div>
+                                  <Badge
+                                    variant="secondary"
+                                    className="text-xs"
+                                  >
+                                    {skill.proficiency}/5
+                                  </Badge>
                                 </div>
-                                <Badge 
-                                  variant="secondary" 
-                                  className="text-xs"
-                                >
-                                  {skill.proficiency}/5
-                                </Badge>
+                                <div className="h-2 overflow-hidden rounded-none bg-gray-700">
+                                  <motion.div
+                                    className={`h-full ${getProficiencyColor(
+                                      skill.proficiency,
+                                    )}`}
+                                    initial={{ width: 0 }}
+                                    whileInView={{
+                                      width: getProficiencyWidth(
+                                        skill.proficiency,
+                                      ),
+                                    }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 1, delay: 0.5 }}
+                                  />
+                                </div>
                               </div>
-                              <div className="h-2 overflow-hidden rounded-none bg-gray-700">
-                                <motion.div
-                                  className={`h-full ${getProficiencyColor(skill.proficiency)}`}
-                                  initial={{ width: 0 }}
-                                  whileInView={{ 
-                                    width: getProficiencyWidth(skill.proficiency) 
-                                  }}
-                                  viewport={{ once: true }}
-                                  transition={{ duration: 1, delay: 0.5 }}
-                                />
-                              </div>
-                            </div>
-                          );
-                        })}
+                            );
+                          })}
+                        </div>
                       </div>
-                    </div>
-                  </motion.div>
-                ))}
+                    </motion.div>
+                  ))}
+                </motion.div>
               </motion.div>
-            </motion.div>
-          )}
+            )}
 
           {/* Achievements Section */}
           {aboutData.achievements && aboutData.achievements.length > 0 && (
@@ -257,7 +270,7 @@ export default function About({ aboutData }: AboutProps) {
                   const IconComponent = achievement.icon
                     ? getIconComponent(achievement.icon)
                     : [Target, Zap, TrendingUp, Award][index % 4];
-                  
+
                   return (
                     <motion.div
                       key={achievement.title}
@@ -267,7 +280,11 @@ export default function About({ aboutData }: AboutProps) {
                       <div className="rounded-none border border-gray-700 bg-gray-800/50 p-6 backdrop-blur transition-all duration-300 hover:border-blue-500/50 hover:bg-gray-800/70">
                         <div className="flex items-start gap-4">
                           <div className="rounded-none bg-gradient-to-r from-blue-500/20 to-purple-500/20 p-3">
-                            {IconComponent ? React.createElement(IconComponent, { className: "h-6 w-6 text-blue-400" }) : null}
+                            {IconComponent
+                              ? React.createElement(IconComponent, {
+                                  className: "h-6 w-6 text-blue-400",
+                                })
+                              : null}
                           </div>
                           <div className="flex-1">
                             <h4 className="mb-2 font-semibold text-white">

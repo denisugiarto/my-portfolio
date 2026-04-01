@@ -75,10 +75,12 @@ export async function getBlogPosts(limit?: number): Promise<BlogPost[]> {
 // Get paginated blog posts with total count
 export async function getPaginatedBlogPosts(
   skip: number = 0,
-  limit: number = 6
+  limit: number = 6,
 ): Promise<{ posts: BlogPost[]; total: number }> {
   try {
-    const postsQuery = `*[_type == "blogPost" && published == true] | order(publishedAt desc) [${skip}...${skip + limit}] {
+    const postsQuery = `*[_type == "blogPost" && published == true] | order(publishedAt desc) [${skip}...${
+      skip + limit
+    }] {
       _id,
       title,
       slug,
@@ -119,14 +121,16 @@ export async function searchBlogPosts(
   query: string,
   categoryId?: string | null,
   skip: number = 0,
-  limit: number = 6
+  limit: number = 6,
 ): Promise<{ posts: BlogPost[]; total: number }> {
   try {
     const searchFilter = categoryId
       ? `&& category._ref == "${categoryId}"`
       : "";
-    
-    const postsQuery = `*[_type == "blogPost" && published == true ${searchFilter} && (title match "*${query}*" || excerpt match "*${query}*")] | order(publishedAt desc) [${skip}...${skip + limit}] {
+
+    const postsQuery = `*[_type == "blogPost" && published == true ${searchFilter} && (title match "*${query}*" || excerpt match "*${query}*")] | order(publishedAt desc) [${skip}...${
+      skip + limit
+    }] {
       _id,
       title,
       slug,

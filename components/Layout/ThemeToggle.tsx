@@ -26,7 +26,9 @@ const ThemeToggle = () => {
         variant="icon"
         color="primary"
         size="iconLg"
-        className={cn("pointer-events-none hover:bg-background hover:text-foreground")}
+        className={cn(
+          "pointer-events-none hover:bg-background hover:text-foreground",
+        )}
         aria-label="Toggle Theme"
         title="Toggle Theme"
         disabled
@@ -46,7 +48,11 @@ const ThemeToggle = () => {
       aria-label="Toggle Theme"
       title="Toggle Theme"
     >
-      {resolvedTheme === "dark" ? <MoonIcon className="h-5 w-5 stroke-[3]" /> : <Sun className="h-5 w-5 stroke-[3]" />}
+      {resolvedTheme === "dark" ? (
+        <MoonIcon className="h-5 w-5 stroke-[3]" />
+      ) : (
+        <Sun className="h-5 w-5 stroke-[3]" />
+      )}
     </Button>
   );
 };

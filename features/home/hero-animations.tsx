@@ -12,7 +12,7 @@ export function HeroAnimations({ children }: HeroAnimationsProps) {
     <LazyMotion features={domAnimation}>
       <section
         id="home"
-        className="relative flex flex-col justify-center overflow-hidden pt-24 pb-12 text-center lg:pt-36 lg:pb-24"
+        className="relative flex flex-col justify-center overflow-hidden pb-12 pt-24 text-center lg:pb-24 lg:pt-36"
       >
         <div className="container relative z-10 mx-auto">{children}</div>
       </section>
@@ -65,7 +65,7 @@ export function AnimatedTechStack({ techs }: AnimatedTechStackProps) {
       transition={{ duration: 0.3, delay: 0.3, ease: "easeOut" }}
       className="mt-16"
     >
-      <p className="mb-4 inline-block bg-accent px-2 py-1 text-sm font-black uppercase tracking-[0.2em] text-accent-foreground border-2 border-foreground shadow-[2px_2px_0px_0px_hsl(var(--foreground))]">
+      <p className="mb-4 inline-block border-2 border-foreground bg-accent px-2 py-1 text-sm font-black uppercase tracking-[0.2em] text-accent-foreground shadow-[2px_2px_0px_0px_hsl(var(--foreground))]">
         CORE STACK
       </p>
       <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-center gap-4 border-4 border-foreground bg-card px-6 py-8 shadow-[8px_8px_0px_0px_hsl(var(--foreground))] md:gap-6 md:px-10">

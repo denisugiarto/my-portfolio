@@ -79,7 +79,7 @@ export const project = defineType({
           { title: "Other", value: "other" },
         ],
       },
-    }),    
+    }),
     defineField({
       name: "liveUrl",
       title: "Live URL",

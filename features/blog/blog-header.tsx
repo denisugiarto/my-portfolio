@@ -14,7 +14,7 @@ export default function BlogHeader({ article }: BlogHeaderProps) {
         </div>
       )}
 
-      <h1 className="mb-8 block break-words font-title text-xl md:text-3xl lg:text-5xl font-black uppercase tracking-tight text-foreground md:leading-[1.1] border-b-8 border-foreground pb-2">
+      <h1 className="mb-8 block break-words border-b-8 border-foreground pb-2 font-title text-xl font-black uppercase tracking-tight text-foreground md:text-3xl md:leading-[1.1] lg:text-5xl">
         {article.title}
       </h1>
 
@@ -42,7 +42,7 @@ export default function BlogHeader({ article }: BlogHeaderProps) {
           {article.tags.map((tag) => (
             <div
               key={tag._id}
-              className="border-2 border-foreground bg-background px-3 py-1.5 text-xs font-black uppercase tracking-widest text-foreground shadow-[2px_2px_0px_0px_hsl(var(--foreground))] hover:bg-foreground hover:text-background transition-none"
+              className="border-2 border-foreground bg-background px-3 py-1.5 text-xs font-black uppercase tracking-widest text-foreground shadow-[2px_2px_0px_0px_hsl(var(--foreground))] transition-none hover:bg-foreground hover:text-background"
             >
               #{tag.name}
             </div>

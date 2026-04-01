@@ -55,20 +55,21 @@ export default function ProjectCard({
 
       <div className="p-6 pt-5">
         <Link href={`/projects/${project.slug.current}`}>
-          <h3 className="mb-2 text-xl font-black uppercase tracking-tight text-foreground transition-none group-hover:bg-primary group-hover:text-primary-foreground group-hover:px-1 inline-block">
+          <h3 className="mb-2 inline-block text-xl font-black uppercase tracking-tight text-foreground transition-none group-hover:bg-primary group-hover:px-1 group-hover:text-primary-foreground">
             {project.title}
           </h3>
         </Link>
 
-        <p className="mb-4 line-clamp-2 text-sm leading-relaxed text-muted-foreground font-medium">
+        <p className="mb-4 line-clamp-2 text-sm font-medium leading-relaxed text-muted-foreground">
           {project.shortDescription || project.description}
         </p>
 
         {/* Technologies */}
         {project.technologies && project.technologies.length > 0 && (
           <div
-            className={`flex flex-wrap gap-2 ${isHomeVariant ? "pb-2 pt-0" : "mb-5"
-              }`}
+            className={`flex flex-wrap gap-2 ${
+              isHomeVariant ? "pb-2 pt-0" : "mb-5"
+            }`}
           >
             {project.technologies
               .slice(0, isHomeVariant ? undefined : 4)
@@ -89,7 +90,7 @@ export default function ProjectCard({
         )}
 
         {/* Project Links */}
-        <div className="mt-4 flex gap-3 flex-wrap">
+        <div className="mt-4 flex flex-wrap gap-3">
           {project.liveUrl && (
             <a
               href={project.liveUrl}
@@ -134,10 +135,7 @@ export default function ProjectCard({
               title="github repo"
               onClick={(e) => e.stopPropagation()}
             >
-              <Button
-                size="sm"
-                className="flex items-center gap-2"
-              >
+              <Button size="sm" className="flex items-center gap-2">
                 <SiGithub className="h-4 w-4" />
                 REPO
               </Button>

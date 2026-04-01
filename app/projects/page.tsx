@@ -46,7 +46,10 @@ export default async function ProjectsPage() {
             </div>
 
             <h1 className="mb-4 text-4xl font-black uppercase tracking-tight text-foreground md:mb-6 md:text-5xl lg:text-7xl">
-              My <span className="inline-block bg-primary px-2 text-primary-foreground border-[3px] border-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">Projects</span>
+              My{" "}
+              <span className="inline-block border-[3px] border-foreground bg-primary px-2 text-primary-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
+                Projects
+              </span>
             </h1>
 
             <p className="mx-auto max-w-3xl text-sm font-bold leading-relaxed text-foreground/80 md:text-lg md:leading-relaxed">

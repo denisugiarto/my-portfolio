@@ -31,10 +31,10 @@ export default function ContactPage() {
           <div className="container">
             <div className="mx-auto max-w-4xl">
               <div className="mb-16">
-                <h1 className="mb-8 inline-block text-5xl font-black uppercase leading-none tracking-tight text-foreground md:text-7xl lg:text-8xl border-b-8 border-foreground pb-2">
+                <h1 className="mb-8 inline-block border-b-8 border-foreground pb-2 text-5xl font-black uppercase leading-none tracking-tight text-foreground md:text-7xl lg:text-8xl">
                   GET IN TOUCH
                 </h1>
-                <p className="max-w-2xl border-l-8 border-primary bg-secondary p-6 text-xl font-bold leading-relaxed shadow-[8px_8px_0px_0px_hsl(var(--foreground))] text-foreground">
+                <p className="max-w-2xl border-l-8 border-primary bg-secondary p-6 text-xl font-bold leading-relaxed text-foreground shadow-[8px_8px_0px_0px_hsl(var(--foreground))]">
                   READY TO BRING YOUR IDEAS TO LIFE? SEND ME A MESSAGE AND
                   I&apos;LL GET BACK TO YOU WITHIN 24 HOURS.
                 </p>

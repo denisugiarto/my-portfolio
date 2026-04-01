@@ -129,29 +129,28 @@
   }
 
   .title-section {
-    @apply mb-8 font-title text-4xl font-extrabold uppercase text-foreground tracking-tight border-b-4 border-foreground pb-2 inline-block;
+    @apply mb-8 inline-block border-b-4 border-foreground pb-2 font-title text-4xl font-extrabold uppercase tracking-tight text-foreground;
   }
 
   .container {
-    @apply w-full mx-auto max-w-7xl px-4 pt-8 sm:px-6 lg:px-8;
+    @apply mx-auto w-full max-w-7xl px-4 pt-8 sm:px-6 lg:px-8;
   }
 
   /* Core UI overwrites for Brutalism */
   .card {
-    @apply h-full bg-card border-4 border-foreground shadow-[6px_6px_0px_0px_hsl(var(--foreground))] transition-none;
+    @apply h-full border-4 border-foreground bg-card shadow-[6px_6px_0px_0px_hsl(var(--foreground))] transition-none;
   }
 
   .card:hover {
-    @apply shadow-[0px_0px_0px_0px_hsl(var(--foreground))] translate-x-[6px] translate-y-[6px];
+    @apply translate-x-[6px] translate-y-[6px] shadow-[0px_0px_0px_0px_hsl(var(--foreground))];
   }
 
   .tag {
-    @apply mb-2 mr-2 inline-block bg-primary text-primary-foreground border-2 border-foreground px-3 py-1 text-xs font-bold uppercase tracking-wider;
+    @apply mb-2 mr-2 inline-block border-2 border-foreground bg-primary px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary-foreground;
   }
 }
 
 @layer components {
-
   /* Override old fonts if they are used elsewhere */
   .geist-font {
     font-family: var(--font-archivo), sans-serif;
@@ -167,25 +166,25 @@
   }
 
   .gradient-text {
-    @apply bg-primary text-primary-foreground px-2 italic font-black tracking-widest uppercase inline-block border-2 border-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))];
+    @apply inline-block border-2 border-foreground bg-primary px-2 font-black uppercase italic tracking-widest text-primary-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))];
     -webkit-text-fill-color: inherit;
     background-clip: border-box;
   }
 
   .divider {
-    @apply mx-auto h-2 w-full max-w-7xl bg-foreground my-8;
+    @apply mx-auto my-8 h-2 w-full max-w-7xl bg-foreground;
   }
 
   .glass-card {
-    @apply bg-card border-4 border-foreground shadow-[8px_8px_0px_0px_hsl(var(--foreground))] p-6 relative;
+    @apply relative border-4 border-foreground bg-card p-6 shadow-[8px_8px_0px_0px_hsl(var(--foreground))];
   }
 
   .glass-button {
-    @apply font-bold uppercase tracking-wide inline-flex items-center justify-center border-4 border-foreground bg-secondary text-foreground px-6 py-3 transition-none shadow-[6px_6px_0px_0px_hsl(var(--foreground))] hover:shadow-[0px_0px_0px_0px_hsl(var(--foreground))] hover:translate-x-[6px] hover:translate-y-[6px] cursor-pointer;
+    @apply inline-flex cursor-pointer items-center justify-center border-4 border-foreground bg-secondary px-6 py-3 font-bold uppercase tracking-wide text-foreground shadow-[6px_6px_0px_0px_hsl(var(--foreground))] transition-none hover:translate-x-[6px] hover:translate-y-[6px] hover:shadow-[0px_0px_0px_0px_hsl(var(--foreground))];
   }
 
   .primary-button {
-    @apply font-bold uppercase tracking-wide inline-flex items-center justify-center gap-2 border-4 border-foreground bg-primary text-primary-foreground px-6 py-3 transition-none shadow-[6px_6px_0px_0px_hsl(var(--foreground))] hover:shadow-[0px_0px_0px_0px_hsl(var(--foreground))] hover:translate-x-[6px] hover:translate-y-[6px] cursor-pointer;
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 border-4 border-foreground bg-primary px-6 py-3 font-bold uppercase tracking-wide text-primary-foreground shadow-[6px_6px_0px_0px_hsl(var(--foreground))] transition-none hover:translate-x-[6px] hover:translate-y-[6px] hover:shadow-[0px_0px_0px_0px_hsl(var(--foreground))];
   }
 
   .project-image {
@@ -193,6 +192,6 @@
   }
 
   .skill-badge {
-    @apply border-2 border-foreground bg-background font-bold uppercase text-xs px-3 py-1 shadow-[3px_3px_0px_0px_hsl(var(--foreground))] hover:shadow-[0px_0px_0px_0px_hsl(var(--foreground))] hover:translate-x-[3px] hover:translate-y-[3px] transition-none;
+    @apply border-2 border-foreground bg-background px-3 py-1 text-xs font-bold uppercase shadow-[3px_3px_0px_0px_hsl(var(--foreground))] transition-none hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-[0px_0px_0px_0px_hsl(var(--foreground))];
   }
 }

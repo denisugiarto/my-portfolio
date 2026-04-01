@@ -99,7 +99,7 @@ export default function Header({ activeNavbar }: HeaderProps) {
         isScrollLimit
           ? headerStyleOnScroll
           : "border-b-4 border-transparent bg-background/0 py-2",
-        "fixed top-0 z-50 w-full transition-all duration-300 ease-none",
+        "ease-none fixed top-0 z-50 w-full transition-all duration-300",
       )}
     >
       <div className="container py-2">
@@ -125,7 +125,7 @@ export default function Header({ activeNavbar }: HeaderProps) {
                       activeNavbar?.toLowerCase() === item.name.toLowerCase()
                         ? "border-4 border-foreground bg-foreground text-background shadow-[4px_4px_0px_0px_hsl(var(--foreground))]"
                         : "border-4 border-transparent text-foreground hover:border-foreground hover:bg-secondary hover:shadow-[4px_4px_0px_0px_hsl(var(--foreground))]",
-                      "rounded-none px-4 py-2 font-black uppercase tracking-widest text-sm transition-none hover:-translate-y-1 hover:-translate-x-1",
+                      "rounded-none px-4 py-2 text-sm font-black uppercase tracking-widest transition-none hover:-translate-x-1 hover:-translate-y-1",
                     )}
                     aria-current={item.name ? "page" : undefined}
                   >
@@ -144,13 +144,19 @@ export default function Header({ activeNavbar }: HeaderProps) {
             >
               <span className="sr-only">Open main menu</span>
               {isOpen ? (
-                <XIcon className="block h-6 w-6 stroke-[3]" aria-hidden="true" />
+                <XIcon
+                  className="block h-6 w-6 stroke-[3]"
+                  aria-hidden="true"
+                />
               ) : (
-                <MenuIcon className="block h-6 w-6 stroke-[3]" aria-hidden="true" />
+                <MenuIcon
+                  className="block h-6 w-6 stroke-[3]"
+                  aria-hidden="true"
+                />
               )}
             </Button>
           </div>
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden items-center gap-4 lg:flex">
             <GitHubStarsWrapper stars={repoStars || 0} loading={isLoading} />
             <ThemeToggle />
           </div>
@@ -174,7 +180,7 @@ export default function Header({ activeNavbar }: HeaderProps) {
             "fixed left-0 top-0 z-40 h-screen w-full bg-background shadow-[2px_0_0_0_hsl(var(--foreground))] transition-transform duration-300 ease-out",
           )}
         >
-          <div className="absolute right-4 top-4 flex items-center lg:hidden pt-2 pl-2">
+          <div className="absolute right-4 top-4 flex items-center pl-2 pt-2 lg:hidden">
             <Button
               type="button"
               onClick={() => setIsOpen(false)}
@@ -193,7 +199,7 @@ export default function Header({ activeNavbar }: HeaderProps) {
                 className={cn(
                   activeNavbar?.toLowerCase() === item.name.toLowerCase()
                     ? "border-4 border-foreground bg-primary text-primary-foreground shadow-[6px_6px_0px_0px_hsl(var(--foreground))]"
-                    : "border-4 border-foreground bg-card text-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] hover:bg-secondary hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_hsl(var(--foreground))]",
+                    : "border-4 border-foreground bg-card text-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] hover:-translate-x-1 hover:-translate-y-1 hover:bg-secondary hover:shadow-[8px_8px_0px_0px_hsl(var(--foreground))]",
                   "block cursor-pointer rounded-none px-6 py-4 text-center text-xl font-black uppercase tracking-widest transition-none",
                 )}
                 aria-current={item.name ? "page" : undefined}
@@ -202,7 +208,7 @@ export default function Header({ activeNavbar }: HeaderProps) {
               </Link>
             ))}
 
-            <div className="pt-6 mt-2 border-t-4 border-foreground flex flex-row items-center justify-center gap-6">
+            <div className="mt-2 flex flex-row items-center justify-center gap-6 border-t-4 border-foreground pt-6">
               <GitHubStarsWrapper stars={repoStars || 0} loading={isLoading} />
               <ThemeToggle />
             </div>

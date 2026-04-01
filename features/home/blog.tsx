@@ -28,7 +28,7 @@ export default function BlogSection() {
     return (
       <section className="relative overflow-hidden py-20 lg:py-28">
         <div className="container relative z-10">
-          <h2 className="font-title text-3xl md:text-4xl font-bold text-foreground">
+          <h2 className="font-title text-3xl font-bold text-foreground md:text-4xl">
             Notes from the build process
           </h2>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -56,7 +56,7 @@ export default function BlogSection() {
     <LazyMotion features={domAnimation}>
       <section className="relative overflow-hidden py-20 lg:py-28">
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute inset-x-0 top-10 mx-auto h-[32rem] w-[92%] rounded-none border border-border/40 bg-gradient-to-br from-background/70 via-background/55 to-muted/60 shadow-[0_30px_100px_rgba(15,23,42,0.12)] backdrop-blur-2xl" />
+          <div className="via-background/55 absolute inset-x-0 top-10 mx-auto h-[32rem] w-[92%] rounded-none border border-border/40 bg-gradient-to-br from-background/70 to-muted/60 shadow-[0_30px_100px_rgba(15,23,42,0.12)] backdrop-blur-2xl" />
           <svg
             className="absolute inset-0 h-full w-full"
             viewBox="0 0 1000 1000"
@@ -157,18 +157,18 @@ export default function BlogSection() {
           </svg>
         </div>
 
-          <m.div
-            className="container relative z-10"
-            initial={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
+        <m.div
+          className="container relative z-10"
+          initial={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+        >
           <div className="mb-12 text-center">
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.26em] text-amber-700 dark:text-amber-300">
               Writing
             </p>
-            <h2 className="font-title text-3xl md:text-4xl font-bold tracking-tight text-foreground">
+            <h2 className="font-title text-3xl font-bold tracking-tight text-foreground md:text-4xl">
               Notes from the build process
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
@@ -269,7 +269,7 @@ export default function BlogSection() {
           <div className="text-center">
             <Link
               href="/blog"
-              className="group inline-flex items-center gap-2 rounded border-[3px] border-foreground bg-primary text-primary-foreground px-8 py-4 font-bold uppercase tracking-wider shadow-[4px_4px_0px_0px_hsl(var(--foreground))] transition-all duration-150 hover:-translate-y-[2px] hover:-translate-x-[2px] hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))] active:translate-y-[2px] active:translate-x-[2px] active:shadow-none"
+              className="group inline-flex items-center gap-2 rounded border-[3px] border-foreground bg-primary px-8 py-4 font-bold uppercase tracking-wider text-primary-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] transition-all duration-150 hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
             >
               View All Articles
               <ArrowRight className="h-4 w-4 transition-none group-hover:translate-x-1" />

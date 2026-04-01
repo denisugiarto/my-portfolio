@@ -1,7 +1,11 @@
 import { Suspense } from "react";
 import { Metadata } from "next";
 import HomeSections from "@/components/home-sections";
-import { getHeroSection, getFeaturedProjects, getAboutSection } from "@/lib/sanity-queries";
+import {
+  getHeroSection,
+  getFeaturedProjects,
+  getAboutSection,
+} from "@/lib/sanity-queries";
 
 export const metadata: Metadata = {
   title: "Portfolio | Full-Stack Developer",

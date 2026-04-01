@@ -112,19 +112,19 @@ export default function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="py-12 border-4 border-foreground bg-success p-8 shadow-[8px_8px_0px_0px_hsl(var(--foreground))]">
-        <CheckCircle className="mb-6 h-24 w-24 text-success-foreground stroke-[3] mx-auto" />
-        <h3 className="mb-6 text-3xl md:text-5xl font-black uppercase tracking-tight text-success-foreground text-center">
+      <div className="border-4 border-foreground bg-success p-8 py-12 shadow-[8px_8px_0px_0px_hsl(var(--foreground))]">
+        <CheckCircle className="mx-auto mb-6 h-24 w-24 stroke-[3] text-success-foreground" />
+        <h3 className="mb-6 text-center text-3xl font-black uppercase tracking-tight text-success-foreground md:text-5xl">
           MESSAGE SENT!
         </h3>
-        <p className="mb-10 text-xl font-bold leading-relaxed text-success-foreground text-center max-w-lg mx-auto bg-background/20 p-4 border-2 border-foreground">
+        <p className="mx-auto mb-10 max-w-lg border-2 border-foreground bg-background/20 p-4 text-center text-xl font-bold leading-relaxed text-success-foreground">
           THANK YOU FOR REACHING OUT. I&apos;LL GET BACK TO YOU WITHIN 24 HOURS.
         </p>
         <div className="flex justify-center">
           <Button
             size="lg"
             onClick={resetForm}
-            className="border-4 border-foreground bg-background text-foreground px-8 py-6 text-xl font-black uppercase shadow-[6px_6px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:bg-background hover:text-foreground hover:shadow-[10px_10px_0px_0px_hsl(var(--foreground))]"
+            className="border-4 border-foreground bg-background px-8 py-6 text-xl font-black uppercase text-foreground shadow-[6px_6px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:bg-background hover:text-foreground hover:shadow-[10px_10px_0px_0px_hsl(var(--foreground))]"
           >
             SEND ANOTHER MESSAGE
           </Button>
@@ -137,8 +137,8 @@ export default function ContactForm() {
     <div className="mx-auto w-full">
       <form onSubmit={handleSubmit} className="space-y-6 md:space-y-8">
         {errors.general && (
-          <div className="border-4 border-foreground bg-destructive p-3 md:p-4 shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
-            <p className="text-base md:text-lg font-black uppercase tracking-wider text-destructive-foreground">
+          <div className="border-4 border-foreground bg-destructive p-3 shadow-[4px_4px_0px_0px_hsl(var(--foreground))] md:p-4">
+            <p className="text-base font-black uppercase tracking-wider text-destructive-foreground md:text-lg">
               {errors.general}
             </p>
           </div>
@@ -148,7 +148,7 @@ export default function ContactForm() {
           <div className="flex flex-col">
             <label
               htmlFor="name"
-              className="mb-2 text-sm md:text-base font-black uppercase tracking-widest text-foreground md:mb-3"
+              className="mb-2 text-sm font-black uppercase tracking-widest text-foreground md:mb-3 md:text-base"
             >
               FULL NAME *
             </label>
@@ -160,17 +160,17 @@ export default function ContactForm() {
               onChange={handleInputChange}
               autoComplete="name"
               className={cn(
-                "w-full rounded-none border-[3px] md:border-4 bg-background px-3 py-3 md:px-4 md:py-4 text-base md:text-lg font-bold text-foreground transition-none",
-                "placeholder:text-muted-foreground placeholder:font-bold",
-                "focus:outline-none focus:translate-x-1 focus:translate-y-1",
+                "w-full rounded-none border-[3px] bg-background px-3 py-3 text-base font-bold text-foreground transition-none md:border-4 md:px-4 md:py-4 md:text-lg",
+                "placeholder:font-bold placeholder:text-muted-foreground",
+                "focus:translate-x-1 focus:translate-y-1 focus:outline-none",
                 errors.name
-                  ? "border-destructive focus:shadow-none shadow-[4px_4px_0px_0px_hsl(var(--destructive))]"
-                  : "border-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] focus:shadow-none hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))]",
+                  ? "border-destructive shadow-[4px_4px_0px_0px_hsl(var(--destructive))] focus:shadow-none"
+                  : "border-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))] focus:shadow-none",
               )}
               placeholder="YOUR FULL NAME"
             />
             {errors.name && (
-              <div className="mt-3 inline-block bg-destructive px-2 py-1 border-2 border-foreground">
+              <div className="mt-3 inline-block border-2 border-foreground bg-destructive px-2 py-1">
                 <p className="text-sm font-black uppercase text-destructive-foreground">
                   {errors.name}
                 </p>
@@ -181,7 +181,7 @@ export default function ContactForm() {
           <div className="flex flex-col">
             <label
               htmlFor="email"
-              className="mb-2 text-sm md:text-base font-black uppercase tracking-widest text-foreground md:mb-3"
+              className="mb-2 text-sm font-black uppercase tracking-widest text-foreground md:mb-3 md:text-base"
             >
               EMAIL ADDRESS *
             </label>
@@ -194,17 +194,17 @@ export default function ContactForm() {
               inputMode="email"
               autoComplete="email"
               className={cn(
-                "w-full rounded-none border-[3px] md:border-4 bg-background px-3 py-3 md:px-4 md:py-4 text-base md:text-lg font-bold text-foreground transition-none",
-                "placeholder:text-muted-foreground placeholder:font-bold",
-                "focus:outline-none focus:translate-x-1 focus:translate-y-1",
+                "w-full rounded-none border-[3px] bg-background px-3 py-3 text-base font-bold text-foreground transition-none md:border-4 md:px-4 md:py-4 md:text-lg",
+                "placeholder:font-bold placeholder:text-muted-foreground",
+                "focus:translate-x-1 focus:translate-y-1 focus:outline-none",
                 errors.email
-                  ? "border-destructive focus:shadow-none shadow-[4px_4px_0px_0px_hsl(var(--destructive))]"
-                  : "border-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] focus:shadow-none hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))]",
+                  ? "border-destructive shadow-[4px_4px_0px_0px_hsl(var(--destructive))] focus:shadow-none"
+                  : "border-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))] focus:shadow-none",
               )}
               placeholder="YOUR@EMAIL.COM"
             />
             {errors.email && (
-              <div className="mt-3 inline-block bg-destructive px-2 py-1 border-2 border-foreground">
+              <div className="mt-3 inline-block border-2 border-foreground bg-destructive px-2 py-1">
                 <p className="text-sm font-black uppercase text-destructive-foreground">
                   {errors.email}
                 </p>
@@ -216,7 +216,7 @@ export default function ContactForm() {
         <div className="flex flex-col">
           <label
             htmlFor="message"
-            className="mb-2 text-sm md:text-base font-black uppercase tracking-widest text-foreground md:mb-3"
+            className="mb-2 text-sm font-black uppercase tracking-widest text-foreground md:mb-3 md:text-base"
           >
             YOUR MESSAGE *
           </label>
@@ -227,17 +227,17 @@ export default function ContactForm() {
             value={formData.message}
             onChange={handleInputChange}
             className={cn(
-              "w-full rounded-none border-[3px] md:border-4 bg-background px-3 py-3 md:px-4 md:py-4 text-base md:text-lg font-bold text-foreground transition-none",
-              "resize-y placeholder:text-muted-foreground placeholder:font-bold",
-              "focus:outline-none focus:translate-x-1 focus:translate-y-1",
+              "w-full rounded-none border-[3px] bg-background px-3 py-3 text-base font-bold text-foreground transition-none md:border-4 md:px-4 md:py-4 md:text-lg",
+              "resize-y placeholder:font-bold placeholder:text-muted-foreground",
+              "focus:translate-x-1 focus:translate-y-1 focus:outline-none",
               errors.message
-                ? "border-destructive focus:shadow-none shadow-[4px_4px_0px_0px_hsl(var(--destructive))]"
-                : "border-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] focus:shadow-none hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))]",
+                ? "border-destructive shadow-[4px_4px_0px_0px_hsl(var(--destructive))] focus:shadow-none"
+                : "border-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))] focus:shadow-none",
             )}
             placeholder="TELL ME ABOUT YOUR PROJECT, QUESTIONS, OR HOW I CAN HELP YOU..."
           />
           {errors.message && (
-            <div className="mt-3 inline-block bg-destructive px-2 py-1 border-2 border-foreground">
+            <div className="mt-3 inline-block border-2 border-foreground bg-destructive px-2 py-1">
               <p className="text-sm font-black uppercase text-destructive-foreground">
                 {errors.message}
               </p>
@@ -248,7 +248,7 @@ export default function ContactForm() {
           </div>
         </div>
 
-        <div className="flex md:justify-end pt-2 md:pt-4">
+        <div className="flex pt-2 md:justify-end md:pt-4">
           <Button
             type="submit"
             disabled={status === "submitting"}
@@ -262,7 +262,7 @@ export default function ContactForm() {
               </>
             ) : (
               <>
-                <Send className="h-6 w-6 stroke-[3] mr-2" />
+                <Send className="mr-2 h-6 w-6 stroke-[3]" />
                 SEND MESSAGE
               </>
             )}
