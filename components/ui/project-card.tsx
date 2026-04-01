@@ -47,6 +47,8 @@ export default function ProjectCard({
             height={300}
             className="h-52 w-full object-cover object-center"
             alt={`${project.title} project`}
+            loading="lazy"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </div>
       </Link>

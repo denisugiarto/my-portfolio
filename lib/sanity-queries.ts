@@ -72,6 +72,96 @@ export async function getBlogPosts(limit?: number): Promise<BlogPost[]> {
   }
 }
 
+// Get paginated blog posts with total count
+export async function getPaginatedBlogPosts(
+  skip: number = 0,
+  limit: number = 6
+): Promise<{ posts: BlogPost[]; total: number }> {
+  try {
+    const postsQuery = `*[_type == "blogPost" && published == true] | order(publishedAt desc) [${skip}...${skip + limit}] {
+      _id,
+      title,
+      slug,
+      excerpt,
+      coverImage,
+      category->{
+        _id,
+        name,
+        slug,
+        color
+      },
+      tags[]->{
+        _id,
+        name
+      },
+      publishedAt,
+      readTime,
+      published,
+      featured
+    }`;
+
+    const totalQuery = `count(*[_type == "blogPost" && published == true])`;
+
+    const [posts, total] = await Promise.all([
+      client.fetch(postsQuery),
+      client.fetch(totalQuery),
+    ]);
+
+    return { posts: posts || [], total };
+  } catch (error) {
+    console.error("Error fetching paginated blog posts:", error);
+    return { posts: [], total: 0 };
+  }
+}
+
+// Search blog posts by query string
+export async function searchBlogPosts(
+  query: string,
+  categoryId?: string | null,
+  skip: number = 0,
+  limit: number = 6
+): Promise<{ posts: BlogPost[]; total: number }> {
+  try {
+    const searchFilter = categoryId
+      ? `&& category._ref == "${categoryId}"`
+      : "";
+    
+    const postsQuery = `*[_type == "blogPost" && published == true ${searchFilter} && (title match "*${query}*" || excerpt match "*${query}*")] | order(publishedAt desc) [${skip}...${skip + limit}] {
+      _id,
+      title,
+      slug,
+      excerpt,
+      coverImage,
+      category->{
+        _id,
+        name,
+        slug,
+        color
+      },
+      tags[]->{
+        _id,
+        name
+      },
+      publishedAt,
+      readTime,
+      published,
+      featured
+    }`;
+
+    const totalQuery = `count(*[_type == "blogPost" && published == true ${searchFilter} && (title match "*${query}*" || excerpt match "*${query}*")])`;
+
+    const [posts, total] = await Promise.all([
+      client.fetch(postsQuery),
+      client.fetch(totalQuery),
+    ]);
+
+    return { posts: posts || [], total };
+  } catch (error) {
+    console.error("Error searching blog posts:", error);
+    return { posts: [], total: 0 };
+  }
+}
+
 export async function getFeaturedBlogPosts(): Promise<BlogPost[]> {
   const query = `*[_type == "blogPost" && featured == true && published == true] | order(publishedAt desc) [0...3] {
     _id,

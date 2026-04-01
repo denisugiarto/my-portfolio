@@ -3,6 +3,9 @@ import withSvgr from "next-plugin-svgr";
 
 const withBundleAnalyzerConfig = withBundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
+  openAnalyzer: false,
+  analyzerMode: "static",
+  reportFilename: "analyze/nodejs.html",
 });
 
 const nextConfig = withBundleAnalyzerConfig(
@@ -10,6 +13,7 @@ const nextConfig = withBundleAnalyzerConfig(
     reactStrictMode: true,
     images: {
       minimumCacheTTL: 86400,
+      formats: ["image/avif", "image/webp"],
       remotePatterns: [
         {
           protocol: "https",
@@ -31,6 +35,8 @@ const nextConfig = withBundleAnalyzerConfig(
         },
       ],
     },
+    compress: true,
+    poweredByHeader: false,
   }),
 );
 

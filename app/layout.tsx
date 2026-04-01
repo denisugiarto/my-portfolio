@@ -5,13 +5,21 @@ import type { Metadata } from "next";
 import { Archivo, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space-grotesk" });
+const spaceGrotesk = Space_Grotesk({ 
+  subsets: ["latin"], 
+  variable: "--font-space-grotesk",
+  display: "swap",
+  preload: true,
+});
 const archivo = Archivo({
   subsets: ["latin"],
   variable: "--font-archivo",
+  display: "swap",
+  preload: true,
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://denisugiarto.my.id"),
   title: {
     default: "Web Developer: Frontend web developer - Deni Sugiarto",
     template: "%s | Deni Sugiarto",
@@ -42,7 +50,7 @@ export const metadata: Metadata = {
       "Web Developer magician. Experience developing web apps using Nextjs, ReactJs, and mobile apps using React Native with SCRUM agile development.",
     images: [
       {
-        url: "https://www.denisugiarto.my.id/android-chrome-512x512.png",
+        url: "/android-chrome-512x512.png",
         width: 512,
         height: 512,
         alt: "logo image",
@@ -68,10 +76,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://dmdxpdxy.apicdn.sanity.io" />
-        <link rel="preconnect" href="https://cdn.sanity.io" />
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href="https://www.google-analytics.com" />
+        <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://dmdxpdxy.apicdn.sanity.io" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
       </head>
       <body
         className={`${spaceGrotesk.className} ${archivo.variable} ${spaceGrotesk.variable}`}

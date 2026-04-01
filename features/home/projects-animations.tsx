@@ -24,12 +24,12 @@ interface AnimatedSectionProps {
 
 export function AnimatedProjectSection({
   children,
-  delay = 0.5,
+  delay = 0.3,
 }: AnimatedSectionProps) {
   return (
     <m.div
-      initial={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.5, delay }}
+      initial={{ opacity: 0, y: 10 }}
+      transition={{ duration: 0.3, delay, ease: "easeOut" }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
     >
@@ -49,7 +49,7 @@ export function AnimatedProjectGrid({ children }: AnimatedProjectGridProps) {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: 0.2 }}
+      transition={{ duration: 0.3, delay: 0.1 }}
     >
       {children}
     </m.div>
@@ -64,10 +64,10 @@ export function AnimatedViewAll({ children }: AnimatedViewAllProps) {
   return (
     <m.div
       className="mt-14 text-center"
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: 0.4 }}
+      transition={{ duration: 0.3, delay: 0.2 }}
     >
       {children}
     </m.div>

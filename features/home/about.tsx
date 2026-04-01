@@ -165,7 +165,8 @@ export default function About({ aboutData }: AboutProps) {
                     width={400}
                     height={500}
                     className="object-cover transition-transform duration-300 hover:scale-105"
-                    priority
+                    loading="lazy"
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-900/20 to-transparent"></div>
                 </div>

@@ -121,12 +121,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   <div className="relative mx-auto aspect-[16/9] max-w-4xl overflow-hidden border-4 border-foreground bg-muted shadow-[4px_4px_0px_0px_hsl(var(--foreground))] md:shadow-[8px_8px_0px_0px_hsl(var(--foreground))]">
                     <Image
                       src={urlFor(article.coverImage)
-                        .width(1600)
-                        .height(900)
+                        .width(1200)
+                        .height(630)
                         .url()}
                       alt={article.title}
                       fill
                       className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1200px"
                       priority
                     />
                   </div>

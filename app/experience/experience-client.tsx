@@ -128,9 +128,8 @@ const ExperienceClient = () => {
                     <div className="relative z-10 hidden flex-shrink-0 md:block">
                       <m.div
                         className="flex h-16 w-16 items-center justify-center rounded-none border-[3px] md:border-4 border-foreground bg-card shadow-[4px_4px_0px_0px_hsl(var(--foreground))]"
-
-                        whileHover={{ scale: 1.1 }}
-                        transition={{ type: "spring", stiffness: 300 }}
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 0.15 }}
                       >
                         {experience.companyLogo ? (
                           <Image
@@ -333,19 +332,12 @@ const ExperienceClient = () => {
                                                   className="inline-flex cursor-default items-center rounded-none border-2 border-foreground bg-primary px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-primary-foreground shadow-[3px_3px_0px_0px_hsl(var(--foreground))]"
                                                   initial={{
                                                     opacity: 0,
-                                                    scale: 0.8,
                                                   }}
                                                   whileInView={{
                                                     opacity: 1,
-                                                    scale: 1,
                                                   }}
-                                                  transition={{ delay: idx * 0.05 }}
+                                                  transition={{ delay: Math.min(idx * 0.03, 0.3) }}
                                                   viewport={{ once: true }}
-                                                  whileHover={{
-                                                    x: 3,
-                                                    y: 3,
-                                                    boxShadow: "0px 0px 0px 0px hsl(var(--foreground))"
-                                                  }}
                                                 >
                                                   {tech.name}
                                                 </m.span>
@@ -363,18 +355,12 @@ const ExperienceClient = () => {
                                               <m.span
                                                 key={skill.name}
                                                 className="inline-flex cursor-default items-center rounded-none border-2 border-foreground bg-secondary px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-foreground shadow-[3px_3px_0px_0px_hsl(var(--foreground))]"
-                                                initial={{ opacity: 0, scale: 0.8 }}
+                                                initial={{ opacity: 0 }}
                                                 whileInView={{
                                                   opacity: 1,
-                                                  scale: 1,
                                                 }}
-                                                transition={{ delay: idx * 0.05 }}
+                                                transition={{ delay: Math.min(idx * 0.03, 0.3) }}
                                                 viewport={{ once: true }}
-                                                whileHover={{
-                                                  x: 3,
-                                                  y: 3,
-                                                  boxShadow: "0px 0px 0px 0px hsl(var(--foreground))"
-                                                }}
                                               >
                                                 {skill.name}
                                               </m.span>

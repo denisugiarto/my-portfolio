@@ -28,9 +28,9 @@ interface AnimatedTextProps {
 export function AnimatedText({ children, delay = 0 }: AnimatedTextProps) {
   return (
     <m.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay, ease: "circOut" }}
+      transition={{ duration: 0.3, delay, ease: "easeOut" }}
     >
       {children}
     </m.div>
@@ -40,9 +40,9 @@ export function AnimatedText({ children, delay = 0 }: AnimatedTextProps) {
 export function AnimatedContent({ children, delay = 0.2 }: AnimatedTextProps) {
   return (
     <m.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay, ease: "circOut" }}
+      transition={{ duration: 0.3, delay, ease: "easeOut" }}
     >
       {children}
     </m.div>
@@ -60,9 +60,9 @@ interface AnimatedTechStackProps {
 export function AnimatedTechStack({ techs }: AnimatedTechStackProps) {
   return (
     <m.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: 0.4, ease: "circOut" }}
+      transition={{ duration: 0.3, delay: 0.3, ease: "easeOut" }}
       className="mt-16"
     >
       <p className="mb-4 inline-block bg-accent px-2 py-1 text-sm font-black uppercase tracking-[0.2em] text-accent-foreground border-2 border-foreground shadow-[2px_2px_0px_0px_hsl(var(--foreground))]">
@@ -72,9 +72,9 @@ export function AnimatedTechStack({ techs }: AnimatedTechStackProps) {
         {techs.map((tech, index) => (
           <m.div
             key={tech.name}
-            initial={{ opacity: 0, scale: 0.9, y: 10 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: 0.5 + index * 0.05 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.2, delay: 0.4 + index * 0.03 }}
             className="flex cursor-default items-center gap-2 border-2 border-foreground bg-background px-4 py-3 shadow-[4px_4px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))]"
           >
             <tech.icon

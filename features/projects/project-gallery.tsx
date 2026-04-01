@@ -62,6 +62,8 @@ export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
               width={400}
               height={300}
               className="h-auto w-full object-cover transition-none grayscale-[20%] group-hover:grayscale-0"
+              loading="lazy"
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
           </div>
         ))}

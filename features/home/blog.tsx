@@ -157,13 +157,13 @@ export default function BlogSection() {
           </svg>
         </div>
 
-        <m.div
-          className="container relative z-10"
-          initial={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
+          <m.div
+            className="container relative z-10"
+            initial={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+          >
           <div className="mb-12 text-center">
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.26em] text-amber-700 dark:text-amber-300">
               Writing
@@ -199,6 +199,8 @@ export default function BlogSection() {
                         width={400}
                         height={200}
                         className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                        loading="lazy"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                     ) : (
                       <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-primary/20 to-secondary/20">

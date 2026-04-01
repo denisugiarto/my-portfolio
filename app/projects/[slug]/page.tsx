@@ -113,10 +113,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             <div className="relative mb-16 w-full overflow-hidden border-4 border-foreground bg-card shadow-[12px_12px_0px_0px_hsl(var(--foreground))]">
               <div className="aspect-[21/9] w-full relative">
                 <Image
-                  src={urlFor(project.coverImage).width(1920).height(800).url()}
+                  src={urlFor(project.coverImage).width(1200).height(500).url()}
                   alt={project.title}
                   fill
                   className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1200px"
                   priority
                 />
               </div>
