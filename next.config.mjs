@@ -44,6 +44,8 @@ const nextConfig = withBundleAnalyzerConfig(
         "lucide-react",
         "framer-motion",
       ],
+      // Optimize CSS loading
+      optimizeCss: true,
     },
   }),
 );

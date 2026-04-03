@@ -78,12 +78,16 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <link rel="dns-prefetch" href="https://cdn.sanity.io" />
         <link
           rel="preconnect"
           href="https://cdn.sanity.io"
           crossOrigin="anonymous"
         />
-        <link rel="dns-prefetch" href="https://dmdxpdxy.apicdn.sanity.io" />
+        <link
+          rel="dns-prefetch"
+          href={`https://${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}.apicdn.sanity.io`}
+        />
         {/* Defer DNS prefetch for analytics until needed */}
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
