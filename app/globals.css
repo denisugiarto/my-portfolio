@@ -28,15 +28,15 @@
     --muted: 0 0% 90%;
     --muted-foreground: 0 0% 30%;
 
-    --accent: 345 100% 60%;
-    /* #ff3366 */
+    --accent: 345 100% 45%;
+    /* #e60045 - darkened for WCAG AA compliance (4.7:1 with white) */
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
     --success: 142 76% 36%;
-    --success-foreground: 0 0% 100%;
+    --success-foreground: 0 0% 0%;
 
     --warning: 38 92% 50%;
     --warning-foreground: 0 0% 0%;
@@ -75,8 +75,8 @@
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 65%;
 
-    --accent: 345 100% 60%;
-    /* #ff3366 (neon pink) */
+    --accent: 345 100% 45%;
+    /* #e60045 - darkened for WCAG AA compliance (4.7:1 with white) */
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
