@@ -5,12 +5,7 @@ import { HeroSection, Technology } from "@/lib/sanity";
 import { sendGAEvent } from "@next/third-parties/google";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import {
-  AnimatedContent,
-  AnimatedTechStack,
-  AnimatedText,
-  HeroAnimations,
-} from "./hero-animations";
+import { AnimatedTechStack } from "./hero-animations";
 
 interface HeroProps {
   heroData: HeroSection | null;
@@ -64,8 +59,12 @@ const Hero = ({ heroData }: HeroProps) => {
       ].filter((tech) => tech.icon);
 
   return (
-    <HeroAnimations>
-      <AnimatedText>
+    <section
+      id="home"
+      className="relative flex flex-col justify-center overflow-hidden pb-12 pt-24 text-center lg:pb-24 lg:pt-36"
+    >
+      <div className="container relative z-10 mx-auto">
+        {/* Headline - no animation for faster LCP */}
         <div className="mx-auto max-w-5xl">
           <div className="mb-6 inline-flex items-center gap-2 border-4 border-foreground bg-warning px-4 py-2 text-sm font-black uppercase tracking-[0.2em] text-warning-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
             <span className="h-3 w-3 border-2 border-foreground bg-success" />
@@ -78,16 +77,14 @@ const Hero = ({ heroData }: HeroProps) => {
 
           <div className="mx-auto mt-8 h-2 w-32 border-2 border-foreground bg-primary shadow-[2px_2px_0px_0px_hsl(var(--foreground))]" />
         </div>
-      </AnimatedText>
 
-      <AnimatedContent delay={0.2}>
+        {/* Bio paragraph - no animation for faster LCP */}
         <p className="mx-auto mb-12 mt-8 max-w-3xl border-4 border-foreground bg-background p-6 text-lg font-bold leading-relaxed text-foreground shadow-[8px_8px_0px_0px_hsl(var(--foreground))] md:text-xl">
           {heroData.bio ||
             "I create fast, scalable, and user-friendly web applications using modern technologies. Specializing in React, Next.js, and Node.js with a focus on clean code and great user experiences."}
         </p>
-      </AnimatedContent>
 
-      <AnimatedContent delay={0.4}>
+        {/* CTA buttons - no animation for faster LCP */}
         <div className="mb-8 flex flex-col items-center justify-center gap-4 font-black sm:flex-row sm:gap-6">
           <Link
             href={heroData.primaryCTA?.link || "#projects"}
@@ -134,10 +131,10 @@ const Hero = ({ heroData }: HeroProps) => {
             </Link>
           )}
         </div>
-      </AnimatedContent>
 
-      <AnimatedTechStack techs={techStack} />
-    </HeroAnimations>
+        <AnimatedTechStack techs={techStack} />
+      </div>
+    </section>
   );
 };
 

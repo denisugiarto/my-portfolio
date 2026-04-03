@@ -84,14 +84,23 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link rel="dns-prefetch" href="https://dmdxpdxy.apicdn.sanity.io" />
+        {/* Defer DNS prefetch for analytics until needed */}
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        {/* Preload critical hero image if exists */}
+        <link
+          rel="preload"
+          href="/img/profile.webp"
+          as="image"
+          type="image/webp"
+          fetchPriority="high"
+        />
       </head>
       <body
         className={`${spaceGrotesk.className} ${archivo.variable} ${spaceGrotesk.variable}`}
         suppressHydrationWarning
       >
-        {/* Google Analytics with Web Worker */}
+        {/* Google Analytics - Deferred loading */}
         <GoogleAnalytics
           measurementId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS || ""}
         />

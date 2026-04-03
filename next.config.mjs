@@ -37,6 +37,14 @@ const nextConfig = withBundleAnalyzerConfig(
     },
     compress: true,
     poweredByHeader: false,
+    // Optimize bundle splitting
+    experimental: {
+      optimizePackageImports: [
+        "@icons-pack/react-simple-icons",
+        "lucide-react",
+        "framer-motion",
+      ],
+    },
   }),
 );
 

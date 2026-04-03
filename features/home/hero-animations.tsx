@@ -28,21 +28,21 @@ interface AnimatedTextProps {
 export function AnimatedText({ children, delay = 0 }: AnimatedTextProps) {
   return (
     <m.div
-      initial={{ opacity: 0, y: 10 }}
+      initial={{ opacity: 0, y: 5 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3, delay, ease: "easeOut" }}
+      transition={{ duration: 0.2, delay, ease: "easeOut" }}
     >
       {children}
     </m.div>
   );
 }
 
-export function AnimatedContent({ children, delay = 0.2 }: AnimatedTextProps) {
+export function AnimatedContent({ children, delay = 0.1 }: AnimatedTextProps) {
   return (
     <m.div
-      initial={{ opacity: 0, y: 10 }}
+      initial={{ opacity: 0, y: 5 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3, delay, ease: "easeOut" }}
+      transition={{ duration: 0.2, delay, ease: "easeOut" }}
     >
       {children}
     </m.div>
@@ -60,21 +60,21 @@ interface AnimatedTechStackProps {
 export function AnimatedTechStack({ techs }: AnimatedTechStackProps) {
   return (
     <m.div
-      initial={{ opacity: 0, y: 10 }}
+      initial={{ opacity: 0, y: 5 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3, delay: 0.3, ease: "easeOut" }}
+      transition={{ duration: 0.2, delay: 0.15, ease: "easeOut" }}
       className="mt-16"
     >
-      <p className="mb-4 inline-block border-2 border-foreground bg-accent px-2 py-1 text-sm font-black uppercase tracking-[0.2em] text-accent-foreground shadow-[2px_2px_0px_0px_hsl(var(--foreground))]">
+      <p className="mb-4 inline-block border-2 border-foreground bg-accent px-2 py-1 text-sm font-black uppercase tracking-[0.2em] text-black shadow-[2px_2px_0px_0px_hsl(var(--foreground))]">
         CORE STACK
       </p>
       <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-center gap-4 border-4 border-foreground bg-card px-6 py-8 shadow-[8px_8px_0px_0px_hsl(var(--foreground))] md:gap-6 md:px-10">
         {techs.map((tech, index) => (
           <m.div
             key={tech.name}
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.2, delay: 0.4 + index * 0.03 }}
+            transition={{ duration: 0.15, delay: 0.2 + index * 0.02 }}
             className="flex cursor-default items-center gap-2 border-2 border-foreground bg-background px-4 py-3 shadow-[4px_4px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))]"
           >
             <tech.icon
