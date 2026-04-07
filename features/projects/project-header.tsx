@@ -12,13 +12,13 @@ export default function ProjectHeader({ project }: ProjectHeaderProps) {
     <div className="space-y-8">
       {/* Project Title */}
       <div>
-        <h1 className="mb-6 text-5xl font-black uppercase leading-[1.1] tracking-tight sm:text-6xl lg:text-7xl xl:text-8xl">
+        <h1 className="mb-6 text-4xl font-black uppercase leading-[1.1] tracking-tight sm:text-6xl lg:text-5xl xl:text-6xl">
           {project.title}
         </h1>
 
         {/* Short Description */}
         {project.shortDescription && (
-          <p className="border-l-4 border-primary bg-secondary p-4 text-xl font-bold leading-relaxed text-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] md:text-2xl">
+          <p className="border-4 border-primary bg-secondary p-4 text-xl font-bold leading-relaxed text-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] md:text-2xl">
             {project.shortDescription}
           </p>
         )}

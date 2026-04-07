@@ -47,7 +47,7 @@ const CustomComponents: Components = {
   li: ({ children }) => <li className="pl-2">{children}</li>,
   // Blockquotes
   blockquote: ({ children }) => (
-    <blockquote className="my-8 rounded-none border-l-4 border-primary bg-primary/5 px-5 py-4 text-lg italic leading-8 text-foreground/80">
+    <blockquote className="my-8 rounded-none border-4 border-primary bg-primary/5 px-5 py-4 text-lg italic leading-8 text-foreground/80">
       {children}
     </blockquote>
   ),

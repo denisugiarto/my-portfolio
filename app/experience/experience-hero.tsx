@@ -46,7 +46,7 @@ const ExperienceHero = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.15 }}
                   >
-                    <p className="mt-6 max-w-2xl border-l-4 border-primary bg-background p-3 pl-3 text-sm font-bold leading-relaxed text-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] md:mt-8 md:p-4 md:pl-4 md:text-lg lg:text-xl">
+                    <p className="mt-6 max-w-2xl border-4 border-primary bg-background p-3 pl-3 text-sm font-bold leading-relaxed text-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))] md:mt-8 md:p-4 md:pl-4 md:text-lg lg:text-xl">
                       A closer look at the teams, roles, and outcomes behind my
                       work, with the context needed to understand both scope and
                       impact.

@@ -147,7 +147,7 @@ export default function ExperienceManagementPage() {
             </div>
 
             {/* Instructions */}
-            <div className="mt-8 border-l-4 border-blue-500 bg-blue-50 p-6 dark:bg-blue-900/20">
+            <div className="mt-8 border-4 border-blue-500 bg-blue-50 p-6 dark:bg-blue-900/20">
               <h3 className="mb-3 text-lg font-semibold text-blue-900 dark:text-blue-100">
                 Getting Started
               </h3>

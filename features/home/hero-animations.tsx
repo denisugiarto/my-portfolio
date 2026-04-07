@@ -59,34 +59,33 @@ interface AnimatedTechStackProps {
 
 export function AnimatedTechStack({ techs }: AnimatedTechStackProps) {
   return (
-    <m.div
-      initial={{ opacity: 0, y: 5 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.2, delay: 0.15, ease: "easeOut" }}
-      className="mt-16"
-    >
-      <p className="mb-4 inline-block border-2 border-foreground bg-accent px-2 py-1 text-sm font-black uppercase tracking-[0.2em] text-black shadow-[2px_2px_0px_0px_hsl(var(--foreground))]">
-        CORE STACK
-      </p>
-      <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-center gap-4 border-4 border-foreground bg-card px-6 py-8 shadow-[8px_8px_0px_0px_hsl(var(--foreground))] md:gap-6 md:px-10">
-        {techs.map((tech, index) => (
-          <m.div
-            key={tech.name}
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.15, delay: 0.2 + index * 0.02 }}
-            className="flex cursor-default items-center gap-2 border-2 border-foreground bg-background px-4 py-3 shadow-[4px_4px_0px_0px_hsl(var(--foreground))] transition-none hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))]"
-          >
-            <tech.icon
-              className="h-6 w-6 md:h-7 md:w-7"
-              style={{ color: tech.color }}
-            />
-            <span className="text-sm font-bold uppercase tracking-wider text-foreground md:text-base">
-              {tech.name}
-            </span>
-          </m.div>
-        ))}
-      </div>
-    </m.div>
+    <LazyMotion features={domAnimation}>
+      <m.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+        className="mt-16"
+      >
+        <p className="mb-6 text-left inline-block border-2 border-foreground bg-accent px-2 py-1 text-sm font-black uppercase tracking-[0.2em] text-accent-foreground shadow-[2px_2px_0px_0px_hsl(var(--foreground))]">
+          CORE STACK
+        </p>
+        <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-center gap-4 md:gap-4 md:px-10">
+          {techs.map((tech, index) => (
+            <m.div
+              key={tech.name}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.3, delay: 0.4 + index * 0.05 }}
+              className="flex cursor-default items-center gap-2 border-2 border-foreground bg-background px-4 py-2 shadow-[4px_4px_0px_0px_hsl(var(--foreground))] transition-none"
+            >
+              <tech.icon className="h-5 w-5" color={tech.color} />
+              <span className="text-xs font-bold uppercase tracking-wider text-foreground">
+                {tech.name}
+              </span>
+            </m.div>
+          ))}
+        </div>
+      </m.div>
+    </LazyMotion>
   );
 }

@@ -149,7 +149,7 @@ export default function BlogStaticContainer({
             <h1 className="border-b-6 mb-4 inline-block border-foreground pb-2 text-4xl font-black uppercase tracking-tight text-foreground md:border-b-8 md:text-7xl lg:text-8xl">
               BLOG
             </h1>
-            <p className="max-w-xl border-l-4 border-primary bg-secondary p-3 text-sm font-bold uppercase leading-relaxed text-foreground shadow-[3px_3px_0px_0px_hsl(var(--foreground))] md:border-l-8 md:p-4 md:text-lg md:shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
+            <p className="max-w-xl border-4 border-primary bg-secondary p-3 text-sm font-bold uppercase leading-relaxed text-foreground shadow-[3px_3px_0px_0px_hsl(var(--foreground))] md:border-l-8 md:p-4 md:text-lg md:shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
               INSIGHTS, TUTORIALS, AND THOUGHTS ON WEB DEVELOPMENT
             </p>
           </div>

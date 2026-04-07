@@ -47,11 +47,12 @@ const ThemeToggle = () => {
       onClick={handleThemeToggle}
       aria-label="Toggle Theme"
       title="Toggle Theme"
+      className="transition-transform duration-200 hover:rotate-12"
     >
       {resolvedTheme === "dark" ? (
-        <MoonIcon className="h-5 w-5 stroke-[3]" />
+        <MoonIcon className="h-5 w-5 stroke-[3] transition-transform duration-200" />
       ) : (
-        <Sun className="h-5 w-5 stroke-[3]" />
+        <Sun className="h-5 w-5 stroke-[3] transition-transform duration-200" />
       )}
     </Button>
   );
