@@ -47,7 +47,7 @@ export default function ProjectCard({
             height={300}
             className="h-52 w-full object-cover object-center"
             alt={`${project.title} project`}
-            loading="lazy"
+            priority={true}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </div>
@@ -55,9 +55,9 @@ export default function ProjectCard({
 
       <div className="p-6 pt-5">
         <Link href={`/projects/${project.slug.current}`}>
-          <h3 className="mb-2 inline-block text-xl font-black uppercase tracking-tight text-foreground transition-none group-hover:bg-primary group-hover:px-1 group-hover:text-primary-foreground">
+          <h2 className="mb-2 inline-block text-xl font-black uppercase tracking-tight text-foreground transition-none group-hover:bg-primary group-hover:px-1 group-hover:text-primary-foreground">
             {project.title}
-          </h3>
+          </h2>
         </Link>
 
         <p className="mb-4 line-clamp-2 text-sm font-medium leading-relaxed text-muted-foreground">

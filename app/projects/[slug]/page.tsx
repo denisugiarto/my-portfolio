@@ -137,9 +137,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                   {/* Project Quick Info Card */}
                   <div className="border-4 border-foreground bg-secondary p-8 shadow-[8px_8px_0px_0px_hsl(var(--foreground))]">
                     <div className="mb-6 flex items-start justify-between gap-4">
-                      <h3 className="inline-block border-2 border-foreground bg-primary px-3 py-1 text-sm font-black uppercase tracking-widest text-primary-foreground shadow-[3px_3px_0px_0px_hsl(var(--foreground))]">
+                      <h2 className="inline-block border-2 border-foreground bg-primary px-3 py-1 text-sm font-black uppercase tracking-widest text-primary-foreground shadow-[3px_3px_0px_0px_hsl(var(--foreground))]">
                         PROJECT INFO
-                      </h3>
+                      </h2>
                       {project.category && (
                         <span className="border-2 border-foreground bg-background px-2 py-1 text-xs font-bold uppercase tracking-wider text-foreground shadow-[2px_2px_0px_0px_hsl(var(--foreground))]">
                           {project.category}
@@ -193,9 +193,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                       {project.technologies &&
                         project.technologies.length > 0 && (
                           <div>
-                            <h4 className="mb-4 inline-block border-b-4 border-foreground pb-1 text-sm font-black uppercase text-foreground">
+                            <h3 className="mb-4 inline-block border-b-4 border-foreground pb-1 text-sm font-black uppercase text-foreground">
                               STACK
-                            </h4>
+                            </h3>
                             <div className="flex flex-wrap gap-2">
                               {project.technologies.map((tech, index) => (
                                 <span
