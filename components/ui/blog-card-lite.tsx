@@ -10,7 +10,7 @@ interface BlogCardLiteProps {
 
 export default function BlogCardLite({ blog }: BlogCardLiteProps) {
   return (
-    <article className="group overflow-hidden rounded-lg border-[3px] border-foreground bg-card shadow-[4px_4px_0px_0px_hsl(var(--foreground))] transition-all duration-150 hover:-translate-x-[4px] hover:-translate-y-[4px] hover:shadow-[8px_8px_0px_0px_hsl(var(--foreground))]">
+    <article className="group overflow-hidden border-2 border-foreground bg-card shadow-[4px_4px_0px_0px_hsl(var(--foreground))] transition-all duration-150 hover:-translate-x-[4px] hover:-translate-y-[4px] hover:shadow-[8px_8px_0px_0px_hsl(var(--foreground))]">
       <Link href={`/blog/${blog.slug.current}`}>
         <div className="relative h-48 overflow-hidden">
           {blog.coverImage ? (
@@ -52,9 +52,9 @@ export default function BlogCardLite({ blog }: BlogCardLiteProps) {
         </div>
 
         <Link href={`/blog/${blog.slug.current}`}>
-          <h3 className="mb-3 line-clamp-2 text-xl font-bold text-card-foreground transition-colors duration-200 group-hover:text-primary">
+          <h2 className="mb-3 line-clamp-2 text-xl font-bold text-card-foreground transition-colors duration-200 group-hover:text-primary">
             {blog.title}
-          </h3>
+          </h2>
         </Link>
 
         <p className="mb-4 line-clamp-3 text-sm leading-relaxed text-muted-foreground">

@@ -122,9 +122,6 @@ export default function BlogPageClient({
             <h1 className="border-b-6 mb-4 inline-block border-foreground pb-2 text-4xl font-black uppercase tracking-tight text-foreground md:border-b-8 md:text-7xl lg:text-8xl">
               BLOG
             </h1>
-            <p className="max-w-xl border-4 border-primary bg-secondary p-3 text-sm font-bold uppercase leading-relaxed text-foreground shadow-[3px_3px_0px_0px_hsl(var(--foreground))] md:border-l-8 md:p-4 md:text-lg md:shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
-              INSIGHTS, TUTORIALS, AND THOUGHTS ON WEB DEVELOPMENT
-            </p>
           </div>
           <div className="w-full sm:w-80">
             <SearchInput
@@ -137,7 +134,7 @@ export default function BlogPageClient({
         </div>
 
         {/* Category Filter */}
-        <div className="mb-6 border-[3px] border-foreground bg-card p-4 shadow-[4px_4px_0px_0px_hsl(var(--foreground))] md:mb-8 md:border-4 md:p-6 md:shadow-[8px_8px_0px_0px_hsl(var(--foreground))]">
+        <div className="mb-6 border-4 border-foreground bg-card p-4 shadow-[4px_4px_0px_0px_hsl(var(--foreground))] md:mb-8 md:border-4 md:p-6">
           <p className="mb-2 text-xs font-black uppercase tracking-widest text-foreground md:mb-3 md:text-sm">
             CATEGORIES
           </p>

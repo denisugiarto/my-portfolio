@@ -34,13 +34,13 @@ export default function ContactPage() {
                 <h1 className="mb-8 inline-block border-b-8 border-foreground pb-2 text-5xl font-black uppercase leading-none tracking-tight text-foreground md:text-7xl lg:text-8xl">
                   GET IN TOUCH
                 </h1>
-                <p className="max-w-2xl border-l-8 border-primary bg-secondary p-6 text-xl font-bold leading-relaxed text-foreground shadow-[8px_8px_0px_0px_hsl(var(--foreground))]">
+                <p className="max-w-2xl border-4 border-primary bg-secondary p-6 text-xl font-bold leading-relaxed text-foreground shadow-[4px_4px_0px_0px_hsl(var(--foreground))]">
                   READY TO BRING YOUR IDEAS TO LIFE? SEND ME A MESSAGE AND
                   I&apos;LL GET BACK TO YOU WITHIN 24 HOURS.
                 </p>
               </div>
 
-              <div className="border-4 border-foreground bg-card p-6 shadow-[12px_12px_0px_0px_hsl(var(--foreground))] md:p-12">
+              <div className="border-4 border-foreground bg-card p-6 shadow-[4px_4px_0px_0px_hsl(var(--foreground))] md:p-12">
                 <ContactForm />
               </div>
             </div>
