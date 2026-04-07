@@ -124,11 +124,20 @@ export async function searchBlogPosts(
   limit: number = 6,
 ): Promise<{ posts: BlogPost[]; total: number }> {
   try {
-    const searchFilter = categoryId
-      ? `&& category._ref == "${categoryId}"`
-      : "";
+    // Build filters dynamically
+    const filters = [`_type == "blogPost"`, `published == true`];
+    
+    if (categoryId) {
+      filters.push(`category._ref == "${categoryId}"`);
+    }
+    
+    if (query) {
+      filters.push(`(title match "*${query}*" || excerpt match "*${query}*")`);
+    }
+    
+    const filterString = filters.join(" && ");
 
-    const postsQuery = `*[_type == "blogPost" && published == true ${searchFilter} && (title match "*${query}*" || excerpt match "*${query}*")] | order(publishedAt desc) [${skip}...${
+    const postsQuery = `*[${filterString}] | order(publishedAt desc) [${skip}...${
       skip + limit
     }] {
       _id,
@@ -152,7 +161,7 @@ export async function searchBlogPosts(
       featured
     }`;
 
-    const totalQuery = `count(*[_type == "blogPost" && published == true ${searchFilter} && (title match "*${query}*" || excerpt match "*${query}*")])`;
+    const totalQuery = `count(*[${filterString}])`;
 
     const [posts, total] = await Promise.all([
       client.fetch(postsQuery),

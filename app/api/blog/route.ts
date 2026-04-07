@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
     const skip = (page - 1) * limit;
 
     let result;
-    if (search) {
+    if (search || category) {
       result = await searchBlogPosts(search, category, skip, limit);
     } else {
       result = await getPaginatedBlogPosts(skip, limit);

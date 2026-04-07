@@ -164,9 +164,9 @@ export default function Footer() {
         <div className="container px-8 py-12 sm:px-12 md:px-16 md:py-16 lg:px-8">
           <div className="flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
             <div>
-              <h3 className="text-2xl font-black uppercase tracking-tight text-foreground md:text-4xl lg:text-5xl">
+              <h2 className="text-2xl font-black uppercase tracking-tight text-foreground md:text-4xl lg:text-5xl">
                 Have a project in mind?
-              </h3>
+              </h2>
               <p className="mt-2 max-w-lg text-base font-medium text-foreground/70 md:text-lg">
                 Let&apos;s build something amazing together.
               </p>
