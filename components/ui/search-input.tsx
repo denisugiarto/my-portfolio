@@ -10,6 +10,7 @@ type SearchInputProps = {
   delay?: number;
   initialValue?: string;
   showClearButton?: boolean;
+  value?: string;
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange" | "value">;
 
 const SearchInput = ({
@@ -17,14 +18,17 @@ const SearchInput = ({
   delay = 300,
   initialValue = "",
   showClearButton = true,
+  value,
   ...props
 }: SearchInputProps) => {
-  const [query, setQuery] = useState(initialValue);
+  const [internalQuery, setInternalQuery] = useState(initialValue);
+  const query = value !== undefined ? value : internalQuery;
   const debouncedQuery = useDebounce(query, delay);
 
   useEffect(() => {
     try {
       onSearch(debouncedQuery);
+      console.log("🚀 ~ SearchInput ~ debouncedQuery:", debouncedQuery)
     } catch (error) {
       console.error("Search callback error:", error);
     }
@@ -32,14 +36,25 @@ const SearchInput = ({
 
   const handleChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
-      setQuery(event.target.value);
+      const newValue = event.target.value;
+      if (value === undefined) {
+        // Uncontrolled mode: update internal state
+        setInternalQuery(newValue);
+      }
+      // Controlled mode: notify parent immediately (will be debounced by useEffect)
+      onSearch(newValue);
     },
-    [],
+    [value, onSearch],
   );
 
   const handleClear = useCallback(() => {
-    setQuery("");
-  }, []);
+    if (value === undefined) {
+      setInternalQuery("");
+    } else {
+      // If controlled, notify parent to clear
+      onSearch("");
+    }
+  }, [value, onSearch]);
 
   const hasQuery = query.length > 0;
 

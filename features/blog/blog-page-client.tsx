@@ -1,15 +1,15 @@
 "use client";
 
-import { BlogPost, BlogCategory } from "@/lib/sanity";
-import { useEffect, useState, useCallback } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
-import BlogCardLite from "@/components/ui/blog-card-lite";
-import SearchInput from "@/components/ui/search-input";
 import BlogCategoryNav from "@/components/blog-category-nav";
-import { Pagination } from "@/components/ui/pagination";
-import { X, Filter, Search, Loader2 } from "lucide-react";
+import BlogCardLite from "@/components/ui/blog-card-lite";
 import { Button } from "@/components/ui/button";
+import { Pagination } from "@/components/ui/pagination";
+import SearchInput from "@/components/ui/search-input";
+import { BlogCategory, BlogPost } from "@/lib/sanity";
 import { cn } from "@/lib/utils";
+import { Filter, Search, X } from "lucide-react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useCallback, useState } from "react";
 
 interface BlogData {
   posts: BlogPost[];
@@ -128,6 +128,7 @@ export default function BlogPageClient({
               name="search"
               placeholder="SEARCH ARTICLES..."
               type="text"
+              value={searchQuery}
               onSearch={onSearchHandler}
             />
           </div>
