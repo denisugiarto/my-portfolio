@@ -254,132 +254,134 @@ const ExperienceClient = () => {
                           experience.technologies.length > 0) ||
                         (experience.skills &&
                           experience.skills.length > 0)) && (
-                        <div className="bg-card p-4 sm:p-6 md:p-8">
-                          <div className="space-y-6 md:space-y-8">
-                            {((experience.description &&
-                              experience.description.length > 0) ||
-                              (experience.achievements &&
-                                experience.achievements.length > 0)) && (
-                              <div>
-                                <p className="mb-3 inline-block border-b-[3px] border-foreground pb-1 text-xs font-black uppercase tracking-widest text-foreground md:mb-4 md:border-b-4 md:text-sm">
-                                  DETAILS
-                                </p>
-                                <div className="mt-2 grid gap-4 md:gap-6 lg:grid-cols-2">
-                                  {experience.description &&
-                                    experience.description.length > 0 && (
-                                      <div className="rounded-none border-[3px] border-foreground bg-background p-4 shadow-[4px_4px_0px_0px_hsl(var(--foreground))] md:border-4 md:p-6 md:shadow-[6px_6px_0px_0px_hsl(var(--foreground))]">
-                                        <h4 className="mb-3 inline-block border-2 border-foreground bg-primary px-2 py-1 text-xs font-black uppercase tracking-wider text-primary-foreground md:mb-4 md:text-sm">
-                                          RESPONSIBILITIES
-                                        </h4>
-                                        {experience.description.map(
-                                          (paragraph, idx) => (
-                                            <ListItem
-                                              key={idx}
-                                              className="text-sm font-bold leading-relaxed text-foreground md:text-base"
-                                            >
-                                              {typeof paragraph === "string"
-                                                ? paragraph
-                                                : JSON.stringify(paragraph)}
-                                            </ListItem>
-                                          ),
-                                        )}
-                                      </div>
-                                    )}
-
-                                  {experience.achievements &&
-                                    experience.achievements.length > 0 && (
-                                      <div className="rounded-none border-[3px] border-foreground bg-background p-4 shadow-[4px_4px_0px_0px_hsl(var(--foreground))] md:border-4 md:p-6 md:shadow-[6px_6px_0px_0px_hsl(var(--foreground))]">
-                                        <h4 className="mb-3 inline-block border-2 border-foreground bg-accent px-2 py-1 text-xs font-black uppercase tracking-wider text-accent-foreground md:mb-4 md:text-sm">
-                                          ACHIEVEMENTS
-                                        </h4>
-                                        <ul className="mt-2 space-y-3 font-bold leading-relaxed text-foreground md:space-y-4">
-                                          {experience.achievements.map(
-                                            (achievement, idx) => (
-                                              <ListItem
-                                                key={idx}
-                                                className="text-sm font-bold leading-relaxed text-foreground md:text-base"
-                                              >
-                                                {typeof achievement === "string"
-                                                  ? achievement
-                                                  : JSON.stringify(achievement)}
-                                              </ListItem>
-                                            ),
-                                          )}
-                                        </ul>
-                                      </div>
-                                    )}
-                                </div>
-                              </div>
-                            )}
-
-                            {((experience.technologies &&
-                              experience.technologies.length > 0) ||
-                              (experience.skills &&
-                                experience.skills.length > 0)) && (
-                              <div>
-                                <p className="mb-3 inline-block border-b-[3px] border-foreground pb-1 text-xs font-black uppercase tracking-widest text-foreground md:mb-4 md:border-b-4 md:text-sm">
-                                  TOOLBOX
-                                </p>
-
-                                {experience.technologies &&
-                                  experience.technologies.length > 0 && (
-                                    <div className="mb-6">
-                                      <div className="flex flex-wrap gap-2">
-                                        {experience.technologies.map(
-                                          (tech, idx) => (
-                                            <m.span
-                                              key={tech.name}
-                                              className="inline-flex cursor-default items-center rounded-none border-2 border-foreground bg-primary px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-primary-foreground shadow-[3px_3px_0px_0px_hsl(var(--foreground))]"
-                                              initial={{
-                                                opacity: 0,
-                                              }}
-                                              whileInView={{
-                                                opacity: 1,
-                                              }}
-                                              transition={{
-                                                delay: Math.min(
-                                                  idx * 0.03,
-                                                  0.3,
+                          <div className="bg-card p-4 sm:p-6 md:p-8">
+                            <div className="space-y-6 md:space-y-8">
+                              {((experience.description &&
+                                experience.description.length > 0) ||
+                                (experience.achievements &&
+                                  experience.achievements.length > 0)) && (
+                                  <div>
+                                    <p className="mb-3 inline-block border-b-[3px] border-foreground pb-1 text-xs font-black uppercase tracking-widest text-foreground md:mb-4 md:border-b-4 md:text-sm">
+                                      DETAILS
+                                    </p>
+                                    <div className="mt-2 grid gap-4 md:gap-6 lg:grid-cols-2">
+                                      {experience.description &&
+                                        experience.description.length > 0 && (
+                                          <div className="rounded-none border-[3px] border-foreground bg-background p-4 shadow-[4px_4px_0px_0px_hsl(var(--foreground))] md:border-4 md:p-6 md:shadow-[6px_6px_0px_0px_hsl(var(--foreground))]">
+                                            <h4 className="mb-3 inline-block border-2 border-foreground bg-primary px-2 py-1 text-xs font-black uppercase tracking-wider text-primary-foreground md:mb-4 md:text-sm">
+                                              RESPONSIBILITIES
+                                            </h4>
+                                            <ul className="mt-2 space-y-3 font-bold leading-relaxed text-foreground md:space-y-4">
+                                              {experience.description.map(
+                                                (paragraph, idx) => (
+                                                  <ListItem
+                                                    key={idx}
+                                                    className="text-sm font-bold leading-relaxed text-foreground md:text-base"
+                                                  >
+                                                    {typeof paragraph === "string"
+                                                      ? paragraph
+                                                      : JSON.stringify(paragraph)}
+                                                  </ListItem>
                                                 ),
-                                              }}
-                                              viewport={{ once: true }}
-                                            >
-                                              {tech.name}
-                                            </m.span>
-                                          ),
+                                              )}
+                                            </ul>
+                                          </div>
                                         )}
-                                      </div>
-                                    </div>
-                                  )}
 
-                                {experience.skills &&
-                                  experience.skills.length > 0 && (
-                                    <div>
-                                      <div className="flex flex-wrap gap-2">
-                                        {experience.skills.map((skill, idx) => (
-                                          <m.span
-                                            key={skill.name}
-                                            className="inline-flex cursor-default items-center rounded-none border-2 border-foreground bg-secondary px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-foreground shadow-[3px_3px_0px_0px_hsl(var(--foreground))]"
-                                            initial={{ opacity: 0 }}
-                                            whileInView={{
-                                              opacity: 1,
-                                            }}
-                                            transition={{
-                                              delay: Math.min(idx * 0.03, 0.3),
-                                            }}
-                                            viewport={{ once: true }}
-                                          >
-                                            {skill.name}
-                                          </m.span>
-                                        ))}
-                                      </div>
+                                      {experience.achievements &&
+                                        experience.achievements.length > 0 && (
+                                          <div className="rounded-none border-[3px] border-foreground bg-background p-4 shadow-[4px_4px_0px_0px_hsl(var(--foreground))] md:border-4 md:p-6 md:shadow-[6px_6px_0px_0px_hsl(var(--foreground))]">
+                                            <h4 className="mb-3 inline-block border-2 border-foreground bg-accent px-2 py-1 text-xs font-black uppercase tracking-wider text-accent-foreground md:mb-4 md:text-sm">
+                                              ACHIEVEMENTS
+                                            </h4>
+                                            <ul className="mt-2 space-y-3 font-bold leading-relaxed text-foreground md:space-y-4">
+                                              {experience.achievements.map(
+                                                (achievement, idx) => (
+                                                  <ListItem
+                                                    key={idx}
+                                                    className="text-sm font-bold leading-relaxed text-foreground md:text-base"
+                                                  >
+                                                    {typeof achievement === "string"
+                                                      ? achievement
+                                                      : JSON.stringify(achievement)}
+                                                  </ListItem>
+                                                ),
+                                              )}
+                                            </ul>
+                                          </div>
+                                        )}
                                     </div>
-                                  )}
-                              </div>
-                            )}
+                                  </div>
+                                )}
+
+                              {((experience.technologies &&
+                                experience.technologies.length > 0) ||
+                                (experience.skills &&
+                                  experience.skills.length > 0)) && (
+                                  <div>
+                                    <p className="mb-3 inline-block border-b-[3px] border-foreground pb-1 text-xs font-black uppercase tracking-widest text-foreground md:mb-4 md:border-b-4 md:text-sm">
+                                      TOOLBOX
+                                    </p>
+
+                                    {experience.technologies &&
+                                      experience.technologies.length > 0 && (
+                                        <div className="mb-6">
+                                          <div className="flex flex-wrap gap-2">
+                                            {experience.technologies.map(
+                                              (tech, idx) => (
+                                                <m.span
+                                                  key={tech.name}
+                                                  className="inline-flex cursor-default items-center rounded-none border-2 border-foreground bg-primary px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-primary-foreground shadow-[3px_3px_0px_0px_hsl(var(--foreground))]"
+                                                  initial={{
+                                                    opacity: 0,
+                                                  }}
+                                                  whileInView={{
+                                                    opacity: 1,
+                                                  }}
+                                                  transition={{
+                                                    delay: Math.min(
+                                                      idx * 0.03,
+                                                      0.3,
+                                                    ),
+                                                  }}
+                                                  viewport={{ once: true }}
+                                                >
+                                                  {tech.name}
+                                                </m.span>
+                                              ),
+                                            )}
+                                          </div>
+                                        </div>
+                                      )}
+
+                                    {experience.skills &&
+                                      experience.skills.length > 0 && (
+                                        <div>
+                                          <div className="flex flex-wrap gap-2">
+                                            {experience.skills.map((skill, idx) => (
+                                              <m.span
+                                                key={skill.name}
+                                                className="inline-flex cursor-default items-center rounded-none border-2 border-foreground bg-secondary px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-foreground shadow-[3px_3px_0px_0px_hsl(var(--foreground))]"
+                                                initial={{ opacity: 0 }}
+                                                whileInView={{
+                                                  opacity: 1,
+                                                }}
+                                                transition={{
+                                                  delay: Math.min(idx * 0.03, 0.3),
+                                                }}
+                                                viewport={{ once: true }}
+                                              >
+                                                {skill.name}
+                                              </m.span>
+                                            ))}
+                                          </div>
+                                        </div>
+                                      )}
+                                  </div>
+                                )}
+                            </div>
                           </div>
-                        </div>
-                      )}
+                        )}
                     </m.div>
                   </div>
                 </m.div>
